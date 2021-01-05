@@ -1,5 +1,5 @@
-Welcome to the "Sagan Rules" README file
-----------------------------------------
+Welcome to the "Sagan Rules"
+----------------------------
 
 This is the Git repository for the Sagan engine rule sets.  You 
 probably won't find these useful unless you're actually using Sagan!
@@ -9,7 +9,7 @@ http://sagan.quadrantsec.com
 
 Github related site:
 
-http://github.com/beave/sagan
+http://github.com/quadrantsec/sagan
 
 What is Sagan? 
 --------------
@@ -18,21 +18,13 @@ Sagan is an open source (GNU/GPLv2) high performance, real-time log
 analysis & correlation engine.  It is written in C and uses a 
 multi-threaded architecture to deliver high performance log & event 
 analysis. The Sagan structure and Sagan rules work similarly to the 
-Sourcefire "Snort" IDS engine. This was intentionally done to maintain 
-compatibility with rule management software (oinkmaster/pulledpork/etc)
-and allows Sagan to correlate log events with your Snort IDS/IPS 
-system. Since Sagan can write to Snort IDS/IPS databases via 
-unified2/barnyard2, it is compatible with all Snort "consoles". For 
-example, Sagan is compatible with Snorby [http://www.snorby.org], 
-Sguil [http://sguil.sourceforge.net], BASE, and the Prelude IDS 
-framework! (to name a few).
-
-Sagan supports many different output formats,  log normalization 
-(via liblognorm),  script execution on event and automatic firewall
-support via "Snortsam" (see http://www.snortsam.net).  
+Sourcefire "Snort" and "Suricata" IDS engine. This was intentionally 
+done to maintain compatibility with rule management software 
+(oinkmaster/pulledpork/etc) and allows Sagan to correlate log events 
+with your Suricata/Snort IDS/IPS systems. 
 
 For more information, please visit the Sagan web site: 
-http://sagan.quadrantsec.com. 
+http://sagan.readthedocs.org and http://sagan.quadrantsec.com
 
 
 
