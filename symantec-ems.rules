@@ -1,0 +1,73 @@
+# Sagan symantic-ems.rules
+# Copyright (c) 2009-2020. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+# following conditions are met:
+#
+# * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+# disclaimer.
+# * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+# following disclaimer in the documentation and/or other materials provided with the distribution.
+# * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+# from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+# INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+# USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+
+# Successful login
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYMANTEC-EMS] Authentication success"; content: "authenticated internal PGP Desktop"; parse_src_ip: 2; default_proto: tcp; default_dst_port: 389; classtype: successful-user; program: pgp/client; reference: url,wiki.quadrantsec.com/bin/view/Main/5001675; sid: 5001675; rev:3;)
+
+# Unsuccessful login
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYMANTEC-EMS] Authentication failure"; content: "failed authentication for internal PGP Desktop"; parse_src_ip: 2; default_proto: tcp; default_dst_port: 389; classtype: unsuccessful-user; program: pgp/client; reference: url,wiki.quadrantsec.com/bin/view/Main/5001676; sid: 5001676; rev:3;)
+
+# Multiple login failures - Brute Force
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYMANTEC-EMS] Multiple authentication failures"; content: "failed authentication for internal PGP Desktop"; content:!"null"; parse_src_ip: 2; default_proto: tcp; default_dst_port: 389; classtype: unsuccessful-user; program: pgp/client; threshold:suppress, track by_src, count 5, seconds 300; xbits: set,brute_force,track ip_src, expire 21600; reference: url,wiki.quadrantsec.com/bin/view/Main/5001677; sid: 5001677; rev:5;)
+
+# Unsuccessful login
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYMANTEC-EMS] Authorization failure"; content: "authorization failed for this operation"; parse_src_ip: 2; default_proto: tcp; default_dst_port: 389; classtype: unsuccessful-user; program: pgp/client; reference: url,wiki.quadrantsec.com/bin/view/Main/5001678; sid: 5001678; rev:3;)
+
+# Multiple login failures - Brute Force
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYMANTEC-EMS] Multiple authorization failures"; content: "authorization failed for this operation"; parse_src_ip: 2; default_proto: tcp; default_dst_port: 389; classtype: unsuccessful-user; program: pgp/client; threshold:suppress, track by_src, count 5, seconds 300; reference: url,wiki.quadrantsec.com/bin/view/Main/5001679; sid: 5001679; rev:3;)
+
+# Encrypted Partition Mount Failure
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYMANTEC-EMS] Encrypted partition mount failure"; content: "WDE Event"; content: "mount"; content: "failure"; default_proto: tcp; default_dst_port: 389; classtype: hardware-event; program: pgp/client; reference: url,wiki.quadrantsec.com/bin/view/Main/5001680; sid: 5001680; rev:3;)
+
+# Error-regrouping - expired key
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYMANTEC-EMS] Error regrouping - expired key"; content: "error while regrouping consumer"; content: "key has expired"; default_proto: tcp; default_dst_port: 389; classtype: hardware-event; program: pgp/groupd; reference: url,wiki.quadrantsec.com/bin/view/Main/5001681; sid: 5001681; rev:3;)
+
+# Error-regrouping - cannot delete object
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYMANTEC-EMS] Error regrouping - expired key"; content: "error while regrouping consumer"; content: "cannot delete derived object while source object"; default_proto: tcp; default_dst_port: 389; classtype: hardware-event; program: pgp/groupd; reference: url,wiki.quadrantsec.com/bin/view/Main/5001682; sid: 5001682; rev:3;)
+
+# Error-reqrouping - bad parameters
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYMANTEC-EMS] Error regrouping - bad parameters"; content: "error while regrouping consumer"; content: "bad parameters"; default_proto: tcp; default_dst_port: 389; classtype: unsuccessful-user; program: pgp/groupd; reference: url,wiki.quadrantsec.com/bin/view/Main/5001683; sid: 5001683; rev:3;)
+
+# Failed to map user to a directory
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYMANTEC-EMS] Failed to map user to a directory"; content: "failed to map consumer"; content: "to a directory"; default_proto: tcp; default_dst_port: 389; classtype: unsuccessful-user; program: pgp/groupd; reference: url,wiki.quadrantsec.com/bin/view/Main/5001684; sid: 5001684; rev:3;)
+
+# LDAP key error - name lookup failed
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYMANTEC-EMS] LDAP key error - name lookup failed"; content: "error searching for key"; content: "LDAP"; content: "name lookup failed"; default_proto: tcp; default_dst_port: 389; classtype: unsuccessful-user; program: pgp/client; reference: url,wiki.quadrantsec.com/bin/view/Main/5001685; sid: 5001685; rev:3;)
+
+

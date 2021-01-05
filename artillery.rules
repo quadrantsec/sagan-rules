@@ -1,0 +1,91 @@
+# Sagan artillery.rules
+# Copyright (c) 2009-2020. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# "Artillery" is a project by TrustedSec that monitors, detect & block attacks.  It is written in Python
+# and acts as an HIDS system.  Artillery has the ability to write to local or remote syslog servers.  These
+# Sagan rules trigger when Artillery detects something bad.  These rules also act as a "gateway" between
+# Artillery and Snort consoles (Snorby/Sguil/etc).
+# 
+# From the Artilley Website: "The purpose of Artillery is to provide a combination of a honeypot, file-system 
+# monitoring, system hardening, real-time threat intelligence feeds, and overall health of a server to create a 
+# comprehensive way to secure a system.
+# 
+# Artillery is written by Dave Kennedy and the TrustedSec crew (@HackingDave / @TrustedSec).  For more 
+# information about Artillery,  see https://www.trustedsec.com/downloads/artillery/
+# 
+
+# Alerts on anything from the program "Artillery".  
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ARTILLERY] General Artillery Message"; classtype: suspicious-traffic; program: Artillery; parse_src_ip: 1; parse_dst_ip: 2; parse_proto; reference: url,wiki.quadrantsec.com/bin/view/Main/5002080; reference: url,www.trustedsec.com/downloads/artillery; sid:5002080; rev:2;)
+
+# ftp_monitor.py
+# write_log("Artillery has blocked (blacklisted) the following IP for FTP brute forcing violations: " + ipaddress)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ARTILLERY] FTP brute force violation"; content: "FTP brute forcing"; xbits: set, brute_force ,track ip_src, expire 21600; xbits: set, honeypot,track ip_src, expire 21600; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: unsuccessful-user; parse_src_ip: 1; program: Artillery; reference: url,wiki.quadrantsec.com/bin/view/Main/5002081; reference: url,www.trustedsec.com/downloads/artillery; sid:5002081; rev:8;)
+
+# harden.py
+# Issue identified: %s permissions are not set to root. If an attacker compromises the system and is running under the Apache user account, could view these files. Recommendation: Change the permission of %s to root:root. Command: chown root:root %s\n\n" % (filename,filename,filename)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ARTILLERY] Issue identified - Permissions not set as root"; content: "not set to root"; content: "Issue identified|3a|"; classtype: configuration-error; program: Artillery; reference: url,wiki.quadrantsec.com/bin/view/Main/5002082; reference: url,www.trustedsec.com/downloads/artillery; sid:5002082; rev:3;)
+
+# harden.py
+# Issue identified: /etc/vsftpd.conf allows Anonymous login. An attacker can gain a foothold to the system with absolutel zero effort. Recommendation: Change anonymous_enable yes to anonymous_enable no\n\n"
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ARTILLERY] Issue identified - vsftp.conf Anonymous FTP allowed"; content: "vsftpd.conf allows Anonymous login"; content: "Issue identified|3a|"; classtype: configuration-error; program: Artillery; reference: url,wiki.quadrantsec.com/bin/view/Main/5002083; reference: url,www.trustedsec.com/downloads/artillery; sid:5002083; rev:3;)
+
+# harden.py
+# Issue identified: /etc/ssh/sshd_config. SSH is running on the default port 22. An attacker commonly scans for these type of ports. Recommendation: Change the port to something high that doesn't get picked up by typical port scanners.\n\n"
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ARTILLERY] Issue identified - SSH running on default TCP port 22"; content: "Issue identified|3a|"; content: "SSH is running on the default port 22"; classtype: configuration-error; program: Artillery; reference: url,wiki.quadrantsec.com/bin/view/Main/5002084; reference: url,www.trustedsec.com/downloads/artillery; sid:5002084; rev:2;)   
+
+# harden.py
+# Issue identified: /etc/ssh/sshd_config allows RootLogin. An attacker can gain root access to the system if password is guessed. Recommendation: Change RootLogin yes to RootLogin no\n\n"
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ARTILLERY] Issue identified - sshd_config allows RootLogin"; content: "sshd_config allows RootLogin"; content: "Issue identified|3a|"; classtype: configuration-error; program: Artillery; reference: url,wiki.quadrantsec.com/bin/view/Main/5002085; reference: url,www.trustedsec.com/downloads/artillery; sid:5002085; rev:3;)
+
+# honeypot.py
+# %s [!] Artillery has blocked (and blacklisted) the IP Address: %s for connecting to a honeypot restricted port: %s" % (now, ip, port)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ARTILLERY] Honeyport blocked/blacklisted address"; content: "honeypot restricted port"; content: "blocked"; parse_src_ip: 1; xbits: set, honeypot ,track ip_src, expire 86400; classtype: suspicious-traffic; program: Artillery; reference: url,wiki.quadrantsec.com/bin/view/Main/5002086; reference: url,www.trustedsec.com/downloads/artillery; sid:5002086; rev:5;)
+
+# honeypot.py
+# %s [!] Artillery has detected an attack from IP address: %s for a connection on a honeypot port: %s" % (now, ip, port)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ARTILLERY] Honeyport attack detected"; content: "detected an attack"; content: "honeypot"; parse_src_ip: 1; xbits: set, honeypot,track ip_src, expire 86400; classtype: suspicious-traffic; program: Artillery; reference: url,wiki.quadrantsec.com/bin/view/Main/5002087; reference: url,www.trustedsec.com/downloads/artillery; sid:5002087; rev:4;)
+
+# monitor.py
+# output_file = "********************************** The following changes were detect at %s **********************************\n" % (datetime.datetime.now()) + output_file + "\n********************************** End of changes. **********************************\n\n"
+# warn_the_good_guys(subject, output_file)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ARTILLERY] File changes have occured"; content: "following changes were detect"; classtype: suspicious-traffic; program: Artillery; reference: url,wiki.quadrantsec.com/bin/view/Main/5002088; reference: url,www.trustedsec.com/downloads/artillery; sid:5002088; rev:2;)
+
+# ssh_monitor.py
+# alert = "Artillery has blocked (blacklisted) the following IP for SSH brute forcing violations: " + ipaddress
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ARTILLERY] SSH brute force violation"; content: "SSH brute forcing violations"; xbits: set, honeypot ,track ip_src, expire 86400; xbits: set, brute_force ,track ip_src, expire 86400; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: unsuccessful-user; parse_src_ip: 1; program: Artillery; reference: url,wiki.quadrantsec.com/bin/view/Main/5002089; reference: url,www.trustedsec.com/downloads/artillery; sid:5002089; rev:5;)
+
+

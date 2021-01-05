@@ -1,0 +1,44 @@
+# Sagan nxlog.rules
+# Copyright (c) 2009-2020. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#  Steve Rawls (srawls@quadrantsec.com) - 2017/04/25
+
+# These rules use "flexbits" because they might need faster access to data via mmap(). 
+# If xbits with redis is used,  these can be a bottle neck.
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Unable to read eventlog"; content: "EvtNext failed with error 15007|3a| "; flexbits: isnotset,by_src,nxlog_problem;after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 1, seconds 86400; flexbits: set,nxlog_problem,86400; classtype: program-error; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5003108; sid:5003108; rev:6;)
+
+# flexbits: isnotset,by_src,nxlog_problem;
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service stopping"; content: "stopping nxlog service"; flexbits: isnotset,by_src,reboot.windows; flexbits_pause: 120; classtype: program-error; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5003109; sid:5003109; rev:9;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Termination Request"; content: "nxlog received a termination request signal"; flexbits: isnotset,by_src,reboot.windows; flexbits: isnotset,by_src,nxlog_problem; classtype: program-error; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5003110; sid:5003110; rev:5;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Missing Windows Log Message"; pcre: "/ [0-9][0-9][0-9][0-9]?: $/"; program: *Security*|AppLocker|Application|Backup|Bonjour|CPQCISSE|Citrix|DAC|DHCP-Server|EMET|Eventlog|MSSQL*|MsiInstaller|NtFrs|Ntfs|RemoteAccess|Service|Service_Control_Manager|Symantec|Sysmon|System|USER32|Tenable|TermService|The|WinVNC4|crypt32; after: track by_src, count 30, seconds 300; threshold: type suppress, track by_src, count 1, seconds 86400; flexbits: set,nxlog_problem,86400; classtype: program-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5003111; sid:5003111; rev:7;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service restart to correct problem [CLEAR XBIT]"; content: "stopping nxlog service"; flexbits: isnotset,by_src,reboot.windows; flexbits: isset,by_src,nxlog_problem; flexbits: unset,by_src,nxlog_problem; flexbits:noeve; classtype: system-event; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5003125; sid:5003125; rev:4;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Problem nxlog system has recovered"; content: "connecting to";  flexbits: isset,by_src,nxlog_problem; flexbits: unset,by_src,nxlog_problem; flexbits:noeve; classtype: system-event; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5003985; sid:5003985; rev:2;)
+
