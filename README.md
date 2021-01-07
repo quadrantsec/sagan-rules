@@ -5,7 +5,7 @@ This is the Git repository for the Sagan engine rule sets.  You
 probably won't find these useful unless you're actually using Sagan!
 For more information,  check out the Sagan main web site at:
 
-http://sagan.quadrantsec.com
+https://quadrantsec.com/sagan_log_analysis_engine/
 
 Github related site:
 
