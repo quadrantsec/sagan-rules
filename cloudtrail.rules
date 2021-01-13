@@ -458,7 +458,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail 
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (ModifyLoadBalancerAttributes)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyLoadBalancerAttributes|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005503; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (ModifyRule)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyRule|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005503; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (ModifyRule)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyRule|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005606; rev:1;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (ModifyTargetGroup)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyTargetGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005504; rev:1;)
 

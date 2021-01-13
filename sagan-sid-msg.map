@@ -5048,6 +5048,379 @@
 5005231 || [MSAPI-SHAREPOINT-BLUEDOT] DLPRuleUndo from Bluedot listed IP address || url,wiki.quadrantsec.com/bin/view/Main/5005231
 5005232 || [CROWDSTRIKE] CrowdStrike Quarantine Files in Detection Summary Event reported || url,wiki.quadrantsec.com/bin/view/Main/5005232
 5005233 || [CROWDSTRIKE] CrowdStrike Detection Summary Event Reported || url,wiki.quadrantsec.com/bin/view/Main/5005233
+5005234 || [MS-DEFENDER] Antimalware Scan Started || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005235 || [MS-DEFENDER] Antimalware Scan Completed || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005236 || [MS-DEFENDER] Antimalware Scan Canceled || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005237 || [MS-DEFENDER] Antimalware Scan Paused || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005238 || [MS-DEFENDER] Antimalware Scan Resumed || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005239 || [MS-DEFENDER] Antimalware Scan Failed || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005240 || [MS-DEFENDER] Antimalware Engine Found Potential Malware || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005241 || [MS-DEFENDER] Action Performed Against Potential Malware || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005242 || [MS-DEFENDER] Action Performed Against Potential Malware Failed || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005243 || [MS-DEFENDER] Antimalware Platform Restored An Item From Quarantine || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005244 || [MS-DEFENDER] Antimalware Platform Could Not Restore An Item From Quarantine || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005245 || [MS-DEFENDER] Antimalware Platform Deleted An Item From Quarantine || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005246 || [MS-DEFENDER] Antimalware Platform Could Not Delete An Item From Quarantine || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005247 || [MS-DEFENDER] Antimalware Platform Deleted History Of Malware || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005248 || [MS-DEFENDER] Antimalware Platform Could Not Delete History Of Malware || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005249 || [MS-DEFENDER] Antimalware Platform Detected Suspicious Behavior || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005250 || [MS-DEFENDER] Antimalware Platform Detected Potential Malware || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005251 || [MS-DEFENDER] Action Performed Against Potential Malware [2] || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005252 || [MS-DEFENDER] Critical Error When Trying To Take Action On Malware || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005253 || [MS-DEFENDER] Microsoft Defender Antivirus Has Deduced The Hashes For A Threat Resource || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005254 || [MS-DEFENDER] Antimalware Platform Healthy State Event || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005255 || [MS-DEFENDER] Endpoint Protection Client Health Report || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005256 || [MS-DEFENDER] Antimalware Definitions Updated Successfully || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005257 || [MS-DEFENDER] Security Intelligence Update Failed || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005258 || [MS-DEFENDER] Antimalware Engine Updated Successfully || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005259 || [MS-DEFENDER] Antimalware Engine Update Failed || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005260 || [MS-DEFENDER] Problem Loading Antimalware Definitions || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005261 || [MS-DEFENDER] Out of Date Antimalware Platform || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005262 || [MS-DEFENDER] Platform Update Failed || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005263 || [MS-DEFENDER] Platform Will Soon Be Out Of Date || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005264 || [MS-DEFENDER] Antimalware Engine Used The Dynamic Signature Service To Get Additional Definitions || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005265 || [MS-DEFENDER] Out-Of-Date Dynamic Definitions Deleted || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005266 || [MS-DEFENDER] Error When Trying To Use Dynamic Signature Service || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005267 || [MS-DEFENDER] All Dynamic Definitions Deleted || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005268 || [MS-DEFENDER] Antimalware Engine Downloaded A Clean File || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005269 || [MS-DEFENDER] Antimalware Engine Failed To Download A Clean File || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005270 || [MS-DEFENDER] Antimalware Engine Was Downloaded And Is Configured To Run Offline On Next System Restart || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005271 || [MS-DEFENDER] Antimalware Engine Was Unable To Download And Configure An Offline Scan || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005272 || [MS-DEFENDER] Antimalware Support For This Operating System Version Will Soon End || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005273 || [MS-DEFENDER] Antimalware Support For This Operating System Has Ended || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005274 || [MS-DEFENDER] Antimalware Engine No Longer Supports This Operating System || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005275 || [MS-DEFENDER] Real-Time Protection Encountered An Error And Failed || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005276 || [MS-DEFENDER] Real-Time Protection Recovered From A Failure || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005277 || [MS-DEFENDER] Real-Time Protection Is Enabled || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005278 || [MS-DEFENDER] Real-Time Protection Is Disabled || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005279 || [MS-DEFENDER] Real-Time Protection Configuration Changed || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005280 || [MS-DEFENDER] Antimalware Platform Configuration Changed || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005281 || [MS-DEFENDER] Antimalware Engine Encountered An Error And Failed || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005282 || [MS-DEFENDER] Scanning For Malware is Enabled || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005283 || [MS-DEFENDER] Scanning For Malware is Disabled || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005284 || [MS-DEFENDER] Scanning For Viruses is Enabled || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005285 || [MS-DEFENDER] Scanning For Viruses is Disabled || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005286 || [MS-DEFENDER] Antimalware Platform Will Expire Soon || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005287 || [MS-DEFENDER] Antimalware Platform Is Expired || url,docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+5005288 || [CLOUDTRAIL] IAM cloudtrail event detected - (AddClientIDToOpenIDConnectProvider) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005289 || [CLOUDTRAIL] IAM cloudtrail event detected - (AddRoleToInstanceProfile) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005290 || [CLOUDTRAIL] IAM cloudtrail event detected - (AddUserToGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005291 || [CLOUDTRAIL] IAM cloudtrail event detected - (AttachGroupPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005292 || [CLOUDTRAIL] IAM cloudtrail event detected - (AttachRolePolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005293 || [CLOUDTRAIL] IAM cloudtrail event detected - (AttachUserPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005294 || [CLOUDTRAIL] IAM cloudtrail event detected - (ChangePassword) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005295 || [CLOUDTRAIL] IAM cloudtrail event detected - (ConsoleLogin) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005296 || [CLOUDTRAIL] IAM cloudtrail event detected - (CreateAccessKey) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005297 || [CLOUDTRAIL] IAM cloudtrail event detected - (CreateAccountAlias) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005298 || [CLOUDTRAIL] IAM cloudtrail event detected - (CreateGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005299 || [CLOUDTRAIL] IAM cloudtrail event detected - (CreateInstanceProfile) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005300 || [CLOUDTRAIL] IAM cloudtrail event detected - (CreateLoginProfile) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005301 || [CLOUDTRAIL] IAM cloudtrail event detected - (CreateOpenIDConnectProvider) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005302 || [CLOUDTRAIL] IAM cloudtrail event detected - (CreatePolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005303 || [CLOUDTRAIL] IAM cloudtrail event detected - (CreatePolicyVersion) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005304 || [CLOUDTRAIL] IAM cloudtrail event detected - (CreateRole) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005305 || [CLOUDTRAIL] IAM cloudtrail event detected - (CreateSAMLProvider) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005306 || [CLOUDTRAIL] IAM cloudtrail event detected - (CreateUser) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005307 || [CLOUDTRAIL] IAM cloudtrail event detected - (CreateVirtualMFADevice) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005308 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeactivateMFADevice) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005309 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteAccessKey) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005310 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteAccountAlias) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005311 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteAccountPasswordPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005312 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005313 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteGroupPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005314 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteInstanceProfile) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005315 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteLoginProfile) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005316 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteOpenIDConnectProvider) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005317 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeletePolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005318 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeletePolicyVersion) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005319 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteRole) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005320 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteRolePolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005321 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteSAMLProvider) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005322 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteServerCertificate) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005323 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteSigningCertificate) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005324 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteSSHPublicKey) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005325 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteUser) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005326 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteUserPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005327 || [CLOUDTRAIL] IAM cloudtrail event detected - (DeleteVirtualMFADevice) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005328 || [CLOUDTRAIL] IAM cloudtrail event detected - (DetachGroupPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005329 || [CLOUDTRAIL] IAM cloudtrail event detected - (DetachRolePolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005330 || [CLOUDTRAIL] IAM cloudtrail event detected - (DetachUserPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005331 || [CLOUDTRAIL] IAM cloudtrail event detected - (EnableMFADevice) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005332 || [CLOUDTRAIL] IAM cloudtrail event detected - (PutGroupPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005333 || [CLOUDTRAIL] IAM cloudtrail event detected - (PutRolePolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005334 || [CLOUDTRAIL] IAM cloudtrail event detected - (PutUserPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005335 || [CLOUDTRAIL] IAM cloudtrail event detected - (RemoveClientIDFromOpenIDConnectProvider) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005336 || [CLOUDTRAIL] IAM cloudtrail event detected - (RemoveRoleFromInstanceProfile) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005337 || [CLOUDTRAIL] IAM cloudtrail event detected - (RemoveUserFromGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005338 || [CLOUDTRAIL] IAM cloudtrail event detected - (ResyncMFADevice) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005339 || [CLOUDTRAIL] IAM cloudtrail event detected - (SetDefaultPolicyVersion) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005340 || [CLOUDTRAIL] IAM cloudtrail event detected - (UpdateAccessKey) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005341 || [CLOUDTRAIL] IAM cloudtrail event detected - (UpdateAccountPasswordPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005342 || [CLOUDTRAIL] IAM cloudtrail event detected - (UpdateAssumeRolePolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005343 || [CLOUDTRAIL] IAM cloudtrail event detected - (UpdateGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005344 || [CLOUDTRAIL] IAM cloudtrail event detected - (UpdateLoginProfile) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005345 || [CLOUDTRAIL] IAM cloudtrail event detected - (UpdateOpenIDConnectProviderThumbprint) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005346 || [CLOUDTRAIL] IAM cloudtrail event detected - (UpdateSAMLProvider) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005347 || [CLOUDTRAIL] IAM cloudtrail event detected - (UpdateServerCertificate) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005348 || [CLOUDTRAIL] IAM cloudtrail event detected - (UpdateSigningCertificate) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005349 || [CLOUDTRAIL] IAM cloudtrail event detected - (UpdateSSHPublicKey) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005350 || [CLOUDTRAIL] IAM cloudtrail event detected - (UpdateUser) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005351 || [CLOUDTRAIL] IAM cloudtrail event detected - (UploadServerCertificate) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005352 || [CLOUDTRAIL] IAM cloudtrail event detected - (UploadSigningCertificate) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005353 || [CLOUDTRAIL] IAM cloudtrail event detected - (UploadSSHPublicKey) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005354 || [CLOUDTRAIL] AWS Config cloudtrail event detected - (DeleteConfigRule) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005355 || [CLOUDTRAIL] AWS Config cloudtrail event detected - (DeleteConfigurationRecorder) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005356 || [CLOUDTRAIL] AWS Config cloudtrail event detected - (DeleteDeliveryChannel) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005357 || [CLOUDTRAIL] AWS Config cloudtrail event detected - (DeleteEvaluationResults) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005358 || [CLOUDTRAIL] AWS Config cloudtrail event detected - (PutConfigurationRecorder) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005359 || [CLOUDTRAIL] AWS Config cloudtrail event detected - (PutConfigRule) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005360 || [CLOUDTRAIL] AWS Config cloudtrail event detected - (PutDeliveryChannel) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005361 || [CLOUDTRAIL] AWS Config cloudtrail event detected - (PutEvaluations) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005362 || [CLOUDTRAIL] AWS Config cloudtrail event detected - (StartConfigRulesEvaluation) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005363 || [CLOUDTRAIL] AWS Config cloudtrail event detected - (StartConfigurationRecorder) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005364 || [CLOUDTRAIL] AWS Config cloudtrail event detected - (StopConfigurationRecorder) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005365 || [CLOUDTRAIL] EC2 cloudtrail event detected - (RunInstances) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005366 || [CLOUDTRAIL] EC2 cloudtrail event detected - (StartInstances) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005367 || [CLOUDTRAIL] EC2 cloudtrail event detected - (StopInstances) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005368 || [CLOUDTRAIL] EC2 cloudtrail event detected - (TerminateInstances) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005369 || [CLOUDTRAIL] EC2 cloudtrail event detected - (AssociateIamInstanceProfile) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005370 || [CLOUDTRAIL] EC2 cloudtrail event detected - (AssociateAddress) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005371 || [CLOUDTRAIL] EC2 cloudtrail event detected - (AssociateRouteTable) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005372 || [CLOUDTRAIL] EC2 cloudtrail event detected - (AssociateSubnetCidrBlock) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005373 || [CLOUDTRAIL] EC2 cloudtrail event detected - (AssociateVpcCidrBlock) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005374 || [CLOUDTRAIL] EC2 cloudtrail event detected - (AttachClassicLinkVpc) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005375 || [CLOUDTRAIL] EC2 cloudtrail event detected - (AttachInternetGateway) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005376 || [CLOUDTRAIL] EC2 cloudtrail event detected - (AttachNetworkInterface) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005377 || [CLOUDTRAIL] EC2 cloudtrail event detected - (AllocateAddress) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005378 || [CLOUDTRAIL] EC2 cloudtrail event detected - (AssignPrivateIpAddresses) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005379 || [CLOUDTRAIL] EC2 cloudtrail event detected - (AttachVpnGateway) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005380 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateNatGateway) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005381 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateKeyPair) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005382 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateNetworkAcl) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005383 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateNetworkAclEntry) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005384 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateNetworkInterface) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005385 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateRoute) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005386 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateRouteTable) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005387 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateSecurityGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005388 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateVpc) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005389 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateVpcEndpoint) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005390 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateVpcPeeringConnection) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005391 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateVpnConnection) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005392 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateVpnConnectionRoute) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005393 || [CLOUDTRAIL] EC2 cloudtrail event detected - (CreateVpnGateway) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005394 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteCustomerGateway) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005395 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteDhcpOptions) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005396 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteEgressOnlyInternetGateway) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005397 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteInternetGateway) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005398 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteKeyPair) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005399 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteNatGateway) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005400 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteNetworkAcl) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005401 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteNetworkAclEntry) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005402 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteNetworkInterface) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005403 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteRoute) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005404 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteRouteTable) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005405 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteSecurityGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005406 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteVpcEndpoints) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005407 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteVpcPeeringConnection) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005408 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteVpnConnection) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005409 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteVpnConnectionRoute) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005410 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteVpnGateway) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005411 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DetachClassicLinkVpc) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005412 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DetachInternetGateway) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005413 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DetachNetworkInterface) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005414 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DetachVolume) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005415 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DetachVpnGateway) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005416 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DisableVgwRoutePropagation) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005417 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DisableVpcClassicLink) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005418 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DisassociateAddress) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005419 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DisassociateIamInstanceProfile) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005420 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DisassociateRouteTable) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005421 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DisassociateSubnetCidrBlock) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005422 || [CLOUDTRAIL] EC2 cloudtrail event detected - (DisassociateVpcCidrBlock) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005423 || [CLOUDTRAIL] EC2 cloudtrail event detected - (EnableVgwRoutePropagation) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005424 || [CLOUDTRAIL] EC2 cloudtrail event detected - (EnableVolumeIO) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005425 || [CLOUDTRAIL] EC2 cloudtrail event detected - (EnableVpcClassicLink) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005426 || [CLOUDTRAIL] EC2 cloudtrail event detected - (AuthorizeSecurityGroupEgress) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005427 || [CLOUDTRAIL] EC2 cloudtrail event detected - (AuthorizeSecurityGroupIngress) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005428 || [CLOUDTRAIL] EC2 cloudtrail event detected - (RevokeSecurityGroupEgress) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005429 || [CLOUDTRAIL] EC2 cloudtrail event detected - (RevokeSecurityGroupIngress) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005430 || [CLOUDTRAIL] AutoScaling cloudtrail event detected - (AttachLoadBalancers) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005431 || [CLOUDTRAIL] AutoScaling cloudtrail event detected - (DetachLoadBalancers) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005432 || [CLOUDTRAIL] AutoScaling cloudtrail event detected - (PutScalingPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005433 || [CLOUDTRAIL] AutoScaling cloudtrail event detected - (DeletePolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005434 || [CLOUDTRAIL] AutoScaling cloudtrail event detected - (TerminateInstanceInAutoScalingGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005435 || [CLOUDTRAIL] CloudFormation cloudtrail event detected - (CancelUpdateStack) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005436 || [CLOUDTRAIL] CloudFormation cloudtrail event detected - (CreateStack) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005437 || [CLOUDTRAIL] CloudFormation cloudtrail event detected - (DeleteStack) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005438 || [CLOUDTRAIL] CloudFormation cloudtrail event detected - (UpdateStack) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005439 || [CLOUDTRAIL] Certificate Manager cloudtrail event detected - (DeleteCertificate) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005440 || [CLOUDTRAIL] Certificate Manager cloudtrail event detected - (RequestCertificate) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005441 || [CLOUDTRAIL] Certificate Manager cloudtrail event detected - (ResendValidationEmail) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005442 || [CLOUDTRAIL] cloudtrail event detected - (StopLogging) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005443 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (AllocateHostedConnection) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005444 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (AllocatePrivateVirtualInterface) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005445 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (AllocatePublicVirtualInterface) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005446 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (AssociateConnectionWithLag) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005447 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (AssociateHostedConnection) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005448 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (AssociateVirtualInterface) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005449 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (ConfirmConnection) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005450 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (ConfirmPrivateVirtualInterface) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005451 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (ConfirmPublicVirtualInterface) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005452 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (CreateConnection) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005453 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (CreateInterconnect) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005454 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (CreateLag) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005455 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (CreatePrivateVirtualInterface) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005456 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (CreatePublicVirtualInterface) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005457 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (DeleteConnection) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005458 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (DeleteInterconnect) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005459 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (DeleteLag) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005460 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (DeleteVirtualInterface) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005461 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (DisassociateConnectionFromLag) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005462 || [CLOUDTRAIL] Direct Connect cloudtrail event detected - (UpdateLag) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005463 || [CLOUDTRAIL] EFS cloudtrail event detected - (CreateFileSystem) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005464 || [CLOUDTRAIL] EFS cloudtrail event detected - (CreateMountTarget) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005465 || [CLOUDTRAIL] EFS cloudtrail event detected - (DeleteFileSystem) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005466 || [CLOUDTRAIL] EFS cloudtrail event detected - (DeleteMountTarget) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005467 || [CLOUDTRAIL] EFS cloudtrail event detected - (ModifyMountTargetSecurityGroups) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005468 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (AbortEnvironmentUpdate) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005469 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (CreateApplication) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005470 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (CreateApplicationVersion) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005471 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (CreateConfigurationTemplate) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005472 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (CreateEnvironment) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005473 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (CreateStorageLocation) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005474 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (DeleteApplication) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005475 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (DeleteApplicationVersion) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005476 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (DeleteConfigurationTemplate) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005477 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (DeleteEnvironmentConfiguration) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005478 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (RebuildEnvironment) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005479 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (RestartAppServer) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005480 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (SwapEnvironmentCNAMEs) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005481 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (TerminateEnvironment) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005482 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (UpdateApplication) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005483 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (UpdateApplicationVersion) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005484 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (UpdateConfigurationTemplate) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005485 || [CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (UpdateEnvironment) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005486 || [CLOUDTRAIL] ElastiCache cloudtrail event detected - (AuthorizeCacheSecurityGroupIngress) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005487 || [CLOUDTRAIL] ElastiCache cloudtrail event detected - (CreateCacheSecurityGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005488 || [CLOUDTRAIL] ElastiCache cloudtrail event detected - (DeleteCacheSecurityGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005489 || [CLOUDTRAIL] ElastiCache cloudtrail event detected - (RevokeCacheSecurityGroupIngress) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005490 || [CLOUDTRAIL] ELB cloudtrail event detected - (ApplySecurityGroupsToLoadBalancer) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005491 || [CLOUDTRAIL] ELB cloudtrail event detected - (CreateListener) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005492 || [CLOUDTRAIL] ELB cloudtrail event detected - (CreateLoadBalancer) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005493 || [CLOUDTRAIL] ELB cloudtrail event detected - (CreateLoadBalancerPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005494 || [CLOUDTRAIL] ELB cloudtrail event detected - (CreateRule) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005495 || [CLOUDTRAIL] ELB cloudtrail event detected - (CreateTargetGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005496 || [CLOUDTRAIL] ELB cloudtrail event detected - (DeleteListener) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005497 || [CLOUDTRAIL] ELB cloudtrail event detected - (DeleteLoadBalancer) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005498 || [CLOUDTRAIL] ELB cloudtrail event detected - (DeleteLoadBalancerListeners) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005499 || [CLOUDTRAIL] ELB cloudtrail event detected - (DeleteRule) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005500 || [CLOUDTRAIL] ELB cloudtrail event detected - (DeleteTargetGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005501 || [CLOUDTRAIL] ELB cloudtrail event detected - (DeregisterTargets) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005502 || [CLOUDTRAIL] ELB cloudtrail event detected - (ModifyListener) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005503 || [CLOUDTRAIL] ELB cloudtrail event detected - (ModifyLoadBalancerAttributes) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005504 || [CLOUDTRAIL] ELB cloudtrail event detected - (ModifyTargetGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005505 || [CLOUDTRAIL] ELB cloudtrail event detected - (ModifyTargetGroupAttributes) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005506 || [CLOUDTRAIL] ELB cloudtrail event detected - (RegisterTargets) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005507 || [CLOUDTRAIL] ELB cloudtrail event detected - (RemoveTags) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005508 || [CLOUDTRAIL] ELB cloudtrail event detected - (SetSecurityGroups) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005509 || [CLOUDTRAIL] Redshift cloudtrail event detected - (AuthorizeSnapshotAccess) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005510 || [CLOUDTRAIL] Redshift cloudtrail event detected - (RevokeSnapshotAccess) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005511 || [CLOUDTRAIL] Redshift cloudtrail event detected - (RotateEncryptionKey) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005512 || [CLOUDTRAIL] Redshift cloudtrail event detected - (AuthorizeClusterSecurityGroupIngress) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005513 || [CLOUDTRAIL] Redshift cloudtrail event detected - (CreateClusterSecurityGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005514 || [CLOUDTRAIL] Redshift cloudtrail event detected - (DeleteClusterSecurityGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005515 || [CLOUDTRAIL] Redshift cloudtrail event detected - (RevokeClusterSecurityGroupIngress) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005516 || [CLOUDTRAIL] RDS cloudtrail event detected - (AuthorizeDBSecurityGroupIngress) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005517 || [CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBCluster) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005518 || [CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBClusterParameterGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005519 || [CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBClusterSnapshot) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005520 || [CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBInstance) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005521 || [CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBInstanceReadReplica) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005522 || [CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBParameterGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005523 || [CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBSecurityGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005524 || [CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBSnapshot) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005525 || [CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBSubnetGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005526 || [CLOUDTRAIL] RDS cloudtrail event detected - (CreateOptionGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005527 || [CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBCluster) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005528 || [CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBClusterParameterGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005529 || [CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBClusterSnapshot) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005530 || [CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBInstance) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005531 || [CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBParameterGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005532 || [CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBSecurityGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005533 || [CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBSnapshot) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005534 || [CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBSubnetGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005535 || [CLOUDTRAIL] RDS cloudtrail event detected - (DeleteOptionGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005536 || [CLOUDTRAIL] RDS cloudtrail event detected - (FailoverDBCluster) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005537 || [CLOUDTRAIL] RDS cloudtrail event detected - (ModifyDBCluster) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005538 || [CLOUDTRAIL] RDS cloudtrail event detected - (ModifyDBClusterParameterGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005539 || [CLOUDTRAIL] RDS cloudtrail event detected - (ModifyDBInstance) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005540 || [CLOUDTRAIL] RDS cloudtrail event detected - (ModifyDBParameterGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005541 || [CLOUDTRAIL] RDS cloudtrail event detected - (ModifyDBSnapshotAttribute) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005542 || [CLOUDTRAIL] RDS cloudtrail event detected - (ModifyDBSubnetGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005543 || [CLOUDTRAIL] RDS cloudtrail event detected - (ModifyOptionGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005544 || [CLOUDTRAIL] RDS cloudtrail event detected - (PromoteReadReplica) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005545 || [CLOUDTRAIL] RDS cloudtrail event detected - (RebootDBInstance) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005546 || [CLOUDTRAIL] RDS cloudtrail event detected - (ResetDBClusterParameterGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005547 || [CLOUDTRAIL] RDS cloudtrail event detected - (ResetDBParameterGroup) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005548 || [CLOUDTRAIL] RDS cloudtrail event detected - (RestoreDBClusterFromSnapshot) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005549 || [CLOUDTRAIL] RDS cloudtrail event detected - (RestoreDBClusterToPointInTime) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005550 || [CLOUDTRAIL] RDS cloudtrail event detected - (RestoreDBInstanceFromDBSnapshot) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005551 || [CLOUDTRAIL] RDS cloudtrail event detected - (RestoreDBInstanceToPointInTime) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005552 || [CLOUDTRAIL] RDS cloudtrail event detected - (RevokeDBSecurityGroupIngress) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005553 || [CLOUDTRAIL] Route 53 cloudtrail event detected - (ChangeResourceRecordSets) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005554 || [CLOUDTRAIL] Route 53 cloudtrail event detected - (DeleteHealthCheck) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005555 || [CLOUDTRAIL] S3 cloudtrail event detected - (CreateBucket) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005556 || [CLOUDTRAIL] S3 cloudtrail event detected - (DeleteBucket) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005557 || [CLOUDTRAIL] S3 cloudtrail event detected - (DeleteBucketCors) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005558 || [CLOUDTRAIL] S3 cloudtrail event detected - (DeleteBucketLifecycle) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005559 || [CLOUDTRAIL] S3 cloudtrail event detected - (DeleteBucketPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005560 || [CLOUDTRAIL] S3 cloudtrail event detected - (DeleteBucketReplication) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005561 || [CLOUDTRAIL] S3 cloudtrail event detected - (DeleteBucketTagging) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005562 || [CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketAcl) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005563 || [CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketCors) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005564 || [CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketLifecycle) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005565 || [CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketLogging) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005566 || [CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketNotification) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005567 || [CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketPolicy) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005568 || [CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketReplication) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005569 || [CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketRequestPayment) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005570 || [CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketTagging) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005571 || [CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketVersioning) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005572 || [CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketWebsite) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005573 || [CLOUDTRAIL] WAF cloudtrail event detected - (CreateByteMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005574 || [CLOUDTRAIL] WAF cloudtrail event detected - (CreateGeoMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005575 || [CLOUDTRAIL] WAF cloudtrail event detected - (CreateIPSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005576 || [CLOUDTRAIL] WAF cloudtrail event detected - (CreateRateBasedRule) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005577 || [CLOUDTRAIL] WAF cloudtrail event detected - (CreateRegexMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005578 || [CLOUDTRAIL] WAF cloudtrail event detected - (CreateRegexPatternSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005579 || [CLOUDTRAIL] WAF cloudtrail event detected - (CreateRule) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005580 || [CLOUDTRAIL] WAF cloudtrail event detected - (CreateSizeConstraintSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005581 || [CLOUDTRAIL] WAF cloudtrail event detected - (CreateSqlInjectionMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005582 || [CLOUDTRAIL] WAF cloudtrail event detected - (CreateWebACL) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005583 || [CLOUDTRAIL] WAF cloudtrail event detected - (CreateXssMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005584 || [CLOUDTRAIL] WAF cloudtrail event detected - (DeleteByteMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005585 || [CLOUDTRAIL] WAF cloudtrail event detected - (DeleteGeoMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005586 || [CLOUDTRAIL] WAF cloudtrail event detected - (DeleteIPSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005587 || [CLOUDTRAIL] WAF cloudtrail event detected - (DeleteRateBasedRule) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005588 || [CLOUDTRAIL] WAF cloudtrail event detected - (DeleteRegexMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005589 || [CLOUDTRAIL] WAF cloudtrail event detected - (DeleteRegexPatternSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005590 || [CLOUDTRAIL] WAF cloudtrail event detected - (DeleteRule) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005591 || [CLOUDTRAIL] WAF cloudtrail event detected - (DeleteSizeConstraintSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005592 || [CLOUDTRAIL] WAF cloudtrail event detected - (DeleteSqlInjectionMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005593 || [CLOUDTRAIL] WAF cloudtrail event detected - (DeleteWebACL) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005594 || [CLOUDTRAIL] WAF cloudtrail event detected - (DeleteXssMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005595 || [CLOUDTRAIL] WAF cloudtrail event detected - (UpdateByteMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005596 || [CLOUDTRAIL] WAF cloudtrail event detected - (UpdateGeoMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005597 || [CLOUDTRAIL] WAF cloudtrail event detected - (UpdateIPSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005598 || [CLOUDTRAIL] WAF cloudtrail event detected - (UpdateRateBasedRule) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005599 || [CLOUDTRAIL] WAF cloudtrail event detected - (UpdateRegexMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005600 || [CLOUDTRAIL] WAF cloudtrail event detected - (UpdateRegexPatternSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005601 || [CLOUDTRAIL] WAF cloudtrail event detected - (UpdateRule) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005602 || [CLOUDTRAIL] WAF cloudtrail event detected - (UpdateSizeConstraintSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005603 || [CLOUDTRAIL] WAF cloudtrail event detected - (UpdateSqlInjectionMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005604 || [CLOUDTRAIL] WAF cloudtrail event detected - (UpdateWebACL) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005605 || [CLOUDTRAIL] WAF cloudtrail event detected - (UpdateXssMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005606 || [CLOUDTRAIL] ELB cloudtrail event detected - (ModifyRule) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
