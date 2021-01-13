@@ -47,7 +47,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[PALO-ALTO] Certificate is r
 
 ########URLZ
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[PALO-ALTO] Malware URL Blocked"; content:",THREAT,url,"; content:",block-url,"; content:!",online-personal-storage,"; content:",malware-sites,"; threshold: type suppress, count 1, seconds 1800, track by_src; normalize; parse_port; parse_proto; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; default_dst_port: $HTTP_PORT; classtype: suspicious-traffic; reference: url,www.brightcloud.com/tools/url-ip-lookup.php; sid: 5002749; rev:5;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[PALO-ALTO] Malware URL Blocked"; content:",THREAT,url,"; content:",block-url,"; content:!",online-personal-storage,"; content:",malware,"; threshold: type suppress, count 1, seconds 1800, track by_src; normalize; parse_port; parse_proto; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; default_dst_port: $HTTP_PORT; classtype: suspicious-traffic; reference: url,www.brightcloud.com/tools/url-ip-lookup.php; sid: 5002749; rev:6;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[PALO-ALTO] Phishing URL Blocked"; content:",THREAT,url,"; content:",block-url,"; content:!",online-personal-storage,"; content:",phishing-and-other-frauds,"; threshold: type suppress, count 1, seconds 600, track by_src; normalize; parse_port; parse_proto; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; default_dst_port: $HTTP_PORT; classtype: suspicious-traffic; reference: url,www.brightcloud.com/tools/url-ip-lookup.php; sid: 5002750; rev:4;)
 

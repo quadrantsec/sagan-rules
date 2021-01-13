@@ -1,0 +1,666 @@
+# Sagan cloudtrail.rules
+# Copyright (c) 2009-2021. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (AddClientIDToOpenIDConnectProvider)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|AddClientIDToOpenIDConnectProvider|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005288; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (AddRoleToInstanceProfile)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|AddRoleToInstanceProfile|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005289; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (AddUserToGroup)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|AddUserToGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005290; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (AttachGroupPolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|AttachGroupPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005291; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (AttachRolePolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|AttachRolePolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005292; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (AttachUserPolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|AttachUserPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005293; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (ChangePassword)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|ChangePassword|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005294; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (ConsoleLogin)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|ConsoleLogin|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005295; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (CreateAccessKey)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateAccessKey|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005296; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (CreateAccountAlias)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateAccountAlias|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005297; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (CreateGroup)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005298; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (CreateInstanceProfile)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateInstanceProfile|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005299; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (CreateLoginProfile)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateLoginProfile|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005300; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (CreateOpenIDConnectProvider)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateOpenIDConnectProvider|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005301; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (CreatePolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|CreatePolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005302; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (CreatePolicyVersion)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|CreatePolicyVersion|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005303; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (CreateRole)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateRole|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005304; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (CreateSAMLProvider)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateSAMLProvider|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005305; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (CreateUser)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateUser|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005306; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (CreateVirtualMFADevice)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateVirtualMFADevice|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005307; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeactivateMFADevice)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeactivateMFADevice|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005308; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteAccessKey)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteAccessKey|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005309; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteAccountAlias)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteAccountAlias|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005310; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteAccountPasswordPolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteAccountPasswordPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005311; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteGroup)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005312; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteGroupPolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteGroupPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005313; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteInstanceProfile)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteInstanceProfile|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005314; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteLoginProfile)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteLoginProfile|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005315; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteOpenIDConnectProvider)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteOpenIDConnectProvider|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005316; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeletePolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeletePolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005317; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeletePolicyVersion)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeletePolicyVersion|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005318; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteRole)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteRole|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005319; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteRolePolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteRolePolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005320; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteSAMLProvider)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteSAMLProvider|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005321; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteServerCertificate)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteServerCertificate|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005322; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteSigningCertificate)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteSigningCertificate|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005323; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteSSHPublicKey)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteSSHPublicKey|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005324; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteUser)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteUser|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005325; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteUserPolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteUserPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005326; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DeleteVirtualMFADevice)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteVirtualMFADevice|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005327; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DetachGroupPolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DetachGroupPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005328; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DetachRolePolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DetachRolePolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005329; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (DetachUserPolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|DetachUserPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005330; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (EnableMFADevice)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|EnableMFADevice|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005331; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (PutGroupPolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|PutGroupPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005332; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (PutRolePolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|PutRolePolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005333; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (PutUserPolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|PutUserPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005334; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (RemoveClientIDFromOpenIDConnectProvider)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|RemoveClientIDFromOpenIDConnectProvider|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005335; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (RemoveRoleFromInstanceProfile)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|RemoveRoleFromInstanceProfile|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005336; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (RemoveUserFromGroup)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|RemoveUserFromGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005337; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (ResyncMFADevice)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|ResyncMFADevice|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005338; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (SetDefaultPolicyVersion)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|SetDefaultPolicyVersion|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005339; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UpdateAccessKey)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateAccessKey|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005340; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UpdateAccountPasswordPolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateAccountPasswordPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005341; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UpdateAssumeRolePolicy)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateAssumeRolePolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005342; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UpdateGroup)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005343; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UpdateLoginProfile)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateLoginProfile|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005344; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UpdateOpenIDConnectProviderThumbprint)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateOpenIDConnectProviderThumbprint|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005345; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UpdateSAMLProvider)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateSAMLProvider|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005346; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UpdateServerCertificate)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateServerCertificate|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005347; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UpdateSigningCertificate)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateSigningCertificate|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005348; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UpdateSSHPublicKey)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateSSHPublicKey|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005349; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UpdateUser)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateUser|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005350; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UploadServerCertificate)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UploadServerCertificate|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005351; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UploadSigningCertificate)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UploadSigningCertificate|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005352; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (UploadSSHPublicKey)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|UploadSSHPublicKey|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005353; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AWS Config cloudtrail event detected - (DeleteConfigRule)"; program: config.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteConfigRule|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005354; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AWS Config cloudtrail event detected - (DeleteConfigurationRecorder)"; program: config.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteConfigurationRecorder|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005355; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AWS Config cloudtrail event detected - (DeleteDeliveryChannel)"; program: config.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteDeliveryChannel|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005356; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AWS Config cloudtrail event detected - (DeleteEvaluationResults)"; program: config.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteEvaluationResults|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005357; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AWS Config cloudtrail event detected - (PutConfigurationRecorder)"; program: config.amazonaws.com; content: "event detectedName|22 3a 20 22|PutConfigurationRecorder|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005358; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AWS Config cloudtrail event detected - (PutConfigRule)"; program: config.amazonaws.com; content: "event detectedName|22 3a 20 22|PutConfigRule|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005359; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AWS Config cloudtrail event detected - (PutDeliveryChannel)"; program: config.amazonaws.com; content: "event detectedName|22 3a 20 22|PutDeliveryChannel|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005360; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AWS Config cloudtrail event detected - (PutEvaluations)"; program: config.amazonaws.com; content: "event detectedName|22 3a 20 22|PutEvaluations|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005361; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AWS Config cloudtrail event detected - (StartConfigRulesEvaluation)"; program: config.amazonaws.com; content: "event detectedName|22 3a 20 22|StartConfigRulesEvaluation|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005362; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AWS Config cloudtrail event detected - (StartConfigurationRecorder)"; program: config.amazonaws.com; content: "event detectedName|22 3a 20 22|StartConfigurationRecorder|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005363; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AWS Config cloudtrail event detected - (StopConfigurationRecorder)"; program: config.amazonaws.com; content: "event detectedName|22 3a 20 22|StopConfigurationRecorder|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005364; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (RunInstances)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|RunInstances|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005365; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (StartInstances)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|StartInstances|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005366; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (StopInstances)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|StopInstances|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005367; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (TerminateInstances)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|TerminateInstances|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005368; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (AssociateIamInstanceProfile)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|AssociateIamInstanceProfile|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005369; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (AssociateAddress)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|AssociateAddress|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005370; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (AssociateRouteTable)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|AssociateRouteTable|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005371; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (AssociateSubnetCidrBlock)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|AssociateSubnetCidrBlock|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005372; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (AssociateVpcCidrBlock)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|AssociateVpcCidrBlock|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005373; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (AttachClassicLinkVpc)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|AttachClassicLinkVpc|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005374; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (AttachInternetGateway)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|AttachInternetGateway|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005375; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (AttachNetworkInterface)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|AttachNetworkInterface|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005376; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (AllocateAddress)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|AllocateAddress|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005377; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (AssignPrivateIpAddresses)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|AssignPrivateIpAddresses|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005378; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (AttachVpnGateway)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|AttachVpnGateway|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005379; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateNatGateway)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateNatGateway|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005380; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateKeyPair)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateKeyPair|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005381; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateNetworkAcl)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateNetworkAcl|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005382; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateNetworkAclEntry)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateNetworkAclEntry|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005383; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateNetworkInterface)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateNetworkInterface|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005384; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateRoute)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateRoute|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005385; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateRouteTable)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateRouteTable|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005386; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateSecurityGroup)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateSecurityGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005387; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateVpc)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateVpc|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005388; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateVpcEndpoint)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateVpcEndpoint|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005389; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateVpcPeeringConnection)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateVpcPeeringConnection|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005390; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateVpnConnection)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateVpnConnection|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005391; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateVpnConnectionRoute)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateVpnConnectionRoute|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005392; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (CreateVpnGateway)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateVpnGateway|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005393; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteCustomerGateway)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteCustomerGateway|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005394; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteDhcpOptions)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteDhcpOptions|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005395; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteEgressOnlyInternetGateway)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteEgressOnlyInternetGateway|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005396; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteInternetGateway)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteInternetGateway|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005397; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteKeyPair)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteKeyPair|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005398; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteNatGateway)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteNatGateway|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005399; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteNetworkAcl)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteNetworkAcl|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005400; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteNetworkAclEntry)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteNetworkAclEntry|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005401; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteNetworkInterface)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteNetworkInterface|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005402; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteRoute)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteRoute|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005403; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteRouteTable)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteRouteTable|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005404; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteSecurityGroup)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteSecurityGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005405; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteVpcEndpoints)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteVpcEndpoints|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005406; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteVpcPeeringConnection)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteVpcPeeringConnection|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005407; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteVpnConnection)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteVpnConnection|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005408; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteVpnConnectionRoute)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteVpnConnectionRoute|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005409; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DeleteVpnGateway)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteVpnGateway|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005410; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DetachClassicLinkVpc)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DetachClassicLinkVpc|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005411; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DetachInternetGateway)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DetachInternetGateway|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005412; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DetachNetworkInterface)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DetachNetworkInterface|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005413; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DetachVolume)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DetachVolume|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005414; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DetachVpnGateway)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DetachVpnGateway|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005415; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DisableVgwRoutePropagation)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DisableVgwRoutePropagation|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005416; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DisableVpcClassicLink)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DisableVpcClassicLink|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005417; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DisassociateAddress)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DisassociateAddress|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005418; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DisassociateIamInstanceProfile)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DisassociateIamInstanceProfile|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005419; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DisassociateRouteTable)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DisassociateRouteTable|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005420; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DisassociateSubnetCidrBlock)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DisassociateSubnetCidrBlock|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005421; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (DisassociateVpcCidrBlock)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|DisassociateVpcCidrBlock|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005422; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (EnableVgwRoutePropagation)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|EnableVgwRoutePropagation|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005423; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (EnableVolumeIO)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|EnableVolumeIO|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005424; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (EnableVpcClassicLink)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|EnableVpcClassicLink|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005425; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (AuthorizeSecurityGroupEgress)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|AuthorizeSecurityGroupEgress|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005426; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (AuthorizeSecurityGroupIngress)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|AuthorizeSecurityGroupIngress|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005427; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (RevokeSecurityGroupEgress)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|RevokeSecurityGroupEgress|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005428; rev:1;)
+
+alert any &EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EC2 cloudtrail event detected - (RevokeSecurityGroupIngress)"; program: ec2.amazonaws.com; content: "event detectedName|22 3a 20 22|RevokeSecurityGroupIngress|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005429; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AutoScaling cloudtrail event detected - (AttachLoadBalancers)"; program: autoscaling.amazonaws.com; content: "event detectedName|22 3a 20 22|AttachLoadBalancers|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005430; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AutoScaling cloudtrail event detected - (DetachLoadBalancers)"; program: autoscaling.amazonaws.com; content: "event detectedName|22 3a 20 22|DetachLoadBalancers|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005431; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AutoScaling cloudtrail event detected - (PutScalingPolicy)"; program: autoscaling.amazonaws.com; content: "event detectedName|22 3a 20 22|PutScalingPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005432; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AutoScaling cloudtrail event detected - (DeletePolicy)"; program: autoscaling.amazonaws.com; content: "event detectedName|22 3a 20 22|DeletePolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005433; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] AutoScaling cloudtrail event detected - (TerminateInstanceInAutoScalingGroup)"; program: autoscaling.amazonaws.com; content: "event detectedName|22 3a 20 22|TerminateInstanceInAutoScalingGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005434; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] CloudFormation cloudtrail event detected - (CancelUpdateStack)"; program: cloudformation.amazonaws.com; content: "event detectedName|22 3a 20 22|CancelUpdateStack|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005435; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] CloudFormation cloudtrail event detected - (CreateStack)"; program: cloudformation.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateStack|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005436; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] CloudFormation cloudtrail event detected - (DeleteStack)"; program: cloudformation.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteStack|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005437; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] CloudFormation cloudtrail event detected - (UpdateStack)"; program: cloudformation.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateStack|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005438; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Certificate Manager cloudtrail event detected - (DeleteCertificate)"; program: acm.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteCertificate|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005439; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Certificate Manager cloudtrail event detected - (RequestCertificate)"; program: acm.amazonaws.com; content: "event detectedName|22 3a 20 22|RequestCertificate|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005440; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Certificate Manager cloudtrail event detected - (ResendValidationEmail)"; program: acm.amazonaws.com; content: "event detectedName|22 3a 20 22|ResendValidationEmail|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005441; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] cloudtrail event detected - (StopLogging)"; program: cloudtrail.amazonaws.com; content: "event detectedName|22 3a 20 22|StopLogging|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005442; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (AllocateHostedConnection)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|AllocateHostedConnection|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005443; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (AllocatePrivateVirtualInterface)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|AllocatePrivateVirtualInterface|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005444; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (AllocatePublicVirtualInterface)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|AllocatePublicVirtualInterface|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005445; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (AssociateConnectionWithLag)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|AssociateConnectionWithLag|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005446; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (AssociateHostedConnection)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|AssociateHostedConnection|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005447; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (AssociateVirtualInterface)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|AssociateVirtualInterface|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005448; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (ConfirmConnection)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|ConfirmConnection|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005449; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (ConfirmPrivateVirtualInterface)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|ConfirmPrivateVirtualInterface|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005450; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (ConfirmPublicVirtualInterface)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|ConfirmPublicVirtualInterface|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005451; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (CreateConnection)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateConnection|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005452; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (CreateInterconnect)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateInterconnect|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005453; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (CreateLag)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateLag|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005454; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (CreatePrivateVirtualInterface)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|CreatePrivateVirtualInterface|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005455; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (CreatePublicVirtualInterface)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|CreatePublicVirtualInterface|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005456; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (DeleteConnection)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteConnection|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005457; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (DeleteInterconnect)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteInterconnect|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005458; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (DeleteLag)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteLag|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005459; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (DeleteVirtualInterface)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteVirtualInterface|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005460; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (DisassociateConnectionFromLag)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|DisassociateConnectionFromLag|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005461; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Direct Connect cloudtrail event detected - (UpdateLag)"; program: directconnect.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateLag|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005462; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EFS cloudtrail event detected - (CreateFileSystem)"; program: elasticfilesystem.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateFileSystem|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005463; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EFS cloudtrail event detected - (CreateMountTarget)"; program: elasticfilesystem.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateMountTarget|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005464; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EFS cloudtrail event detected - (DeleteFileSystem)"; program: elasticfilesystem.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteFileSystem|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005465; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EFS cloudtrail event detected - (DeleteMountTarget)"; program: elasticfilesystem.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteMountTarget|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005466; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] EFS cloudtrail event detected - (ModifyMountTargetSecurityGroups)"; program: elasticfilesystem.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyMountTargetSecurityGroups|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005467; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (AbortEnvironmentUpdate)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|AbortEnvironmentUpdate|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005468; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (CreateApplication)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateApplication|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005469; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (CreateApplicationVersion)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateApplicationVersion|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005470; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (CreateConfigurationTemplate)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateConfigurationTemplate|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005471; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (CreateEnvironment)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateEnvironment|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005472; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (CreateStorageLocation)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateStorageLocation|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005473; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (DeleteApplication)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteApplication|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005474; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (DeleteApplicationVersion)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteApplicationVersion|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005475; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (DeleteConfigurationTemplate)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteConfigurationTemplate|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005476; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (DeleteEnvironmentConfiguration)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteEnvironmentConfiguration|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005477; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (RebuildEnvironment)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|RebuildEnvironment|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005478; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (RestartAppServer)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|RestartAppServer|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005479; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (SwapEnvironmentCNAMEs)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|SwapEnvironmentCNAMEs|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005480; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (TerminateEnvironment)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|TerminateEnvironment|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005481; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (UpdateApplication)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateApplication|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005482; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (UpdateApplicationVersion)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateApplicationVersion|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005483; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (UpdateConfigurationTemplate)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateConfigurationTemplate|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005484; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Elastic Beanstalk cloudtrail event detected - (UpdateEnvironment)"; program: elasticbeanstalk.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateEnvironment|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005485; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ElastiCache cloudtrail event detected - (AuthorizeCacheSecurityGroupIngress)"; program: elasticache.amazonaws.com; content: "event detectedName|22 3a 20 22|AuthorizeCacheSecurityGroupIngress|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005486; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ElastiCache cloudtrail event detected - (CreateCacheSecurityGroup)"; program: elasticache.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateCacheSecurityGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005487; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ElastiCache cloudtrail event detected - (DeleteCacheSecurityGroup)"; program: elasticache.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteCacheSecurityGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005488; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ElastiCache cloudtrail event detected - (RevokeCacheSecurityGroupIngress)"; program: elasticache.amazonaws.com; content: "event detectedName|22 3a 20 22|RevokeCacheSecurityGroupIngress|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005489; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (ApplySecurityGroupsToLoadBalancer)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|ApplySecurityGroupsToLoadBalancer|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005490; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (CreateListener)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateListener|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005491; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (CreateLoadBalancer)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateLoadBalancer|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005492; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (CreateLoadBalancerPolicy)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateLoadBalancerPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005493; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (CreateRule)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateRule|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005494; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (CreateTargetGroup)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateTargetGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005495; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (DeleteListener)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteListener|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005496; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (DeleteLoadBalancer)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteLoadBalancer|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005497; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (DeleteLoadBalancerListeners)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteLoadBalancerListeners|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005498; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (DeleteRule)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteRule|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005499; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (DeleteTargetGroup)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteTargetGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005500; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (DeregisterTargets)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|DeregisterTargets|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005501; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (ModifyListener)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyListener|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005502; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (ModifyLoadBalancerAttributes)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyLoadBalancerAttributes|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005503; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (ModifyRule)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyRule|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005503; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (ModifyTargetGroup)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyTargetGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005504; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (ModifyTargetGroupAttributes)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyTargetGroupAttributes|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005505; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (RegisterTargets)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|RegisterTargets|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005506; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (RemoveTags)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|RemoveTags|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005507; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] ELB cloudtrail event detected - (SetSecurityGroups)"; program: elasticloadbalancing.amazonaws.com; content: "event detectedName|22 3a 20 22|SetSecurityGroups|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005508; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Redshift cloudtrail event detected - (AuthorizeSnapshotAccess)"; program: redshift.amazonaws.com; content: "event detectedName|22 3a 20 22|AuthorizeSnapshotAccess|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005509; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Redshift cloudtrail event detected - (RevokeSnapshotAccess)"; program: redshift.amazonaws.com; content: "event detectedName|22 3a 20 22|RevokeSnapshotAccess|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005510; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Redshift cloudtrail event detected - (RotateEncryptionKey)"; program: redshift.amazonaws.com; content: "event detectedName|22 3a 20 22|RotateEncryptionKey|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005511; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Redshift cloudtrail event detected - (AuthorizeClusterSecurityGroupIngress)"; program: redshift.amazonaws.com; content: "event detectedName|22 3a 20 22|AuthorizeClusterSecurityGroupIngress|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005512; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Redshift cloudtrail event detected - (CreateClusterSecurityGroup)"; program: redshift.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateClusterSecurityGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005513; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Redshift cloudtrail event detected - (DeleteClusterSecurityGroup)"; program: redshift.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteClusterSecurityGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005514; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Redshift cloudtrail event detected - (RevokeClusterSecurityGroupIngress)"; program: redshift.amazonaws.com; content: "event detectedName|22 3a 20 22|RevokeClusterSecurityGroupIngress|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005515; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (AuthorizeDBSecurityGroupIngress)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|AuthorizeDBSecurityGroupIngress|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005516; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBCluster)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateDBCluster|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005517; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBClusterParameterGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateDBClusterParameterGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005518; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBClusterSnapshot)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateDBClusterSnapshot|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005519; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBInstance)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateDBInstance|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005520; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBInstanceReadReplica)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateDBInstanceReadReplica|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005521; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBParameterGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateDBParameterGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005522; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBSecurityGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateDBSecurityGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005523; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBSnapshot)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateDBSnapshot|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005524; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (CreateDBSubnetGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateDBSubnetGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005525; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (CreateOptionGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateOptionGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005526; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBCluster)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteDBCluster|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005527; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBClusterParameterGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteDBClusterParameterGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005528; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBClusterSnapshot)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteDBClusterSnapshot|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005529; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBInstance)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteDBInstance|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005530; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBParameterGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteDBParameterGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005531; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBSecurityGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteDBSecurityGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005532; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBSnapshot)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteDBSnapshot|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005533; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (DeleteDBSubnetGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteDBSubnetGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005534; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (DeleteOptionGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteOptionGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005535; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (FailoverDBCluster)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|FailoverDBCluster|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005536; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (ModifyDBCluster)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyDBCluster|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005537; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (ModifyDBClusterParameterGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyDBClusterParameterGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005538; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (ModifyDBInstance)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyDBInstance|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005539; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (ModifyDBParameterGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyDBParameterGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005540; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (ModifyDBSnapshotAttribute)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyDBSnapshotAttribute|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005541; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (ModifyDBSubnetGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyDBSubnetGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005542; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (ModifyOptionGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|ModifyOptionGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005543; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (PromoteReadReplica)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|PromoteReadReplica|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005544; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (RebootDBInstance)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|RebootDBInstance|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005545; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (ResetDBClusterParameterGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|ResetDBClusterParameterGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005546; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (ResetDBParameterGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|ResetDBParameterGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005547; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (RestoreDBClusterFromSnapshot)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|RestoreDBClusterFromSnapshot|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005548; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (RestoreDBClusterToPointInTime)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|RestoreDBClusterToPointInTime|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005549; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (RestoreDBInstanceFromDBSnapshot)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|RestoreDBInstanceFromDBSnapshot|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005550; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (RestoreDBInstanceToPointInTime)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|RestoreDBInstanceToPointInTime|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005551; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (RevokeDBSecurityGroupIngress)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|RevokeDBSecurityGroupIngress|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005552; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Route 53 cloudtrail event detected - (ChangeResourceRecordSets)"; program: route53.amazonaws.com; content: "event detectedName|22 3a 20 22|ChangeResourceRecordSets|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005553; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] Route 53 cloudtrail event detected - (DeleteHealthCheck)"; program: route53.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteHealthCheck|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005554; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (CreateBucket)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateBucket|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005555; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (DeleteBucket)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteBucket|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005556; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (DeleteBucketCors)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteBucketCors|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005557; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (DeleteBucketLifecycle)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteBucketLifecycle|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005558; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (DeleteBucketPolicy)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteBucketPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005559; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (DeleteBucketReplication)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteBucketReplication|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005560; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (DeleteBucketTagging)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteBucketTagging|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005561; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketAcl)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|PutBucketAcl|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005562; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketCors)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|PutBucketCors|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005563; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketLifecycle)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|PutBucketLifecycle|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005564; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketLogging)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|PutBucketLogging|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005565; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketNotification)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|PutBucketNotification|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005566; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketPolicy)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|PutBucketPolicy|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005567; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketReplication)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|PutBucketReplication|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005568; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketRequestPayment)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|PutBucketRequestPayment|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005569; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketTagging)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|PutBucketTagging|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005570; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketVersioning)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|PutBucketVersioning|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005571; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] S3 cloudtrail event detected - (PutBucketWebsite)"; program: s3.amazonaws.com; content: "event detectedName|22 3a 20 22|PutBucketWebsite|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005572; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (CreateByteMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateByteMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005573; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (CreateGeoMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateGeoMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005574; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (CreateIPSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateIPSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005575; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (CreateRateBasedRule)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateRateBasedRule|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005576; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (CreateRegexMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateRegexMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005577; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (CreateRegexPatternSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateRegexPatternSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005578; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (CreateRule)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateRule|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005579; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (CreateSizeConstraintSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateSizeConstraintSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005580; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (CreateSqlInjectionMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateSqlInjectionMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005581; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (CreateWebACL)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateWebACL|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005582; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (CreateXssMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|CreateXssMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005583; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (DeleteByteMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteByteMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005584; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (DeleteGeoMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteGeoMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005585; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (DeleteIPSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteIPSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005586; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (DeleteRateBasedRule)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteRateBasedRule|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005587; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (DeleteRegexMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteRegexMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005588; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (DeleteRegexPatternSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteRegexPatternSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005589; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (DeleteRule)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteRule|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005590; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (DeleteSizeConstraintSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteSizeConstraintSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005591; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (DeleteSqlInjectionMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteSqlInjectionMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005592; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (DeleteWebACL)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteWebACL|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005593; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (DeleteXssMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|DeleteXssMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005594; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (UpdateByteMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateByteMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005595; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (UpdateGeoMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateGeoMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005596; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (UpdateIPSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateIPSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005597; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (UpdateRateBasedRule)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateRateBasedRule|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005598; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (UpdateRegexMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateRegexMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005599; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (UpdateRegexPatternSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateRegexPatternSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005600; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (UpdateRule)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateRule|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005601; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (UpdateSizeConstraintSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateSizeConstraintSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005602; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (UpdateSqlInjectionMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateSqlInjectionMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005603; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (UpdateWebACL)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateWebACL|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005604; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] WAF cloudtrail event detected - (UpdateXssMatchSet)"; program: waf.amazonaws.com; content: "event detectedName|22 3a 20 22|UpdateXssMatchSet|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005605; rev:1;)
+
