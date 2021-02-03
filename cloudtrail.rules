@@ -24,7 +24,8 @@
 #  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 #*************************************************************
-
+#
+# These signatures where written by Justin Kling @ Quadrant Information Security
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] IAM cloudtrail event detected - (AddClientIDToOpenIDConnectProvider)"; program: iam.amazonaws.com; content: "event detectedName|22 3a 20 22|AddClientIDToOpenIDConnectProvider|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005288; rev:1;)
 
