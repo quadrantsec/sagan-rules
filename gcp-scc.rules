@@ -1,0 +1,81 @@
+# Sagan gcp-ssc.rules
+# Copyright (c) 2009-2021. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# Google Compute Plateform (GCP) - Security Command Center (SCC) signatures. 
+# These siganatures were written by Christian McLaughlin @ Quadrant Information Security
+#
+
+# ALLOW OPEN SSH PORT
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Allow Open SSH Port"; content:"SeverityLevel"; content:"High"; content:"allow_open_ssh_port"; nocase; classtype:network-event; sid:5005607; rev:1)
+
+# ALLOW OPEN FIREWALL 
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Allow Open Firewall"; content:"SeverityLevel"; content:"High"; content:"allow_open_firewall"; nocase; classtype:network-event; sid:5005608; rev:1)
+
+# ALLOW PUBLIC IP ADDRESS
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Allow Public IP Address"; content:"SeverityLevel"; content:"High"; content:"allow_public_ip_address"; nocase; classtype:network-event; sid:5005609; rev:1)
+
+# ALLOW OPEN RDP PORT
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Allow RDP Port"; content:"SeverityLevel"; content:"High"; content:"open_rdp_port"; nocase; classtype:network-event; sid:5005610; rev:1)
+
+# ALLOW PUBLIC BUCKET
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Allow RDP Port"; content:"SeverityLevel"; content:"High"; content:"allow_public_bucket_acl"; nocase; classtype:network-event; sid:5005611; rev:1)
+
+
+# These rules were created from documentation found on Google's Cloud Computer website.
+# Reference: https://cloud.google.com/security-command-center/docs/concepts-event-threat-detection-#overview
+# Reference: https://cloud.google.com/vpc/docs/firewalls
+
+# MALWARE BAD DOMAIN
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Malware: Bad Domain"; content:"malware_bad_domain"; nocase; classtype:trojan-activity;reference: url,cloud.google.com/security-command-center/docs/concepts-event-threat-detection-overview; sid:5005612; rev:1)
+
+# MALWARE BAD IP
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Malware: Bad IP"; content:"malware_bad_ip"; nocase; reference: url,cloud.google.com/security-command-center/docs/concepts-event-threat-detection-overview; classtype:exploit-attempt; sid:5005613; rev:1)
+
+# CRYPTOMINING POOL DOMAIN
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Cryptomining: Pool Domain"; content:"cryptomining_pool_domain"; nocase; reference: url,cloud.google.com/security-command-center/docs/concepts-event-threat-detection-overview; classtype:exploit-attempt; sid:5005614; rev:1)
+
+# CRYPTOMINING POOL IP
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Cryptomining: Pool IP"; content:"cryptomining_pool_ip"; nocase; reference: url,cloud.google.com/security-command-center/docs/concepts-event-threat-detection-overview; classtype:exploit-attempt; sid:5005615; rev:1)
+
+# BRUTE FORCE SSH
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Brute Force SSH"; content:"brute_force_ssh"; nocase; classtype:attempted-user; reference: url,cloud.google.com/security-command-center/docs/concepts-event-threat-detection-overview; sid:5005616; rev:1)
+
+# OUTGOING DOS
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Outgoing DoS"; content:"outgoing_dos"; nocase; reference: url,cloud.google.com/security-command-center/docs/concepts-event-threat-detection-overview; classtype:exploit-attempt; sid:5005617; rev:1)
+
+# IAM ANOMALOUS GRANT
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] IAM: Anomalous Grant"; content:"iam_anomalous_grant"; nocase; classtype:suspicious-traffic; reference: url,cloud.google.com/security-command-center/docs/concepts-event-threat-detection-overview; sid:5005618; rev:1)
