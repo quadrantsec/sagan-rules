@@ -5421,6 +5421,61 @@
 5005604 || [CLOUDTRAIL] WAF cloudtrail event detected - (UpdateWebACL) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
 5005605 || [CLOUDTRAIL] WAF cloudtrail event detected - (UpdateXssMatchSet) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
 5005606 || [CLOUDTRAIL] ELB cloudtrail event detected - (ModifyRule) || url,www.gorillastack.com/news/cloudtrail-event detected-names/
+5005619 || [AUDITD] ./a.out execution attempt || url,wiki.quadrantsec.com/bin/view/Main/5005619
+5005620 || [AUDITD] gcc execution || url,wiki.quadrantsec.com/bin/view/Main/5005620
+5005621 || [AUDITD] telnet execution || url,wiki.quadrantsec.com/bin/view/Main/5005621
+5005622 || [AUDITD] nmap execution || url,wiki.quadrantsec.com/bin/view/Main/5005622
+5005623 || [AUDITD] /etc/passwd access || url,wiki.quadrantsec.com/bin/view/Main/5005623
+5005624 || [AUDITD] /etc/shadow access || url,wiki.quadrantsec.com/bin/view/Main/5005624
+5005625 || [AUDITD] make execution || url,wiki.quadrantsec.com/bin/view/Main/5005625
+5005626 || [AUDITD] .bash_history access || url,wiki.quadrantsec.com/bin/view/Main/5005626
+5005627 || [AUDITD] /tmp/sh access || url,wiki.quadrantsec.com/bin/view/Main/5005627
+5005628 || [AUDITD] suidperl access || url,wiki.quadrantsec.com/bin/view/Main/5005628
+5005629 || [AUDITD] iptables command access || url,wiki.quadrantsec.com/bin/view/Main/5005629
+5005630 || [AUDITD] Remote execution attempt via CVE-2014-6271 || url,web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271 || url,wiki.quadrantsec.com/bin/view/Main/5005630
+5005632 || [AUDITD] Netcat execution
+5005633 || [AUDITD] PHP execution
+5005634 || [AUDITD] /dev/tcp access
+5005635 || [AUDITD] /dev/udp access
+5005636 || [AUDITD] stunnel execution
+5005637 || [AUDITD] SSH agent forwarding
+5005638 || [AUDITD] SSH dynamic forwarding
+5005639 || [AUDITD] SSH GSSAPI forwarding
+5005640 || [AUDITD] SSH local forwarding
+5005641 || [AUDITD] SSH remote forwarding
+5005642 || [AUDITD] SSH input and output forwarding
+5005643 || [AUDITD] SSH tunnel forwarding
+5005644 || [AUDITD] SSH X11 forwarding
+5005645 || [AUDITD] SSH X11 trusted forwarding
+5005646 || [AUDITD] sudoedit access
+5005647 || [AUDITD] CVE-2021-3156 sudoedit exploit attempt
+5005648 || [AUDITD] socat execution
+5005649 || [AUDITD] wget execution
+5005650 || [AUDITD] curl execution
+5005651 || [AUDITD] base64 execution
+5005652 || [AUDITD] /tmp/haxhax execution
+5005653 || [AUDITD] /tmp/ns_sploit execution
+5005654 || [AUDITD] /tmp/ysocereal.jar execution
+5005655 || [AUDITD] authorized_keys accessed
+5005656 || [AUDITD] chmod u+s execution
+5005657 || [AUDITD] chmod +s execution
+5005658 || [AUDITD] ksh has been copied
+5005659 || [AUDITD] sh has been copied
+5005660 || [AUDITD] bash has been copied
+5005661 || [AUDITD] zsh has been copied
+5005662 || [AUDITD] zsh has been copied
+5005663 || [AUDITD] chmod +x of something in /tmp
+5005664 || [AUDITD] whoami execution
+5005665 || [AUDITD] id execution
+5005666 || [AUDITD] /etc/security/passwd access
+5005667 || [AUDITD] getent passwd execution
+5005668 || [AUDITD] python -m SimpleHTTPServer execution
+5005669 || [AUDITD] python3 -m http.server
+5005670 || [AUDITD] /etc/sudoers access
+5005671 || [AUDITD] netstat execution
+5005672 || [AUDITD] mkdir starting with a space
+5005673 || [AUDITD] mkdir starting with a period
+5005674 || [AUDITD] chmod +s execution
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
