@@ -1,3 +1,9 @@
+2021/02/08 - Sagan rule release.
+
+	* New auditd.rules
+	* Fixed typo in cloudtrail rules.
+	* New GCC-SCC (Google Cloud Security) rules.
+
 2019/07/03 - Sagan rule release.
 
 	* New Centrify (centrify.rules)
