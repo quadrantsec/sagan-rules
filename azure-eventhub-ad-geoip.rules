@@ -27,6 +27,6 @@
 
 # These rules read JSON,  so Sagan message JSON processing needs to be enabled within your sagan.yaml
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[AZURE EVENTHUB AD GEOIP] Account lockout from outside HOME_COUNTRY"; program: azureEventHub; json_content:"resultType","50053"; classtype: unsuccessful-user;  country_code: track by_src, isnot $HOME_COUNTRY; reference: url,https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes; sid:5004775; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[AZURE EVENTHUB AD GEOIP] Account lockout from outside HOME_COUNTRY"; program: azureEventHub; json_content:".resultType","50053"; classtype: unsuccessful-user;  country_code: track by_src, isnot $HOME_COUNTRY; reference: url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes; sid:5004775; rev: 2;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[AZURE EVENTHUB AD GEOIP] Brute Force [2]"; program: azureEventHub; json_content:"category","AuditLogs"; json_nocase; json_content:"result","failure"; classtype: unsuccessful-user;  country_code: track by_src, isnot $HOME_COUNTRY; reference: url,https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema; sid:5004778; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[AZURE EVENTHUB AD GEOIP] Brute Force [2]"; program: azureEventHub; json_content:"category","AuditLogs"; json_nocase; json_content:".result","failure"; classtype: unsuccessful-user; country_code: track by_src, isnot $HOME_COUNTRY; reference: url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema; sid:5004778; rev: 2;)
