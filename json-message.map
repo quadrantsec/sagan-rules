@@ -39,3 +39,9 @@
 
 {"software":"suricata", "event_type":".event_type","src_ip":".src_ip","dest_ip":".dest_ip","src_port":".src_port","dest_port":".dest_port","proto":".proto","action":".alert.action","gid":".alert.gid","signature_id":".signature_id"}
 
+# ----------------------------------
+# Azure Event Hub
+# ----------------------------------
+
+{"software":"azureeventhub", "src_ip":".callerIpAddress", "dest_ip":".callerIpAddress", "username":".properties.userPrincipalName" }
+
