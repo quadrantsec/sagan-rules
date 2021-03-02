@@ -4599,10 +4599,10 @@
 5004772 || [AZURE-EVENTHUB-AD] unknownFutureValue Event Detected || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema
 5004773 || [AZURE-EVENTHUB-AD] High Risk During Sign in || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema
 5004774 || [AZURE-EVENTHUB-AD] Account lockout || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
-5004775 || [AZURE EVENTHUB AD GEOIP] Account lockout from outside HOME_COUNTRY || url,https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
+5004775 || [AZURE EVENTHUB AD GEOIP] Account lockout from outside HOME_COUNTRY || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
 5004776 || [AZURE-EVENTHUB-AD] Brute Force (Invalid username or password) || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
 5004777 || [AZURE-EVENTHUB-AD] Brute Force (Invalid password) || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
-5004778 || [AZURE EVENTHUB AD GEOIP] Brute Force [2] || url,https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema
+5004778 || [AZURE EVENTHUB AD GEOIP] Brute Force [2] || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema
 5004779 || [WINDOWS-MALWARE] Suspicious Powershell execution || url,wiki.quadrantsec.com/bin/view/Main/5004779
 5004780 || [WINDOWS-AUTH] Vulnerable Netlogon/Zerologon connection is allowed - CVE-2020-1472 || url,support.microsoft.com/en-us/help/4557222/how-to-manage-the-changes-in-netlogon-secure-channel-connections-assoc
 5004781 || [WINDOWS-AUTH] Vulnerable Netlogon/Zerologon connection was denied - CVE-2020-1472 || url,support.microsoft.com/en-us/help/4557222/how-to-manage-the-changes-in-netlogon-secure-channel-connections-assoc
