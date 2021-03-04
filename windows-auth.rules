@@ -216,7 +216,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] Account locke
 
 # Records _all_ RDP sessions
 
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[WINDOWS-AUTH] RDP / Logon type 10"; event_id: 4724,528; content: "Logon Type|3a| 10 "; program: *Security*; parse_src_ip: 1; default_proto: tcp; classtype: successful-user; reference: url,wiki.quadrantsec.com/bin/view/Main/5002015; sid: 5002015; rev:6;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[WINDOWS-AUTH] RDP / Logon type 10"; event_id: 4524,528; content: "Logon Type|3a| 10 "; program: *Security*; parse_src_ip: 1; default_proto: tcp; classtype: successful-user; reference: url,wiki.quadrantsec.com/bin/view/Main/5002015; sid: 5002015; rev:7;)
 #alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[WINDOWS-AUTH] Logon attempt using explicit credentials"; event_id: 4648,552; content:!"Network Address|3a| - "; content:!"Port|3a| - "; content:!"Target Server Name|3a| localhost"; program: *Security*; parse_src_ip: 1; default_proto: tcp; classtype: successful-user; reference: url,wiki.quadrantsec.com/bin/view/Main/5002018; sid: 5002018; rev:7;)
 
 # Rule added by Brian Echeverry ( becheverry@quadrantsec.com) - 10/08/2014
@@ -235,7 +235,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User account d
 
 # Steve Rawls (2016/12/22) - detect "administrator" logins.  Disabled by default
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] Successful Administrator Logon Detected"; event_id: 4724,548; classtype: successful-user; program: *Security*; content: "Account Name|3a| Administrator"; nocase; parse_src_ip: 1; parse_port; reference: url,wiki.quadrantsec.com/bin/view/Main/5003039; sid:5003039; rev:5;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] Successful Administrator Logon Detected"; event_id: 4624,548; classtype: successful-user; program: *Security*; content: "Account Name|3a| Administrator"; nocase; parse_src_ip: 1; parse_port; reference: url,wiki.quadrantsec.com/bin/view/Main/5003039; sid:5003039; rev:6;)
 
 # Steve Rawls (2017/03/27) - Split off from sid 5001763 which detects from _user_ brute force_.  5003101 & 5003102 detect "Broken Domain Trust". 
 
@@ -303,7 +303,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User added to 
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] Repeated login attempt to a suspicious username [5/1]"; event_id: 4625,4776; meta_content: "Account|3a| %sagan% ",guest,sql,demo,db2admin,pos,accounting,letmein,mysql,oracle,test,testing,support,sales,ansible,ec2-user,azureuser; content:!"Error Code|3a| 0x0"; meta_nocase; xbits: set,brute_force,track ip_src, expire 21600; classtype: unsuccessful-user; program: *Security*; parse_src_ip: 1; after: track by_src, count 5, seconds 3600; threshold: type suppress, track by_src, count 1, seconds 86400; reference: url,wiki.quadrantsec.com/bin/view/Main/5003980; sid:5003980; rev:2;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[WINDOWS-AUTH] Login via RDP from a suspicious user"; event_id: 4724,528; content: "Logon Type|3a| 10 "; meta_content: "Account Name|3a| %sagan%",guest,administrator,sql,demo,db2admin,pos,accounting,letmein,mysql,oracle,test,testing,support,sales,ansible,ec2-user,azureuser; meta_nocase; program: *Security*; parse_src_ip: 1; default_proto: tcp; classtype: successful-user; reference: url,wiki.quadrantsec.com/bin/view/Main/5003981; sid:5003981; rev:2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[WINDOWS-AUTH] Login via RDP from a suspicious user"; event_id: 4624,528; content: "Logon Type|3a| 10 "; meta_content: "Account Name|3a| %sagan%",guest,administrator,sql,demo,db2admin,pos,accounting,letmein,mysql,oracle,test,testing,support,sales,ansible,ec2-user,azureuser; meta_nocase; program: *Security*; parse_src_ip: 1; default_proto: tcp; classtype: successful-user; reference: url,wiki.quadrantsec.com/bin/view/Main/5003981; sid:5003981; rev:3;)
 
 # We exclude "administrator" as there is a specific rule for "administrator" lockouts. 
 
