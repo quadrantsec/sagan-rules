@@ -1,0 +1,53 @@
+# Sagan netskope.rules
+# Copyright (c) 2009-2021. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# Make sure json message/program is enabled in the sagan.yaml!
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETSKOPEl] Malware alert"; json_contains: ".event_type", "Malware"; json_map: "src_ip", ".srcip"; json_map: "dest_ip", ".dstip"; json_map: "username", ".user"; json_map: "flow_id", ".transaction_id"; json_map: "md5", ".md5"; classtype: malware; sid:5005675; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETSKOPEl] Compromised Credential alert"; json_contains: ".event_type", "Compromised Credential"; json_map: "src_ip", ".srcip"; json_map: "dest_ip", ".dstip"; json_map: "username", ".user"; json_map: "flow_id", ".transaction_id"; json_map: "md5", ".md5"; classtype: suspicious-login; sid:5005676; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETSKOPEl] Data Loss Prevention alert"; json_contains: ".event_type", "DLP"; json_map: "src_ip", ".srcip"; json_map: "dest_ip", ".dstip"; json_map: "username", ".user"; json_map: "flow_id", ".transaction_id"; json_map: "md5", ".md5"; classtype: suspicious-traffic; sid:5005677; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETSKOPEl] malsite alert"; json_contains: ".event_type", "malsite"; json_map: "src_ip", ".srcip"; json_map: "dest_ip", ".dstip"; json_map: "username", ".user"; json_map: "flow_id", ".transaction_id"; json_map: "md5", ".md5"; classtype: malware; sid:5005678; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETSKOPEl] Policy alert"; json_contains: ".event_type", "policy"; json_map: "src_ip", ".srcip"; json_map: "dest_ip", ".dstip"; json_map: "username", ".user"; json_map: "flow_id", ".transaction_id"; json_map: "md5", ".md5"; classtype: policy-violation; sid:5005679; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETSKOPEl] Security Assessment alert"; json_contains: ".event_type", "Security Assessment"; json_map: "src_ip", ".srcip"; json_map: "dest_ip", ".dstip"; json_map: "username", ".user"; json_map: "flow_id", ".transaction_id"; json_map: "md5", ".md5"; classtype: not-suspicious; sid:5005680; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETSKOPEl] User Behavior Anaytics [uba] alert"; json_contains: ".event_type", "uba"; json_map: "src_ip", ".srcip"; json_map: "dest_ip", ".dstip"; json_map: "username", ".user"; json_map: "flow_id", ".transaction_id"; json_map: "md5", ".md5"; classtype: suspicious-traffic; sid:5005681; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETSKOPEl] watchlist alert"; json_contains: ".event_type", "watchlist"; json_map: "src_ip", ".srcip"; json_map: "dest_ip", ".dstip"; json_map: "username", ".user"; json_map: "flow_id", ".transaction_id"; json_map: "md5", ".md5"; classtype: suspicious-traffic; sid:5005682; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETSKOPEl] anomaly alert"; json_contains: ".event_type", "anomaly"; json_map: "src_ip", ".srcip"; json_map: "dest_ip", ".dstip"; json_map: "username", ".user"; json_map: "flow_id", ".transaction_id"; json_map: "md5", ".md5"; classtype: suspicious-traffic; sid:5005683; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETSKOPEl] anomaly alert - data_exfiltration"; json_contains: ".event_type", "anomaly"; json_contain: ".alert_name", "data_exfiltration"; json_map: "src_ip", ".srcip"; json_map: "dest_ip", ".dstip"; json_map: "username", ".user"; json_map: "flow_id", ".transaction_id"; json_map: "md5", ".md5"; classtype: suspicious-traffic; sid:5005684; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETSKOPEl] anomaly alert - mlad"; json_contains: ".event_type", "anomaly"; json_contain: ".alert_name", "mlad"; json_map: "src_ip", ".srcip"; json_map: "dest_ip", ".dstip"; json_map: "username", ".user"; json_map: "flow_id", ".transaction_id"; json_map: "md5", ".md5"; classtype: suspicious-traffic; sid:5005685; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETSKOPEl] anomaly alert - user_shared_credentials"; json_contains: ".event_type", "anomaly"; json_contain: ".alert_name", "user_shared_credentials"; json_map: "src_ip", ".srcip"; json_map: "dest_ip", ".dstip"; json_map: "username", ".user"; json_map: "flow_id", ".transaction_id"; json_map: "md5", ".md5"; classtype: suspicious-traffic; sid:5005686; rev:1;)
+
