@@ -822,11 +822,11 @@
 5000879 || [CISCO-PIXASA] Fail to create group || url, wiki.quadrantsec.com/bin/view/Main/5000879
 5000880 || [CISCO-PIXASA] Creation of group policy || url, wiki.quadrantsec.com/bin/view/Main/5000880
 5000881 || [SENDMAIL] SpamAssassin Milter Plugin Remote Arbitrary Command Injection Attempt || url,http://www.securityfocus.com/bid/38578 || url, wiki.quadrantsec.com/bin/view/Main/5000881
-5000883 || [BRO] Successful Password Guessing [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5000883
-5000884 || [BRO] Protocol Violation [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5000884
-5000885 || [BRO] Sensitive Login [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5000885
-5000886 || [BRO] Sensitive Connection [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5000886
-5000887 || [BRO] Sensitive Username in password [0/5]
+5000883 || [ZEEK] Successful Password Guessing [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5000883
+5000884 || [ZEEK] Protocol Violation [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5000884
+5000885 || [ZEEK] Sensitive Login [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5000885
+5000886 || [ZEEK] Sensitive Connection [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5000886
+5000887 || [ZEEK] Sensitive Username in password [0/5]
 5000888 || [JUNIPER] AS group missing
 5000889 || [JUNIPER] Duplicate IP address
 5000890 || [JUNIPER] BGP missing MD5 digest
@@ -1964,18 +1964,18 @@
 5002060 || [CISCO-GEOIP] FTP file transfer to outside HOME_COUNTRY || url, wiki.quadrantsec.com/bin/view/Main/5002060
 5002061 || [PROXY-MALWARE] Tor2www Request || url,www.tor2www.com
 5002062 || [PROXY-MALWARE] Tor2web Request || url,www.tor2web.org
-5002063 || [BRO] SSH Password_Guessing [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5002063
-5002064 || [BRO] TeamCymruMalwareHashRegistry Match || url,www.team-cymru.org/Services/MHR/
-5002065 || [BRO] HTTP SQL_Injection_Attacker || url,wiki.quadrantsec.com/bin/view/Main/5002065
-5002066 || [BRO] HTTP SQL_Injection_Victim || url,wiki.quadrantsec.com/bin/view/Main/5002066
-5002067 || [BRO] SSH Login_By_Password_Guesser || url,wiki.quadrantsec.com/bin/view/Main/5002067
-5002068 || [BRO] SSH Watched_Country_Login || url,wiki.quadrantsec.com/bin/view/Main/5002068
-5002069 || [BRO] 10+ SSL Invalid_Server_Cert in 30 seconds [10/5] || url,wiki.quadrantsec.com/bin/view/Main/5002069
-5002070 || [BRO] 10+ unable to get local issuer certificate in 30 seconds [10/5] || url,wiki.quadrantsec.com/bin/view/Main/5002070
-5002071 || [BRO] ZeroAccess ZeroAccess_Client [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5002070
-5002072 || [BRO] Probable LURK0 RAT C&C Access || url,github.com/LiamRandall/BroMalware-Exercise/tree/master/solutions/lurk0 || url,wiki.quadrantsec.com/bin/view/Main/5002072
-5002073 || [BRO] Sidejacking attach detected || url,matthias.vallentin.net/blog/2010/10/taming-the-sheep-detecting-sidejacking-with-bro || url,wiki.quadrantsec.com/bin/view/Main/5002073
-5002074 || [BRO] Bitcoin Miner [0/10] || url,github.com/LiamRandall/BroMalware-Exercise/tree/master/solutions/lurk0 || url,wiki.quadrantsec.com/bin/view/Main/5002074
+5002063 || [ZEEK] SSH Password_Guessing [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5002063
+5002064 || [ZEEK] TeamCymruMalwareHashRegistry Match || url,www.team-cymru.org/Services/MHR/
+5002065 || [ZEEK] HTTP SQL_Injection_Attacker || url,wiki.quadrantsec.com/bin/view/Main/5002065
+5002066 || [ZEEK] HTTP SQL_Injection_Victim || url,wiki.quadrantsec.com/bin/view/Main/5002066
+5002067 || [ZEEK] SSH Login_By_Password_Guesser || url,wiki.quadrantsec.com/bin/view/Main/5002067
+5002068 || [ZEEK] SSH Watched_Country_Login || url,wiki.quadrantsec.com/bin/view/Main/5002068
+5002069 || [ZEEK] 10+ SSL Invalid_Server_Cert in 30 seconds [10/5] || url,wiki.quadrantsec.com/bin/view/Main/5002069
+5002070 || [ZEEK] 10+ unable to get local issuer certificate in 30 seconds [10/5] || url,wiki.quadrantsec.com/bin/view/Main/5002070
+5002071 || [ZEEK] ZeroAccess ZeroAccess_Client [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5002070
+5002072 || [ZEEK] Probable LURK0 RAT C&C Access || url,github.com/LiamRandall/BroMalware-Exercise/tree/master/solutions/lurk0 || url,wiki.quadrantsec.com/bin/view/Main/5002072
+5002073 || [ZEEK] Sidejacking attach detected || url,matthias.vallentin.net/blog/2010/10/taming-the-sheep-detecting-sidejacking-with-bro || url,wiki.quadrantsec.com/bin/view/Main/5002073
+5002074 || [ZEEK] Bitcoin Miner [0/10] || url,github.com/LiamRandall/BroMalware-Exercise/tree/master/solutions/lurk0 || url,wiki.quadrantsec.com/bin/view/Main/5002074
 5002075 || [IMAPD-BLUEDOT] Login from a suspicious source || url, wiki.quadrantsec.com/bin/view/Main/5002075
 5002076 || [IMAPD-BLUEDOT] Logout from a suspicious source || url, wiki.quadrantsec.com/bin/view/Main/5002076
 5002077 || [IMAPD-BLUEDOT] Timeout from a suspicious source || url, wiki.quadrantsec.com/bin/view/Main/5002077
@@ -2121,14 +2121,14 @@
 5002220 || [WINDOWS-BLACKLIST] Login failure from blacklisted IP - User not allowed to login at this computer || url,wiki.quadrantsec.com/bin/view/Main/5002220
 5002222 || [WINDOWS-BLACKLIST] Login failure from blacklisted IP - Account locked [0/1] || url,wiki.quadrantsec.com/bin/view/Main/5002222
 5002223 || [WINDOWS-BLACKLIST] Windows DC Logon Failure from blacklisted IP || url,wiki.quadrantsec.com/bin/view/Main/5002223
-5002224 || [WINDOWS-BROINTEL] RDP / Logon type 10 from a Bro Intel listed IP || url,wiki.quadrantsec.com/bin/view/Main/5002224
-5002225 || [WINDOWS-BROINTEL] Login failure from a Bro Intel listed IP [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5002225
-5002226 || [WINDOWS-BROINTEL] Login failure from a Bro Intel listed IP [Time restriction] [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5002226
-5002227 || [WINDOWS-BROINTEL] Login failure from a Bro Intel listed IP - Account currently disabled [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5002227
-5002228 || [WINDOWS-BROINTEL] Login failure from a Bro Intel listed IP - Specified account expired || url,wiki.quadrantsec.com/bin/view/Main/5002228
-5002229 || [WINDOWS-BROINTEL] Login failure from a Bro Intel listed IP - User not allowed to login at this computer || url,wiki.quadrantsec.com/bin/view/Main/5002229
-5002230 || [WINDOWS-BROINTEL] Login failure - Account locked from a Bro Intel listed IP [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5002230
-5002231 || [WINDOWS-BROINTEL] Windows DC Logon Failure from a Bro Intel listed IP || url,wiki.quadrantsec.com/bin/view/Main/5002231
+5002224 || [WINDOWS-ZEEK-INTEL] RDP / Logon type 10 from a Bro Intel listed IP || url,wiki.quadrantsec.com/bin/view/Main/5002224
+5002225 || [WINDOWS-ZEEK-INTEL] Login failure from a Bro Intel listed IP [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5002225
+5002226 || [WINDOWS-ZEEK-INTEL] Login failure from a Bro Intel listed IP [Time restriction] [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5002226
+5002227 || [WINDOWS-ZEEK-INTEL] Login failure from a Bro Intel listed IP - Account currently disabled [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5002227
+5002228 || [WINDOWS-ZEEK-INTEL] Login failure from a Bro Intel listed IP - Specified account expired || url,wiki.quadrantsec.com/bin/view/Main/5002228
+5002229 || [WINDOWS-ZEEK-INTEL] Login failure from a Bro Intel listed IP - User not allowed to login at this computer || url,wiki.quadrantsec.com/bin/view/Main/5002229
+5002230 || [WINDOWS-ZEEK-INTEL] Login failure - Account locked from a Bro Intel listed IP [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5002230
+5002231 || [WINDOWS-ZEEK-INTEL] Windows DC Logon Failure from a Bro Intel listed IP || url,wiki.quadrantsec.com/bin/view/Main/5002231
 5002240 || [CISCO-BLACKLIST] VPN Login from blacklisted IP || url, wiki.quadrantsec.com/bin/view/Main/5002240
 5002241 || [CISCO-BLACKLIST] Console login from blacklisted IP || url, wiki.quadrantsec.com/bin/view/Main/5002241
 5002242 || [CISCO-BLACKLIST] Login permitted from blacklisted IP || url, wiki.quadrantsec.com/bin/view/Main/5002242
@@ -2139,22 +2139,22 @@
 5002247 || [CISCO-BLACKLIST] VPN login from blacklisted IP [2] || url, wiki.quadrantsec.com/bin/view/Main/5002247
 5002248 || [CISCO-BLACKLIST] FTP file transfer from blacklisted IP || url, wiki.quadrantsec.com/bin/view/Main/5002248
 5002249 || [CISCO-BLACKLIST] FTP file transfer from blacklisted IP || url, wiki.quadrantsec.com/bin/view/Main/5002249
-5002250 || [CISCO-BROINTEL] VPN Login from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002250
-5002251 || [CISCO-BROINTEL] Console login from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002251
-5002252 || [CISCO-BROINTEL] Login permitted from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002252
-5002253 || [CISCO-BROINTEL] WebVPN login from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002253
-5002254 || [CISCO-BROINTEL] VPN disconnect from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002254
-5002255 || [CISCO-BROINTEL] VPN login from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002255
-5002256 || [CISCO-BROINTEL] ACS Login success from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002256
-5002257 || [CISCO-BROINTEL] VPN login from Bro Intel IP [2] || url, wiki.quadrantsec.com/bin/view/Main/5002257
-5002258 || [CISCO-BROINTEL] FTP file transfer from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002258
-5002259 || [CISCO-BROINTEL] FTP file transfer from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002259
+5002250 || [CISCO-ZEEK-INTEL] VPN Login from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002250
+5002251 || [CISCO-ZEEK-INTEL] Console login from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002251
+5002252 || [CISCO-ZEEK-INTEL] Login permitted from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002252
+5002253 || [CISCO-ZEEK-INTEL] WebVPN login from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002253
+5002254 || [CISCO-ZEEK-INTEL] VPN disconnect from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002254
+5002255 || [CISCO-ZEEK-INTEL] VPN login from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002255
+5002256 || [CISCO-ZEEK-INTEL] ACS Login success from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002256
+5002257 || [CISCO-ZEEK-INTEL] VPN login from Bro Intel IP [2] || url, wiki.quadrantsec.com/bin/view/Main/5002257
+5002258 || [CISCO-ZEEK-INTEL] FTP file transfer from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002258
+5002259 || [CISCO-ZEEK-INTEL] FTP file transfer from Bro Intel IP || url, wiki.quadrantsec.com/bin/view/Main/5002259
 5002260 || [CITRIX-GEOIP] Login from outside HOME_COUNTRY || url,wiki.quadrantsec.com/bin/view/Main/5002260 || url,support.citrix.com/article/CTX123875
 5002261 || [CITRIX-BLACKLIST] Login from outside blacklisted IP || url,wiki.quadrantsec.com/bin/view/Main/5002261 || url,support.citrix.com/article/CTX123875
-5002262 || [CITRIX-BROINTEL] Login from outside Bro Intel listed IP || url,wiki.quadrantsec.com/bin/view/Main/5002262 || url,support.citrix.com/article/CTX123875
+5002262 || [CITRIX-ZEEK-INTEL] Login from outside Bro Intel listed IP || url,wiki.quadrantsec.com/bin/view/Main/5002262 || url,support.citrix.com/article/CTX123875
 5002264 || [WINDOWS-OWA] Login failure - Brute force [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002264
 5002265 || [WINDOWS-OWA-GEOIP] Login failure - Brute force [5/5] || url,wiki.quadrantsec.com/bin/view/Main/5002265
-5002266 || [WINDOWS-OWA-BROINTEL] Login failure - Brute force [5/5] || url,wiki.quadrantsec.com/bin/view/Main/5002266
+5002266 || [WINDOWS-OWA-ZEEK-INTEL] Login failure - Brute force [5/5] || url,wiki.quadrantsec.com/bin/view/Main/5002266
 5002267 || [WINDOWS-OWA-BLACKLIST] Login failure - Brute force [5/5] || url,wiki.quadrantsec.com/bin/view/Main/5002267
 5002270 || [BRO-INTEL] Suspicious communications detected via Bro-Intel || url,wiki.quadrantsec.com/bin/view/Main/5002270
 5002271 || [BLACKLIST] Suspicious communications detected via Blacklist || url,wiki.quadrantsec.com/bin/view/Main/5002271
@@ -2168,10 +2168,10 @@
 5002279 || [LINUX-KERNEL] Hard drive/RAID - probably means device no longer present || url,wiki.quadrantsec.com/bin/view/Main/5002279
 5002280 || [CITRIX-GEOIP] AAA LOGIN_FAILED from outside HOME_COUNTRY || url,wiki.quadrantsec.com/bin/view/Main/5002280 || url,support.citrix.com/article/CTX123875
 5002281 || [CITRIX-BLACKLIST] AAA LOGIN_FAILED from blacklisted IP || url,wiki.quadrantsec.com/bin/view/Main/5002281 || url,support.citrix.com/article/CTX123875
-5002282 || [CITRIX-BROINTEL] AAA LOGIN_FAILED from Bro Intel listed IP || url,wiki.quadrantsec.com/bin/view/Main/5002282 || url,support.citrix.com/article/CTX123875
+5002282 || [CITRIX-ZEEK-INTEL] AAA LOGIN_FAILED from Bro Intel listed IP || url,wiki.quadrantsec.com/bin/view/Main/5002282 || url,support.citrix.com/article/CTX123875
 5002284 || [CITRIX-GEOIP] SSLVPN HTTPREQUEST from outside HOME_COUNTRY [0/5] || url,wiki.quadrantsec.com/bin/view/Main/5002284 || url,support.citrix.com/article/CTX123875
 5002285 || [CITRIX-BLACKLIST] SSLVPN HTTPREQUEST from blacklisted IP || url,wiki.quadrantsec.com/bin/view/Main/5002285 || url,support.citrix.com/article/CTX123875
-5002286 || [CITRIX-BROINTEL] SSLVPN HTTPREQUEST from Bro Intel listed IP || url,wiki.quadrantsec.com/bin/view/Main/5002286 || url,support.citrix.com/article/CTX123875
+5002286 || [CITRIX-ZEEK-INTEL] SSLVPN HTTPREQUEST from Bro Intel listed IP || url,wiki.quadrantsec.com/bin/view/Main/5002286 || url,support.citrix.com/article/CTX123875
 5002288 || [BLUEDOT] Suspicious IP detected via Bluedot || url,wiki.quadrantsec.com/bin/view/Main/5002288
 5002289 || [NeXpose] Scan stopped || url,wiki.quadrantsec.com/bin/view/Main/5002289
 5002291 || [NFCAPD] Possible BitTorrent - Port 6881 [5/5] || url, wiki.quadrantsec.com/bin/view/Main/5002291
@@ -2248,57 +2248,57 @@
 5002398 || [COURIER] Authentication failure - Brute Force [5/5] || url,wiki.quadrantsec.com/bin/view/Main/5002398
 5002402 || [WINDOWS-MSSQL] Login Failure from non-trusted connection - Brute force [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002402
 5002403 || [WINDOWS-AUTH] Security enabled global group created || url,wiki.quadrantsec.com/bin/view/Main/5002403
-5002404 || [WINDOWS-BROINTEL] Login failure from a Bro Intel listed IP - User Is Locked Out [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002404
-5002405 || [WINDOWS-BROINTEL] Login failure from a Bro Intel listed IP - User Account Disabled [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002405
-5002406 || [WINDOWS-BROINTEL] Login failure from a Bro Intel listed IP - User Login Attempts Outside of Time Restriction [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002406
-5002407 || [WINDOWS-BROINTEL] Login failure from a Bro Intel listed IP - Expired Account [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002407
-5002408 || [WINDOWS-BROINTEL] Login failure from a Bro Intel listed IP - Expired Password [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002408
-5002409 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x1 - Client's entry in database has expired [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002409
-5002410 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x2 - Server's entry in database has expired [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002410
-5002411 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x3 - Requested protocol version # not supported [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002411
-5002412 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x4 - Client's key encrypted in old master key [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002412
-5002413 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x5 - Server's key encrypted in old master key [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002413
-5002414 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x6 - Client not found in Kerberos database [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002414
-5002415 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x7 - Server not found in Kerberos database [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002415
-5002416 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x8 - Multiple principal entries in database [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002416
-5002417 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x9 - The client or server has a null key [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002417
-5002418 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0xA - Ticket not eligible for postdating [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002418
-5002419 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0xB - Requested start time is later than end time [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002419
-5002420 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0xC - KDC policy rejects request [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002420
-5002421 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0xD - KDC cannot accommodate requested option [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002421
-5002422 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0xE - KDC has no support for encryption type [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002422
-5002423 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - B4ute force 0xF - KDC has no support for checksum type [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002423
-5002424 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x10 - KDC has no support for padata type [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002424
-5002425 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x11 - KDC has no support for transited type [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002425
-5002426 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x12 - Clients credentials have been revoked [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002426
-5002427 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x13 - Credentials for server have been revoked [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002427
-5002428 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x14 - TGT has been revoked [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002428
-5002429 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x15 - Client not yet valid - try again later [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002429
-5002430 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x16 - Server not yet valid - try again later [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002430
-5002431 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x17 - Password has expired [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002431
-5002432 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x18 - Pre-authentication information was invalid [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002432
-5002433 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x19 - Additional pre-authentication required [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002433
-5002434 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x1F - Integrity check on decrypted field failed [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002434
-5002435 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x20 - Ticket expired [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002435
-5002436 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x21 - Ticket not yet valid [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002436
-5002437 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x22 - Request is a replay [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002437
-5002438 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x23 - The ticket isn't for us [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002438
-5002439 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x24 - Ticket and authenticator don't match [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002439
-5002440 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x25 - Clock skew too great [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002440
-5002441 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x26 - Incorrect net address [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002441
-5002442 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x27 - Protocol version mismatch [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002442
-5002443 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x28 - Invalid msg type [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002443
-5002444 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x29 - Message stream modified [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002444
-5002445 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x2A - Message out of order [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002445
-5002446 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x2C - Specified version of key is not available [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002446
-5002447 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x2D - Service key not available [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002447
-5002448 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x2E - Mutual authentication failed [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002448
-5002449 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x2F - Incorrect message direction [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002449
-5002450 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x30 - Alternative authentication method required [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002450
-5002451 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x31 - Incorrect sequence number in message [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002451
-5002452 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x32 - Inappropriate type of checksum in message [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002452
-5002453 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x3C - Generic error [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002453
-5002454 || [WINDOWS-BROINTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x3D - Field is too long for this implementation [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002454
+5002404 || [WINDOWS-ZEEK-INTEL] Login failure from a Bro Intel listed IP - User Is Locked Out [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002404
+5002405 || [WINDOWS-ZEEK-INTEL] Login failure from a Bro Intel listed IP - User Account Disabled [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002405
+5002406 || [WINDOWS-ZEEK-INTEL] Login failure from a Bro Intel listed IP - User Login Attempts Outside of Time Restriction [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002406
+5002407 || [WINDOWS-ZEEK-INTEL] Login failure from a Bro Intel listed IP - Expired Account [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002407
+5002408 || [WINDOWS-ZEEK-INTEL] Login failure from a Bro Intel listed IP - Expired Password [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002408
+5002409 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x1 - Client's entry in database has expired [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002409
+5002410 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x2 - Server's entry in database has expired [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002410
+5002411 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x3 - Requested protocol version # not supported [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002411
+5002412 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x4 - Client's key encrypted in old master key [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002412
+5002413 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x5 - Server's key encrypted in old master key [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002413
+5002414 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x6 - Client not found in Kerberos database [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002414
+5002415 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x7 - Server not found in Kerberos database [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002415
+5002416 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x8 - Multiple principal entries in database [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002416
+5002417 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x9 - The client or server has a null key [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002417
+5002418 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0xA - Ticket not eligible for postdating [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002418
+5002419 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0xB - Requested start time is later than end time [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002419
+5002420 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0xC - KDC policy rejects request [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002420
+5002421 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0xD - KDC cannot accommodate requested option [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002421
+5002422 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0xE - KDC has no support for encryption type [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002422
+5002423 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - B4ute force 0xF - KDC has no support for checksum type [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002423
+5002424 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x10 - KDC has no support for padata type [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002424
+5002425 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x11 - KDC has no support for transited type [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002425
+5002426 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x12 - Clients credentials have been revoked [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002426
+5002427 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x13 - Credentials for server have been revoked [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002427
+5002428 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x14 - TGT has been revoked [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002428
+5002429 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x15 - Client not yet valid - try again later [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002429
+5002430 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x16 - Server not yet valid - try again later [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002430
+5002431 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x17 - Password has expired [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002431
+5002432 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x18 - Pre-authentication information was invalid [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002432
+5002433 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x19 - Additional pre-authentication required [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002433
+5002434 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x1F - Integrity check on decrypted field failed [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002434
+5002435 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x20 - Ticket expired [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002435
+5002436 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x21 - Ticket not yet valid [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002436
+5002437 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x22 - Request is a replay [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002437
+5002438 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x23 - The ticket isn't for us [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002438
+5002439 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x24 - Ticket and authenticator don't match [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002439
+5002440 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x25 - Clock skew too great [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002440
+5002441 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x26 - Incorrect net address [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002441
+5002442 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x27 - Protocol version mismatch [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002442
+5002443 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x28 - Invalid msg type [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002443
+5002444 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x29 - Message stream modified [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002444
+5002445 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x2A - Message out of order [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002445
+5002446 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x2C - Specified version of key is not available [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002446
+5002447 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x2D - Service key not available [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002447
+5002448 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x2E - Mutual authentication failed [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002448
+5002449 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x2F - Incorrect message direction [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002449
+5002450 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x30 - Alternative authentication method required [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002450
+5002451 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x31 - Incorrect sequence number in message [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002451
+5002452 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x32 - Inappropriate type of checksum in message [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002452
+5002453 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x3C - Generic error [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002453
+5002454 || [WINDOWS-ZEEK-INTEL] Windows DC Login failure from a Bro Intel listed IP - Brute force 0x3D - Field is too long for this implementation [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002454
 5002455 || [WINDOWS-BLUEDOT] Login failure from a Bluedot listed IP - User Name Does Not Exist [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002455
 5002456 || [WINDOWS-BLUEDOT] Login failure from a Bluedot listed IP - User Correct but Incorrect Password [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002456
 5002457 || [WINDOWS-BLUEDOT] Login failure from a Bluedot listed IP - User Is Locked Out [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002457
@@ -2405,8 +2405,8 @@
 5002559 || [WINDOWS-BLACKLIST] Windows DC Login failure from a blacklisted IP - Brute force 0x32 - Inappropriate type of checksum in message [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002559
 5002560 || [WINDOWS-BLACKLIST] Windows DC Login failure from a blacklisted IP - Brute force 0x3C - Generic error [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002560
 5002561 || [WINDOWS-BLACKLIST] Windows DC Login failure from a blacklisted IP - Brute force 0x3D - Field is too long for this implementation [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002561
-5002562 || [WINDOWS-BROINTEL] Login failure from a Bro Intel listed IP - User Correct but Incorrect Password [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002562
-5002563 || [WINDOWS-BROINTEL] Login failure from a Bro Intel listed IP - User Name Does Not Exist [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002563
+5002562 || [WINDOWS-ZEEK-INTEL] Login failure from a Bro Intel listed IP - User Correct but Incorrect Password [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002562
+5002563 || [WINDOWS-ZEEK-INTEL] Login failure from a Bro Intel listed IP - User Name Does Not Exist [Brute Force] [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5002563
 5002564 || [WINDOWS-MISC] Unable to log events to security log || url,wiki.quadrantsec.com/bin/view/Main/5002564
 5002565 || [BASH] root password change attempt || url,wiki.quadrantsec.com/bin/view/Main/5002565
 5002566 || [SU] root password change attempt || url,wiki.quadrantsec.com/bin/view/Main/5002566
@@ -2641,7 +2641,7 @@
 5002795 || [Barracuda] System Password Changed || url,wiki.quadrantsec.com/bin/view/Main/5002795
 5002796 || [Barracuda] System Shutdown || url,wiki.quadrantsec.com/bin/view/Main/5002796
 5002797 || [Trendmicro] Virus Found Unable to Quarantine || url,wiki.quadrantsec.com/bin/view/Main/5002797
-5002798 || [BRO] RFC1918 address scanning the network || url,wiki.quadrantsec.com/bin/view/Main/5002798
+5002798 || [ZEEK] RFC1918 address scanning the network || url,wiki.quadrantsec.com/bin/view/Main/5002798
 5002799 || [WINDOWS-SYSMON] PSExec execution detected || url,wiki.quadrantsec.com/bin/view/Main/5002799
 5002801 || [WINDOWS-MALWARE] Locky or AutoLocky ransomware extension detected. || url,decrypter.emsisoft.com || url,wiki.quadrantsec.com/bin/view/Main/5002801
 5002802 || [WINDOWS-SYSMON] Locky/CrypoMix ransomware instructions detected! || url,wiki.quadrantsec.com/bin/view/Main/5002802
@@ -2787,7 +2787,7 @@
 5002945 || [Barracuda] Brute force login attempt [5/5] || url,wiki.quadrantsec.com/bin/view/Main/5002945
 5002946 || [F5-BIG-IP] Brute force Attempt [5/1] || url,wiki.quadrantsec.com/bin/view/Main/5002946 || url,support.f5.com/kb/en-us/solutions/public/13000/400/sol13426.html
 5002947 || [IMAPD] Brute force attack [5/1] || url,wiki.quadrantsec.com/bin/view/Main/5002947
-5002948 || [NGINX] Nginx brute force authentication attempt [5/1] || url,wiki.quadrantsec.com/bin/view/Main/5002948
+5002948 || [NGINX] Nginx Brute Force authentication attempt [5/1] || url,wiki.quadrantsec.com/bin/view/Main/5002948
 5002949 || [ORACLE] Brute force authentication failure [5/1] || url, wiki.quadrantsec.com/bin/view/Main/5002949
 5002950 || [FTPD] FTPCHK3 file accessed by user || url,blog.ftptoday.com/ftp-password-stealing-malware || url,wiki.quadrantsec.com/bin/view/Main/5002950
 5002951 || [PROFTP] FTPCHK3 file accessed by user || url,wiki.quadrantsec.com/bin/view/Main/5002951 || url,blog.ftptoday.com/ftp-password-stealing-malware
@@ -3176,40 +3176,40 @@
 5003339 || [WINDOWS-OWA-CORRELATED] Login after exploit attempt || url,wiki.quadrantsec.com/bin/view/Main/5003339
 5003340 || [WINDOWS-OWA-CORRELATED] Login after brute force activity || url,wiki.quadrantsec.com/bin/view/Main/5003340
 5003341 || [WINDOWS-CORRELATED] Successful RDP login after honeypot activity || url,wiki.quadrantsec.com/bin/view/Main/5003341
-5003342 || [PasswordState] Access was Granted || url,wiki.quadrantsec.com/bin/view/Main/5003342 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003343 || [PasswordState] Access has been Removed || url,wiki.quadrantsec.com/bin/view/Main/5003343 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003344 || [PasswordState] All Passwords Exported || url,wiki.quadrantsec.com/bin/view/Main/5003344 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003345 || [PasswordState] Audit Records Purged || url,wiki.quadrantsec.com/bin/view/Main/5003345 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003346 || [PasswordState] Password Reset Task Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003346 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003347 || [PasswordState] Discovery Job Updated || url,wiki.quadrantsec.com/bin/view/Main/5003347 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003348 || [PasswordState] Discovery Job Permissions Added || url,wiki.quadrantsec.com/bin/view/Main/5003348 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003349 || [PasswordState] Discovery Job Removed || url,wiki.quadrantsec.com/bin/view/Main/5003349 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003350 || [PasswordState] Discovery Job Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003350 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003351 || [PasswordState] Document Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003351 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003352 || [PasswordState] Encryption Keys Exported || url,wiki.quadrantsec.com/bin/view/Main/5003352 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003353 || [PasswordState] Password Updated || url,wiki.quadrantsec.com/bin/view/Main/5003353 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003354 || [PasswordState] Login Attempt Failed || url,wiki.quadrantsec.com/bin/view/Main/5003354 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003355 || [PasswordState] Privileged Account Credentials Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003355 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003356 || [PasswordState] Privileged Account Credentials Permissions Added || url,wiki.quadrantsec.com/bin/view/Main/5003356 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003357 || [PasswordState] Privileged Account Credentials Permissions Removed || url,wiki.quadrantsec.com/bin/view/Main/5003357 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003358 || [PasswordState] Security Administrator Added || url,wiki.quadrantsec.com/bin/view/Main/5003358 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003359 || [PasswordState] Security Administrator Removed || url,wiki.quadrantsec.com/bin/view/Main/5003359 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003360 || [PasswordState] Security Administrator Role Updated || url,wiki.quadrantsec.com/bin/view/Main/5003360 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003361 || [PasswordState] Security Group Added || url,wiki.quadrantsec.com/bin/view/Main/5003361 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003362 || [PasswordState] Security Group Updated || url,wiki.quadrantsec.com/bin/view/Main/5003362 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003363 || [PasswordState] Security Group Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003363 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003364 || [PasswordState] User Account Added to Security Group || url,wiki.quadrantsec.com/bin/view/Main/5003364 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003365 || [PasswordState] User Account Disabled || url,wiki.quadrantsec.com/bin/view/Main/5003365 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003366 || [PasswordState] User Removed From Security Group || url,wiki.quadrantsec.com/bin/view/Main/5003366 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003367 || [PasswordState] Password Copied Between Password Lists || url,wiki.quadrantsec.com/bin/view/Main/5003367 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003368 || [PasswordState] Password Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003368 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003369 || [PasswordState] Password History Exported || url,wiki.quadrantsec.com/bin/view/Main/5003369 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003370 || [PasswordState] Password List Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003370 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003371 || [PasswordState] Password Moved || url,wiki.quadrantsec.com/bin/view/Main/5003371 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003372 || [PasswordState] Password Reset Failed || url,wiki.quadrantsec.com/bin/view/Main/5003372 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003373 || [PasswordState] Password Reset Removed from Queue || url,wiki.quadrantsec.com/bin/view/Main/5003373 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003374 || [PasswordState] Password Reset Task Updated || url,wiki.quadrantsec.com/bin/view/Main/5003374 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
-5003375 || [PasswordState] Brute Force Login Attempt [5/5] || url,wiki.quadrantsec.com/bin/view/Main/5003375 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003342 || [PASSWORDSTATE] Access was Granted || url,wiki.quadrantsec.com/bin/view/Main/5003342 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003343 || [PASSWORDSTATE] Access has been Removed || url,wiki.quadrantsec.com/bin/view/Main/5003343 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003344 || [PASSWORDSTATE] All Passwords Exported || url,wiki.quadrantsec.com/bin/view/Main/5003344 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003345 || [PASSWORDSTATE] Audit Records Purged || url,wiki.quadrantsec.com/bin/view/Main/5003345 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003346 || [PASSWORDSTATE] Password Reset Task Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003346 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003347 || [PASSWORDSTATE] Discovery Job Updated || url,wiki.quadrantsec.com/bin/view/Main/5003347 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003348 || [PASSWORDSTATE] Discovery Job Permissions Added || url,wiki.quadrantsec.com/bin/view/Main/5003348 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003349 || [PASSWORDSTATE] Discovery Job Removed || url,wiki.quadrantsec.com/bin/view/Main/5003349 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003350 || [PASSWORDSTATE] Discovery Job Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003350 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003351 || [PASSWORDSTATE] Document Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003351 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003352 || [PASSWORDSTATE] Encryption Keys Exported || url,wiki.quadrantsec.com/bin/view/Main/5003352 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003353 || [PASSWORDSTATE] Password Updated || url,wiki.quadrantsec.com/bin/view/Main/5003353 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003354 || [PASSWORDSTATE] Login Attempt Failed || url,wiki.quadrantsec.com/bin/view/Main/5003354 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003355 || [PASSWORDSTATE] Privileged Account Credentials Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003355 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003356 || [PASSWORDSTATE] Privileged Account Credentials Permissions Added || url,wiki.quadrantsec.com/bin/view/Main/5003356 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003357 || [PASSWORDSTATE] Privileged Account Credentials Permissions Removed || url,wiki.quadrantsec.com/bin/view/Main/5003357 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003358 || [PASSWORDSTATE] Security Administrator Added || url,wiki.quadrantsec.com/bin/view/Main/5003358 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003359 || [PASSWORDSTATE] Security Administrator Removed || url,wiki.quadrantsec.com/bin/view/Main/5003359 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003360 || [PASSWORDSTATE] Security Administrator Role Updated || url,wiki.quadrantsec.com/bin/view/Main/5003360 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003361 || [PASSWORDSTATE] Security Group Added || url,wiki.quadrantsec.com/bin/view/Main/5003361 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003362 || [PASSWORDSTATE] Security Group Updated || url,wiki.quadrantsec.com/bin/view/Main/5003362 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003363 || [PASSWORDSTATE] Security Group Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003363 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003364 || [PASSWORDSTATE] User Account Added to Security Group || url,wiki.quadrantsec.com/bin/view/Main/5003364 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003365 || [PASSWORDSTATE] User Account Disabled || url,wiki.quadrantsec.com/bin/view/Main/5003365 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003366 || [PASSWORDSTATE] User Removed From Security Group || url,wiki.quadrantsec.com/bin/view/Main/5003366 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003367 || [PASSWORDSTATE] Password Copied Between Password Lists || url,wiki.quadrantsec.com/bin/view/Main/5003367 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003368 || [PASSWORDSTATE] Password Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003368 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003369 || [PASSWORDSTATE] Password History Exported || url,wiki.quadrantsec.com/bin/view/Main/5003369 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003370 || [PASSWORDSTATE] Password List Deleted || url,wiki.quadrantsec.com/bin/view/Main/5003370 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003371 || [PASSWORDSTATE] Password Moved || url,wiki.quadrantsec.com/bin/view/Main/5003371 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003372 || [PASSWORDSTATE] Password Reset Failed || url,wiki.quadrantsec.com/bin/view/Main/5003372 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003373 || [PASSWORDSTATE] Password Reset Removed from Queue || url,wiki.quadrantsec.com/bin/view/Main/5003373 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003374 || [PASSWORDSTATE] Password Reset Task Updated || url,wiki.quadrantsec.com/bin/view/Main/5003374 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
+5003375 || [PASSWORDSTATE] Brute Force Login Attempt [5/5] || url,wiki.quadrantsec.com/bin/view/Main/5003375 || url,www.clickstudios.com.au/downloads/version8/Passwordstate_Security_Administrators_Manual.pdf
 5003376 || [WINDOWS-AUTH] Suspicious network login || url,www.quadrantsec.com/about/blog/using_jack_crooks_log_analysis_concepts_with_sagan || url,wiki.quadrantsec.com/bin/view/Main/5003376 || url,indingbad.blogspot.cz/2017/12/a-few-of-my-favorite-things-continued.html
 5003377 || [WINDOWS-AUTH] Suspicious network login from non-RFC1918 || url,www.quadrantsec.com/about/blog/using_jack_crooks_log_analysis_concepts_with_sagan || url,wiki.quadrantsec.com/bin/view/Main/5003377 || url,findingbad.blogspot.cz/2017/12/a-few-of-my-favorite-things-continued.html
 5003378 || [WINDOWS-SYSMON] IP detect in command line || url,www.quadrantsec.com/about/blog/using_jack_crooks_log_analysis_concepts_with_sagan || url,wiki.quadrantsec.com/bin/view/Main/5003378 || url,findingbad.blogspot.cz/2017/12/a-few-of-my-favorite-things-continued.html
@@ -3615,7 +3615,7 @@
 5003781 || [CISCO-ISE-GEOIP] Successful authentication from outside HOME_COUNTRY || url,wiki.quadrantsec.com/bin/view/Main/5003781
 5003782 || [CISCO-ISE-BLUEDOT] Successful authentication from outside HOME_COUNTRY || url,wiki.quadrantsec.com/bin/view/Main/5003782
 5003783 || [CISCO-ISE-BLACKLIST] Successful authentication from outside HOME_COUNTRY || url,wiki.quadrantsec.com/bin/view/Main/5003783
-5003784 || [CISCO-ISE-BROINTEL] Successful authentication from outside HOME_COUNTRY || url,wiki.quadrantsec.com/bin/view/Main/5003784
+5003784 || [CISCO-ISE-ZEEK-INTEL] Successful authentication from outside HOME_COUNTRY || url,wiki.quadrantsec.com/bin/view/Main/5003784
 5003785 || [DYNAMIC] Cisco ISE detected via program || url,wiki.quadrantsec.com/bin/view/Main/5003785
 5003786 || [WINDOWS-AUTH] LDAP authentication error - Account expired. || url,www.quadrantsec.com/about/blog/using_jack_crooks_log_analysis_concepts_with_sagan || url,wiki.quadrantsec.com/bin/view/Main/5003786
 5003787 || [WINDOWS-AUTH] LDAP authentication error - Account locked. || url,wiki.quadrantsec.com/bin/view/Main/5003787
@@ -4599,10 +4599,10 @@
 5004772 || [AZURE-EVENTHUB-AD] unknownFutureValue Event Detected || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema
 5004773 || [AZURE-EVENTHUB-AD] High Risk During Sign in || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema
 5004774 || [AZURE-EVENTHUB-AD] Account lockout || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
-5004775 || [AZURE EVENTHUB AD GEOIP] Account lockout from outside HOME_COUNTRY || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
+5004775 || [AZURE-EVENTHUB-AD-GEOIP] Account lockout from outside HOME_COUNTRY || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
 5004776 || [AZURE-EVENTHUB-AD] Brute Force (Invalid username or password) || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
 5004777 || [AZURE-EVENTHUB-AD] Brute Force (Invalid password) || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
-5004778 || [AZURE EVENTHUB AD GEOIP] Brute Force [2] || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema
+5004778 || [AZURE-EVENTHUB-AD-GEOIP] Brute Force [2] || url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema
 5004779 || [WINDOWS-MALWARE] Suspicious Powershell execution || url,wiki.quadrantsec.com/bin/view/Main/5004779
 5004780 || [WINDOWS-AUTH] Vulnerable Netlogon/Zerologon connection is allowed - CVE-2020-1472 || url,support.microsoft.com/en-us/help/4557222/how-to-manage-the-changes-in-netlogon-secure-channel-connections-assoc
 5004781 || [WINDOWS-AUTH] Vulnerable Netlogon/Zerologon connection was denied - CVE-2020-1472 || url,support.microsoft.com/en-us/help/4557222/how-to-manage-the-changes-in-netlogon-secure-channel-connections-assoc

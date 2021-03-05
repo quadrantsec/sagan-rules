@@ -117,7 +117,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-PRIME] Duplicate IP a
 # User ''{1}'' with IP Address ''{0}'' has made too many unsuccessful login attempts.
 # A management user has made too many login attempts.
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-PRIME] Possible brute force from management user!"; program: snmptrapd; content: "=TOO_MANY_USER_UNSUCCESSFUL_LOGINS|28|"; classtype: suspicious-traffic; reference: url,www.cisco.com/c/en/us/td/docs/wireless/ncs/1-1/configuration/guide/NCS11cg/event.html; reference: url,wiki.quadrantsec.com/bin/view/Main/5002136; sid:5002136; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-PRIME] Possible brute force from management user!"; program: snmptrapd; content: "=TOO_MANY_USER_UNSUCCESSFUL_LOGINS|28|"; classtype: brute-force; reference: url,www.cisco.com/c/en/us/td/docs/wireless/ncs/1-1/configuration/guide/NCS11cg/event.html; reference: url,wiki.quadrantsec.com/bin/view/Main/5002136; sid:5002136; rev:4;)
 
 # ADHOC_ROGUE_AUTO_CONTAINED
 # Adhoc Rogue ''{0}'' was found and is auto contained as per WPS policy.

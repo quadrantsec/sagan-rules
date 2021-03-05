@@ -70,7 +70,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Cryptomining: Pool
 
 # BRUTE FORCE SSH
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Brute Force SSH"; content:"brute_force_ssh"; nocase; classtype:attempted-user; reference: url,cloud.google.com/security-command-center/docs/concepts-event-threat-detection-overview; sid:5005616; rev:1)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[GCP-SCC] Brute Force SSH"; content:"brute_force_ssh"; nocase; classtype:brute-force; reference: url,cloud.google.com/security-command-center/docs/concepts-event-threat-detection-overview; sid:5005616; rev:2)
 
 # OUTGOING DOS
 
