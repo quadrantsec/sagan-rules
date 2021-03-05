@@ -5476,6 +5476,35 @@
 5005672 || [AUDITD] mkdir starting with a space
 5005673 || [AUDITD] mkdir starting with a period
 5005674 || [AUDITD] chmod +s execution
+5005675 || [NETSKOPEl] Malware alert
+5005676 || [NETSKOPEl] Compromised Credential alert
+5005677 || [NETSKOPEl] Data Loss Prevention alert
+5005678 || [NETSKOPEl] malsite alert
+5005679 || [NETSKOPEl] Policy alert
+5005680 || [NETSKOPEl] Security Assessment alert
+5005681 || [NETSKOPEl] User Behavior Anaytics [uba] alert
+5005682 || [NETSKOPEl] watchlist alert
+5005683 || [NETSKOPEl] anomaly alert
+5005684 || [NETSKOPEl] anomaly alert - data_exfiltration
+5005685 || [NETSKOPEl] anomaly alert - mlad
+5005686 || [NETSKOPEl] anomaly alert - user_shared_credentials
+5005687 || [MICROSOFT-ATP] Collection alert
+5005688 || [MICROSOFT-ATP] CommandAndControl alert
+5005689 || [MICROSOFT-ATP] CredentialAccess alert
+5005690 || [MICROSOFT-ATP] DefenseEvasion alert
+5005691 || [MICROSOFT-ATP] Discovery alert
+5005692 || [MICROSOFT-ATP] Execution alert
+5005693 || [MICROSOFT-ATP] Exfiltration alert
+5005694 || [MICROSOFT-ATP] Exploit alert
+5005695 || [MICROSOFT-ATP] InitialAccess alert
+5005696 || [MICROSOFT-ATP] LateralMovement alert
+5005697 || [MICROSOFT-ATP] Malware alert
+5005698 || [MICROSOFT-ATP] Persistence alert
+5005699 || [MICROSOFT-ATP] PrivilegeEscalation alert
+5005700 || [MICROSOFT-ATP] Ransomware alert
+5005701 || [MICROSOFT-ATP] SuspiciousActivity alert
+5005702 || [MICROSOFT-ATP] UnwantedSoftware alert
+5005703 || [SOPHOS] Potential Threat Found
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
