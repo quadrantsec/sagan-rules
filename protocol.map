@@ -3,6 +3,13 @@ message || 17 || nocase ||UDP
 message || 1  || nocase ||ICMP
 message || 6  || nocase ||TCP
 
+# Thesea are for Checkpoint firewalls.
+
+message || 17 || nocase ||proto:"17";
+message || 1 || nocase ||proto:"1";
+message || 6 || nocase ||proto:"6";
+
+
 program || 17 || nocase || named
 program || 6  || nocase || ssh
 program || 6  || nocase || sshd

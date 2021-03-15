@@ -1,0 +1,55 @@
+# Sagan checkpoint.rules
+# Copyright (c) 2009-2021. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+# All Checkpoint "actions":
+#
+# Drop [6,0]; Reject [1]; Accept [2]; Encrypt [3]; Decrypt [4]; Hold [5]; VPN Routing [7];
+# Key Install [16]; Authorize [17]; Deauthorize [18]; Xlatehide [19]; XlateSrc [20];
+# xlateDst [21]; XlatePort [22]; Log In [23,37]; Bypass [30]; Inspect [31]; Quarantine [32];
+# Block [33]; Detect [34]; Replace Malicious Code [35]; Flag [36]; Log Out [38];
+# Do not send [39]; Send [40]; Expired [41]; Prevent [42]; Allow [43]; Inform User [44];
+# Delete [45]; Ask User [46]; Review [47]; IP Changed [48]; Packet Tagging [49]; Redirect [50];
+# HTTPS Inspect [51]; HTTPS Bypass [52]; UC Block [53]; Update [54]; Failed Log In [57];
+# Remote Wipe [58]; Reset Passcode [59]; Forgot Passcode [60]; Extract [61];
+# Open Shell [62]; System Backup [63]; System Restore [64]; Run Script [65]; Inline [8]
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action Drop"; content: "[action|3a 22|Drop|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005704; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action Reject"; content: "[action|3a 22|Reject|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005705; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action Detect - See 'message_info' for more information"; content: "[action|3a 22|Detect|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005706; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Failed Login"; content: "[action|3a 22|Failed Log In|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005707; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Failed Login - Brute Force"; content: "[action|3a 22|Failed Log In|22 3b|"; xbits: set,brute_force,track ip_src, expire 21600; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype:brute-force; sid:5005708; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action Quarantine"; content: "[action|3a 22|Quarantine|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005709; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action Block"; content: "[action|3a 22|Block|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005710; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action Replace Malicious Code"; content: "[action|3a 22|Replace Malicious Code|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: malware; sid:5005711; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action UC Block"; content: "[action|3a 22|UC Block|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005712; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action Remote Wipe"; content: "[action|3a 22|Remote Wipe|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005713; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action Reset Passcode"; content: "[action|3a 22|Reset Passcode|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005714; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action Forgot Passcode"; content: "[action|3a 22|Forgot Passcode|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005715; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action Open Shell"; content: "[action|3a 22|Open Shell|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005716; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action System Restore"; content: "[action|3a 22|System Restore|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005717; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action System Backup"; content: "[action|3a 22|System Restore|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005718; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT] Action Run Script"; content: "[action|3a 22|Run Script|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; classtype: suspicious-traffic; sid:5005719; rev:1;)
+

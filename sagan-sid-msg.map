@@ -5505,6 +5505,45 @@
 5005701 || [MICROSOFT-ATP] SuspiciousActivity alert
 5005702 || [MICROSOFT-ATP] UnwantedSoftware alert
 5005703 || [SOPHOS] Potential Threat Found
+5005704 || [CHECKPOINT] Action Drop
+5005705 || [CHECKPOINT] Action Reject
+5005706 || [CHECKPOINT] Action Detect - See 'message_info' for more information
+5005707 || [CHECKPOINT] Failed Login
+5005708 || [CHECKPOINT] Failed Login - Brute Force
+5005709 || [CHECKPOINT] Action Quarantine
+5005710 || [CHECKPOINT] Action Block
+5005711 || [CHECKPOINT] Action Replace Malicious Code
+5005712 || [CHECKPOINT] Action UC Block
+5005713 || [CHECKPOINT] Action Remote Wipe
+5005714 || [CHECKPOINT] Action Reset Passcode
+5005715 || [CHECKPOINT] Action Forgot Passcode
+5005716 || [CHECKPOINT] Action Open Shell
+5005717 || [CHECKPOINT] Action System Restore
+5005718 || [CHECKPOINT] Action System Backup
+5005719 || [CHECKPOINT] Action Run Script
+5005720 || [CHECKPOINT-GEOIP] Log In from outside of HOME_COUNTRY
+5005721 || [CHECKPOINT-GEOIP] Log Out from outside of HOME_COUNTRY
+5005722 || [CHECKPOINT-GEOIP] Key Install from outside of HOME_COUNTRY
+5005723 || [CHECKPOINT-GEOIP] Encrypt from outside of HOME_COUNTRY
+5005724 || [CHECKPOINT-GEOIP] Decrypt from outside of HOME_COUNTRY
+5005725 || [CHECKPOINT-GEOIP] Authorize from outside of HOME_COUNTRY
+5005726 || [CHECKPOINT-BLUEDOT] Log In from a Bluedot listed address
+5005727 || [CHECKPOINT-BLUEDOT] Log Out from a Bluedot listed address
+5005728 || [CHECKPOINT-BLUEDOT] Key Install from a Bluedot listed address
+5005729 || [CHECKPOINT-BLUEDOT] Encrypt from a Bluedot listed address
+5005730 || [CHECKPOINT-BLUEDOT] Decrypt from a Bluedot listed address
+5005731 || [CHECKPOINT-BLUEDOT] Authorize from a Bluedot listed address
+5005732 || [CHECKPOINT-BLUEDOT] Deauthorize from a Bluedot listed address
+5005733 || [CHECKPOINT-AETAS] Log In at suspicious time
+5005734 || [CHECKPOINT-AETAS] Log Out at suspicious time
+5005735 || [CHECKPOINT-GEOIP] Deauthorize from outside of HOME_COUNTRY
+5005736 || [CHECKPOINT-BLACKLIST] Log In from a blacklisted IP
+5005737 || [CHECKPOINT-BLACKLIST] Log Out from a blacklisted IP
+5005738 || [CHECKPOINT-BLACKLIST] Key Install from a blacklisted IP
+5005739 || [CHECKPOINT-BLACKLIST] Encrypt from a blacklisted IP
+5005740 || [CHECKPOINT-BLACKLIST] Decrypt from a blacklisted IP
+5005741 || [CHECKPOINT-BLACKLIST] Authorize from a blacklisted IP
+5005742 || [CHECKPOINT-BLACKLIST] Deauthorize from a blacklisted IP
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
