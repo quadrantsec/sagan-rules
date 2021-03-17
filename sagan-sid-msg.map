@@ -5544,6 +5544,7 @@
 5005740 || [CHECKPOINT-BLACKLIST] Decrypt from a blacklisted IP
 5005741 || [CHECKPOINT-BLACKLIST] Authorize from a blacklisted IP
 5005742 || [CHECKPOINT-BLACKLIST] Deauthorize from a blacklisted IP
+5005743 || [PUREFTPD] Authentication failed
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
