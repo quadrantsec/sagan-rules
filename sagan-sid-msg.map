@@ -2640,7 +2640,7 @@
 5002794 || [Barracuda] User Password Changed || url,wiki.quadrantsec.com/bin/view/Main/5002794
 5002795 || [Barracuda] System Password Changed || url,wiki.quadrantsec.com/bin/view/Main/5002795
 5002796 || [Barracuda] System Shutdown || url,wiki.quadrantsec.com/bin/view/Main/5002796
-5002797 || [Trendmicro] Virus Found Unable to Quarantine || url,wiki.quadrantsec.com/bin/view/Main/5002797
+5002797 || [TRENDMICRO] Virus Found Unable to Quarantine || url,wiki.quadrantsec.com/bin/view/Main/5002797
 5002798 || [ZEEK] RFC1918 address scanning the network || url,wiki.quadrantsec.com/bin/view/Main/5002798
 5002799 || [WINDOWS-SYSMON] PSExec execution detected || url,wiki.quadrantsec.com/bin/view/Main/5002799
 5002801 || [WINDOWS-MALWARE] Locky or AutoLocky ransomware extension detected. || url,decrypter.emsisoft.com || url,wiki.quadrantsec.com/bin/view/Main/5002801
@@ -3619,16 +3619,16 @@
 5003785 || [DYNAMIC] Cisco ISE detected via program || url,wiki.quadrantsec.com/bin/view/Main/5003785
 5003786 || [WINDOWS-AUTH] LDAP authentication error - Account expired. || url,www.quadrantsec.com/about/blog/using_jack_crooks_log_analysis_concepts_with_sagan || url,wiki.quadrantsec.com/bin/view/Main/5003786
 5003787 || [WINDOWS-AUTH] LDAP authentication error - Account locked. || url,wiki.quadrantsec.com/bin/view/Main/5003787
-5003788 || [Trendmicro] Application Control Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003788
-5003789 || [Trendmicro] Device Control Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003789
-5003790 || [Trendmicro] Behavior Monitoring Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003790
-5003791 || [Trendmicro] Network Virus Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003791
-5003792 || [Trendmicro] Outbreak Defense Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003792
-5003793 || [Trendmicro] Predictive Machine Learning Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003793
-5003794 || [Trendmicro] Spyware Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003794
-5003795 || [Trendmicro] Url Filtering Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003795
-5003796 || [Trendmicro] Virus Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003796
-5003797 || [Trendmicro] Web Reputation Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003797
+5003788 || [TRENDMICRO] Application Control Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003788
+5003789 || [TRENDMICRO] Device Control Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003789
+5003790 || [TRENDMICRO] Behavior Monitoring Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003790
+5003791 || [TRENDMICRO] Network Virus Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003791
+5003792 || [TRENDMICRO] Outbreak Defense Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003792
+5003793 || [TRENDMICRO] Predictive Machine Learning Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003793
+5003794 || [TRENDMICRO] Spyware Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003794
+5003795 || [TRENDMICRO] Url Filtering Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003795
+5003796 || [TRENDMICRO] Virus Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003796
+5003797 || [TRENDMICRO] Web Reputation Logs Detected || url,wiki.quadrantsec.com/bin/view/Main/5003797
 5003798 || [WINDOWS-AUTH] Possible Password Spray Detected [50/1] || url,wiki.quadrantsec.com/bin/view/Main/5003798 || url,www.trimarcsecurity.com/single-post/2018/05/06/Trimarc-Research-Detecting-Password-Spraying-with-Security-Event-Auditing
 5003799 || [WINDOWS-AUTH] Possible Password Spray Detected [50/1] || url,wiki.quadrantsec.com/bin/view/Main/5003799 || url,www.trimarcsecurity.com/single-post/2018/05/06/Trimarc-Research-Detecting-Password-Spraying-with-Security-Event-Auditing
 5003800 || [WINDOWS-AUTH] Possible Password Spray Detected [100/1] || url,wiki.quadrantsec.com/bin/view/Main/5003800 || url,www.trimarcsecurity.com/single-post/2018/05/06/Trimarc-Research-Detecting-Password-Spraying-with-Security-Event-Auditing
@@ -5476,18 +5476,18 @@
 5005672 || [AUDITD] mkdir starting with a space
 5005673 || [AUDITD] mkdir starting with a period
 5005674 || [AUDITD] chmod +s execution
-5005675 || [NETSKOPEl] Malware alert
-5005676 || [NETSKOPEl] Compromised Credential alert
-5005677 || [NETSKOPEl] Data Loss Prevention alert
-5005678 || [NETSKOPEl] malsite alert
-5005679 || [NETSKOPEl] Policy alert
-5005680 || [NETSKOPEl] Security Assessment alert
-5005681 || [NETSKOPEl] User Behavior Anaytics [uba] alert
-5005682 || [NETSKOPEl] watchlist alert
-5005683 || [NETSKOPEl] anomaly alert
-5005684 || [NETSKOPEl] anomaly alert - data_exfiltration
-5005685 || [NETSKOPEl] anomaly alert - mlad
-5005686 || [NETSKOPEl] anomaly alert - user_shared_credentials
+5005675 || [NETSKOPE] Malware alert
+5005676 || [NETSKOPE] Compromised Credential alert
+5005677 || [NETSKOPE] Data Loss Prevention alert
+5005678 || [NETSKOPE] malsite alert
+5005679 || [NETSKOPE] Policy alert
+5005680 || [NETSKOPE] Security Assessment alert
+5005681 || [NETSKOPE] User Behavior Anaytics [uba] alert
+5005682 || [NETSKOPE] watchlist alert
+5005683 || [NETSKOPE] anomaly alert
+5005684 || [NETSKOPE] anomaly alert - data_exfiltration
+5005685 || [NETSKOPE] anomaly alert - mlad
+5005686 || [NETSKOPE] anomaly alert - user_shared_credentials
 5005687 || [MICROSOFT-ATP] Collection alert
 5005688 || [MICROSOFT-ATP] CommandAndControl alert
 5005689 || [MICROSOFT-ATP] CredentialAccess alert
