@@ -77,7 +77,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Suspicious W
 # 2017-02-22 - Rule create by Champ Clark III based off Jack Crook's work.  See:
 # From Jack Crook via https://www.quadrantsec.com/about/blog/using_jack_crooks_log_analysis_concepts_with_sagan/
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] IP detect in command line"; event_id: 1; pcre: "/CommandLine: (.*)([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})/"; classtype: suspicious-command; program: *Sysmon*; reference: url,findingbad.blogspot.cz/2017/12/a-few-of-my-favorite-things-continued.html; reference: url,wiki.quadrantsec.com/bin/view/Main/5003378; reference: url,www.quadrantsec.com/about/blog/using_jack_crooks_log_analysis_concepts_with_sagan; sid:5003378; rev:2;)
+##alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] IP detect in command line"; event_id: 1; pcre: "/CommandLine: (.*)([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})/"; classtype: suspicious-command; program: *Sysmon*; reference: url,findingbad.blogspot.cz/2017/12/a-few-of-my-favorite-things-continued.html; reference: url,wiki.quadrantsec.com/bin/view/Main/5003378; reference: url,www.quadrantsec.com/about/blog/using_jack_crooks_log_analysis_concepts_with_sagan; sid:5003378; rev:2;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Command line $\\ type request"; event_id: 1; pcre: "/CommandLine: (.*)\$\\\\(.*)/"; classtype: suspicious-command; program: *Sysmon*; reference: url,findingbad.blogspot.cz/2017/12/a-few-of-my-favorite-things-continued.html; reference: url,wiki.quadrantsec.com/bin/view/Main/5003379; reference: url,www.quadrantsec.com/about/blog/using_jack_crooks_log_analysis_concepts_with_sagan; sid:5003379; rev:3;)
 
