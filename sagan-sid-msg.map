@@ -5546,6 +5546,8 @@
 5005742 || [CHECKPOINT-BLACKLIST] Deauthorize from a blacklisted IP
 5005743 || [PUREFTPD] Authentication failed
 5005744 || [NXLOG] Service starting || url,wiki.quadrantsec.com/bin/view/Main/5005744
+5005745 || [WINDOWS-MISC] VSS shutdown [XBIT SET] || url,wiki.quadrantsec.com/bin/view/Main/5005745
+5005746 || [NXLOG] Service starting || url,wiki.quadrantsec.com/bin/view/Main/5005746
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
