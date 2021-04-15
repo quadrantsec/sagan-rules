@@ -32,7 +32,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Unable to read event
 
 # flexbits: isnotset,by_src,nxlog_problem;
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service stopping"; content: "stopping nxlog service"; flexbits: isnotset,by_src,reboot.windows; flexbits_pause: 600; classtype: program-error; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5003109; sid:5003109; rev:10;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service stopping with no restart"; content: "stopping nxlog service"; flexbits: isnotset,by_src,reboot.windows; flexbits: isnotset,by_src,nxlog_start; flexbits_pause: 120; classtype: program-error; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5003109; sid:5003109; rev:11;)
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Termination Request"; content: "nxlog received a termination request signal"; flexbits: isnotset,by_src,reboot.windows; flexbits: isnotset,by_src,nxlog_problem; classtype: program-error; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5003110; sid:5003110; rev:5;)
 
@@ -41,4 +41,6 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Missing Windows Log 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service restart to correct problem [CLEAR XBIT]"; content: "stopping nxlog service"; flexbits: isnotset,by_src,reboot.windows; flexbits: isset,by_src,nxlog_problem; flexbits: unset,by_src,nxlog_problem; flexbits:noeve; classtype: system-event; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5003125; sid:5003125; rev:4;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Problem nxlog system has recovered"; content: "connecting to";  flexbits: isset,by_src,nxlog_problem; flexbits: unset,by_src,nxlog_problem; flexbits:noeve; classtype: system-event; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5003985; sid:5003985; rev:2;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service starting"; content: "nxlog-"; content: "started"; flexbits: set,nxlog_start,121; classtype: program-error; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5005744; sid:5005744; rev:1;)
 

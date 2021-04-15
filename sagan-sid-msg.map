@@ -2945,7 +2945,7 @@
 5003106 || [WINDOWS-MISC] Installation of PSEXEC service via SCM || url,pastebin.com/raw/0SNSvyjJ || url,wiki.quadrantsec.com/bin/view/Main/5003106
 5003107 || [SYSLOG] Possible Windows Broken Domain Trust [25/1] || url,wiki.quadrantsec.com/bin/view/Main/5003107
 5003108 || [NXLOG] Unable to read eventlog || url,wiki.quadrantsec.com/bin/view/Main/5003108
-5003109 || [NXLOG] Service stopping || url,wiki.quadrantsec.com/bin/view/Main/5003109
+5003109 || [NXLOG] Service stopping with no restart || url,wiki.quadrantsec.com/bin/view/Main/5003109
 5003110 || [NXLOG] Termination Request || url,wiki.quadrantsec.com/bin/view/Main/5003110
 5003111 || [NXLOG] Missing Windows Log Message || url,wiki.quadrantsec.com/bin/view/Main/5003111
 5003112 || [JUNIPER-BLUEDOT] VPN Login from a known malicious source || url, wiki.quadrantsec.com/bin/view/Main/5003112
@@ -5545,6 +5545,7 @@
 5005741 || [CHECKPOINT-BLACKLIST] Authorize from a blacklisted IP
 5005742 || [CHECKPOINT-BLACKLIST] Deauthorize from a blacklisted IP
 5005743 || [PUREFTPD] Authentication failed
+5005744 || [NXLOG] Service starting || url,wiki.quadrantsec.com/bin/view/Main/5005744
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
