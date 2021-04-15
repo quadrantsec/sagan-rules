@@ -42,5 +42,5 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service restart to c
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Problem nxlog system has recovered"; content: "connecting to";  flexbits: isset,by_src,nxlog_problem; flexbits: unset,by_src,nxlog_problem; flexbits:noeve; classtype: system-event; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5003985; sid:5003985; rev:2;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service starting"; content: "nxlog-"; content: "started"; flexbits: set,nxlog_start,121; classtype: program-error; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5005744; sid:5005744; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service starting"; content: "nxlog-"; content: "started"; flexbits: set,nxlog_start,121; flexbits:noeve; classtype: program-error; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5005744; sid:5005744; rev:2;)
 
