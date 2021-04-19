@@ -5548,6 +5548,25 @@
 5005744 || [NXLOG] Service starting || url,wiki.quadrantsec.com/bin/view/Main/5005744
 5005745 || [WINDOWS-MISC] VSS shutdown [XBIT SET] || url,wiki.quadrantsec.com/bin/view/Main/5005745
 5005746 || [NXLOG] Service starting || url,wiki.quadrantsec.com/bin/view/Main/5005746
+5005747 || [WINDOWS-POWERSHELL] Powershell History Cleared Detected [1/4] || url,wiki.quadrantsec.com/bin/view/Main/5005747 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005748 || [WINDOWS-POWERSHELL] Powershell History Cleared Detected [2/4] || url,wiki.quadrantsec.com/bin/view/Main/5005748 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005749 || [WINDOWS-POWERSHELL] Powershell History Cleared Detected [3/4] || url,wiki.quadrantsec.com/bin/view/Main/5005749 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005750 || [WINDOWS-POWERSHELL] Powershell History Cleared Detected [4/4] || url,wiki.quadrantsec.com/bin/view/Main/5005750 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005751 || [WINDOWS-POWERSHELL] Powershell created local user [1/3] || url,wiki.quadrantsec.com/bin/view/Main/5005751 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005752 || [WINDOWS-POWERSHELL] Powershell created local user [2/3] || url,wiki.quadrantsec.com/bin/view/Main/5005752 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005753 || [WINDOWS-POWERSHELL] Powershell created local user [3/3] || url,wiki.quadrantsec.com/bin/view/Main/5005753 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005754 || [WINDOWS-POWERSHELL] DNSCAT VPN over DNS start up detected *CRITICAL AND CALL* || url,wiki.quadrantsec.com/bin/view/Main/5005754 || url,github.com/iagox86/dnscat2 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005755 || [WINDOWS-POWERSHELL] Powershell Possible Downgrade Attempt || url,wiki.quadrantsec.com/bin/view/Main/5005755 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005756 || [WINDOWS-POWERSHELL] PowerShell Auto Login Enabled, Possible Persistance Attempt [1/2] || url,wiki.quadrantsec.com/bin/view/Main/5005756 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005757 || [WINDOWS-POWERSHELL] PowerShell Auto Login Enabled, Possible Persistance Attempt [2/2] || url,wiki.quadrantsec.com/bin/view/Main/5005757 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005758 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched [1/7] || url,wiki.quadrantsec.com/bin/view/Main/5005758 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005759 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched [2/7] || url,wiki.quadrantsec.com/bin/view/Main/5005759 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005760 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched [3/7] || url,wiki.quadrantsec.com/bin/view/Main/5005760 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005761 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched[4/7] || url,wiki.quadrantsec.com/bin/view/Main/5005761 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005762 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched[5/7] || url,wiki.quadrantsec.com/bin/view/Main/5005762 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005763 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched[6/7] || url,wiki.quadrantsec.com/bin/view/Main/5005763 || url,adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005764 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched[7/7] || url,wiki.quadrantsec.com/bin/view/Main/5005764 || url,adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005765 || [WINDOWS-POWERSHELL] Suspicious Download using IEX || url,wiki.quadrantsec.com/bin/view/Main/5005765
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
