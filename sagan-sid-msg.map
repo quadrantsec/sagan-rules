@@ -5559,14 +5559,20 @@
 5005755 || [WINDOWS-POWERSHELL] Powershell Possible Downgrade Attempt || url,wiki.quadrantsec.com/bin/view/Main/5005755 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
 5005756 || [WINDOWS-POWERSHELL] PowerShell Auto Login Enabled, Possible Persistance Attempt [1/2] || url,wiki.quadrantsec.com/bin/view/Main/5005756 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
 5005757 || [WINDOWS-POWERSHELL] PowerShell Auto Login Enabled, Possible Persistance Attempt [2/2] || url,wiki.quadrantsec.com/bin/view/Main/5005757 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
-5005758 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched [1/7] || url,wiki.quadrantsec.com/bin/view/Main/5005758 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
 5005759 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched [2/7] || url,wiki.quadrantsec.com/bin/view/Main/5005759 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
 5005760 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched [3/7] || url,wiki.quadrantsec.com/bin/view/Main/5005760 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
 5005761 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched[4/7] || url,wiki.quadrantsec.com/bin/view/Main/5005761 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
 5005762 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched[5/7] || url,wiki.quadrantsec.com/bin/view/Main/5005762 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
 5005763 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched[6/7] || url,wiki.quadrantsec.com/bin/view/Main/5005763 || url,adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
 5005764 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched[7/7] || url,wiki.quadrantsec.com/bin/view/Main/5005764 || url,adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
-5005765 || [WINDOWS-POWERSHELL] Suspicious Download using IEX || url,wiki.quadrantsec.com/bin/view/Main/5005765
+5005765 || [WINDOWS-POWERSHELL] Suspicious Download using IEX || url,wiki.quadrantsec.com/bin/view/Main/5005765 || url,fireeye.com/blog/threat-research/2018/07/malicious-powershell-detection-via-machine-learning.html
+5005766 || [DYNAMIC] PowerShell logs detect via program || url,wiki.quadrantsec.com/bin/view/Main/5005766
+5005767 || [DYNAMIC] Mimecast logs detected via message. || url,wiki.quadrantsec.com/bin/view/Main/5005767
+5005768 || [MIMECAST] Potential Virus was recieved || url,wiki.quadrantsec.com/bin/view/Main/5005768 || url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/
+5005769 || [MIMECAST] Internal email protection || url,wiki.quadrantsec.com/bin/view/Main/5005769 || url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/
+5005770 || [MIMECAST] An internal user name has been impersonated || url,wiki.quadrantsec.com/bin/view/Main/5005770 || url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/
+5005771 || [MIMECAST] A user has clicked on link that is potentially malicious || url,wiki.quadrantsec.com/bin/view/Main/5005771 || url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/
+5005772 || [MIMECAST] Internal email protection || url,wiki.quadrantsec.com/bin/view/Main/5005772 || url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003

@@ -1,0 +1,49 @@
+# Sagan mimecast.rules
+# Copyright (c) 2009-2021. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# Mimecast signature by Justin Kling ( jkling _AT_ quadrantsec.com )
+
+# Anti-Virus Logs  "Virus="
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] Potential Virus was recieved"; program: MIMECAST; content: "Virus="; nocase; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; reference: url,wiki.quadrantsec.com/bin/view/Main/5005768; classtype: bad-unknown; sid:5005768; rev: 1;)
+
+# Target Threat Protection - Internal Email Protect logs   "urlCategory="
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] Internal email protection"; program: MIMECAST; content: "urlCategory="; nocase; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; reference: url,wiki.quadrantsec.com/bin/view/Main/5005769; classtype: bad-unknown; sid:5005769; rev: 1;)
+
+# Targeted Threat Protection - Impersonation Protect logs "An internal user name has been impersonated"  
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] An internal user name has been impersonated"; program: MIMECAST; content: "Definition=Default Impersonation Definition"; nocase; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; reference: url,wiki.quadrantsec.com/bin/view/Main/5005770; classtype: bad-unknown; sid:5005770; rev: 1;)
+
+# Targeted Threat Protection - URL Protect logs "A user has clicked on link that is potentially malicious"
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] A user has clicked on link that is potentially malicious"; program: MIMECAST; content: "reason=malicious"; content: "url="; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; reference: url,wiki.quadrantsec.com/bin/view/Main/5005771; classtype: bad-unknown; sid:5005771; rev: 1;)
+
+# Targeted Threat Protection - Attachment Protect logs "The Mimecast sandbox has detected a potentially malicious file:"
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] Internal email protection"; program: MIMECAST; content: "Route=Inbound"; content: "md5="; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; reference: url,wiki.quadrantsec.com/bin/view/Main/5005772; classtype: bad-unknown; sid:5005772; rev: 1;)
+

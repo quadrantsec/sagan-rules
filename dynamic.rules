@@ -110,3 +110,5 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[DYNAMIC] Zscaler logs detec
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[DYNAMIC] PowerShell logs detect via program"; dynamic_load: $RULE_PATH/windows-powershell.rules; program: *PowerShell*; classtype: dynamic-rules; reference: url,wiki.quadrantsec.com/bin/view/Main/5005766; sid:5005766; rev:1;)
 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[DYNAMIC] Mimecast logs detected via message."; content; "aCode="; content: "RcptActType="; dynamic_load: $RULE_PATH/mimecast.rules; classtype: dynamic-rules; reference: url,wiki.quadrantsec.com/bin/view/Main/5005767; sid:5005767; rev:1;)
+
