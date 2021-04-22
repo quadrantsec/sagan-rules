@@ -1,0 +1,43 @@
+# Sagan cloudgenix.rules
+# Copyright (c) 2009-2021. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+#
+# Cloudgenix signatures by Justin Kling / jkling _AT_ quadrantsec.com / 20210422
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CLOUDGENIX] PAM Authentication failure - Brute force [10/1]"; content: "sshd|2d|all|3a|error|3a 20|PAM|3a 20|Authentication failure"; xbits: set,brute_force,track ip_src, expire 21600; reference: url,wiki.quadrantsec.com/bin/view/Main/5005774; classtype: brute-force; normalize; parse_src_ip: 1; after: track by_src&by_username, count 10, seconds 300; threshold: type suppress, track by_src, count 1, seconds 300; sid:5005774; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CLOUDGENIX] Authentication failure for root - Brute force [5/5]"; content: "sshd|2d|all|3a|error|3a 20|PAM|3a 20|Authentication failure for root"; parse_src_ip: 1; xbits: set,brute_force,track ip_src, expire 21600; reference: url,wiki.quadrantsec.com/bin/view/Main/5005775; classtype: brute-force; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 1, seconds 300; normalize; sid:5005775; rev:1;)
+
+alert any $INTERNAL_NETWORK any -> $HOME_NET any (msg:"[CLOUDGENIX] Invalid user [Brute Force] [10/1]"; content "sshd|2d|all|3a|Invalid user"; xbits: set,brute_force,track ip_src, expire 21600; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: brute-force; normalize; parse_src_ip: 1; after: track by_src&by_username, count 10, seconds 300; threshold: type suppress, track by_src, count 1, seconds 300; reference: url,wiki.quadrantsec.com/bin/view/Main/5005776; sid:5005776; rev:20;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CLOUDGENIX] Failed Authorization via keyboard - Brute force [10/1]"; content: "sshd|2d|all|3a|Failed keyboard-interactive/pam"; xbits: set,brute_force,track ip_src, expire 21600; reference: url,wiki.quadrantsec.com/bin/view/Main/5005777; classtype: brute-force; normalize; parse_src_ip: 1; after: track by_src&by_username, count 10, seconds 300; threshold: type suppress, track by_src, count 1, seconds 300; sid:5005777; rev:1;)
+
+###ALARM RULES###
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CLOUDGENIX] Major severity Alarm for Not Cleared Status"; content: "STATUS|3d 22|Not cleared"; content: "SEVERITY|3d 22|major; normalize; flexbits: isnotset,not_cleared,track ip_username; flexbits_pause: 600; reference: url,wiki.quadrantsec.com/bin/view/Main/5005778; classtype: program-error; sid:5005778; rev: 1;) 
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CLOUDGENIX] Major severity Alarm for Cleared Status"; content: "STATUS|3d 22|cleared"; content: "SEVERITY|3d 22|major; normalize; flexbits: set,not_cleared,track ip_username, expire 3600; reference: url,wiki.quadrantsec.com/bin/view/Main/5005779; classtype: program-error; sid:5005779; rev: 1;)
+

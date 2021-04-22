@@ -522,3 +522,13 @@ rule=: PAM %-:number% more authentication failure; logname= %-:word% %-:word% tt
 
 rule=: %event_id:word% The Netlogon service allowed a vulnerable Netlogon secure channel connection. Warning: This connection will be denied once the enforcement phase is released. To better understand the enforcement phase, please visit %-:word% Machine SamAccountName: %username:word% Domain: %domain:word% Account Type: Domain Member Machine Operating System: %os:rest%
 
+# Cloudgenix 
+
+rule=: CLOUDGENIX_HOST=%-:quoted-string% DEVICE_TIME=%-:quoted-string% MSG="sshd-all:Failed keyboard-interactive/pam for invalid user %username:string% from %src-ip:@ipaddr% %-:rest%
+
+rule=: CLOUDGENIX_HOST=%-:quoted-string% DEVICE_TIME=%-:quoted-string% MSG="sshd-all:Invalid user %username:string% from %src-ip:@ipaddr% %-:rest%
+
+rule=: CLOUDGENIX_HOST=%-:quoted-string% DEVICE_TIME=%-:quoted-string% MSG="sshd-all:error: PAM: Authentication failure for illegal user %username:string% from %src-ip:@ipaddr% %-:rest%
+
+rule=: CLOUDGENIX_HOST=%-:quoted-string% DEVICE_TIME=%-:quoted-string% STATUS=%-:quoted-string% CODE=%-:quoted-string% SEVERITY=%-:quoted-string% AL_ID=%-:quoted-string% VPN_LINK_ID=%username:quoted-string% IDENTIFIER=%-:quoted-string% ELEMENT_ID=%-:quoted-string%
+
