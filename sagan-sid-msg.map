@@ -5559,6 +5559,7 @@
 5005755 || [WINDOWS-POWERSHELL] Powershell Possible Downgrade Attempt || url,wiki.quadrantsec.com/bin/view/Main/5005755 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
 5005756 || [WINDOWS-POWERSHELL] PowerShell Auto Login Enabled, Possible Persistance Attempt [1/2] || url,wiki.quadrantsec.com/bin/view/Main/5005756 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
 5005757 || [WINDOWS-POWERSHELL] PowerShell Auto Login Enabled, Possible Persistance Attempt [2/2] || url,wiki.quadrantsec.com/bin/view/Main/5005757 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005758 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched [1/7] || url,wiki.quadrantsec.com/bin/view/Main/5005758 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
 5005759 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched [2/7] || url,wiki.quadrantsec.com/bin/view/Main/5005759 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
 5005760 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched [3/7] || url,wiki.quadrantsec.com/bin/view/Main/5005760 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
 5005761 || [WINDOWS-POWERSHELL] HostVersion and EngineVersion MixMatched[4/7] || url,wiki.quadrantsec.com/bin/view/Main/5005761 || url, adsecurity.org/?p=2921 || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
