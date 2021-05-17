@@ -5583,6 +5583,62 @@
 5005779 || [CLOUDGENIX] Major severity Alarm for Cleared Status || url,wiki.quadrantsec.com/bin/view/Main/5005779
 5005780 || [CLOUDGENIX] Inbound traffic to suspicious source || url,wiki.quadrantsec.com/bin/view/Main/5005780
 5005781 || [CLOUDGENIX] Outbound traffic to suspicious source || url,wiki.quadrantsec.com/bin/view/Main/5005781
+5005782 || [CISCO-BLUEDOT] Suspicious OUTBOUND TCP connection to Tor || url,wiki.quadrantsec.com/bin/view/Main/5005782
+5005783 || [CISCO-BLUEDOT] Suspicious OUTBOUND TCP connection to a Malicious IP || url,wiki.quadrantsec.com/bin/view/Main/5005783
+5005784 || [CISCO-BLUEDOT] Suspicious OUTBOUND TCP connection to a Proxy IP || url,wiki.quadrantsec.com/bin/view/Main/5005784
+5005785 || [CISCO-BLUEDOT] Suspicious OUTBOUND TCP connection to a know Honeypot attacker || url,wiki.quadrantsec.com/bin/view/Main/5005785
+5005786 || [CISCO-BLUEDOT] Suspicious OUTBOUND UDP connection to Tor || url,wiki.quadrantsec.com/bin/view/Main/5005786
+5005787 || [CISCO-BLUEDOT] Suspicious OUTBOUND UDP connection to a Malicious IP || url,wiki.quadrantsec.com/bin/view/Main/5005787
+5005788 || [CISCO-BLUEDOT] Suspicious OUTBOUND UDP connection to a Proxy IP || url,wiki.quadrantsec.com/bin/view/Main/5005788
+5005789 || [CISCO-BLUEDOT] Suspicious OUTBOUND UDP connection to a known Honeypot attacker || url,wiki.quadrantsec.com/bin/view/Main/5005789
+5005790 || [CISCO-BLUEDOT] Suspicious OUTBOUND ICMP connection to Tor || url,wiki.quadrantsec.com/bin/view/Main/5005790
+5005791 || [CISCO-BLUEDOT] Suspicious OUTBOUND ICMP connection to a Malicious IP || url,wiki.quadrantsec.com/bin/view/Main/5005791
+5005792 || [CISCO-BLUEDOT] Suspicious OUTBOUND ICMP connection to a Proxy IP || url,wiki.quadrantsec.com/bin/view/Main/5005792
+5005793 || [CISCO-BLUEDOT] Suspicious OUTBOUND ICMP connection to a known Honeypot attacker || url,wiki.quadrantsec.com/bin/view/Main/5005793
+5005794 || [CISCO-BLUEDOT] Suspicious OUTBOUND GRE connection to Tor || url,wiki.quadrantsec.com/bin/view/Main/5005794
+5005795 || [CISCO-BLUEDOT] Suspicious OUTBOUND GRE connection to a Malicious IP || url,wiki.quadrantsec.com/bin/view/Main/5005795
+5005796 || [CISCO-BLUEDOT] Suspicious OUTBOUND GRE connection to a Proxy IP || url,wiki.quadrantsec.com/bin/view/Main/5005796
+5005797 || [CISCO-BLUEDOT] Suspicious OUTBOUND GRE connection to a known Honeypot attacker || url,wiki.quadrantsec.com/bin/view/Main/5005797
+5005798 || [CISCO-BLUEDOT] Suspicious INBOUND TCP connection from Tor || url,wiki.quadrantsec.com/bin/view/Main/5005798
+5005799 || [CISCO-BLUEDOT] Suspicious INBOUND TCP connection from a Malicious IP || url,wiki.quadrantsec.com/bin/view/Main/5005799
+5005800 || [CISCO-BLUEDOT] Suspicious INBOUND TCP connection from a Proxy IP || url,wiki.quadrantsec.com/bin/view/Main/5005800
+5005801 || [CISCO-BLUEDOT] Suspicious INBOUND TCP connection from a know Honeypot attacker || url,wiki.quadrantsec.com/bin/view/Main/5005801
+5005802 || [CISCO-BLUEDOT] Suspicious INBOUND UDP connection from Tor || url,wiki.quadrantsec.com/bin/view/Main/5005802
+5005803 || [CISCO-BLUEDOT] Suspicious INBOUND UDP connection from a Malicious IP || url,wiki.quadrantsec.com/bin/view/Main/5005803
+5005804 || [CISCO-BLUEDOT] Suspicious INBOUND UDP connection from a Proxy IP || url,wiki.quadrantsec.com/bin/view/Main/5005804
+5005805 || [CISCO-BLUEDOT] Suspicious INBOUND UDP connection from a know Honeypot attacker || url,wiki.quadrantsec.com/bin/view/Main/5005805
+5005806 || [CISCO-BLUEDOT] Suspicious INBOUND ICMP connection from Tor || url,wiki.quadrantsec.com/bin/view/Main/5005806
+5005807 || [CISCO-BLUEDOT] Suspicious INBOUND ICMP connection from a Malicious IP || url,wiki.quadrantsec.com/bin/view/Main/5005807
+5005808 || [CISCO-BLUEDOT] Suspicious INBOUND ICMP connection from a Proxy IP || url,wiki.quadrantsec.com/bin/view/Main/5005808
+5005809 || [CISCO-BLUEDOT] Suspicious INBOUND ICMP connection from a know Honeypot attacker || url,wiki.quadrantsec.com/bin/view/Main/5005809
+5005810 || [CISCO-BLUEDOT] Suspicious INBOUND GRE connection from Tor || url,wiki.quadrantsec.com/bin/view/Main/5005810
+5005811 || [CISCO-BLUEDOT] Suspicious INBOUND GRE connection from a Malicious IP || url,wiki.quadrantsec.com/bin/view/Main/5005811
+5005812 || [CISCO-BLUEDOT] Suspicious INBOUND GRE connection from a Proxy IP || url,wiki.quadrantsec.com/bin/view/Main/5005812
+5005813 || [CISCO-BLUEDOT] Suspicious INBOUND GRE connection from a know Honeypot attacker || url,wiki.quadrantsec.com/bin/view/Main/5005813
+5005814 || [CISCO-BLUEDOT] VPN Login from Tor || url, wiki.quadrantsec.com/bin/view/Main/5005814
+5005815 || [CISCO-BLUEDOT] VPN Login from known Proxy || url, wiki.quadrantsec.com/bin/view/Main/5005815
+5005816 || [CISCO-BLUEDOT] VPN Login from an IP that has attacked Honeypots || url, wiki.quadrantsec.com/bin/view/Main/5005816
+5005817 || [CISCO-BLUEDOT] VPN Login from a known Malicious IP || url, wiki.quadrantsec.com/bin/view/Main/5005817
+5005818 || [CISCO-BLUEDOT] Login permitted from Tor address || url, wiki.quadrantsec.com/bin/view/Main/5005818
+5005819 || [CISCO-BLUEDOT] Login permitted from a known malicious IP || url, wiki.quadrantsec.com/bin/view/Main/5005819
+5005820 || [CISCO-BLUEDOT] Login permitted from Proxy IP || url, wiki.quadrantsec.com/bin/view/Main/5005820
+5005821 || [CISCO-BLUEDOT] Login permitted from an IP observed attacking Honeypots || url, wiki.quadrantsec.com/bin/view/Main/5005821
+5005822 || [CISCO-BLUEDOT] VPN disconnect from a known malicious source || url, wiki.quadrantsec.com/bin/view/Main/:5005822
+5005823 || [CISCO-BLUEDOT] VPN disconnect from a Tor address || url, wiki.quadrantsec.com/bin/view/Main/:5005823
+5005824 || [CISCO-BLUEDOT] VPN disconnect from IP address that attack a honeypot || url, wiki.quadrantsec.com/bin/view/Main/:5005824
+5005825 || [CISCO-BLUEDOT] VPN disconnect from known proxy IP || url, wiki.quadrantsec.com/bin/view/Main/:5005825
+5005826 || [CISCO-BLUEDOT] FTP file transfer from or to malicious source || url, wiki.quadrantsec.com/bin/view/Main/5005826
+5005827 || [CISCO-BLUEDOT] FTP file transfer from or to known proxy || url, wiki.quadrantsec.com/bin/view/Main/5005827
+5005828 || [CISCO-BLUEDOT] FTP file transfer from or to an IP associated with attacking a honeypot || url, wiki.quadrantsec.com/bin/view/Main/5005828
+5005829 || [CISCO-BLUEDOT] FTP file transfer from or to Tor IP || url, wiki.quadrantsec.com/bin/view/Main/5005829
+5005830 || [CISCO-BLUEDOT] ACS Login success from Tor IP || url, wiki.quadrantsec.com/bin/view/Main/5005830
+5005831 || [CISCO-BLUEDOT] ACS Login success from Malicious IP || url, wiki.quadrantsec.com/bin/view/Main/5005831
+5005832 || [CISCO-BLUEDOT] ACS Login success from a known proxy IP || url, wiki.quadrantsec.com/bin/view/Main/5005832
+5005833 || [CISCO-BLUEDOT] ACS Login success from an IP address associated with attack a honeypot || url, wiki.quadrantsec.com/bin/view/Main/5005833
+5005834 || [CISCO-BLUEDOT] Console login from known malicious source || url, wiki.quadrantsec.com/bin/view/Main/5005834
+5005835 || [CISCO-BLUEDOT] Console login from Tor node || url, wiki.quadrantsec.com/bin/view/Main/5005835
+5005836 || [CISCO-BLUEDOT] Console login from an IP associated with attacking a honeypot || url, wiki.quadrantsec.com/bin/view/Main/5005836
+5005837 || [CISCO-BLUEDOT] Console login from known proxy || url, wiki.quadrantsec.com/bin/view/Main/5005837
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
