@@ -114,19 +114,25 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious IN
 
 
 ############
+# -6-722022,-6-722023
+
 
 #alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from suspicious source"; program: %ASA*-6-716038; bluedot: type ip_reputation, track all, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5002870; sid:5002870; rev: 5;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from Tor"; content: %ASA-"; content: "-6-716038"; append_program; bluedot: type ip_reputation, track all, none, Tor; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5005814; sid:5005814; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from known Proxy"; content: %ASA-"; content: "-6-716038"; append_program; bluedot: type ip_reputation, track all, none, Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5005815; sid:5005815; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from an IP that has attacked Honeypots"; content: %ASA-"; content: "-6-716038"; append_program; bluedot: type ip_reputation, track all, none, Honeypot; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5005816; sid:5005816; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from a known Malicious IP"; content: %ASA-"; content: "-6-716038"; append_program; bluedot: type ip_reputation, track all, none, Malicious; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5005817; sid:5005817; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from Tor"; content: %ASA-"; meta_content:"%sagan%",-6-716038,-6-605005,-6-734001,-6-722022,-6-722023; append_program; bluedot: type ip_reputation, track all, none, Tor; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5005814; sid:5005814; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from known Proxy"; content: %ASA-"; meta_content:"%sagan%",-6-716038,-6-605005,-6-734001,-6-722022,-6-722023; append_program; bluedot: type ip_reputation, track all, none, Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5005815; sid:5005815; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from an IP that has attacked Honeypots"; content: %ASA-"; meta_content:"%sagan%",-6-716038,-6-605005,-6-734001,-6-722022,-6-722023; append_program; bluedot: type ip_reputation, track all, none, Honeypot; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5005816; sid:5005816; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from a known Malicious IP"; content: %ASA-"; meta_content:"%sagan%",-6-716038,-6-605005,-6-734001,-6-722022,-6-722023; append_program; bluedot: type ip_reputation, track all, none, Malicious; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5005817; sid:5005817; rev: 1;)
 
 
 # %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: testuser] [Source: 10.10.10.10] [localport: 22] at 05:00:13 EST Sun Dec 1 2013
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from suspicious source"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5002871; sid:5002871; rev: 4;)
-
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from suspicious source"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5002871; sid:5002871; rev: 4;)
+#
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from known malicious source"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, none, Malicious; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5005834; sid:5005834; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from Tor node"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, none, Tor; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5005835; sid:5005835; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from known proxy"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, none, Proxy; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5005835; sid:5005835; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from an IP associated with attacking a honeypot"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, none,Honeypot; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5005836; sid:5005836; rev: 1;)
 
 # 10.1.2.1|local4|info|info|a6|2013-12-02|08:00:03|%ASA*-6-605005| Login permitted from 10.1.1.1/54112 to inside:10.1.2.1/ssh for user "bob"
 
@@ -139,28 +145,50 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Login permit
 
 
 # WebVPN
-
-# Metacontent this with one above?
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN login from suspicious source"; program: %ASA*-6-716001|%ASA*-6-716038; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5002873; sid:5002873; rev: 4;)
+# This is covered by signatures above with a meta_content.
+#
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN login from suspicious source"; program: %ASA*-6-716001|%ASA*-6-716038; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5002873; sid:5002873; rev: 4;)
 
 # Group = AnyConnect, Username = bob, IP = 10.10.10.10, Session disconnected. Session Type: SSL, Duration: 12h:00m:19s, Bytes xmt: 332468520, Bytes rcv: 130276830, Reason: Max time exceeded
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from suspicious source"; program: %ASA*-4-113019|%ASA*-6-716002|%ASA*-6-721018; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5002874; sid:5002874; rev: 5;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from suspicious source"; program: %ASA*-4-113019|%ASA*-6-716002|%ASA*-6-721018; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5002874; sid:5002874; rev: 5;)
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from a known malicious source"; append_program; content: "%ASA-", meta_content: "%sagan%",-6-113019,-6-716002,-6-721018; bluedot: type ip_reputation, track by_src, none, Malicious; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/:5005822; sid:5005822; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from a Tor address"; append_program; content: "%ASA-", meta_content: "%sagan%",-6-113019,-6-716002,-6-721018; bluedot: type ip_reputation, track by_src, none,Tor; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/:5005823; sid:5005823; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from IP address that attack a honeypot"; append_program; content: "%ASA-", meta_content: "%sagan%",-6-113019,-6-716002,-6-721018; bluedot: type ip_reputation, track by_src, none,Honeypot; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/:5005824; sid:5005824; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from known proxy IP"; append_program; content: "%ASA-", meta_content: "%sagan%",-6-113019,-6-716002,-6-721018; bluedot: type ip_reputation, track by_src, none,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/:5005825; sid:5005825; rev: 1;)
+
 
 # 10.8.5.10|local4|info|info|a6|2014-02-18|02:12:41|%ASA*-6-734001| DAP: User bob, Addr 10.10.10.10, Connection AnyConnect: The following DAP records were selected for this connection: DfltAccessPolicy
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN/AnyConnect login from suspicious source"; program: %ASA*-6-734001; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5002875; sid:5002875; rev: 4;)
+# This is cover by the VPN rule above via meta_content.
+
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN/AnyConnect login from suspicious source"; program: %ASA*-6-734001; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5002875; sid:5002875; rev: 4;)
 
 # Cisco ACS (via VPN) - authentication success
 # 10.10.10.10|auth|info|info|26|2014-02-20|16:26:58|CisACS_01_PassedAuth| 12s245v32 1 0 Message-Type=Authen OK,User-Name=BOB,NAS-IP-Address=172.16.1.1,Caller-ID=199.44.66.11,NAS-Port=58642432,Group-Name=VPN Users,Filter Information=No Filters activated.,
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from suspicious source"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 2; reference: url, wiki.quadrantsec.com/bin/view/Main/5002876; sid:5002876; rev: 4;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from suspicious source"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 2; reference: url, wiki.quadrantsec.com/bin/view/Main/5002876; sid:5002876; rev: 4;)
+#
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from Tor IP"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, none,Tor; classtype: successful-user; parse_src_ip: 2; reference: url, wiki.quadrantsec.com/bin/view/Main/5005830; sid:5005830; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from Malicious IP"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, none, Malicious; classtype: successful-user; parse_src_ip: 2; reference: url, wiki.quadrantsec.com/bin/view/Main/5005831; sid:5005831; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from a known proxy IP"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, none, Proxy; classtype: successful-user; parse_src_ip: 2; reference: url, wiki.quadrantsec.com/bin/view/Main/5005832; sid:5005832; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from an IP address associated with attack a honeypot"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 2; reference: url, wiki.quadrantsec.com/bin/view/Main/5005833; sid:5005833; rev: 1;)
+
+
 
 # 2014-05-07 09:32:45|10.8.0.5|129815|local4|info|info|%ASA*-6-722022| Group <GroupPolicy1> User <Bob> IP <10.10.102.102> UDP SVC connection established without compression
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN login from suspicious source [2]"; program: %ASA*-6-722022|%ASA*-6-722023; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5002877; sid:5002877; rev: 4;)
+# This is cover about by meta_content
+#
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN login from suspicious source [2]"; program: %ASA*-6-722022|%ASA*-6-722023; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5002877; sid:5002877; rev: 4;)
 
 # 2014-05-07 16:41:47|192.168.1.1|7050594|local0|info|info|%ASA*-6-303002| FTP connection from inside:10.20.11.20/2351 to dmz:192.168.1.1/21, user bob Stored file somefile
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to  suspicious source"; program: %ASA*-6-303002; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; reference: url, wiki.quadrantsec.com/bin/view/Main/5002878; sid: 5002878; rev: 5;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to  suspicious source"; program: %ASA*-6-303002; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; reference: url, wiki.quadrantsec.com/bin/view/Main/5002878; sid: 5002878; rev: 5;)
+#
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to malicious source"; program: %ASA*-6-303002; bluedot: type ip_reputation, track by_src, none, Maliciousy; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; reference: url, wiki.quadrantsec.com/bin/view/Main/5005826; sid:5005826; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to known proxy"; program: %ASA*-6-303002; bluedot: type ip_reputation, track by_src, none,Proxy; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; reference: url, wiki.quadrantsec.com/bin/view/Main/5005827; sid:5005827; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to an IP associated with attacking a honeypot"; program: %ASA*-6-303002; bluedot: type ip_reputation, track by_src, none,Honeypot; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; reference: url, wiki.quadrantsec.com/bin/view/Main/5005828; sid:5005828; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to Tor IP"; program: %ASA*-6-303002; bluedot: type ip_reputation, track by_src, none, Tor; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; reference: url, wiki.quadrantsec.com/bin/view/Main/5005829; sid:5005829; rev: 1;)
 
