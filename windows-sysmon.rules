@@ -81,7 +81,9 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Suspicious W
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Command line $\\ type request"; event_id: 1; pcre: "/CommandLine: (.*)\$\\\\(.*)/"; classtype: suspicious-command; program: *Sysmon*; reference: url,findingbad.blogspot.cz/2017/12/a-few-of-my-favorite-things-continued.html; reference: url,wiki.quadrantsec.com/bin/view/Main/5003379; reference: url,www.quadrantsec.com/about/blog/using_jack_crooks_log_analysis_concepts_with_sagan; sid:5003379; rev:3;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Powershell execution"; event_id: 1; pcre: "/CommandLine: (.*):\/\/(.*)/"; pcre: "/Image: (.*)powershell\.exe(.*)/i"; classtype: suspicious-command; program: *Sysmon*; reference: url,findingbad.blogspot.cz/2017/12/a-few-of-my-favorite-things-continued.html; reference: url,wiki.quadrantsec.com/bin/view/Main/5003380; reference: url,www.quadrantsec.com/about/blog/using_jack_crooks_log_analysis_concepts_with_sagan; sid:5003380; rev:2;)
+# This needs to be more targetted.  Maybe merge with windows-powershell.rules?
+#
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Powershell execution"; event_id: 1; pcre: "/CommandLine: (.*):\/\/(.*)/"; pcre: "/Image: (.*)powershell\.exe(.*)/i"; classtype: suspicious-command; program: *Sysmon*; reference: url,findingbad.blogspot.cz/2017/12/a-few-of-my-favorite-things-continued.html; reference: url,wiki.quadrantsec.com/bin/view/Main/5003380; reference: url,www.quadrantsec.com/about/blog/using_jack_crooks_log_analysis_concepts_with_sagan; sid:5003380; rev:2;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] SYSMON Possible CMD detected"; event_id: 1; pcre: "/CommandLine: (.*)cmd(.*)/i"; content: "OriginalFileName|22|:|22|Cmd.Exe|22|"; nocase; classtype: suspicious-command; program: *Sysmon*; reference: url,findingbad.blogspot.cz/2017/12/a-few-of-my-favorite-things-continued.html; reference: url,wiki.quadrantsec.com/bin/view/Main/5003388; reference: url,www.quadrantsec.com/about/blog/using_jack_crooks_log_analysis_concepts_with_sagan; sid:5003388; rev:3;)
 
