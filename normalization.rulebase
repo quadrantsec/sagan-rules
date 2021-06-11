@@ -532,3 +532,10 @@ rule=: CLOUDGENIX_HOST=%-:quoted-string% DEVICE_TIME=%-:quoted-string% MSG="sshd
 
 rule=: CLOUDGENIX_HOST=%-:quoted-string% DEVICE_TIME=%-:quoted-string% STATUS=%-:quoted-string% CODE=%-:quoted-string% SEVERITY=%-:quoted-string% AL_ID=%-:quoted-string% VPN_LINK_ID=%username:quoted-string% IDENTIFIER=%-:quoted-string% ELEMENT_ID=%-:quoted-string%
 
+# New semi-generic normalization rules.
+
+rule=: Data received from %src-ip:@ipaddr%:%src-port:number%:%-:rest%
+rule=: SMTP Command from %src-ip:@ipaddr%:%src-port:number%:%-:rest%
+rule=: Attempted %-:word% login from %src-ip:@ipaddr%:%src-port:number%:%-:rest%
+rule=: connect from %src-ip:@ipaddr% %-:rest%
+
