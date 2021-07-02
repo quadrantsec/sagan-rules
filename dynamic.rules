@@ -114,4 +114,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[DYNAMIC] Mimecast logs dete
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[DYNAMIC] Cloudgenix logs detected via message"; content: "cgxFlowLog"; dynamic_load: $RULE_PATH/cloudgenix.rules; reference: url,wiki.quadrantsec.com/bin/view/Main/5005773; classtype: dynamic-rules; sid:5005773; rev:2;)
 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[DYNAMIC] Darktrace logs detected via program"; program: darktrace; dynamic_load: $RULE_PATH/darktrace.rules; classtype: dynamic-rules; reference: url,wiki.quadrantsec.com/bin/view/Main/5005838; sid:5005838; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[DYNAMIC] Darktrace logs detected via program"; content: "breachUrl"; content: "model"; dynamic_load: $RULE_PATH/darktrace.rules; classtype: dynamic-rules; reference: url,wiki.quadrantsec.com/bin/view/Main/5005839; sid:5005839; rev:1;)
 

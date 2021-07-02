@@ -5639,6 +5639,81 @@
 5005835 || [CISCO-BLUEDOT] Console login from Tor node || url, wiki.quadrantsec.com/bin/view/Main/5005835
 5005836 || [CISCO-BLUEDOT] Console login from an IP associated with attacking a honeypot || url, wiki.quadrantsec.com/bin/view/Main/5005836
 5005837 || [CISCO-BLUEDOT] Console login from known proxy || url, wiki.quadrantsec.com/bin/view/Main/5005837
+5005838 || [DYNAMIC] Darktrace logs detected via program || url,wiki.quadrantsec.com/bin/view/Main/5005838
+5005839 || [DYNAMIC] Darktrace logs detected via program || url,wiki.quadrantsec.com/bin/view/Main/5005839
+5005840 || [DARKTRACE] Potential Malicious traffic detection || url,wiki.quadrantsec.com/bin/view/Main/5005840
+5005841 || [DARKTRACE] Potential Malicious Anomalous Connection Alert || url,wiki.quadrantsec.com/bin/view/Main/5005841
+5005842 || [DARKTRACE] Potential Malicious Anomalous File Alert || url,wiki.quadrantsec.com/bin/view/Main/5005842
+5005843 || [DARKTRACE] Potential Malicious Anomalous Server Activity Alert || url,wiki.quadrantsec.com/bin/view/Main/5005843
+5005844 || [DARKTRACE] Potential Malicious Antigena Alert || url,wiki.quadrantsec.com/bin/view/Main/5005844
+5005845 || [DARKTRACE] Potential Malicious Compliance Alert || url,wiki.quadrantsec.com/bin/view/Main/5005845
+5005846 || [DARKTRACE] Potential Malicious Compromise Alert || url,wiki.quadrantsec.com/bin/view/Main/5005846
+5005847 || [DARKTRACE] Potential Malicious Device Alert || url,wiki.quadrantsec.com/bin/view/Main/5005847
+5005848 || [DARKTRACE] Potential Malicious Infrastructure Alert || url,wiki.quadrantsec.com/bin/view/Main/5005848
+5005849 || [DARKTRACE] Potential Malicious System Alert || url,wiki.quadrantsec.com/bin/view/Main/5005849
+5005850 || [DARKTRACE] Potential Malicious Unusual Activity Alert || url,wiki.quadrantsec.com/bin/view/Main/5005850
+5005851 || [DARKTRACE] Potential Malicious User Alert || url,wiki.quadrantsec.com/bin/view/Main/5005851
+5005852 || [DARKTRACE] Potential Malicious Remote Desktop Tunnel || url,wiki.quadrantsec.com/bin/view/Main/5005852
+5005853 || [DARKTRACE] External connection from a device over an uncommon port || url,wiki.quadrantsec.com/bin/view/Main/5005853
+5005854 || [DARKTRACE] A device is sending a large volume of data to an external location || url,wiki.quadrantsec.com/bin/view/Main/5005854
+5005855 || [DARKTRACE] A device is making an outbound VPN connection to a rare external location || url,wiki.quadrantsec.com/bin/view/Main/5005855
+5005856 || [DARKTRACE] Device is connecting to new external deviecs not detected before || url,wiki.quadrantsec.com/bin/view/Main/5005856
+5005857 || [DARKTRACE] A device has transfered a modearate to large volume of traffic over a 24 hour period || url,wiki.quadrantsec.com/bin/view/Main/5005857
+5005858 || [DARKTRACE] A device has begun communicating on a UDP port it has never used before || url,wiki.quadrantsec.com/bin/view/Main/5005858
+5005859 || [DARKTRACE] A device is posting data out out of the network to a rare external hostname || url,wiki.quadrantsec.com/bin/view/Main/5005859
+5005860 || [DARKTRACE] A device is connecting directly to an IP address without a hostname using a new user agent || url,wiki.quadrantsec.com/bin/view/Main/5005860
+5005861 || [DARKTRACE] Suspicious charcters found in hostanme of external connection || url,wiki.quadrantsec.com/bin/view/Main/5005861
+5005862 || [DARKTRACE] A device is posting data out out of the network to a rare external location without a hostname || url,wiki.quadrantsec.com/bin/view/Main/5005862
+5005863 || [DARKTRACE] A device is communicating with a server using a self signed certificate || url,wiki.quadrantsec.com/bin/view/Main/5005863
+5005864 || [DARKTRACE] A device is communicating with a server using an expired certificate || url,wiki.quadrantsec.com/bin/view/Main/5005864
+5005865 || [DARKTRACE] A device is communicating with a server using a suspicious self signed certificate || url,wiki.quadrantsec.com/bin/view/Main/5005865
+5005866 || [DARKTRACE] A highly privileged credential is being used to connect between two devices that rarely interact || url,wiki.quadrantsec.com/bin/view/Main/5005866
+5005867 || [DARKTRACE] A device is transferring an abnormally large volume of data internally || url,wiki.quadrantsec.com/bin/view/Main/5005867
+5005868 || [DARKTRACE] A device is making an unusual outgoing Remote Desktop connection || url,wiki.quadrantsec.com/bin/view/Main/5005868
+5005869 || [DARKTRACE] A device downloaded a file from an uncommon external location || url,wiki.quadrantsec.com/bin/view/Main/5005869
+5005870 || [DARKTRACE] A device has downloaded an executable from a location that the network does not normally visit || url,wiki.quadrantsec.com/bin/view/Main/5005870
+5005871 || [DARKTRACE] A device has downloaded a Windows Portable Executable (PE) via unencrypted FTP || url,wiki.quadrantsec.com/bin/view/Main/5005871
+5005872 || [DARKTRACE] A device has written a script file to another internal device it has not connected to in this way before || url,wiki.quadrantsec.com/bin/view/Main/5005872
+5005873 || [DARKTRACE] A device has downloaded a ZIP file from a location that the network does not normally visit || url,wiki.quadrantsec.com/bin/view/Main/5005873
+5005874 || [DARKTRACE] A server is making unusual external connections to destinations not frequently visited by devices on the network || url,wiki.quadrantsec.com/bin/view/Main/5005874
+5005875 || [DARKTRACE] A device has begun serving protocols to a rare external endpoint, on an unusual port || url,wiki.quadrantsec.com/bin/view/Main/5005875
+5005876 || [DARKTRACE] A device is communicating with the Tor network privacy service || url,wiki.quadrantsec.com/bin/view/Main/5005876
+5005877 || [DARKTRACE] A device is making anomalous internal file transfers || url,wiki.quadrantsec.com/bin/view/Main/5005877
+5005878 || [DARKTRACE] A device is persistently causing unexpected event || url,wiki.quadrantsec.com/bin/view/Main/5005878
+5005879 || [DARKTRACE] A device is making peer-to-peer BitTorrent connections || url,wiki.quadrantsec.com/bin/view/Main/5005879
+5005880 || [DARKTRACE] A device is communicating externally with a rare location using ports normally only used within the internal network || url,wiki.quadrantsec.com/bin/view/Main/5005880
+5005881 || [DARKTRACE] A device is being remotely controlled from outside the network || url,wiki.quadrantsec.com/bin/view/Main/5005881
+5005882 || [DARKTRACE] A device has been observed receiving a number of SIP requests from a rare external endpoint || url,wiki.quadrantsec.com/bin/view/Main/5005882
+5005883 || [DARKTRACE] A device has made an external encrypted connection to a rare endpoint on a port associated with DoT || url,wiki.quadrantsec.com/bin/view/Main/5005883
+5005884 || [DARKTRACE] A device was observed accessing a document over SMB that appears to contain sensitive information || url,wiki.quadrantsec.com/bin/view/Main/5005884
+5005885 || [DARKTRACE] A server is detected storing sensitive files in SMB connections || url,wiki.quadrantsec.com/bin/view/Main/5005885
+5005886 || [DARKTRACE] A device is making SSH connections to rare external destinations || url,wiki.quadrantsec.com/bin/view/Main/5005886
+5005887 || [DARKTRACE] A device is initiating multiple connections to a rare external endpoint in a regular manner || url,wiki.quadrantsec.com/bin/view/Main/5005887
+5005888 || [DARKTRACE] A device has been repeatedly connecting to a rare external location - possible beaconing || url,wiki.quadrantsec.com/bin/view/Main/5005888
+5005889 || [DARKTRACE] Possible beaconing to an rare external algorithmically generated endpoint || url,wiki.quadrantsec.com/bin/view/Main/5005889
+5005890 || [DARKTRACE] Possible beaconing to a rare external location || url,wiki.quadrantsec.com/bin/view/Main/5005890
+5005891 || [DARKTRACE] Possible presistent connection to a rare external host || url,wiki.quadrantsec.com/bin/view/Main/5005891
+5005892 || [DARKTRACE] A device is causing repeated spikes in HTTP or SSL connections to new external location for over a day || url,wiki.quadrantsec.com/bin/view/Main/5005892
+5005893 || [DARKTRACE] A device has made a large number of NTLM login failures || url,wiki.quadrantsec.com/bin/view/Main/5005893
+5005894 || [DARKTRACE] A device is using common penetration testing tools || url,wiki.quadrantsec.com/bin/view/Main/5005894
+5005895 || [DARKTRACE] A number of devices have been detected reading a suspicious executable file from an internal server || url,wiki.quadrantsec.com/bin/view/Main/5005895
+5005896 || [DARKTRACE] A device has initiated a large number of connections to unique, rare endpoints || url,wiki.quadrantsec.com/bin/view/Main/5005896
+5005897 || [DARKTRACE] A device has made a long SSL connection to a new endpoint, with an unusual SSL client || url,wiki.quadrantsec.com/bin/view/Main/5005897
+5005898 || [DARKTRACE] A device is making new internal connections to a range of internal hosts consistent with network scanning || url,wiki.quadrantsec.com/bin/view/Main/5005898
+5005899 || [DARKTRACE] A device is making HTTP or HTTPS connections to new IP immediately following a new User-Agent || url,wiki.quadrantsec.com/bin/view/Main/5005899
+5005900 || [DARKTRACE] A device performed an unusual connection to a domain controller using SAMR and subsequently downloaded an unusual volume of data via LDAP || url,wiki.quadrantsec.com/bin/view/Main/5005900
+5005901 || [DARKTRACE] A device is making reverse DNS lookups for a range of internal hosts consistent with network reconnaissance || url,wiki.quadrantsec.com/bin/view/Main/5005901
+5005902 || [DARKTRACE] A device was detected making an SMB query for a known sensitive file || url,wiki.quadrantsec.com/bin/view/Main/5005902
+5005903 || [DARKTRACE] A device is requesting DNS from a rare external location || url,wiki.quadrantsec.com/bin/view/Main/5005903
+5005904 || [DARKTRACE] A new proxy server has been detected, or an existing server has stopped || url,wiki.quadrantsec.com/bin/view/Main/5005904
+5005905 || [DARKTRACE] A device is both receiving and making an SSH connection simultaneously creating a potential tunnel || url,wiki.quadrantsec.com/bin/view/Main/5005905
+5005906 || [DARKTRACE] A device has deleted an anomalous volume of files from a network share || url,wiki.quadrantsec.com/bin/view/Main/5005906
+5005907 || [DARKTRACE] A device is sending an abnormally high level of data externally || url,wiki.quadrantsec.com/bin/view/Main/5005907
+5005908 || [DARKTRACE] A device is transferring an abnormally large volume of data internally || url,wiki.quadrantsec.com/bin/view/Main/5005908
+5005909 || [DARKTRACE] A device has made a large number of attempts to access files on a network share that it is not authorised to access || url,wiki.quadrantsec.com/bin/view/Main/5005909
+5005910 || [DARKTRACE] A device that has not been seen on the network for an extended time is now active and deviating from normal network behaviour || url,wiki.quadrantsec.com/bin/view/Main/5005910
+5005911 || [DARKTRACE] A device has made a large volume of Kerberos logon failures using the same credential || url,wiki.quadrantsec.com/bin/view/Main/5005911
+5005912 || [DARKTRACE] A highly privileged credential is being used for the first time on a client device || url,wiki.quadrantsec.com/bin/view/Main/5005912
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
