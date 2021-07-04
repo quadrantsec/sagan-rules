@@ -67,3 +67,13 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[WINDOWS-POWERSHELL] HostVers
 
 alert any any -> $HOME_NET any (msg: "[WINDOWS-POWERSHELL] Suspicious Download using IEX"; program: *PowerShell*; content: "IEX |28|New|2d|ObjectNet|2e|WebClient|29 2e|downloadstring"; nocase; classtype: bad-unknown; reference: url,fireeye.com/blog/threat-research/2018/07/malicious-powershell-detection-via-machine-learning.html; reference: url,wiki.quadrantsec.com/bin/view/Main/5005765; sid:5005765; rev:1;)
 
+# Good general signatures, but originally used to detect Kaseya / REvil randomware.
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[WINDOWS-POWERSHELL] Powershell DisableIntrusionPreventionSystem detected"; program: *PowerShell*; content: "DisableIntrusionPreventionSystem"; classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005914; sid:5005914; rev:1;)
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[WINDOWS-POWERSHELL] Powershell DisableScriptScanning detected"; program: *PowerShell*; content: "DisableScriptScanning"; classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005915; sid:5005915; rev:1;)
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[WINDOWS-POWERSHELL] Powershell DisableRealtimeMonitoring detected"; program: *PowerShell*; content: "DisableRealtimeMonitoring"; classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005916; sid:5005916; rev:1;)
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[WINDOWS-POWERSHELL] Powershell MAPSReporting Disabled detected"; program: *PowerShell*; content: "MAPSReporting Disabled"; classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005917; sid:5005917; rev:1;)
+

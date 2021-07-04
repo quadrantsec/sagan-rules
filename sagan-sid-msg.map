@@ -5714,6 +5714,13 @@
 5005910 || [DARKTRACE] A device that has not been seen on the network for an extended time is now active and deviating from normal network behaviour || url,wiki.quadrantsec.com/bin/view/Main/5005910
 5005911 || [DARKTRACE] A device has made a large volume of Kerberos logon failures using the same credential || url,wiki.quadrantsec.com/bin/view/Main/5005911
 5005912 || [DARKTRACE] A highly privileged credential is being used for the first time on a client device || url,wiki.quadrantsec.com/bin/view/Main/5005912
+5005913 || [WINDOWS-MALWARE] Possible Kaseya/REvil Randomware dropper detected || url,wiki.quadrantsec.com/bin/view/Main/5005913
+5005914 || [WINDOWS-POWERSHELL] Powershell DisableIntrusionPreventionSystem detected || url,wiki.quadrantsec.com/bin/view/Main/5005914
+5005915 || [WINDOWS-POWERSHELL] Powershell DisableScriptScanning detected || url,wiki.quadrantsec.com/bin/view/Main/5005915
+5005916 || [WINDOWS-POWERSHELL] Powershell DisableRealtimeMonitoring detected || url,wiki.quadrantsec.com/bin/view/Main/5005916
+5005917 || [WINDOWS-POWERSHELL] Powershell MAPSReporting Disabled detected || url,wiki.quadrantsec.com/bin/view/Main/5005917
+5005918 || [WINDOWS-MALWARE] Possible Kaseya/REvil || url,wiki.quadrantsec.com/bin/view/Main/5005918
+5005919 || [WINDOWS-MALWARE] Possible Kaseya VSA in use || url,wiki.quadrantsec.com/bin/view/Main/5005919
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
