@@ -5721,6 +5721,32 @@
 5005917 || [WINDOWS-POWERSHELL] Powershell MAPSReporting Disabled detected || url,wiki.quadrantsec.com/bin/view/Main/5005917
 5005918 || [WINDOWS-MALWARE] Possible Kaseya/REvil || url,wiki.quadrantsec.com/bin/view/Main/5005918
 5005919 || [WINDOWS-MALWARE] Possible Kaseya VSA in use || url,wiki.quadrantsec.com/bin/view/Main/5005919
+5005920 || [WINDOWS-MALWARE] Printnightmare exploit detected - CVE-2021-1675 || cve,2021-1675 || github.com/SigmaHQ/sigma/pull/1588/files || url,wiki.quadrantsec.com/bin/view/Main/5005920
+5005921 || [CONFLUENT] Authorization to create Kafka Cluster || url,wiki.quadrantsec.com/bin/view/Main/5005921 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005922 || [CONFLUENT] Kafka Successful Authentication || url,wiki.quadrantsec.com/bin/view/Main/5005922 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005923 || [CONFLUENT] Kafka Successful Authentication using API Key || url,wiki.quadrantsec.com/bin/view/Main/5005923 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005924 || [CONFLUENT] Kafka Successful Authentication using Interactive Token || url,wiki.quadrantsec.com/bin/view/Main/5005924 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005925 || [CONFLUENT] Kafka Failed Authentication || url,wiki.quadrantsec.com/bin/view/Main/5005925 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005926 || [CONFLUENT] Kafka Failed Authentication using Interactive Token || url,wiki.quadrantsec.com/bin/view/Main/5005926 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005927 || [CONFLUENT] Kafka Failed Authentication using API Key || url,wiki.quadrantsec.com/bin/view/Main/5005927 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005928 || [CONFLUENT] Login failure- Brute Force [5/5] || url,wiki.quadrantsec.com/bin/view/Main/5005928 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005929 || [CONFLUENT] Kafka Configuration Altered/Updated || url,wiki.quadrantsec.com/bin/view/Main/5005929 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005930 || [CONFLUENT] Kafka Mirror Topic Properties Altered/Updated || url,wiki.quadrantsec.com/bin/view/Main/5005930 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005931 || [CONFLUENT] Kafka Broker ACL Created || url,wiki.quadrantsec.com/bin/view/Main/5005931 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005932 || [CONFLUENT] Kafka Cluster Link Created || url,wiki.quadrantsec.com/bin/view/Main/5005932 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005933 || [CONFLUENT] Kafka Partition Created || url,wiki.quadrantsec.com/bin/view/Main/5005933 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005934 || [CONFLUENT] Kafka Topic Created || url,wiki.quadrantsec.com/bin/view/Main/5005934 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005935 || [CONFLUENT] Specific Kafka Topic Created || url,wiki.quadrantsec.com/bin/view/Main/5005935 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005936 || [CONFLUENT] Specific Kafka Topic Creation Not Allowed || url,wiki.quadrantsec.com/bin/view/Main/5005936 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005937 || [CONFLUENT] Kafka Broker ACL Deleted || url,wiki.quadrantsec.com/bin/view/Main/5005937 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005938 || [CONFLUENT] Kafka Cluster Link Deleted || url,wiki.quadrantsec.com/bin/view/Main/5005938 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005939 || [CONFLUENT] Kafka Group Deleted || url,wiki.quadrantsec.com/bin/view/Main/5005939 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005940 || [CONFLUENT] Kafka Record Deleted || url,wiki.quadrantsec.com/bin/view/Main/5005940 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005941 || [CONFLUENT] Kafka Topic Deleted || url,wiki.quadrantsec.com/bin/view/Main/5005941 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005942 || [CONFLUENT] Kafka Broker Dynamic Configuration Altered || url,wiki.quadrantsec.com/bin/view/Main/5005942 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005943 || [CONFLUENT] Kafka Broker Dynamic Configuration Altered (SuperUser) || url,wiki.quadrantsec.com/bin/view/Main/5005943 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005944 || [CONFLUENT] Kafka Broker Dynamic Configuration Altered (ACL) || url,wiki.quadrantsec.com/bin/view/Main/5005944 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
+5005945 || [CONFLUENT] Kafka Committed Offset for Partition in Consumer Group Deleted || url,wiki.quadrantsec.com/bin/view/Main/5005945 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
