@@ -32,5 +32,5 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[JUNIPER-BLUEDOT] VPN Logout
 
 # Juniper alerts for CVE 2015-7755 - Robert Nunley (rnunley@quadrantsec.com)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[JUNIPER-BLUEDOT] Juniper ScreenOS Admin Login from a known malicous source"; content: "Admin user"; content:"has logged on via"; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp: default_dst_port: $SSH_PORT: classtype: successful-user; parse_src_ip: 1; reference:url,kb.juniper.net/InfoCenter/index?page=content&id=JSA10713&actp=search; reference: url, wiki.quadrantsec.com/bin/view/Main/5003114; sid:5003114; rev:2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[JUNIPER-BLUEDOT] Juniper ScreenOS Admin Login from a known malicous source"; content: "Admin user"; content:"has logged on via"; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: successful-user; parse_src_ip: 1; reference:url,kb.juniper.net/InfoCenter/index?page=content&id=JSA10713&actp=search; reference: url, wiki.quadrantsec.com/bin/view/Main/5003114; sid:5003114; rev:2;)
 
