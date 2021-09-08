@@ -106,7 +106,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[DYNAMIC] Watchguard logs de
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[DYNAMIC] Oracle logs detect via message"; dynamic_load: $RULE_PATH/oracle.rules; content: "RETURNCODE|3a|["; classtype: dynamic-rules; reference: url,wiki.quadrantsec.com/bin/view/Main/5003935; sid:5003935; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[DYNAMIC] Zscaler logs detect via message"; dynamic_load: $RULE_PATH/zscaler.rules; content: "requestClientApplication|3d|"; classtype: dynamic-rules; reference: url,wiki.quadrantsec.com/bin/view/Main/5003936; sid:5003936; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[DYNAMIC] Zscaler logs detect via message"; dynamic_load: $RULE_PATH/zscaler.rules; content: "requestClientApplication|3d|"; content:!"MCAS"; classtype: dynamic-rules; reference: url,wiki.quadrantsec.com/bin/view/Main/5003936; sid:5003936; rev:2;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[DYNAMIC] PowerShell logs detect via program"; dynamic_load: $RULE_PATH/windows-powershell.rules; program: *PowerShell*; classtype: dynamic-rules; reference: url,wiki.quadrantsec.com/bin/view/Main/5005766; sid:5005766; rev:1;)
 
