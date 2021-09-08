@@ -1,5 +1,5 @@
-Welcome to the "Sagan Rules"
-----------------------------
+Welcome to the "Sagan Rules"!
+-----------------------------
 
 This is the Git repository for the Sagan engine rule sets.  You 
 probably won't find these useful unless you're actually using Sagan!
