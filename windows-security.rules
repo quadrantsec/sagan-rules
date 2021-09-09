@@ -445,3 +445,5 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-SECURITY] Metadata 
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-SECURITY] Potential NetBIOS name spoofing"; event_id: 8415; content: "NBNS spoofer was discovered"; nocase; parse_src_ip: 1; classtype: suspicious-traffic; reference: url,www.packtpub.com/mapt/book/networking_and_servers/9781785285561/5/ch05lvl1sec32/nbns-spoofing; reference: url,wiki.quadrantsec.com/bin/view/Main/5003937; sid:5003937; rev: 2;)
 
+# Detects Export of Secret Key. By SDrenning off of Golden SAML IOC's
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[WINDOWS-SECURITY] Command to Export Secret Key Detected"; event_id: 4688; content: "certutil |2d|exportPFX";nocase; classtype: suspicious-command; reference: url,github.com/SigmaHQ/sigma/blob/master/rules/powershell; reference: url,sygnia.co/golden-saml-advisory; sid:5005956; rev:1;)
