@@ -24,5 +24,5 @@ done to maintain compatibility with rule management software
 with your Suricata/Snort IDS/IPS systems. 
 
 For more information, please visit the Sagan web site: 
-http://sagan.readthedocs.org and http://sagan.quadrantsec.com
+http://sagan.readthedocs.org and http://sagan.quadrantsec.com .
 
