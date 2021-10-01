@@ -44,6 +44,6 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Problem nxlog system
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service starting"; content: "nxlog-"; content: "started"; flexbits: set,nxlog_start,601; flexbits:noeve; classtype: program-error; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5005744; sid:5005744; rev:2;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service starting"; content: "stopping nxlog service"; flexbits: set,nxlog_shutdown,601; flexbits:noeve; classtype: program-error; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5005746; sid:5005746; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service starting"; content: "stopping nxlog service"; flexbits: set,nxlog_shutdown,1200; flexbits:noeve; classtype: program-error; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5005746; sid:5005746; rev:2;)
 
 
