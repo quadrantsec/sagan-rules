@@ -87,3 +87,10 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[APACHE] Possible CVE-2014-62
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[APACHE] Possible CVE-2014-6271 Attempt in HTTP URLENCODE Generic 30"; content:"|28 29|%20%7b%20"; program: apache|httpd; xbits: set, exploit_attempt ,track ip_src, expire 86400; parse_src_ip: 1; reference:url,blogs.akamai.com/2014/09/environment-bashing.html; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype:attempted-admin; sid:5002209; rev:6;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[APACHE] CVE-2014-6271 Attempt In HTTP Headers Line Continuation Evasion LF"; content:"|28 29 0a 20 7b|"; program: apache|httpd; xbits: set, exploit_attempt ,track ip_src, expire 86400; parse_src_ip: 1; reference:url,www.invisiblethreat.ca/2014/09/cve-2014-6271/; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype:attempted-admin; sid:5002210; rev:6;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[APACHE] CVE-2014-6271 Attempt In HTTP Headers Line Continuation Evasion CRLF"; content:"|28 29 0d 0a 20 7b|"; program: apache|httpd; xbits: set, exploit_attempt ,track ip_src, expire 86400; parse_src_ip: 1; reference:url,www.invisiblethreat.ca/2014/09/cve-2014-6271/; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype:attempted-admin; sid:5002211; rev:6;)
+
+# CVE-2021-44228 / Champ Clark - 2021/12/12
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[APACHE] Log4j exploit attempt - CVE-2021-44228"; content:"jndi|3a|"; content: "{";  default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference:url,lunasec.io/docs/blog/log4j-zero-day/; reference:cve,2021-44228; sid:5005960; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[APACHE] Log4j exploit attempt via hex encoding - CVE-2021-44228"; content:"jndi"; content: "%3A"; nocase; content: "%7B"; nocase; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference:url,lunasec.io/docs/blog/log4j-zero-day/; reference:cve,2021-44228; sid:5005961; rev:1;)
+
