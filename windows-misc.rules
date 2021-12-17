@@ -123,7 +123,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Unable to log
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Installation of new service via Security Audit "; event_id: 4697,601; classtype: suspicious-traffic; program: *Security*; reference: url,wiki.quadrantsec.com/bin/view/Main/5002818; reference: url,pastebin.com/raw/0SNSvyjJ; sid:5002818; rev:5;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] VSS shutdown [XBIT SET]"; event_id: 8225; flexbits: set,vss_shutdown,601; flexbits:noeve; classtype: program-error; program: *Application*; reference: url,wiki.quadrantsec.com/bin/view/Main/5005745; sid:5005745; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] VSS shutdown [XBIT SET]"; event_id: 8225; flexbits: set,vss_shutdown,1200; flexbits:noeve; classtype: program-error; program: *Application*; reference: url,wiki.quadrantsec.com/bin/view/Main/5005745; sid:5005745; rev:2;)
 
 # Added by Champ Clark III (08/19/2016) 
 
