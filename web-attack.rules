@@ -108,3 +108,10 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] Attempt to Acc
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] Attempt to Access PHP Timeclock Page"; content:"/db.php" default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference: url,www.doomedraven.com/2013/05/cheat-sheet-web-application-exploitation.html; sid: 5002746; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] Attempt to Access default DeV!L`s ClanPortal Page"; content:"/inc/mysql.php" default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference: url,www.doomedraven.com/2013/05/cheat-sheet-web-application-exploitation.html; sid: 5002747; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] Attempt to Access IISamples Page"; content:"/iisamples" default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference: url,www.doomedraven.com/2013/05/cheat-sheet-web-application-exploitation.html; sid: 5002748; rev:2;)
+
+# CVE-2021-44228 / By Champ Clark [2021/12/12]
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] Log4j exploit attempt - CVE-2021-44228"; content:"jndi|3a|"; content: "{"; content: " 200 "; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference:url,lunasec.io/docs/blog/log4j-zero-day/; reference:cve,2021-44228; sid:5005958; rev:2;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] Log4j exploit attempt via hex encoding - CVE-2021-44228"; content:"jndi"; content: "%3A"; nocase; content: "%7B"; nocase; content: " 200 "; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference:url,lunasec.io/docs/blog/log4j-zero-day/; reference:cve,2021-44228; sid:5005959; rev:2;)
+
