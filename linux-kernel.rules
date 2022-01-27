@@ -47,3 +47,17 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-KERNEL] Hard drive/RAI
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-KERNEL] Bad UDP checksum"; program: UDP; content: "bad checksum.""; classtype: network-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5003115; sid:5003115; rev:1;)
 
+
+#Added by S.G.Drenning on 20220127 Regarding CVE 2021-4034 Linux Escalation Attempt.
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[LINUX-POLKIT] POSSIBLE POLKIT PRIVILEGE ESCALATION ATTEMPT (CVE-2021-4034)"; content: "mkdir -p |27|GCONV_PATH|3D 2E 27|";nocase; classtype: exploit-attempt; reference: url,github.com/arthepsy/CVE-2021-4034/blob/main/cve-2021-4034-poc.c; sid:5005962; rev:1;)
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[LINUX-POLKIT] POSSIBLE POLKIT PRIVILEGE ESCALATION ATTEMPT (CVE-2021-4034)"; content: "chmod a|2b|x |27|GCONV_PATH|3d|";nocase; classtype: exploit-attempt; reference: url,github.com/arthepsy/CVE-2021-4034/blob/main/cve-2021-4034-poc.c; sid:5005963; rev:1;)
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[LINUX-POLKIT] POLKIT PRIVILEGE ESCALATION ATTEMPT (CVE-2021-4034)"; content: "export PATH|3d 2f|usr|2f|local|2f|sbin|3a 2f|usr|2f|local|2f|bin|3a 2f|usr|2f|sbin|3a 2f|usr|2f|bin|3a 2f|sbin|3a 2f|bin|3b| rm -rf |27|GCONV_PATH|3d 2e 27|";nocase; classtype: exploit-attempt; reference: url,github.com/arthepsy/CVE-2021-4034/blob/main/cve-2021-4034-poc.c; sid:5005964; rev:1;)
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[LINUX-POLKIT] POLKIT PRIVILEGE ESCALATION ATTEMPT (CVE-2021-4034)"; content: "PATH|3d 2f|usr|2f|local|2f|sbin|3a 2f|usr|2f|local|2f|bin|3a 2f|usr|2f|sbin|3a 2f|usr|2f|bin|3a 2f|sbin|3a 2f|bin|3a 2f|opt|2f|bin|22 2c| NULL";nocase; classtype: exploit-attempt; reference: url,github.com/berdav/CVE-2021-4034/blob/main/pwnkit.c; sid:5005965; rev:1;)
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[LINUX-POLKIT] POSSIBLE POLKIT PRIVILEGE ESCALATION ATTEMPT (CVE-2021-4034)"; content: "PATH|3d|name|3d 2e|";nocase; classtype: exploit-attempt; reference: url,zdnet.com/article/major-linux-policykit-security-vulnerability-uncovered-pwnkit; sid:5005966; rev:1;)
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[LINUX-POLKIT] POLKIT PRIVILEGE ESCALATION ATTEMPT (CVE-2021-4034)"; content: "PATH|3d 2f|";nocase; content:"NULL";nocase; classtype: exploit-attempt; reference: url,github.com/berdav/CVE-2021-4034/blob/main/pwnkit.c; sid:5005967; rev:1;)
+
