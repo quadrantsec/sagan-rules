@@ -1,0 +1,8 @@
+#Rules to catch failed services while using systemd by jsuain 20220207
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] SERVICE_START Failure"; program: audit; content: "SERVICE|5F|START"; content: "res|3D|failed"; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005234; sid: 5005234; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Service Failed to Start"; program: systemd; content: "Failed|20|to|20|start"; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005235; sid: 5005235; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Service Failed"; program: systemd; content: "|2E|service|3A 20|Failed"; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005236; sid: 5005236; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Sagan Config Failure"; program: sagan; content: "|5B|E|5D|"; content: "The|20|configuration|20|file"; content: "cannot|20|be|20|found|21 20|Abort|21|"; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005237; sid: 5005237; rev:1;)
