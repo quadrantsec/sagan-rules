@@ -1,8 +1,36 @@
+# Sagan systemd.rules
+# Copyright (c) 2009-2021. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
 #Rules to catch failed services while using systemd by jsuain 20220207
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] SERVICE_START Failure"; program: audit; content: "SERVICE|5F|START"; content: "res|3D|failed"; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005234; sid: 5005234; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Service Failed to Start"; program: systemd; content: "Failed|20|to|20|start"; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005235; sid: 5005235; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] SERVICE_START Failure"; program: audit; content: "SERVICE|5F|START"; content: "res|3D|failed"; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005972; sid:5005972; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Service Failed"; program: systemd; content: "|2E|service|3A 20|Failed"; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005236; sid: 5005236; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Service Failed to Start"; program: systemd; content: "Failed|20|to|20|start"; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005973; sid:5005973; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Sagan Config Failure"; program: sagan; content: "|5B|E|5D|"; content: "The|20|configuration|20|file"; content: "cannot|20|be|20|found|21 20|Abort|21|"; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005237; sid: 5005237; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Service Failed"; program: systemd; content: "|2E|service|3A 20|Failed"; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005974; sid:5005974; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Sagan Config Failure"; program: sagan; content: "|5B|E|5D|"; content: "The|20|configuration|20|file"; content: "cannot|20|be|20|found|21 20|Abort|21|"; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005975; sid:5005975; rev:1;)

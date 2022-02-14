@@ -1740,7 +1740,7 @@
 5001823 || [WEB-ATTACKS] w3af User Agent || url,doc.emergingthreats.net/2007757 || url,w3af.sourceforge.net
 5001824 || [WEB-ATTACKS] WSFuzzer Web Application Fuzzing || url,doc.emergingthreats.net/2008628 || url,www.owasp.org/index.php/Category%3aOWASP_WSFuzzer_Project
 5001825 || [WEB-ATTACKS] Wapiti Web Server Vulnerability Scan || url,doc.emergingthreats.net/2008417 || url,wapiti.sourceforge.net/
-5001826 || [WEB-ATTACKS] WebHack Control Center User-Agent Inbound (WHCC/) || url,doc.emergingthreats.net/2003924 || url,www.governmentsecurity.org/forum/index.php?showtopic=5112&pid=28561&mode=threaded&start=
+5001826 || [WEB-ATTACKS] WebHack Control Center User-Agent Inbound (WHCC/) || url,doc.emergingthreats.net/2003924 || url,governmentsecurity.org/forum/index.php?showtopic=5112&pid=28561&mode=threaded&start=
 5001827 || [WEB-ATTACKS] Open-Proxy ScannerBot (webcollage-UA)  || url,doc.emergingthreats.net/2010768 || url,www.botsvsbrowsers.com/details/214715/index.html || url, stateofsecurity.com/?p=526
 5001828 || [WEB-ATTACKS] WebShag Web Application Scan Detected || url,doc.emergingthreats.net/2009158 || url,www.scrt.ch/pages_en/outils.html
 5001829 || [WEB-ATTACKS] WhatWeb Web Application Fingerprint Scanner Default User-Agent Detected || url,doc.emergingthreats.net/2010960 || url,www.morningstarsecurity.com/research/whatweb
@@ -2219,7 +2219,7 @@
 5002337 || [WINDOWS-GEOIP] Windows Network Cleartext from outside HOME_COUNTRY  || url,wiki.quadrantsec.com/bin/view/Main/5002337
 5002338 || [WINDOWS-GEOIP] Windows Session Disconnected from outside HOME_COUNTRY  || url,wiki.quadrantsec.com/bin/view/Main/5002338
 5002339 || [WINDOWS-GEOIP] Windows RDP Session Disconnected from outside HOME_COUNTRY  || url,wiki.quadrantsec.com/bin/view/Main/5002339
-5002340 || [WINDOWS-GEOIP] Attempted explicit windows logon  || url,wiki.quadrantsec.com/bin/view/Main/5002340
+5002340 || [WINDOWS-GEOIP] Attempted explicit windows logon || url,wiki.quadrantsec.com/bin/view/Main/5002340
 5002341 || [CITRIX-BLUEDOT] Login from Bluedot listed IP || url,wiki.quadrantsec.com/bin/view/Main/5002341 || url,support.citrix.com/article/CTX123875
 5002342 || [CITRIX-BLUEDOT] AAA LOGIN_FAILED from Bluedot listed IP || url,wiki.quadrantsec.com/bin/view/Main/5002342 || url,support.citrix.com/article/CTX123875
 5002343 || [CITRIX-BLUEDOT] SSLVPN HTTPREQUEST from Bluedot listed IP || url,wiki.quadrantsec.com/bin/view/Main/5002343 || url,support.citrix.com/article/CTX123875
@@ -2645,7 +2645,7 @@
 5002799 || [WINDOWS-SYSMON] PSExec execution detected || url,wiki.quadrantsec.com/bin/view/Main/5002799
 5002801 || [WINDOWS-MALWARE] Locky or AutoLocky ransomware extension detected. || url,decrypter.emsisoft.com || url,wiki.quadrantsec.com/bin/view/Main/5002801
 5002802 || [WINDOWS-SYSMON] Locky/CrypoMix ransomware instructions detected! || url,wiki.quadrantsec.com/bin/view/Main/5002802
-5002803 || [WINDOWS-SYSMON] vssadmin.exe execution. Possible ransomware || url,wiki.quadrantsec.com/bin/view/Main/5002803
+5002803 || [WINDOWS-SYSMON] vssadmin.exe Delete Shadows execution. Possible ransomware || url,wiki.quadrantsec.com/bin/view/Main/5002803
 5002804 || [WINDOWS-MALWARE] Locky ransomware note detected. || url,wiki.quadrantsec.com/bin/view/Main/5002804 || url,http://www.bleepingcomputer.com/news/security/the-locky-ransomware-encrypts-local-files-and-unmapped-network-shares/
 5002805 || [WINDOWS-MALWARE] Cryptowall 4.0 ransomware note detected. || url,wiki.quadrantsec.com/bin/view/Main/5002805 || url,http://www.bleepingcomputer.com/virus-removal/cryptowall-ransomware-information#cryptowall4
 5002806 || [WINDOWS-MALWARE] Cryptowall ransomware note detected. || url,wiki.quadrantsec.com/bin/view/Main/5002806
@@ -3409,7 +3409,7 @@
 5003574 || [WINDOWS-SECURITY] The domain controller failed to validate the credentials for an account || url,wiki.quadrantsec.com/bin/view/Main/5003574 || url,github.com/MicrosoftDocs/windowsserverdocs/blob/master/WindowsServerDocs/identity/ad-ds/plan/Appendix-L--Events-to-Monitor.md
 5003575 || [WINDOWS-SECURITY] A session was reconnected to a Window Station || url,wiki.quadrantsec.com/bin/view/Main/5003575 || url,github.com/MicrosoftDocs/windowsserverdocs/blob/master/WindowsServerDocs/identity/ad-ds/plan/Appendix-L--Events-to-Monitor.md
 5003576 || [WINDOWS-SECURITY] A session was disconnected from a Window Station || url,wiki.quadrantsec.com/bin/view/Main/5003576 || url,github.com/MicrosoftDocs/windowsserverdocs/blob/master/WindowsServerDocs/identity/ad-ds/plan/Appendix-L--Events-to-Monitor.md
-5003577 || [WINDOWS-SECURITY] The name of an account was changed: || url,wiki.quadrantsec.com/bin/view/Main/5003577 || url,github.com/MicrosoftDocs/windowsserverdocs/blob/master/WindowsServerDocs/identity/ad-ds/plan/Appendix-L--Events-to-Monitor.md
+5003577 || [WINDOWS-SECURITY] The name of an account was changed || url,wiki.quadrantsec.com/bin/view/Main/5003577 || url,github.com/MicrosoftDocs/windowsserverdocs/blob/master/WindowsServerDocs/identity/ad-ds/plan/Appendix-L--Events-to-Monitor.md
 5003578 || [WINDOWS-SECURITY] The password hash an account was accessed || url,wiki.quadrantsec.com/bin/view/Main/5003578 || url,github.com/MicrosoftDocs/windowsserverdocs/blob/master/WindowsServerDocs/identity/ad-ds/plan/Appendix-L--Events-to-Monitor.md
 5003579 || [WINDOWS-SECURITY] A basic application group was created || url,wiki.quadrantsec.com/bin/view/Main/5003579 || url,github.com/MicrosoftDocs/windowsserverdocs/blob/master/WindowsServerDocs/identity/ad-ds/plan/Appendix-L--Events-to-Monitor.md
 5003580 || [WINDOWS-SECURITY] A basic application group was changed || url,wiki.quadrantsec.com/bin/view/Main/5003580 || url,github.com/MicrosoftDocs/windowsserverdocs/blob/master/WindowsServerDocs/identity/ad-ds/plan/Appendix-L--Events-to-Monitor.md
@@ -4608,7 +4608,7 @@
 5004781 || [WINDOWS-AUTH] Vulnerable Netlogon/Zerologon connection was denied - CVE-2020-1472 || url,support.microsoft.com/en-us/help/4557222/how-to-manage-the-changes-in-netlogon-secure-channel-connections-assoc
 5004782 || [WINDOWS-AUTH] Vulnerable Netlogon/Zerologon connection allowed during deployment phase - CVE-2020-1472 || url,support.microsoft.com/en-us/help/4557222/how-to-manage-the-changes-in-netlogon-secure-channel-connections-assoc
 5004783 || [WINDOWS-MALWARE] Ryuk ransomware RyukReadMe.txt detected || url,wiki.quadrantsec.com/bin/view/Main/5004783 || url,www.crowdstrike.com/blog/big-game-hunting-with-ryuk-another-lucrative-targeted-ransomware/
-5004784 || [WINDOWS-MALWARE] Ryuk ransomware extension detected. || url,wiki.quadrantsec.com/bin/view/Main/5004784 || url,decrypter.emsisoft.com || www.crowdstrike.com/blog/big-game-hunting-with-ryuk-another-lucrative-targeted-ransomware/
+5004784 || [WINDOWS-MALWARE] Ryuk ransomware extension detected. || url,wiki.quadrantsec.com/bin/view/Main/5004784 || url,decrypter.emsisoft.com || url,www.crowdstrike.com/blog/big-game-hunting-with-ryuk-another-lucrative-targeted-ransomware/
 5004785 || [CROWDSTRIKE] CrowdStrike Remote Response Session Start Event Reported || url,wiki.quadrantsec.com/bin/view/Main/5004785
 5004786 || [CROWDSTRIKE] CrowdStrike Remote Response Session End Event Reported || url,wiki.quadrantsec.com/bin/view/Main/5004786
 5004787 || [MSAPI-AZURE-AD-GEOIP] Catch all outside HOME_COUNTRY event || url,wiki.quadrantsec.com/bin/view/Main/5004787
@@ -5721,7 +5721,7 @@
 5005917 || [WINDOWS-POWERSHELL] Powershell MAPSReporting Disabled detected || url,wiki.quadrantsec.com/bin/view/Main/5005917
 5005918 || [WINDOWS-MALWARE] Possible Kaseya/REvil || url,wiki.quadrantsec.com/bin/view/Main/5005918
 5005919 || [WINDOWS-MALWARE] Possible Kaseya VSA in use || url,wiki.quadrantsec.com/bin/view/Main/5005919
-5005920 || [WINDOWS-MALWARE] Printnightmare exploit detected - CVE-2021-1675 || cve,2021-1675 || github.com/SigmaHQ/sigma/pull/1588/files || url,wiki.quadrantsec.com/bin/view/Main/5005920
+5005920 || [WINDOWS-MALWARE] Printnightmare exploit detected - CVE-2021-1675 || cve,2021-1675 || url,github.com/SigmaHQ/sigma/pull/1588/files || url,wiki.quadrantsec.com/bin/view/Main/5005920
 5005921 || [CONFLUENT] Authorization to create Kafka Cluster || url,wiki.quadrantsec.com/bin/view/Main/5005921 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
 5005922 || [CONFLUENT] Kafka Successful Authentication || url,wiki.quadrantsec.com/bin/view/Main/5005922 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
 5005923 || [CONFLUENT] Kafka Successful Authentication using API Key || url,wiki.quadrantsec.com/bin/view/Main/5005923 || url,docs.confluent.io/cloud/current/access-management/audit-logging/cloud-audit-log-concepts.html
@@ -5755,6 +5755,27 @@
 5005951 || [WINDOWS-MALWARE] Possible DevilsTongue Physmem.sys Detected [2/2] || url,wiki.quadrantsec.com/bin/view/Main/reference/5005951: url,microsoft.com/security/blog/2021/07/15/protecting-customers-from-a-private-sector-offensive-actor-using-0-day-exploits-and-devilstongue-malware
 5005952 || [WINDOWS-MALWARE] Possible DevilsTongue DAT access detected || url,microsoft.com/security/blog/2021/07/15/protecting-customers-from-a-private-sector-offensive-actor-using-0-day-exploits-and-devilstongue-malware || url,wiki.quadrantsec.com/bin/view/Main/5005952
 5005953 || [WINDOWS-MALWARE] Possible DevilsTongue File access detected || url,microsoft.com/security/blog/2021/07/15/protecting-customers-from-a-private-sector-offensive-actor-using-0-day-exploits-and-devilstongue-malware || url,wiki.quadrantsec.com/bin/view/Main/5005953
+5005954 || [WINDOWS-POWERSHELL] Powershell Command to Export Secret Key Detected [1/2] || url,sygnia.co/golden-saml-advisory || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005955 || [WINDOWS-POWERSHELL] Powershell Command to Export Secret Key Detected [2/2] || url,sygnia.co/golden-saml-advisory || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005956 || [WINDOWS-SECURITY] Command to Export Secret Key Detected || url,sygnia.co/golden-saml-advisory || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005957 || [WINDOWS-SYSMON] Connection to Windows TSQL Database detected || url,sygnia.co/golden-saml-advisory || url,github.com/SigmaHQ/sigma/blob/master/rules/powershell
+5005958 || [WEB-ATTACKS] Log4j exploit attempt - CVE-2021-44228 || cve,2021-44228 || url,lunasec.io/docs/blog/log4j-zero-day/
+5005959 || [WEB-ATTACKS] Log4j exploit attempt via hex encoding - CVE-2021-44228 || cve,2021-44228 || url,lunasec.io/docs/blog/log4j-zero-day/
+5005960 || [APACHE] Log4j exploit attempt - CVE-2021-44228 || cve,2021-44228 || url,lunasec.io/docs/blog/log4j-zero-day/
+5005961 || [APACHE] Log4j exploit attempt via hex encoding - CVE-2021-44228 || cve,2021-44228 || url,lunasec.io/docs/blog/log4j-zero-day/
+5005962 || [LINUX-POLKIT] POSSIBLE POLKIT PRIVILEGE ESCALATION ATTEMPT (CVE-2021-4034) || url,github.com/arthepsy/CVE-2021-4034/blob/main/cve-2021-4034-poc.c
+5005963 || [LINUX-POLKIT] POSSIBLE POLKIT PRIVILEGE ESCALATION ATTEMPT (CVE-2021-4034) || url,github.com/arthepsy/CVE-2021-4034/blob/main/cve-2021-4034-poc.c
+5005964 || [LINUX-POLKIT] POLKIT PRIVILEGE ESCALATION ATTEMPT (CVE-2021-4034) || url,github.com/arthepsy/CVE-2021-4034/blob/main/cve-2021-4034-poc.c
+5005965 || [LINUX-POLKIT] POLKIT PRIVILEGE ESCALATION ATTEMPT (CVE-2021-4034) || url,github.com/berdav/CVE-2021-4034/blob/main/pwnkit.c
+5005966 || [LINUX-POLKIT] POSSIBLE POLKIT PRIVILEGE ESCALATION ATTEMPT (CVE-2021-4034) || url,zdnet.com/article/major-linux-policykit-security-vulnerability-uncovered-pwnkit
+5005967 || [LINUX-POLKIT] POLKIT PRIVILEGE ESCALATION ATTEMPT (CVE-2021-4034) || url,github.com/berdav/CVE-2021-4034/blob/main/pwnkit.c
+5005968 || [LINUX-POLKIT] POLKIT PRIVILEGE ESCALATION ARTIFACT (CVE-2021-4034) || url,github.com/berdav/CVE-2021-4034/blob/main/pwnkit.c
+5005970 || [LINUX-POLKIT] POLKIT PRIVILEGE ESCALATION ARTIFACT (CVE-2021-4034) || url,zdnet.com/article/major-linux-policykit-security-vulnerability-uncovered-pwnkit/
+5005971 || [WINDOWS-MALWARE] Rubeus successful TGT Enumeration || url,mandiant.com/resources/unauthorized-access-of-fireeye-red-team-tools || url,posts.specterops.io/hunting-in-active-directory-unconstrained-delegation-forests-trusts-71f2b33688e1
+5005972 || [SYSTEMD] SERVICE_START Failure || url,wiki.quadrantsec.com/bin/view/Main/5005972
+5005973 || [SYSTEMD] Service Failed to Start || url,wiki.quadrantsec.com/bin/view/Main/5005973
+5005974 || [SYSTEMD] Service Failed || url,wiki.quadrantsec.com/bin/view/Main/5005974
+5005975 || [SYSTEMD] Sagan Config Failure || url,wiki.quadrantsec.com/bin/view/Main/5005975
 5100000 || airportd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100001 || com.apple.xpc.launchd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
 5100002 || powerd service detected || url,wiki.quadrantsec.com/bin/view/Main/5100003
