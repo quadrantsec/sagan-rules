@@ -36,7 +36,7 @@
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[OFFICE365] ALERT_ANUBIS_DETECTION_VELOCITY"; content: "ALERT_ANUBIS_DETECTION_VELOCITY"; parse_src_ip: 1;classtype:successful-user; reference: url,wiki.quadrantsec.com/bin/view/Main/5003802; sid:5003802; rev:3;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[OFFICE365] ALERT_CABINET_EVENT_MATCH_AUDIT"; content: "ALERT_CABINET_EVENT_MATCH_AUDIT"; classtype:unsuccessful-user; reference: url,wiki.quadrantsec.com/bin/view/Main/5003803; sid:5003803; rev:3;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[OFFICE365] ALERT_ANUBIS_DETECTION_NEW_COUNTRY"; content: "ALERT_ANUBIS_DETECTION_NEW_COUNTRY"; content: !"ResultStatus|22 3a 22|Resolved" classtype:unsuccessful-user; reference: url,wiki.quadrantsec.com/bin/view/Main/5003804; sid:5003804; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[OFFICE365] ALERT_ANUBIS_DETECTION_NEW_COUNTRY"; content: "ALERT_ANUBIS_DETECTION_NEW_COUNTRY"; content: !"ResultStatus|22 3a 22|Resolved"; classtype:unsuccessful-user; reference: url,wiki.quadrantsec.com/bin/view/Main/5003804; sid:5003804; rev:4;)
 
 # "Custom Alerts"
 
