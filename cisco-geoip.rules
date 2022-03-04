@@ -35,14 +35,13 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] Console login 
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] Login permitted from outside HOME_COUNTRY"; program: %ASA*-6-605005; country_code: track by_src, isnot $HOME_COUNTRY; default_proto: tcp; classtype: successful-user; parse_src_ip: 1; parse_dst_ip: 2; reference: url, wiki.quadrantsec.com/bin/view/Main/5001879; sid: 5001879; rev: 1;)
 
-# WebVPN from outside HOME_COUNTRY
+# WebVPN/Login/Connect from outside HOME_COUNTRY
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] VPN login from outside HOME_COUNTRY"; program: %ASA*-6-716001|%ASA*-6-716038; country_code: track by_src, isnot $HOME_COUNTRY; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5001950; sid: 5001950; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] VPN login/connect from outside HOME_COUNTRY"; program: %ASA*-4-722051|%ASA*-6-721016|%ASA*-6-716001|%ASA*-6-716038; country_code: track by_src, isnot $HOME_COUNTRY; default_proto: tcp; default_dst_port: $HTTPS_PORT; threshold: type limit, track_by_src, count 1, seconds 43200; classtype: successful-user; parse_src_ip: 1; reference: url, https://www.cisco.com/c/en/us/td/docs/security/asa/syslog/b_syslog/syslogs8.html#con_4776918; sid: 5001950; rev: 4;)
 
 # Group = AnyConnect, Username = bob, IP = 10.10.10.10, Session disconnected. Session Type: SSL, Duration: 12h:00m:19s, Bytes xmt: 332468520, Bytes rcv: 130276830, Reason: Max time exceeded
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] VPN disconnect from outside HOME_COUNTRY"; program: %ASA*-4-113019|%ASA*-6-716002|%ASA*-6-721018; country_code: track by_src, isnot $HOME_COUNTRY; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5001962; sid: 5001962; rev: 2;)
-
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] VPN disconnect from outside HOME_COUNTRY"; program: %ASA*-4-113019|%ASA*-6-716002|%ASA*-6-721018; country_code: track by_src, isnot $HOME_COUNTRY; default_proto: tcp; default_dst_port: $HTTPS_PORT; threshold: type limit, track_by_src, count 1, seconds 43200; classtype: successful-user; parse_src_ip: 1; reference: url, https://www.cisco.com/c/en/us/td/docs/security/asa/syslog/b_syslog/syslogs8.html#con_4776918; sid: 5001962; rev: 3;)
 # 10.8.5.10|local4|info|info|a6|2014-02-18|02:12:41|%ASA*-6-734001| DAP: User bob, Addr 10.10.10.10, Connection AnyConnect: The following DAP records were selected for this connection: DfltAccessPolicy
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] VPN login from outside HOME_COUNTRY"; program: %ASA*-6-734001; country_code: track by_src, isnot $HOME_COUNTRY; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; reference: url, wiki.quadrantsec.com/bin/view/Main/5001964; sid: 5001964; rev: 2;)
@@ -63,5 +62,4 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] FTP file trans
 
 # Track by dest
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] FTP file transfer to outside HOME_COUNTRY"; program: %ASA*-6-303002; country_code: track by_dst, isnot $HOME_COUNTRY; default_proto: tcp; default_src_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; parse_dst_ip: 2; reference: url, wiki.quadrantsec.com/bin/view/Main/5002060; sid: 5002060; rev: 6;)
-
 
