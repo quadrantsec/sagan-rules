@@ -1,0 +1,7 @@
+alert any any any -> any any (msg: "[DUO] Secret Key Viewed"; content: "integration_skey_view"; classtype: system-event; program: duo; sid: 5006015; rev: 1;)
+
+alert any any any -> any any (msg: "[DUO] Admin Login Failed - Brute Force"; content: "admin_login_error"; classtype: unsuccessful-admin; program: duo; sid: 5006016; rev: 1;)
+
+alert any any any -> any any (msg: "[DUO] Successful MFA after brute force"; content: "admin_login_error"; xbits: isset,brute_force,track ip_src; classtype: unsuccessful-admin; program: duo; sid: 5006017; rev: 1;)
+
+alert any any any -> any any (msg: "[DUO] User Reported Fraudulent MFA Request"; content: "user_marked_fraud"; classtype: suspicious-traffic; program: duo; sid: 5006018; rev: 1;)
