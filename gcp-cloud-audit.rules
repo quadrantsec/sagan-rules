@@ -1,0 +1,89 @@
+# Sagan gcp-cloud-audit.rules
+# Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# Google Compute Plateform (GCP) - Cloud Audit signatures. 
+# Initial Signature Set Written by Charles Goggins @ Quadrant Information Security
+
+
+alert ip any any -> any any (msg: "[GCP] Instance - Access Configuration Added"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.instances.addAccessConfig|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5005994; sid: 5005994; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Login Failure"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.loginFailure"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5005995; parse_src_ip: 1; sid: 5005995; rev:1;)
+
+#alert ip any any -> any any (msg: "[GCP] Usage Billing Metric"; content: "cloudaudit.googleapis.com"; content: "usage_billing_metric"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5005996; sid: 5005996; rev:1;)
+
+#alert ip any any -> any any (msg: "[GCP] OAuth2 Activity"; content: "cloudaudit.googleapis.com"; content: "oauth2.googleapis.com"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5005997; sid: 5005997; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] IAM Policy Change"; content: "cloudaudit.googleapis.com"; content: "SetIamPolicy"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5005998; sid: 5005998; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Suspicious Login"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.suspiciousLogin"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5005999`; parse_src_ip: 1; sid: 5005999; rev:1;)
+
+#alert ip any any -> any any (msg: "[GCP] Alert Center Activity"; content: "cloudaudit.googleapis.com"; content: "|22|eventType|22|:|22|ALERT_CENTER|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006000; sid: 5006000; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] User Password Change"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.passwordEdit"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006001; parse_src_ip: 1; sid: 5006001; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Firewall Policy - List Associations"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.firewallPolicies.listAssociations|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006002; sid: 5006002; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Firewall Policy - Rule Added"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.firewallPolicies.addRule|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006003; sid: 5006003; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Firewall Policy - Rule Deleted"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.firewallPolicies.removeRule|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006004; sid: 5006004; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Firewall Policy - Rule Patched"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.firewallPolicies.patchRule|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006005; sid: 5006005; rev:1;)
+
+
+alert ip any any -> any any (msg: "[GCP] Firewall Policy Deleted"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.firewallPolicies.delete|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006006; sid: 5006006; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Firewall Policy Was Patched"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.firewallPolicies.patch|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006007; sid: 5006007; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Instance Deleted"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.instances.delete|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006008; sid: 5006008; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Instance - Access Configuration Deleted"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.instances.deleteAccessConfig|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006009; sid: 5006009; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Instance - Disk Attached"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.instances.attachDisk|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006010; sid: 5006010; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Instance - Disk Detached"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.instances.detachDisk|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006011; sid: 5006011; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Instance Started"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.instances.start|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006012; sid: 5006012; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Instance Stopped Gracefully"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.instances.stop|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006013; sid: 5006013; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Instance Suspended"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.instances.suspend|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006014; sid: 5006014; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Instance Resumed"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.instances.resume|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006015; sid: 5006015; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Instance Reset"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.instances.reset|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006016; sid: 5006016; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Login activity - User Failed MFA"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.loginVerification"; content: "login_challenge_status"; content: "|22|value|22|:|22|failed|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006017; parse_src_ip: 1; sid: 5006017; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Email Forwarding Outside Domain"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.emailForwardingOutOfDomain"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006018; parse_src_ip: 1; sid: 5006018; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Account Recovery Email Change"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.recoveryEmailEdit"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006019; parse_src_ip: 1; sid: 5006019; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Account Recovery Phone Change"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.recoveryPhoneEdit"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006020; parse_src_ip: 1; sid: 5006020; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] User Suspended"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.accountDisabled"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006021; sid: 5006021; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Suspicious Login Blocked"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.suspiciousLogin"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006022; parse_src_ip: 1; sid: 5006022; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Potential Government Attack Warning"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.govAttackWarning"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006023; parse_src_ip: 1; sid: 5006023; rev:1;)
