@@ -166,7 +166,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Application contr
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Application control instant message chat message"; content: "logid=|22|1059028676|22|"; content: "type="; content: "subtype="; classtype: policy-violation; reference: url,wiki.quadrantsec.com/bin/view/Main/5006064; parse_src_ip: 2; parse_dst_ip: 1; sid: 5006064; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] VoIP-SIP session blocked"; content: "logid=|2|0814044033|22|"; content: "type="; content: "subtype="; classtype: policy-violation; reference: url,wiki.quadrantsec.com/bin/view/Main/5006065; parse_src_ip: 2; parse_dst_ip: 1; sid: 5006065; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] VoIP-SIP session blocked"; content: "logid=|22|0814044033|22|"; content: "type="; content: "subtype="; classtype: policy-violation; reference: url,wiki.quadrantsec.com/bin/view/Main/5006065; parse_src_ip: 2; parse_dst_ip: 1; sid: 5006065; rev:1;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Infected File Detected Within Email"; content: "logid=|22|0211008194|22|"; content: "type="; content: "subtype="; classtype: suspicious-traffic; reference: url,wiki.quadrantsec.com/bin/view/Main/5006066; parse_src_ip: 2; parse_dst_ip: 1; sid: 5006066; rev:1;)
 
@@ -198,7 +198,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] URL Exempt per Fi
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] URL Allowed per Filter"; content: "logid=|22|0315012546|22|"; content: "type="; content: "subtype="; classtype: not-suspicious; reference: url,wiki.quadrantsec.com/bin/view/Main/5006080; parse_src_ip: 2; parse_dst_ip: 1; sid: 5006080; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] URL Belongs to Blocked Category Within Firewall Policy"; content: "logid=|22|0316013056|22|"; content: "type="; content: "subtype="; classtype: policy-violation; reference: url,wiki.quadrantsec.com/bin/view/Main/5006081; parse_src_ip: 2; parse_dst_ip: 1; sid: 5006081; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] URL Belongs to Blocked Category Within Firewall Policy"; content: "logid=|22|0316013056|22|"; content: "type="; content: "subtype="; classtype: policy-violation; reference: url,wiki.quadrantsec.com/bin/view/Main/5006081; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006081; rev:1;)
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] URL Belongs to Allowed Category Within Firewall Policy"; content: "logid=|22|0317013312|22|"; content: "type="; content: "subtype="; classtype: not-suspicious; reference: url,wiki.quadrantsec.com/bin/view/Main/5006082; parse_src_ip: 2; parse_dst_ip: 1; sid: 5006082; rev:1;)
 
@@ -212,7 +212,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  SSL Decryption F
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] SSL VPN Alert"; content: "logid=|22|0101039944|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006087; parse_src_ip: 1; sid: 5006087; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] SSL Fatal Alert Received"; content: "logid=|22|0105048038|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006088; parse_src_ip: 2; parse_dst_ip: 1; sid: 5006088; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] SSL Fatal Alert Received"; content: "logid=|22|0105048038|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006088; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006088; rev:1;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Authentication Logon"; content: "logid=|22|0102043039|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006089; parse_src_ip: 1; sid: 5006089; rev:1;)
 
