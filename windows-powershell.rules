@@ -65,7 +65,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[WINDOWS-POWERSHELL] HostVers
 
 # Writen by Chris Snyder for Hafnium, Modified by S.D. for generic sus activity in PS.
 
-alert any any -> $HOME_NET any (msg: "[WINDOWS-POWERSHELL] Suspicious Download using IEX"; program: *PowerShell*; content: "IEX |28|New|2d|ObjectNet|2e|WebClient|29 2e|downloadstring"; nocase; classtype: bad-unknown; reference: url,fireeye.com/blog/threat-research/2018/07/malicious-powershell-detection-via-machine-learning.html; reference: url,wiki.quadrantsec.com/bin/view/Main/5005765; sid:5005765; rev:1;)
+alert any any -> $HOME_NET any (msg: "[WINDOWS-POWERSHELL] Suspicious Download using IEX"; program: *PowerShell*; content: "IEX |28|New|2d|Object Net|2e|WebClient|29 2e|downloadstring"; nocase; classtype: bad-unknown; reference: url,fireeye.com/blog/threat-research/2018/07/malicious-powershell-detection-via-machine-learning.html; reference: url,wiki.quadrantsec.com/bin/view/Main/5005765; sid:5005765; rev:2;)
 
 # Good general signatures originally used to detect Kaseya / REvil randomware.
 
