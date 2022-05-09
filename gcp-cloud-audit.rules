@@ -87,3 +87,11 @@ alert ip any any -> any any (msg: "[GCP] User Suspended"; content: "cloudaudit.g
 alert ip any any -> any any (msg: "[GCP] Suspicious Login Blocked"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.suspiciousLogin"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006022; parse_src_ip: 1; sid: 5006022; rev:1;)
 
 alert ip any any -> any any (msg: "[GCP] Potential Government Attack Warning"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.govAttackWarning"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006023; parse_src_ip: 1; sid: 5006023; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] User was granted Super Admin Role"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.assignRole"; content: "_SEED_ADMIN_ROLE"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006024; parse_src_ip: 1; sid: 5006024; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] User was Created"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.createUser"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006025; parse_src_ip: 1; sid: 5006025; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Admin activity Detected"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006026; parse_src_ip: 1; sid: 5006026; rev:1;)
+
+
