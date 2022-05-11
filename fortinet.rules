@@ -194,7 +194,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Script Entity Rem
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] URL Blocked per Filter"; content: "logid=|22|0315012544|22|"; content: "type="; content: "subtype="; classtype: policy-violation; reference: url,wiki.quadrantsec.com/bin/view/Main/5006078; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006078; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] URL Exempt per Filter"; content: "logid=|22|0315012545|22|"; content: "type="; content: "subtype="; classtype: not-suspicious; reference: url,wiki.quadrantsec.com/bin/view/Main/5006079; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006079; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] URL Exempt per Filter"; content: "logid=|22|0315012545|22|"; content: "type="; content: "subtype="; classtype: not-suspicious; reference: url,wiki.quadrantsec.com/bin/view/Main/5006079; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006079; rev:1;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] URL Allowed per Filter"; content: "logid=|22|0315012546|22|"; content: "type="; content: "subtype="; classtype: not-suspicious; reference: url,wiki.quadrantsec.com/bin/view/Main/5006080; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006080; rev:1;)
 
