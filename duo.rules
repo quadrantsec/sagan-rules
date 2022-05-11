@@ -1,7 +1,37 @@
-alert any any any -> any any (msg: "[DUO] Secret Key Viewed"; content: "integration_skey_view"; classtype: system-event; program: duo; sid: 5006015; rev: 1;)
+# Sagan duo.rules
+# Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
 
-alert any any any -> any any (msg: "[DUO] Admin Login Failed - Brute Force"; content: "admin_login_error"; classtype: unsuccessful-admin; program: duo; sid: 5006016; rev: 1;)
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
 
-alert any any any -> any any (msg: "[DUO] Successful MFA after brute force"; content: "admin_login_error"; xbits: isset,brute_force,track ip_src; classtype: unsuccessful-admin; program: duo; sid: 5006017; rev: 1;)
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-alert any any any -> any any (msg: "[DUO] User Reported Fraudulent MFA Request"; content: "user_marked_fraud"; classtype: suspicious-traffic; program: duo; sid: 5006018; rev: 1;)
+# DUO MFA signatures. 
+# Initial Signature Set Written by by William Harding @ Quadrant Information Security
+
+alert any any any -> any any (msg: "[DUO] Secret Key Viewed"; content: "integration_skey_view"; classtype: system-event; program: duo; sid: 5006030; rev: 1;)
+
+alert any any any -> any any (msg: "[DUO] Successful MFA after brute force"; content: "admin_login_error"; xbits: isset,brute_force,track ip_src; classtype: unsuccessful-admin; program: duo; sid: 5006031; rev: 1;)
+
+alert any any any -> any any (msg: "[DUO] User Reported Fraudulent MFA Request"; content: "user_marked_fraud"; classtype: suspicious-traffic; program: duo; sid: 5006032; rev: 1;)
+
+alert any any any -> any any (msg: "[DUO] Admin Login Failure"; content: "admin_login_error"; content: "Invalid password attempt"; classtype: unsuccessful-admin; program: duo; sid: 5006033; rev: 1;)
+
+alert any any any -> any any (msg: "[DUO] Authentication - Brute Force"; content: "event|5F|type|22 3A 20 22|authentication"; content: "result|22 3A 20 22|denied"; threshold: type suppress, track by_username, count 5, seconds 300; classtype: attempted-user; program: duo; sid: 5005034; rev: 1;)
