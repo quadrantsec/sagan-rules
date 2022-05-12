@@ -1,3 +1,30 @@
+#
+# protocol.map - This files tells Sagan to search the "message" field or "program"
+# field for "indicators" on what network protocol something might be using.  This is
+# used with the "parse_proto" and "parse_proto_program" signature keywords. 
+
+
+#{ "type": "message", "protocol_number": 17, "case_sensitive": false, "string": "UDP" } 
+#{ "type": "message", "protocol_number": 6, "case_sensitive": false, "string": "TCP" } 
+#{ "type": "message", "protocol_number": 1, "case_sensitive": false, "string": "ICMP" } 
+
+# These are for Checkpoint Firewalls
+
+#{ "type": "message", "protocol_number": 17, "case_sensitive": true, "string": "proto:\"17\"" }
+#{ "type": "message", "protocol_number": 1, "case_sensitive": true, "string": "proto:\"1\"" }
+#{ "type": "message", "protocol_number": 6, "case_sensitive": true, "string": "proto:\"6\"" }
+
+# Programs 
+
+#{ "type": "program", "protocol_number": 17, "case_sensitive": false, "string": "named" }
+#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "ssh" }
+#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "sshd" }
+#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "rsync" }
+#{ "type": "program", "protocol_number": 17, "case_sensitive": false, "string": "bind" }
+#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "http" }
+#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "httpd" }
+#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "apache" }
+#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "apache2" }
 
 message || 17 || nocase ||UDP 
 message || 1  || nocase ||ICMP

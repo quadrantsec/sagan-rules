@@ -128,7 +128,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Successful Admin 
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Admin Login Failed"; content: "logid=|22|0100032002|22|"; content: "type="; content: "subtype="; classtype: attempted-admin; reference: url,wiki.quadrantsec.com/bin/view/Main/5006045; parse_src_ip: 2; parse_dst_ip: 3; sid: 5006045; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Admin logout successful"; content: "logid=|22|0100032003|22|"; content: "type="; content: "subtype="; classtype: not-suspicious; reference: url,wiki.quadrantsec.com/bin/view/Main/5006046; parse_src_ip: 2; parse_dst_ip: 3; sid: 5006046; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Admin logout successful"; content: "logid=|22|0100032003|22|"; content: "type="; content: "subtype="; classtype: not-suspicious; reference: url,wiki.quadrantsec.com/bin/view/Main/5006046; parse_src_ip: 2; parse_dst_ip: 3; sid: 5006046; rev:1;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] VDOM overwritten by Admin"; content: "logid=|22|0100032005|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006047; sid: 5006047; rev:1;)
 
@@ -206,7 +206,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  Outdated Report 
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  Disk Log File Deleted"; content: "logid=|22|0100032029|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006084; sid: 5006084; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  New SSL VPN Connection"; content: "logid=|22|0101039943|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006085; parse_src_ip: 1; sid: 5006085; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  New SSL VPN Connection"; content: "logid=|22|0101039943|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006085; parse_src_ip: 1; sid: 5006085; rev:1;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  SSL Decryption Failed"; content: "logid=|22|0105048009|22|"; content: "type="; content: "subtype="; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5006086; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006086; rev:1;)
 
@@ -228,7 +228,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Virus Command Blo
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] App-Control IPS Pass"; content: "logid=|22|1059028704|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006095; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006095; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] App-Control IPS Block"; content: "logid=|22|1059028705|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006096; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006096; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] App-Control IPS Block"; content: "logid=|22|1059028705|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006096; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006096; rev:1;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] SSL Certificate Anomaly - Blocked"; content: "logid=|22|1700062303|22|"; content: "type="; content: "subtype="; classtype: suspicious-traffic; reference: url,wiki.quadrantsec.com/bin/view/Main/5006097; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006097; rev:1;)
 
