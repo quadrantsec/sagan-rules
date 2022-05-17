@@ -2,7 +2,7 @@
 # protocol.map - This files tells Sagan to search the "message" field or "program"
 # field for "indicators" on what network protocol something might be using.  This is
 # used with the "parse_proto" and "parse_proto_program" signature keywords. 
-
+#
 
 #{ "type": "message", "protocol_number": 17, "case_sensitive": false, "string": "UDP" } 
 #{ "type": "message", "protocol_number": 6, "case_sensitive": false, "string": "TCP" } 
@@ -25,25 +25,4 @@
 #{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "httpd" }
 #{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "apache" }
 #{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "apache2" }
-
-message || 17 || nocase ||UDP 
-message || 1  || nocase ||ICMP
-message || 6  || nocase ||TCP
-
-# Thesea are for Checkpoint firewalls.
-
-message || 17 || nocase ||proto:"17";
-message || 1 || nocase ||proto:"1";
-message || 6 || nocase ||proto:"6";
-
-
-program || 17 || nocase || named
-program || 6  || nocase || ssh
-program || 6  || nocase || sshd
-program || 6  || nocase || rsync
-program || 17 || nocase || bind
-program || 6  || nocase || http
-program || 6  || nocase || httpd
-program || 6  || nocase || apache
-program || 6  || nocase || apache2
 
