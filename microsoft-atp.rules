@@ -31,31 +31,31 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Collection alert"
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] CommandAndControl alert"; json_content: ".category", "CommandAndControl"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005688; rev:2;) 
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] CredentialAccess alert"; json_content: ".category", "CredentialAccess"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005689; rev:2;) 
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] CredentialAccess alert"; json_content: ".category", "CredentialAccess"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005689; rev:2;) 
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] DefenseEvasion alert"; json_content: ".category", "DefenseEvasion"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005690; rev:2;) 
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] DefenseEvasion alert"; json_content: ".category", "DefenseEvasion"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005690; rev:2;) 
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Discovery alert"; json_content: ".category", "Discovery"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005691; rev:2;) 
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Discovery alert"; json_content: ".category", "Discovery"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005691; rev:2;) 
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Execution alert"; json_content: ".category", "Execution"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype:suspicious-command; sid:5005692; rev:2;) 
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Execution alert"; json_content: ".category", "Execution"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype:suspicious-command; sid:5005692; rev:2;) 
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Exfiltration alert"; json_content: ".category", "Exfiltration"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005693; rev:2;) 
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Exfiltration alert"; json_content: ".category", "Exfiltration"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005693; rev:2;) 
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Exploit alert"; json_content: ".category", "Exploit"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: exploit-attempt; sid:5005694; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Exploit alert"; json_content: ".category", "Exploit"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: exploit-attempt; sid:5005694; rev:2;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] InitialAccess alert"; json_content: ".category", "InitialAccess"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005695; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] InitialAccess alert"; json_content: ".category", "InitialAccess"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005695; rev:2;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] LateralMovement alert"; json_content: ".category", "LateralMovement"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005696; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] LateralMovement alert"; json_content: ".category", "LateralMovement"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005696; rev:2;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Malware alert"; json_content: ".category", "Malware"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: malware; sid:5005697; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Malware alert"; json_content: ".category", "Malware"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: malware; sid:5005697; rev:2;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Persistence alert"; json_content: ".category", "Persistence"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005698; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Persistence alert"; json_content: ".category", "Persistence"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005698; rev:2;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] PrivilegeEscalation alert"; json_content: ".category", "PrivilegeEscalation"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005699; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] PrivilegeEscalation alert"; json_content: ".category", "PrivilegeEscalation"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005699; rev:2;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Ransomware alert"; json_content: ".category", "Ransomware"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: ransomware; sid:5005700; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] Ransomware alert"; json_content: ".category", "Ransomware"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: ransomware; sid:5005700; rev:2;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] SuspiciousActivity alert"; json_content: ".category", "SuspiciousActivity"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005701; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] SuspiciousActivity alert"; json_content: ".category", "SuspiciousActivity"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005701; rev:2;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] UnwantedSoftware alert"; json_content: ".category", "UnwantedSoftware"; json_contains json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005702; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MICROSOFT-ATP] UnwantedSoftware alert"; json_content: ".category", "UnwantedSoftware"; json_contains; json_map: "flow_id", ".id"; json_map: "username", ".relatedUser.userName"; classtype: suspicious-traffic; sid:5005702; rev:2;)
 
