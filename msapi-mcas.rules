@@ -1,0 +1,44 @@
+# Sagan azure-eventhub-ad-geoip.rules
+# Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+#
+# Microsoft Cloud Application Security (MCAS) signatures. 
+# Initial Signature Set Written by by William Harding @ Quadrant Information Securit
+
+
+alert any any any -> any any (msg: "[MCAS] Activity from Infrequent Country"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_NEW_COUNTRY"; sid: 5006520; rev: 1)
+
+alert any any any -> any any (msg: "[MCAS] Mass Delete"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_NEW_COUNTRY"; sid: 5006521; rev: 1)
+
+alert any any any -> any any (msg: "[MCAS] Repeated Failed Logins"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_FAILED_LOGIN"; sid: 5006522; rev: 1)
+
+alert any any any -> any any (msg: "[MCAS] Activity from an Anonymous Proxy"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_RISKY_IP_ANONYMOUS"; sid: 5006523; rev: 1)
+
+alert any any any -> any any (msg: "[MCAS] Impossible Travel Activity"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_VELOCITY"; sid: 5006524; rev: 1)
+
+alert any any any -> any any (msg: "[MCAS] Suspicious Inbox Manipulation Rule"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_INBOX_HIDING"; sid: 5006525; rev: 1)
+
+alert any any any -> any any (msg: "[MCAS] Possible Unknown MCAS Alert"; program: MCAS; json_content: ".Operation", "MCAS_ALERT"; json_contains; sid: 5006526; rev: 1)
