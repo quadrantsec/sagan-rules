@@ -74,7 +74,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[PALO-ALTO] High Severity Ex
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[PALO-ALTO] High Severity Exploit Outbound"; content:"THREAT,vulnerability"; pcre: "/vsys\d{1,2},Trust,|vsys\d{1,2},Inside,|vsys\d{1,2},DMZ,|vsys\d{1,2},internal,/i"; content:",high,"; normalize; parse_port; parse_proto; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: bad-unknown; reference: url,threatvault.paloaltonetworks.com; sid: 5002759; rev:3;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[PALO-ALTO] Medium Severity Exploit Inbound"; content:"THREAT,vulnerability"; pcre: "/vsys\d{1,2},Untrust,|vsys\d{1,2},Outside,|vsys\d{1,2},external/i";; content:",medium,"; normalize; parse_port; parse_proto; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: exploit-attempt; reference: url,threatvault.paloaltonetworks.com; sid: 5002760; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[PALO-ALTO] Medium Severity Exploit Inbound"; content:"THREAT,vulnerability"; pcre: "/vsys\d{1,2},Untrust,|vsys\d{1,2},Outside,|vsys\d{1,2},external/i"; content:",medium,"; normalize; parse_port; parse_proto; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: exploit-attempt; reference: url,threatvault.paloaltonetworks.com; sid: 5002760; rev:4;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[PALO-ALTO] Medium Severity Exploit Outbound"; content:"THREAT,vulnerability";pcre: "/vsys\d{1,2},Trust,|vsys\d{1,2},Inside,|vsys\d{1,2},DMZ,|vsys\d{1,2},internal,/i"; content:",medium,"; normalize; parse_port; parse_proto; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: bad-unknown; reference: url,threatvault.paloaltonetworks.com; sid: 5002761; rev:3;)
 

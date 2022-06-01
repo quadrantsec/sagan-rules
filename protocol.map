@@ -2,48 +2,51 @@
 # protocol.map - This files tells Sagan to search the "message" field or "program"
 # field for "indicators" on what network protocol something might be using.  This is
 # used with the "parse_proto" and "parse_proto_program" signature keywords. 
+#
 
-
-#{ "type": "message", "protocol_number": 17, "case_sensitive": false, "string": "UDP" } 
-#{ "type": "message", "protocol_number": 6, "case_sensitive": false, "string": "TCP" } 
-#{ "type": "message", "protocol_number": 1, "case_sensitive": false, "string": "ICMP" } 
+{ "type": "message", "protocol_number": 17, "case_sensitive": true, "string": "UDP" } 
+{ "type": "message", "protocol_number": 6, "case_sensitive": true, "string": "TCP" } 
+{ "type": "message", "protocol_number": 1, "case_sensitive": true, "string": "ICMP" } 
 
 # These are for Checkpoint Firewalls
 
-#{ "type": "message", "protocol_number": 17, "case_sensitive": true, "string": "proto:\"17\"" }
-#{ "type": "message", "protocol_number": 1, "case_sensitive": true, "string": "proto:\"1\"" }
-#{ "type": "message", "protocol_number": 6, "case_sensitive": true, "string": "proto:\"6\"" }
+{ "type": "message", "protocol_number": 17, "case_sensitive": true, "string": "proto:\"17\"" }
+{ "type": "message", "protocol_number": 1, "case_sensitive": true, "string": "proto:\"1\"" }
+{ "type": "message", "protocol_number": 6, "case_sensitive": true, "string": "proto:\"6\"" }
 
-# Programs 
+# Cisco and Palo Alto firewalls.
 
-#{ "type": "program", "protocol_number": 17, "case_sensitive": false, "string": "named" }
-#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "ssh" }
-#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "sshd" }
-#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "rsync" }
-#{ "type": "program", "protocol_number": 17, "case_sensitive": false, "string": "bind" }
-#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "http" }
-#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "httpd" }
-#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "apache" }
-#{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "apache2" }
+{ "type": "message", "protocol_number": 6, "case_sensitive": false, "string": ",tcp," } 
+{ "type": "message", "protocol_number": 17, "case_sensitive": false, "string": ",udp," } 
+{ "type": "message", "protocol_number": 1, "case_sensitive": false, "string": ",icmp," } 
 
-message || 17 || nocase ||UDP 
-message || 1  || nocase ||ICMP
-message || 6  || nocase ||TCP
+{ "type": "message", "protocol_number": 6, "case_sensitive": false, "string": " tcp " } 
+{ "type": "message", "protocol_number": 17, "case_sensitive": false, "string": " udp " } 
+{ "type": "message", "protocol_number": 1, "case_sensitive": false, "string": " icmp " } 
 
-# Thesea are for Checkpoint firewalls.
+# Linux Programs 
 
-message || 17 || nocase ||proto:"17";
-message || 1 || nocase ||proto:"1";
-message || 6 || nocase ||proto:"6";
+{ "type": "program", "protocol_number": 17, "case_sensitive": false, "string": "named" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "ssh" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "sshd" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "rsync" }
+{ "type": "program", "protocol_number": 17, "case_sensitive": false, "string": "bind" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "http" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "httpd" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "apache" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "apache2" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "ftp" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "ftpd" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "proftp" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "vsftp" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "mysqld" }
+{ "type": "program", "protocol_number": 17, "case_sensitive": false, "string": "ntpd" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "nginx" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "postgres" }
+{ "type": "program", "protocol_number": 6, "case_sensitive": false, "string": "redis-server" }
 
+# Windows
 
-program || 17 || nocase || named
-program || 6  || nocase || ssh
-program || 6  || nocase || sshd
-program || 6  || nocase || rsync
-program || 17 || nocase || bind
-program || 6  || nocase || http
-program || 6  || nocase || httpd
-program || 6  || nocase || apache
-program || 6  || nocase || apache2
+{ "type": "message", "protocol_number": 6, "case_sensitive": false, "string": "MSSQLSERVER" }
+
 
