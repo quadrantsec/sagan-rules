@@ -82,7 +82,7 @@ alert ip any any -> any any (msg: "[GCP] Account Recovery Email Change"; content
 
 alert ip any any -> any any (msg: "[GCP] Account Recovery Phone Change"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.recoveryPhoneEdit"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006020; parse_src_ip: 1; sid: 5006020; rev:1;)
 
-alert ip any any -> any any (msg: "[GCP] User Suspended"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.accountDisabled"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006021; sid: 5006021; rev:1;)
+alert ip any any -> any any (msg: "[GCP] User Disabled"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.accountDisabled"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006021; sid: 5006021; rev:1;)
 
 alert ip any any -> any any (msg: "[GCP] Suspicious Login Blocked"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.suspiciousLogin"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006022; parse_src_ip: 1; sid: 5006022; rev:1;)
 
@@ -92,6 +92,21 @@ alert ip any any -> any any (msg: "[GCP] User was granted Super Admin Role"; con
 
 alert ip any any -> any any (msg: "[GCP] User was Created"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.createUser"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006025; parse_src_ip: 1; sid: 5006025; rev:1;)
 
-alert ip any any -> any any (msg: "[GCP] Admin activity Detected"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006026; parse_src_ip: 1; sid: 5006026; rev:1;)
+alert ip any any -> any any (msg: "[GCP] Admin activity Detected - License Assignment"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.userLicenseAssignment"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006026; parse_src_ip: 1; sid: 5006026; rev:1;)
 
+alert ip any any -> any any (msg: "[GCP] Admin activity Detected - Group Member Added"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.addGroupMember"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006027; parse_src_ip: 1; sid: 5006027; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Admin activity Detected - Group Member Removed"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.removeGroupMember"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006028; parse_src_ip: 1; sid: 5006028; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Admin activity Detected - User Suspended"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.suspendUser"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006029; parse_src_ip: 1; sid: 5006029; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Admin activity Detected - Group Setting Changed"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.changeGroupSetting"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006520; parse_src_ip: 1; sid: 5006520; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Admin activity Detected - Group Created"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.createGroup"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006521; parse_src_ip: 1; sid: 5006521; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Admin activity Detected - User Created"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.createUser"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006522; parse_src_ip: 1; sid: 5006522; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Admin activity Detected - Role Assigned"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.assignRole"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006523; parse_src_ip: 1; sid: 5006523; rev:1;)
+
+alert ip any any -> any any (msg: "[GCP] Admin activity Detected - Rule Updated"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.updateRule"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006524; parse_src_ip: 1; sid: 5006524; rev:1;)
 
