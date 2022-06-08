@@ -26,12 +26,12 @@
 # DUO MFA signatures. 
 # Initial Signature Set Written by by William Harding @ Quadrant Information Security
 
-alert any any any -> any any (msg: "[DUO] Secret Key Viewed"; content: "integration_skey_view"; classtype: system-event; program: duo; sid: 5006030; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[DUO] Secret Key Viewed"; content: "integration_skey_view"; classtype: system-event; program: duo; sid: 5006030; rev: 2;)
 
-alert any any any -> any any (msg: "[DUO] Successful MFA after brute force"; content: "admin_login_error"; xbits: isset,brute_force,track ip_src; classtype: unsuccessful-admin; program: duo; sid: 5006031; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[DUO] Successful MFA after brute force"; content: "admin_login_error"; xbits: isset,brute_force,track ip_src; classtype: unsuccessful-admin; program: duo; sid: 5006031; rev: 3;)
 
-alert any any any -> any any (msg: "[DUO] User Reported Fraudulent MFA Request"; content: "user_marked_fraud"; classtype: suspicious-traffic; program: duo; sid: 5006032; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[DUO] User Reported Fraudulent MFA Request"; content: "user_marked_fraud"; classtype: suspicious-traffic; program: duo; sid: 5006032; rev: 2;)
 
-alert any any any -> any any (msg: "[DUO] Admin Login Failure"; content: "admin_login_error"; content: "Invalid password attempt"; classtype: unsuccessful-admin; program: duo; sid: 5006033; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[DUO] Admin Login Failure"; content: "admin_login_error"; content: "Invalid password attempt"; classtype: unsuccessful-admin; program: duo; sid: 5006033; rev: 2;)
 
-alert any any any -> any any (msg: "[DUO] Authentication - Brute Force"; content: "event|5F|type|22 3A 20 22|authentication"; content: "result|22 3A 20 22|denied"; threshold: type suppress, track by_username, count 5, seconds 300; classtype: attempted-user; program: duo; sid: 5005034; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[DUO] Authentication - Brute Force"; content: "event|5F|type|22 3A 20 22|authentication"; content: "result|22 3A 20 22|denied"; threshold: type suppress, track by_username, count 5, seconds 300; classtype: attempted-user; program: duo; sid:5006528; rev: 3;)
