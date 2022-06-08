@@ -532,5 +532,15 @@ rule=: PAM %-:number% more authentication failure; logname= %-:word% %-:word% tt
 
 rule=: error: PAM: Authentication failure for %username:word% from %src-ip:ipv6%
 
+# What is this? 
 
 rule=: {"app_name": %-:string-to:"ipaddr%"ipaddr": "%src-ip:ipv4%"%-:string-to:"actor_user_id%"actor_user_id": %username:word%%-:rest% 
+
+# This for for an application call Alloy 
+
+rule=:  {"owner": %-:quoted-string%, "timestamp": %-:number%, "message": "[Information %-:date-iso% %-:time-24hr%.%-:number% ForcuraAlloyWeb] User %username:word% successfully impersonated. Token: %-:string-to:IPAddress%IPAddress: %src-ip:ipv4% %-:rest%
+rule=:  {"owner": %-:quoted-string%, "timestamp": %-:number%, "message": "[Warning %-:date-iso% %-:time-24hr%.%-:number% ForcuraAlloyWeb] Invalid login attempt, user: %username:word%%-:string-to:IPAddress%IPAddress: %src-ip:ipv4% %-:rest%rule=:  {"owner": %-:quoted-string%, "timestamp": %-:number%, "message": "[Warning %-:date-iso% %-:time-24hr%.%-:number% ForcuraAlloyWeb] Invalid login attempt, user does not exist. User: %username:word%%-:string-to:IPAddress%IPAddress: %src-ip:ipv4% %-:rest%
+rule=:  {"owner": %-:quoted-string%, "timestamp": %-:number%, "message": "[Information %-:date-iso% %-:time-24hr%.%-:number% ForcuraAlloyWeb] Password reset attempt being made for user: %username:word%%-:string-to:IPAddress%IPAddress: %src-ip:ipv4% %-:rest%
+rule=:  {"owner": %-:quoted-string%, "timestamp": %-:number%, "message": "[Warning %-:date-iso% %-:time-24hr%.%-:number% ForcuraAlloyWeb] Password reset attempt for invalid or inactive user: %username:word%%-:string-to:IPAddress%IPAddress: %src-ip:ipv4% %-:rest%                                                                                               rule=:  {"owner": %-:quoted-string%, "timestamp": %-:number%, "message": "[Error %-:date-iso% %-:time-24hr%.%-:number% ForcuraAlloyWebAPI] Restricted access attempted from %src-ip:ipv4% for user %username:word%%-:rest%
+rule=:  {"owner": %-:quoted-string%, "timestamp": %-:number%, "message": "[Warning %-:date-iso% %-:time-24hr%.%-:number% ForcuraAlloyWeb] Invalid login attempt, user has been locked out. User: %username:word%%-:string-to:IPAddress%IPAddress: %src-ip:ipv4% %-:rest%
+
