@@ -142,7 +142,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Installation 
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Installation of PSEXEC service via SCM"; content: "PSEXEC"; nocase; content: " 7045|3a| "; content:!"ForeScout"; nocase; content:!"nxlog"; nocase; content:!"ccmsetup"; nocase; classtype: suspicious-traffic; program: System|Service_Control_Manager; reference: url,wiki.quadrantsec.com/bin/view/Main/5003106; reference: url,pastebin.com/raw/0SNSvyjJ; sid:5003106; rev:2;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Potential Kerberoasting Activity Detected"); event_id: 4769; content: !"Ticket Encryption Type: 0x12)"; content: !"$"; content: "Audit Success"; reference: url,adsecurity.org/?p=3458; sid:5006529; rev: 1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Potential Kerberoasting Activity Detected"); event_id: 4769; content: !"Ticket Encryption Type: 0x12|29|"; content: !"$"; content: "Audit Success"; reference: url,adsecurity.org/?p=3458; sid:5006529; rev: 2;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Rubeus successful TGT Enumeration"; event_id:4611; content: "Logon Process Name: User32LogonProcesss"; class-type:successful-admin; reference:url,posts.specterops.io/hunting-in-active-directory-unconstrained-delegation-forests-trusts-71f2b33688e1; reference:url,www.mandiant.com/resources/unauthorized-access-of-fireeye-red-team-tools; sid:5006530; rev:1;
 
