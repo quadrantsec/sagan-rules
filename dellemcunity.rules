@@ -1,0 +1,111 @@
+##DELL EMC UNITY POWER SUPPLY HAS FAULTED
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "[DELL EMC UNITY] POWER SUPPLY HAS FAULTED"; content:"Power supply"; content:"has faulted"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event; threshold: type suppress, track by_src, count 1, seconds 3600; reference: https://www.dell.com/support/kbdoc/en-tt/000052454/dell-emc-unity-showing-incorrect-fault-on-power-supply-user-correctable; sid:5006590; rev:1;)
+##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that the "XXX_msg_XXX". Quadrant recommends testing and/or replacing the unit if this is not a false positive related to the referenced article below. REF = "https://www.dell.com/support/kbdoc/en-tt/000052454/dell-emc-unity-showing-incorrect-fault-on-power-supply-user-correctable"'
+##Signature Playbook: 'This rule is designed to trigger once per hour on a faulting power supply. This is either caused by a bad unit or is a false positive. Please see the attached reference for more information.'
+##Sample Logs:
+##8.8.8.8|user|crit|crit|example.host|2022-04-13T18:28:40Z|2022-04-13T18:28:40+00:00|VALUE| "2022-04-13T18:28:40.248Z" "jenny@8675309" "VALUE" "1337" "N/A" "CRIT" "13.37" :: "Power supply DPE Power Supply A0 has faulted (Part Number 8675309, Serial Number 8675309)" :: Category=User Component=Health TimeZone=UTC 
+
+##DELL EMC UNITY POWER SUPPLY IS OPERATING NORMALLY
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "[DELL EMC UNITY] POWER SUPPLY IS OPERATING NORMALLY"; content:"Power supply"; content:"is operating normally"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event; threshold: type suppress, track by_src, count 1, seconds 3600; reference: https://www.dell.com/support/kbdoc/en-tt/000052454/dell-emc-unity-showing-incorrect-fault-on-power-supply-user-correctable; sid:5006591; rev:1;)
+##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that the "XXX_msg_XXX". This is an informational alert.'
+##Signature Playbook: 'This rule is designed to trigger once per hour on a faulting power supply that has returned to a normal operating state. This is an informational alert that should not fire unless there was a previous issue with the unit and is only used to confirm that everything is operating as it should be.'
+##Sample Logs:
+##8.8.8.8|user|info|info|example.host|2022-04-13T18:39:54Z|2022-04-13T18:39:54+00:00|VALUE| "2022-04-13T18:39:54.286Z" "jenny@8675309" "VALUE" "1337" "N/A" "INFO" "13.37" :: "Power supply DPE Power Supply A0 is operating normally" :: Category=User Component=Health TimeZone=UTC 
+
+##DELL EMC UNITY RECOMMENDED SYSTEM SOFTWARE AVAILABLE
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "[DELL EMC UNITY] RECOMMENDED SYSTEM SOFTWARE AVAILABLE"; content:"NOTICE"; content:"is now available for download"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event; threshold: type suppress, track by_src, count 1, seconds 86400; reference: https://www.delltechnologies.com/asset/en-us/products/storage/industry-market/h15093-dell-emc-unity-best-practices-guide.pdf; sid:5006592; rev:1;)
+##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that XXX_msg_XXX. This is an informational alert.'
+##Signature Playbook: 'This rule is designed to trigger once per day when recommended system software such as security patches and updates are now available for download. This alert is informational in origin, but was created to encourage our clients to maintain updated systems.'
+##Sample Logs:
+##8.8.8.8|user|notice|notice|example.host|2022-05-10T23:50:02Z|2022-05-10T23:50:02+00:00|VALUE| "2022-05-10T23:50:02.914Z" "jenny@8675309" "VALUE" "1337" "N/A" "NOTICE" "1337" :: "A recommended system software (version 1.1.0.0) is now available for download. Version 1.1.0.0 is the latest release. Refer to the 1.1.0.0 Release Notes on dell.com/support for all new features, improvements and known issues addressed." :: Category=User Component=EmcSupportServices TimeZone=UTC 
+
+##DELL EMC UNITY LINK IS DOWN
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "[DELL EMC UNITY] LINK IS DOWN"; content:"ERROR"; content:"link is down"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event; reference: https://www.dell.com/support/kbdoc/en-us/000050373/dell-emc-unity-fibre-channel-port-sp-xx-i-o-module-xx-fc-port-xx-link-is-down-user-correctable; sid:5006593; rev:1;)
+##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that XXX_msg_XXX. This is an informational alert.'
+##Signature Playbook: 'This rule is designed to trigger on errors signaling a link down on this device. Usually errors on FC port link is something outside the array on the host to storage link, usually this is related to Switch cable/port/SFP errors. This is informational but can be used to troubleshoot issues in their environment that may cause security issues specifically effecting logging and data availability.'
+##Sample Logs:
+##8.8.8.8|user|err|err|example.host|2021-10-22T14:57:23Z|2021-10-22T14:57:23Z|VALUE| "2021-10-22T14:57:23.531Z" "jenny@8675309" "VALUE" "16513" "N/A" "ERROR" "13.37" :: "Fibre Channel port SP A I/O Module 1 FC Port 1 link is down." :: Category=User Component=Health TimeZone=UTC 
+
+##DELL EMC UNITY FAILED TO ADD A REMOTE SYSTEM
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "[DELL EMC UNITY] FAILED TO ADD A REMOTE SYSTEM"; content:"ERROR"; content:"failed to add remote system"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event;  reference: https://www.dell.com/support/kbdoc/en-uy/000052401/dell-emc-unity-creating-replication-connection-fails-with-error-code-0x6500128-if-the-proper-replication-interfaces-are-not-configured-on-local-and-remote-systems; sid:5006594; rev:1;)
+##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that XXX_msg_XXX. This is an informational alert.'
+##Signature Playbook: 'This rule is designed to trigger on errors caused by remote systems failing to be added. This is an informational alert that is meant to let clients know whn there is a problem with their remote device administration.'
+##Sample Logs:
+##8.8.8.8|user|err|err|example.host|2022-05-25T21:24:56Z|2022-05-25T21:24:56+00:00|VALUE| "2022-05-25T21:24:56.900Z" "jenny@8675309" "VALUE" "16671" "DOMAIN/USERNAME" "ERROR" "14:610005" :: "User DOMAIN/USERNAME failed to add remote system example2.host." :: Category=Audit Component=ReplicationPlugin TimeZone=UTC 
+
+##DELL EMC UNITY STORAGE PROCESSOR RESTARTING
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "[DELL EMC UNITY] STORAGE PROCESSOR RESTARTING"; content:"warning"; content:"Storage Processor"; content:"is restarting"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event; threshold: type suppress, track by_src, count 1, seconds 300; reference: url, www.dell.com/support/kbdoc/en-us/000056107/dell-emc-unity-storage-processors-show-as-rebooting-in-gui-but-not-in-cli-nor-leds-user-correctable; sid:5006595; rev:1;)
+##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that XXX_msg_XXX. This is an informational alert.'
+##Signature Playbook: 'This rule is designed to trigger on the Dell EMC Unity device reporting a storgae processor restarting. This can be a secutity issue due to a compromise of data integrity and/or availablility. This alert is informational in origin and should be sent to clients so they can address any configuartion issues in the event this was not a scheduled maintenance task.'
+##Sample Logs:
+##8.8.8.8-19700101.log.gz:8.8.8.8|user|warning|warning|example.host|1970-01-01T03:32:33Z|1970-01-01T03:32:33Z|VALUE| "1970-01-01T03:32:33.499Z" "jenny@8675309" "VALUE" "1337" "N/A" "WARN" "14:6046f" :: "Storage Processor PROCESSORNAME is restarting" :: Category=User Component=Health TimeZone=UTC 
+
+##DELL EMC UNITY A STORAGE PROCESSOR WRITE CACHE HAS BEEN DISABLED
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "[DELL EMC UNITY] A STORAGE PROCESSOR WRITE CACHE HAS BEEN DISABLED"; content:"warning"; content:"The write cache on Storage Processor"; content:"is disabled"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event; threshold: type suppress, track by_src, count 1, seconds 300; reference: url, www.dell.com/community/CLARiiON/SPS-and-write-cache/td-p/6648915; sid:5006596; rev:1;)
+##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that XXX_msg_XXX. This is an informational alert.'
+##Signature Playbook: 'This rule is designed to trigger on the Dell EMC Unity device reporting a storgae processor's write cache being disabled. This can be a secutity issue due to a compromise of data integrity and/or availablility. This alert is informational in origin and should be sent to clients so they can address any configuartion issues in the event this was not a scheduled maintenance task.'
+##Sample Logs:
+##8.8.8.8-19700101.log.gz:8.8.8.8|user|warning|warning|example.host|1970-01-01T03:32:33Z|1970-01-01T03:32:33Z|VALUE| "1970-01-01T03:32:33.499Z" "jenny@8675309" "VALUE" "1337" "N/A" "WARN" "14:6046f" :: "The write cache on Storage Processor PROCESSORNAME is disabled" :: Category=User Component=Health TimeZone=UTC 
+
+##DELL EMC UNITY AN SFP WAS REMOVED
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "[DELL EMC UNITY] AN SFP WAS REMOVED"; content:"An SFP was removed from"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event; threshold: type suppress, track by_src, count 1, seconds 300; reference: url, www.delltechnologies.com/asset/en-us/products/storage/industry-market/h15093-dell_emc_unity-best_practices_guide.pdf; sid:5006597; rev:1;)
+##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that XXX_msg_XXX. This is an informational alert.'
+##Signature Playbook: 'This rule is designed to trigger on the Dell EMC Unity device reporting an SPF being removed from a port on the device. This can be a secutity issue due to a compromise of data integrity and/or availablility. This alert is informational in origin and should be sent to clients so they can address any configuartion issues in the event this was not a scheduled maintenance task.'
+##Sample Logs:
+##8.8.8.8-19700101.log.gz:8.8.8.8|user|warning|warning|example.host|1970-01-01T03:32:33Z|1970-01-01T03:32:33Z|VALUE| "1970-01-01T03:32:33.499Z" "jenny@8675309" "VALUE" "1337" "N/A" "WARN" "14:6046f" :: "An SFP was removed from Fibre Channel port PROCESSORNAME I/O Module 1 FC Port 1." :: Category=User Component=Health TimeZone=UTC 
+
+##DELL EMC UNITY DNS CLIENT UNABLE TO CONNECT
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "[DELL EMC UNITY] DNS CLIENT UNABLE TO CONNECT"; content:"The DNS client is unable to connect to"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event; threshold: type suppress, track by_src, count 1, seconds 300; reference: url, www.dell.com/support/kbdoc/en-us/000064779/dell-emc-unity-received-error-code-the-dns-client-is-unable-to-connect-to-name-server-xx-xx-xx-xx-user-correctable; sid:5006598; rev:1;)
+##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that XXX_msg_XXX. This is an informational alert.'
+##Signature Playbook: 'This rule is designed to trigger on the Dell EMC Unity device reporting a DNS client unable to connect to a name server. This can be a secutity issue due to a compromise of data availablility. This alert is informational in origin and should be sent to clients so they can address any configuartion issues in the event this was not a scheduled maintenance task.'
+##Sample Logs:
+##8.8.8.8-190700101.log.gz:8.8.8.8|user|alert|alert|example.host|1970-01-01T17:58:58Z|1970-01-01T17:58:58Z|VALUE| "1970-01-01T17:58:58.150Z" "jenny@8675309" "VALUE" "24062" "unix/spa/root" "ALERT" "13:10760003" :: "The DNS client is unable to connect to name server 8.8.4.4 : Connection timed out " :: Category=Audit Component=SOME_DNS TimeZone=UTC 
+
+##DELL EMC UNITY COMMUNICATION WITH HOST HAS BEEN LOST
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "[DELL EMC UNITY] COMMUNICATION WITH HOST HAS BEEN LOST"; content:"ERROR"; content:"Communication with"; content:"has been lost"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event; threshold: type suppress, track by_src, count 1, seconds 300; reference: url, www.dell.com/support/kbdoc/en-us/000056957/dell-emc-unity-sync-replication-status-lost-sync-communication-0x840e-user-correctable; sid:5006599; rev:1;)
+##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that XXX_msg_XXX. This is an informational alert.'
+##Signature Playbook: 'This rule is designed to trigger on the Dell EMC Unity device reporting a communication with a replication host being lost. This can be a secutity issue due to a compromise of data availablility. This alert is informational in origin and should be sent to clients so they can address any configuartion issues in the event this was not a scheduled maintenance task.'
+##Sample Logs:
+##8.8.8.8-19700101.log.gz:8.8.8.8|user|warning|warning|example.host|1970-01-01T03:32:33Z|1970-01-01T03:32:33Z|VALUE| "1970-01-01T03:32:33.499Z" "jenny@8675309" "VALUE" "1337" "N/A" "WARN" "14:6046f" :: "Communication with replication host HOSTNAME has been lost" :: Category=User Component=Health TimeZone=UTC 
+
+##DELL EMC UNITY CANNOT COMMUNICATE WITH REMOTE SESSION
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "[DELL EMC UNITY] CANNOT COMMUNICATE WITH REMOTE SESSION"; content:"ERROR"; content:"Replication session"; content:"cannot communicate with its remote session"; normalize; parse_proto; parse_port; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: network-event; threshold: type suppress, track by_src, count 1, seconds 300; reference: url, www.dell.com/support/kbdoc/en-us/000056957/dell-emc-unity-sync-replication-status-lost-sync-communication-0x840e-user-correctable; sid:5006589; rev:1;)
+##Auto Comment: 'Dell EMC Untiy device at <ip>SRCIP</ip><hn>SRCHOST</hn> reports that XXX_msg_XXX. This is an informational alert.'
+##Signature Playbook: 'This rule is designed to trigger on the Dell EMC Unity device being unable to communicat through an established remote session. This can be a secutity issue due to a compromise of data integrity and/or availablility. This alert is informational in origin and should be sent to clients so they can address any configuartion issues in the event this was not a scheduled maintenance task.'
+##Sample Logs:
+##8.8.8.8-19700101.log.gz:8.8.8.8|user|warning|warning|example.host|1970-01-01T03:32:33Z|1970-01-01T03:32:33Z|VALUE| "1970-01-01T03:32:33.499Z" "jenny@8675309" "VALUE" "1337" "N/A" "WARN" "14:6046f" :: "Replication session SESSIONIDENTIFIER cannot communicate with its remote session" :: Category=User Component=Health TimeZone=UTC 
+
+##DELL EMC UNITY BRUTE FORCE ATTEMPT [1]
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg:"[DELL EMC UNITY] BRUTE FORCE ATTEMPT [1]"; content: "failed: Principal User"; xbits: set,brute_force,track ip_src, expire 21600; default_proto: tcp; default_dst_port: any; classtype: brute-force; program: sshd; normalize; parse_src_ip: 1; parse_port; after: track by_src, count 10, seconds 300; threshold: type suppress, track by_src, count 1, seconds 300; reference: url,XXXXXXXXX; sid: 5006588; rev:1;)
+##Auto Comment: 'Brute Force Login failures for account name "XXX_USERNAME_XXX" from source IP <ip>SRCIP</ip> <hn>SRCHOST</hn> reported by Dell EMC Untiy device <ip>DSTIP</ip> <hn>DSTHOST</hn>. Quadrant recommends verifying if this is due to a configuration issue or a true brute force attempt.'
+##Signature Playbook: 'This rule is designed to trigger on ten or more consecutive failed logins within five minutes per IP. This can be a sign of someone trying to brute force this account's password. This can also be indictive of a configuration issue.'
+##Sample Logs:
+##8.8.8.8-19700101.log.gz:8.8.8.8|user|warning|warning|example.host|1970-01-01T03:32:33Z|1970-01-01T03:32:33Z|VALUE| "1970-01-01T03:32:33.499Z" "jenny@8675309" "VALUE" "1337" "N/A" "WARN" "14:6046f" :: "Authentication session SESSIONIDENTIFIER failed: Principal User USERNAME LocalDirectory/Local" :: Category=User Component=Health TimeZone=UTC 
+
+##DELL EMC UNITY BRUTE FORCE ATTEMPT [2]
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg:"[DELL EMC UNITY] BRUTE FORCE ATTEMPT [2]"; content: "failed to authenticate in"; xbits: set,brute_force,track ip_src, expire 21600; default_proto: tcp; default_dst_port: any; classtype: brute-force; program: sshd; normalize; parse_src_ip: 1; parse_port; after: track by_src, count 10, seconds 300; threshold: type suppress, track by_src, count 1, seconds 300; reference: url,XXXXXXXXX; sid: 5006587; rev:1;)
+##Auto Comment: 'Brute Force Login failures for account name "XXX_USERNAME_XXX" from source IP <ip>SRCIP</ip> <hn>SRCHOST</hn> reported by Dell EMC Untiy device <ip>DSTIP</ip> <hn>DSTHOST</hn>. Quadrant recommends verifying if this is due to a configuration issue or a true brute force attempt.'
+##Signature Playbook: 'This rule is designed to trigger on ten or more consecutive failed logins within five minutes per IP. This can be a sign of someone trying to brute force this account's password. This can also be indictive of a configuration issue.'
+##Sample Logs:
+##8.8.8.8-19700101.log.gz:8.8.8.8|user|warning|warning|example.host|1970-01-01T03:32:33Z|1970-01-01T03:32:33Z|VALUE| "1970-01-01T03:32:33.499Z" "jenny@8675309" "VALUE" "1337" "N/A" "WARN" "14:6046f" :: "Authentication session SESSIONIDENTIFIER: User USERNAME failed to authenticate in authority LocalDirectory/Local" :: Category=User Component=Health TimeZone=UTC 
+
+##DELL EMC UNITY CORRELATED LOGIN AFTER BRUTE FORCE [1]
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "DELL EMC UNITY CORRELATED LOGIN AFTER BRUTE FORCE [1]"; content: "succeeded: Principal User"; content:"INFO"; program: *Security*; xbits: isset,brute_force,track ip_src; parse_src_ip: 1; default_proto: tcp; threshold: type suppress, track by_src, count 5, seconds 3600; classtype: correlated-attack; reference: url,XXXXXXXXX; sid:5006586; rev:1;)
+##Auto Comment: 'Login after brute force attempt for user "XXX_USERNAME_XXX" from source <ip>SRCIP</ip> <hn>SRCHOST</hn> detected by Dell EMC Untiy device <ip>DSTIP</ip> <hn>DSTHOST</hn>. Quadrant recommends ensuring this login is valid and not related to a brute force attempt.'
+##Signature Playbook: 'This rule is designed to trigger on correlated login events shortly after multiple failed logins from the same source IP.'
+##Sample Logs:
+##8.8.8.8-19700101.log.gz:8.8.8.8|user|warning|warning|example.host|1970-01-01T03:32:33Z|1970-01-01T03:32:33Z|VALUE| "1970-01-01T03:32:33.499Z" "jenny@8675309" "VALUE" "1337" "N/A" "INFO" "14:6046f" :: "Authentication session SESSIONIDENTIFIER succeeded: Principal User USERNAME LocalDirectory/Local" :: Category=User Component=Health TimeZone=UTC 
+
+##DELL EMC UNITY CORRELATED LOGIN AFTER BRUTE FORCE [2]
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "DELL EMC UNITY CORRELATED LOGIN AFTER BRUTE FORCE [2]"; content: "successfully authenticated"; content:"INFO"; program: *Security*; xbits: isset,brute_force,track ip_src; parse_src_ip: 1; default_proto: tcp; threshold: type suppress, track by_src, count 5, seconds 3600; classtype: correlated-attack; reference: url,XXXXXXXXX; sid:5006585; rev:1;)
+##Auto Comment: 'Login after brute force attempt for user "XXX_USERNAME_XXX" from source <ip>SRCIP</ip> <hn>SRCHOST</hn> detected by Dell EMC Untiy device <ip>DSTIP</ip> <hn>DSTHOST</hn>. Quadrant recommends ensuring this login is valid and not related to a brute force attempt.'
+##Signature Playbook: 'This rule is designed to trigger on correlated login events shortly after multiple failed logins from the same source IP.'
+##Sample Logs:
+##8.8.8.8-19700101.log.gz:8.8.8.8|user|warning|warning|example.host|1970-01-01T03:32:33Z|1970-01-01T03:32:33Z|VALUE| "1970-01-01T03:32:33.499Z" "jenny@8675309" "VALUE" "1337" "N/A" "INFO" "14:6046f" :: "Authentication session SESSIONIDENTIFIER: User USERNAME successfully authenticated in authority LocalDirectory/Local" :: Category=User Component=Health TimeZone=UTC 
+
+##DELL EMC UNITY CORRELATED LOGIN AFTER BRUTE FORCE [3]
+alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "DELL EMC UNITY CORRELATED LOGIN AFTER BRUTE FORCE [3]"; content: "Authentication successful"; content:"INFO"; program: *Security*; xbits: isset,brute_force,track ip_src; parse_src_ip: 1; default_proto: tcp; threshold: type suppress, track by_src, count 5, seconds 3600; classtype: correlated-attack; reference: url,XXXXXXXXX; sid:5006584; rev:1;)
+##Auto Comment: 'Login after brute force attempt for user "XXX_USERNAME_XXX" from source <ip>SRCIP</ip> <hn>SRCHOST</hn> detected by Dell EMC Untiy device <ip>DSTIP</ip> <hn>DSTHOST</hn>. Quadrant recommends ensuring this login is valid and not related to a brute force attempt.'
+##Signature Playbook: 'This rule is designed to trigger on correlated login events shortly after multiple failed logins from the same source IP.'
+##Sample Logs:
+##8.8.8.8-19700101.log.gz:8.8.8.8|user|warning|warning|example.host|1970-01-01T03:32:33Z|1970-01-01T03:32:33Z|VALUE| "1970-01-01T03:32:33.499Z" "jenny@8675309" "VALUE" "1337" "N/A" "INFO" "14:6046f" :: "Authentication successful.Username: USERNAME ClientIP: 8.8.8.8." :: Category=User Component=Health TimeZone=UTC 
