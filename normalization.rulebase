@@ -532,6 +532,11 @@ rule=: PAM %-:number% more authentication failure; logname= %-:word% %-:word% tt
 
 rule=: error: PAM: Authentication failure for %username:word% from %src-ip:ipv6%
 
+# This is for event ID 4768
+# #4768: A Kerberos authentication ticket (TGT) was requested. Account Information: Account Name: USERNAME Supplied Realm Name: customer-domain.com User ID: S-1-0-0 Service Information: Service Name: krbtgt/customer-domain.com Service ID: S-1-0-0 Network Information: Client Address: ::ffff:IP.Add.Re.SS
+
+rule=: 4768: A Kerberos authentication ticket (TGT) was requested. Account Information: Account Name: %username:word%%-:string-to:ffff:%ffff:%src-ip:ipv4% %-:rest%
+
 # What is this? 
 
 rule=: {"app_name": %-:string-to:"ipaddr%"ipaddr": "%src-ip:ipv4%"%-:string-to:"actor_user_id%"actor_user_id": %username:word%%-:rest% 
