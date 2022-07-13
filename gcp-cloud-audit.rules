@@ -29,7 +29,10 @@
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Instance - Access Configuration Added"; content: "cloudaudit.googleapis.com"; content: "|22|method|22|:|22|compute.instances.addAccessConfig|22|"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5005994; sid: 5005994; rev:2;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Login Failure"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.loginFailure"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5005995; parse_src_ip: 1; sid: 5005995; rev:2;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Login Failure"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.loginFailure"; threshold: type limit, track by_src&by_username, count 1, seconds 3600; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5005995; parse_src_ip: 1; sid: 5005995; rev:2;)
+
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Login Failure - Brute Force [5/1]"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.loginFailure"; parse_src_ip: 1; xbits: set,brute_force,track ip_src, expire 32600; threshold: type suppress, track by_src, count 5, seconds 60; classtype: brute-force; reference: url,wiki.quadrantsec.com/bin/view/Main/5005995; sid: 5005995; rev:2;)
 
 #alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Usage Billing Metric"; content: "cloudaudit.googleapis.com"; content: "usage_billing_metric"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5005996; sid: 5005996; rev:2;)
 
@@ -89,7 +92,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Potential Government A
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] User was granted Super Admin Role"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.assignRole"; content: "_SEED_ADMIN_ROLE"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006024; parse_src_ip: 1; sid: 5006024; rev:2;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] User was Created"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.createUser"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006025; parse_src_ip: 1; sid: 5006025; rev:2;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] User was Created"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.createUser"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006025; parse_src_ip: 1; sid: 5006025; rev:2;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Admin activity Detected - License Assignment"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.userLicenseAssignment"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006026; parse_src_ip: 1; sid: 5006026; rev:2;)
 
