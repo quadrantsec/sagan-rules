@@ -132,13 +132,13 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Admin Login Faile
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] VDOM overwritten by Admin"; content: "logid=|22|0100032005|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006047; sid: 5006047; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Super admin entered VDOM"; content: "logid=|22|0100032006|22|"; content: "type="; content: "subtype="; classtype: system-event; parse_src_ip: 1; reference: url,wiki.quadrantsec.com/bin/view/Main/5006048; sid: 5006048; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Super admin entered VDOM"; content: "logid=|22|0100032006|22|"; content: "type="; content: "subtype="; classtype: system-event; parse_src_ip: 1; reference: url,wiki.quadrantsec.com/bin/view/Main/5006048; sid: 5006048; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Super admin left VDOM"; content: "logid=|22|0100032007|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006049; sid: 5006049; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Super admin left VDOM"; content: "logid=|22|0100032007|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006049; sid: 5006049; rev:1;)
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] FortiGate Started"; content: "logid=|22|0100032009|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006050; sid: 5006050; rev:31)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Logs deleted by user"; content: "logid=|22|0100032044|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006051; sid: 5006051; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Logs deleted by user"; content: "logid=|22|0100032044|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006051; sid: 5006051; rev:1;)
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Support License expiring"; content: "logid=|22|0100032014|22|"; content: "type="; content: "subtype="; classtype: program-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5006052; sid: 5006052; rev:1;)
 
@@ -206,10 +206,10 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Script Entity Rem
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  Disk Log File Deleted"; content: "logid=|22|0100032029|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006084; sid: 5006084; rev:1;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  New SSL VPN Connection From Outside HOME_COUNTRY"; content: "logid=|22|0101039943|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006085; parse_src_ip: 1; normalize; country_code: track by_src, isnot $HOME_COUNTRY; sid: 5006085; rev:1;) #Disabled in favor of successful login via VPN from outside home country
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  New SSL VPN Connection From Outside HOME_COUNTRY"; content: "logid=|22|0101039943|22|"; content: "type="; content: "subtype="; classtype: system-event; parse_src_ip: 1; country_code: track by_src, isnot $HOME_COUNTRY; reference: url,wiki.quadrantsec.com/bin/view/Main/5006085; sid: 5006085; rev:1;) #Disabled in favor of successful login via VPN from outside home country
 
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  Successful VPN Login From Outside HOME_COUNTRY"; content: "logid=|22|0101039424|22|"; content: "type="; content: "subtype="; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006085; parse_src_ip: 1; normalize; country_code: track by_src, isnot $HOME_COUNTRY; sid: 5006085; rev:1;) #Disabled for now. 
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  Successful VPN Login From Outside HOME_COUNTRY"; content: "logid=|22|0101039424|22|"; content: "type="; content: "subtype="; classtype: suspicious-traffic; parse_src_ip: 1; country_code: track by_src, isnot $HOME_COUNTRY; reference: url,wiki.quadrantsec.com/bin/view/Main/5006085; sid: 5006085; rev:1;) #Disabled for now. 
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  SSL Decryption Failed"; content: "logid=|22|0105048009|22|"; content: "type="; content: "subtype="; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5006086; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006086; rev:1;)
 
