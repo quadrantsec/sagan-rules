@@ -31,8 +31,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Instance - Access Conf
 
 #alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Login Failure"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.loginFailure"; threshold: type limit, track by_src&by_username, count 1, seconds 3600; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5005995; parse_src_ip: 1; sid: 5005995; rev:2;)
 
-
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Login Failure - Brute Force [5/1]"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.loginFailure"; parse_src_ip: 1; xbits: set,brute_force,track ip_src, expire 32600; threshold: type suppress, track by_src, count 5, seconds 60; classtype: brute-force; reference: url,wiki.quadrantsec.com/bin/view/Main/5005995; sid: 5005995; rev:2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Login Failure - Brute Force [5/1]"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.loginFailure"; parse_src_ip: 1; xbits: set,brute_force,track ip_src, expire 21600; after: track by_src, count 5, seconds 60; threshold: type suppress, track by_src&by_username, count 1, seconds 21600; classtype: brute-force; reference: url,wiki.quadrantsec.com/bin/view/Main/5005995; sid: 5005995; rev:2;)
 
 #alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Usage Billing Metric"; content: "cloudaudit.googleapis.com"; content: "usage_billing_metric"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5005996; sid: 5005996; rev:2;)
 
