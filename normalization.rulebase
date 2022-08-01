@@ -539,4 +539,5 @@ rule=: {"app_name": %-:string-to:"ipaddr%"ipaddr": "%src-ip:ipv4%"%-:string-to:"
 #This rule is used to parse the username within GCP Cloud Login Failure
 rule=: %-:string-to:method%method":"google.login.LoginService.loginFailure%-:string-to:principalEmail%principalEmail":%username:quoted-string%%-:rest%
 
-
+#This rule is used to parse URLs within Fortinet logs
+rule=: %-:string-to:url%url=%url:quoted-string%%-:rest%
