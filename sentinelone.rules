@@ -1,0 +1,135 @@
+# Sagan sentinelone.rules
+# Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 07/26/2022
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Subscribed and joined a group"; content:"SentinelOne"; content:"activityType=17 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006613; sid:5006613; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New active threat"; content:"SentinelOne"; content:"activityType=19 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006614; sid:5006614; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New blocked threat"; content:"SentinelOne"; content:"activityType=20 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006615; sid:5006615; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Administrative information - User Modified"; content:"SentinelOne"; content:"activityType=24 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006616; sid:5006616; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Administrative information - User Deleted"; content:"SentinelOne"; content:"activityType=25 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006617; sid:5006617; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] SentinelOne - New Console Login Activity"; content:"SentinelOne"; content:"activityType=27 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006618; sid:5006618; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] SentinelOne - New Console Logout Activity"; content:"SentinelOne"; content:"activityType=33 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006619; sid:5006619; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] User role assigned"; content:"SentinelOne"; content:"activityType=37 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006620; sid:5006620; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Machine updated successfully"; content:"SentinelOne"; content:"activityType=43 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006621; sid:5006621; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Machine decommissioned"; content:"SentinelOne"; content:"activityType=47 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006622; sid:5006622; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Machine Machine recommissioned"; content:"SentinelOne"; content:"activityType=48 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006623; sid:5006623; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Machine requested permission to uninstall SentinelOne agent"; content:"SentinelOne"; content:"activityType=49 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006624; sid:5006624; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Machine was uninstalled"; content:"SentinelOne"; content:"activityType=51 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006625; sid:5006625; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Admin approved SentinelOne agent uninstall request"; content:"SentinelOne"; content:"activityType=52 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006626; sid:5006626; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Machine decommissioned"; content:"SentinelOne"; content:"activityType=54 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006627; sid:5006627; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Administrative information - notification recipients modified"; content:"SentinelOne"; content:"activityType=60 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006628; sid:5006628; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Disconnect from network alert"; content:"SentinelOne"; content:"activityType=61 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006629; sid:5006629; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Reconnect to network alert"; content:"SentinelOne"; content:"activityType=62 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006630; sid:5006630; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Initiated a fetch full report command to the agent"; content:"SentinelOne"; content:"activityType=65 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006631; sid:5006631; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Administrative information - Full disk scan started"; content:"SentinelOne"; content:"activityType=90 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006632; sid:5006632; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Administrative information - Full disk scan completed"; content:"SentinelOne"; content:"activityType=92 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006633; sid:5006633; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Administrative information - User Requires Reactivation"; content:"activityType=103 "; content:"SentinelOne"; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006634; sid:5006634; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Agent enabled"; content:"SentinelOne"; content:"activityType=120 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006635; sid:5006635; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Agent disabled"; content:"SentinelOne"; content:"activityType=128 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006636; sid:5006636; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Failed Console Login Activity"; content:"SentinelOne"; content:"activityType=133 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006637; sid:5006637; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Network quarantine performed successfully"; content:"SentinelOne"; content:"activityType=1001 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006638; sid:5006638; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Kill performed successfull (Process Terminated"; content:"SentinelOne"; content:"activityType=2001 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006638; sid:5006639; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Remediate performed successfully"; content:"SentinelOne"; content:"activityType=2002 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006640; sid:5006640; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Quarantine performed successfully"; content:"SentinelOne"; content:"activityType=2004 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006641; sid:5006641; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Kill failed"; content:"SentinelOne"; content:"activityType=2006 "; classtype:trojan-activity; sid:5006642; reference:url,wiki.quadrantsec.com/bin/view/Main/5006642; sid:5006642; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Quarantine failed"; content:"SentinelOne"; content:"activityType=2009 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006643; sid:5006643; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Unquarantine performed successfully"; content:"SentinelOne"; content:"activityType=2026 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006644; sid:5006644; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Unquarantine failed"; content:"SentinelOne"; content:"activityType=2027 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006645; sid:5006645; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Analyst verdict changed"; content:"SentinelOne"; content:"activityType=2030 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006646; sid:5006646; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Kill pending to reboot"; content:"SentinelOne"; content:"activityType=2031 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006647; sid:5006647; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Quarantine pending to reboot"; content:"SentinelOne"; content:"activityType=2034 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006648; sid:5006648; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Exclusion was added/modified by user"; content:"SentinelOne"; content:"activityType=3001 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006649; sid:5006649; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Black hash was added/modified"; content:"SentinelOne"; content:"activityType=3006 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006650; sid:5006650; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Black hash was deleted"; content:"SentinelOne"; content:"activityType=3020 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006651; sid:5006651; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] White hash was deleted"; content:"SentinelOne"; content:"activityType=3021 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006652; sid:5006652; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New Agent Package Available"; content:"SentinelOne"; content:"activityType=3100 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006653; sid:5006653; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] SentinelOne Operation - Scan started"; content:"SentinelOne"; content:"activityType=3614 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006654; sid:5006654; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] SentinelOne Operation - On-demand scan completed"; content:"SentinelOne"; content:"activityType=3617 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006655; sid:5006655; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] 2FA recovery email added"; content:"SentinelOne"; content:"activityType=3626 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006656; sid:5006656; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New Suspicious threat detected"; content:"SentinelOne"; content:"activityType=4003 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006657; sid:5006657; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Threat status changed"; content:"SentinelOne"; content:"activityType=4008 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006658; sid:5006658; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Note added"; content:"SentinelOne"; content:"activityType=4020 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006659; sid:5006659; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Group created"; content:"SentinelOne"; content:"activityType=5008 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006660; sid:5006660; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Initiated session with an agent"; content:"SentinelOne"; content:"eventID=3200 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006661; sid:5006661; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Created a remote shell session"; content:"SentinelOne"; content:"eventID=3201 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006662; sid:5006662; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Terminated the remoted shell session"; content:"SentinelOne"; content:"eventID=3203 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/50066163; sid:5006663; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Terminated session with agent"; content:"SentinelOne"; content:"eventID=3204 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006664; sid:5006664; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Uploaded the remote shell history"; content:"SentinelOne"; content:"eventID=3400 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006665; sid:5006665; rev:1;)
