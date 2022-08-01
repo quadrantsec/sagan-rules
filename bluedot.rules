@@ -34,3 +34,5 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[BLUEDOT] Malicious SHA1 has
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[BLUEDOT] Malicious SHA256 hash detected via Bluedot"; bluedot: type file_hash,Malicious; parse_hash: sha256; classtype: suspicious-traffic; parse_src_ip: 1; normalize; reference: url,wiki.quadrantsec.com/bin/view/Main/5002288; sid:5003120; rev:1;)
 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[BLUEDOT-FORTINET] Malicious URL detected within Traffic"; content: "logid=|22|0316013056|22|"; content: "type="; content: "subtype="; classtype: suspicious-traffic; normalize; parse_src_ip: 1; parse_dst_ip: 2; bluedot: type url, track by_src, none, Malicious; reference: url,wiki.quadrantsec.com/bin/view/Main/5006613; sid: 5006613; rev:1;)
+
