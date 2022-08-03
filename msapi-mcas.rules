@@ -29,16 +29,16 @@
 # Initial Signature Set Written by by William Harding @ Quadrant Information Securit
 
 
-alert any any any -> any any (msg: "[MCAS] Activity from Infrequent Country"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_NEW_COUNTRY"; classtype: suspicious-traffic; sid: 5006527; rev: 1)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Activity from Infrequent Country"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_NEW_COUNTRY"; classtype: suspicious-traffic; sid: 5006527; rev: 1)
 
-alert any any any -> any any (msg: "[MCAS] Mass Delete"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_DELETE"; classtype: system-event; sid: 5006521; rev: 1)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Mass Delete"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_DELETE"; classtype: system-event; sid: 5006521; rev: 1)
 
-alert any any any -> any any (msg: "[MCAS] Repeated Failed Logins"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_FAILED_LOGIN"; classtype: brute-force; sid: 5006522; rev: 1)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Repeated Failed Logins"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_FAILED_LOGIN"; classtype: brute-force; sid: 5006522; rev: 1)
 
-alert any any any -> any any (msg: "[MCAS] Activity from an Anonymous Proxy"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_RISKY_IP_ANONYMOUS"; classtype: suspicious-traffic; sid: 5006523; rev: 1)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Activity from an Anonymous Proxy"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_RISKY_IP_ANONYMOUS"; classtype: suspicious-traffic; sid: 5006523; rev: 1)
 
-alert any any any -> any any (msg: "[MCAS] Impossible Travel Activity"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_VELOCITY"; classtype: suspicious-traffic; sid: 5006524; rev: 1)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Impossible Travel Activity"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_VELOCITY"; classtype: suspicious-traffic; sid: 5006524; rev: 1)
 
-alert any any any -> any any (msg: "[MCAS] Suspicious Inbox Manipulation Rule"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_INBOX_HIDING"; classtype: configuration-change; sid: 5006525; rev: 1)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Suspicious Inbox Manipulation Rule"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_INBOX_HIDING"; classtype: configuration-change; sid: 5006525; rev: 1)
 
-alert any any any -> any any (msg: "[MCAS] Possible Unknown MCAS Alert"; program: MCAS; json_content: ".Operation", "MCAS_ALERT"; json_contains; classtype: bad-unknown; sid: 5006526; rev: 1)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Possible Unknown MCAS Alert"; program: MCAS; json_content: ".Operation", "MCAS_ALERT"; json_contains; classtype: bad-unknown; sid: 5006526; rev: 1)
