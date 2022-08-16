@@ -541,3 +541,12 @@ rule=: %-:string-to:method%method":"google.login.LoginService.loginFailure%-:str
 
 #This rule is used to parse URLs within Fortinet logs
 rule=: %-:string-to:url%url=%url:quoted-string%%-:rest%
+
+###############                                                                                                                  # SentinelOne #
+###############
+
+# Champ Clark III / 2022-08-16
+
+rule=: %-:string%   %-:string% -  %-:char-to:\x7c%|%-:char-to:\x7c%|%-:char-to:\x7c%|%os:char-to:\x7c%|%avtivitytype:char-to:\x7c%|New Suspicious threat detected - machine %machine:char-to:\x7c%|%-:rest%
+rule=: %-:string%   %-:string% -  %-:char-to:\x7c%|%-:char-to:\x7c%|%-:char-to:\x7c%|%os:char-to:\x7c%|%avtivitytype:char-to:\x7c%|New active threat - machine %machine:char-to:\x7c%|%-:rest%
+

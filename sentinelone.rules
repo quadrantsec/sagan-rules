@@ -30,7 +30,7 @@
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Subscribed and joined a group"; content:"SentinelOne"; content:"activityType=17 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006614; sid:5006614; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New active threat"; content:"SentinelOne"; content:"activityType=19 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006615; sid:5006615; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New active threat"; content:"SentinelOne"; content:"activityType=19 "; normalize; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006615; sid:5006615; rev:2;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New blocked threat"; content:"SentinelOne"; content:"activityType=20 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006616; sid:5006616; rev:1;)
 
@@ -116,7 +116,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Exclusion was added
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] 2FA recovery email added"; content:"SentinelOne"; content:"activityType=3626 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006657; sid:5006657; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New Suspicious threat detected"; content:"SentinelOne"; content:"activityType=4003 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006658; sid:5006658; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New Suspicious threat detected"; content:"SentinelOne"; content:"activityType=4003 "; normalize; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006658; sid:5006658; rev:2;)
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Threat status changed"; content:"SentinelOne"; content:"activityType=4008 "; classtype:system-event; reference:url,wiki.quadrantsec.com/bin/view/Main/5006659; sid:5006659; rev:1;)
 
