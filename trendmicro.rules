@@ -43,3 +43,8 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Spyware Logs De
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Url Filtering Logs Detected"; content: "LogUrlFiltering"; classtype: suspicious-traffic; program: TRENDMICRO; reference: url,wiki.quadrantsec.com/bin/view/Main/5003795; sid:5003795; rev:2;) 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Virus Logs Detected"; content: "LogVirus"; classtype: suspicious-traffic; program: TRENDMICRO; reference: url,wiki.quadrantsec.com/bin/view/Main/5003796; sid:5003796; rev:2;) 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Web Reputation Logs Detected"; content: "LogWebReputation"; classtype: suspicious-traffic; program: TRENDMICRO; reference: url,wiki.quadrantsec.com/bin/view/Main/5003797; sid:5003797; rev:2;) 
+
+# TrendMicro ServerProtect - WHarding - 20220802
+
+alert any $HOME_NET any -> $HOME_NET any (msg: "[TRENDMICRO-SERVERPROTECT] Outbreak Detected"; event_id: 26; content: "Outbreak when total viruses found exceed"; classtype: malware; sid:5006614)
+alert any $HOME_NET any -> $HOME_NET any (msg: "[TRENDMICRO-SERVERPROTECT] Virus Detected"; event_id: 101; content: "Real-time scan found virus"; threshold: type limit, track by_src, count 25, seconds 3600; classtype: malware; sid:5006615)
