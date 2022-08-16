@@ -1,0 +1,162 @@
+# Sagan msdns-audit.rules
+# Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 08/03/2022
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Zone Delete"; program:msdns; json_content:".EventID","513"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006667; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Zone Update"; program:msdns; json_content:".EventID","514"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006668; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Record Create"; program:msdns; json_content:".EventID","515"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006669; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Record Delete"; program:msdns; json_content:".EventID","516"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006670; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] RRSET Delete"; program:msdns; json_content:".EventID","517"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006671; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Node Delete"; program:msdns; json_content:".EventID","518"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006672; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Record Create - Dynamic Update"; program:msdns; json_content:".EventID","519"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006673; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Record Delete - Dynamic Update"; program:msdns; json_content:".EventID","520"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006674; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Record Scavenge"; program:msdns; json_content:".EventID","521"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006675; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Zone Scope Create"; program:msdns; json_content:".EventID","522"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006676; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Zone Scope Delete"; program:msdns; json_content:".EventID","523"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006677; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Zone Sign"; program:msdns; json_content:".EventID","525"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006678; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Zone Unsign"; program:msdns; json_content:".EventID","526"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006679; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Zone Re-sign"; program:msdns; json_content:".EventID","527"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006680; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Key Rollover Start"; program:msdns; json_content:".EventID","528"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006681; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Key Rollover End"; program:msdns; json_content:".EventID","529"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006682; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Key Retire"; program:msdns; json_content:".EventID","530"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006683; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Key Rollover Triggered"; program:msdns; json_content:".EventID","531"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006684; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Key Poke Rollover"; program:msdns; json_content:".EventID","533"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006685; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Export DNSSEC"; program:msdns; json_content:".EventID","534"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006686; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Import DNSSEC"; program:msdns; json_content:".EventID","535"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006687; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Cache Purge"; program:msdns; json_content:".EventID","536"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006688; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Forwarder Reset"; program:msdns; json_content:".EventID","537"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006689; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Root Hints"; program:msdns; json_content:".EventID","540"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006690; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Server Setting"; program:msdns; json_content:".EventID","541"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006691; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Server Scope Create"; program:msdns; json_content:".EventID","542"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006692; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Server Scope Delete"; program:msdns; json_content:".EventID","543"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006693; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Add Trust Point DNSKEY"; program:msdns; json_content:".EventID","544"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006694; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Add Trust Point DS"; program:msdns; json_content:".EventID","545"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006695; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Remove Trust Point"; program:msdns; json_content:".EventID","546"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006696; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Add Trust Point Root"; program:msdns; json_content:".EventID","547"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006697; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Restart Server"; program:msdns; json_content:".EventID","548"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006698; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Clean Debug Logs"; program:msdns; json_content:".EventID","549"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006699; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Write Dirty Zones"; program:msdns; json_content:".EventID","550"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006700; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Clear Statistics"; program:msdns; json_content:".EventID","551"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006701; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Start Scavenging"; program:msdns; json_content:".EventID","552"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006702; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Enlist Directory Partition"; program:msdns; json_content:".EventID","553"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006703; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Abort Scavenging"; program:msdns; json_content:".EventID","554"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006704; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Prepare for Demotion"; program:msdns; json_content:".EventID","555"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006705; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Write Root Hints"; program:msdns; json_content:".EventID","556"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006706; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Listen Address"; program:msdns; json_content:".EventID","557"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006707; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Active Refresh Trust Points"; program:msdns; json_content:".EventID","558"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006708; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Pause Zone"; program:msdns; json_content:".EventID","559"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006709; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Resume Zone"; program:msdns; json_content:".EventID","560"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006710; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Reload Zone"; program:msdns; json_content:".EventID","561"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006711; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Refresh Zone"; program:msdns; json_content:".EventID","562"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006712; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Expire Zone"; program:msdns; json_content:".EventID","563"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006713; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Update from DS"; program:msdns; json_content:".EventID","564"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006714; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Write and Notify"; program:msdns; json_content:".EventID","565"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006715; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Force Aging"; program:msdns; json_content:".EventID","566"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006716; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Scavenge Servers"; program:msdns; json_content:".EventID","567"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006717; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Trasfer Key Master"; program:msdns; json_content:".EventID","568"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006718; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Add SKD"; program:msdns; json_content:".EventID","569"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006719; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Modify SKD"; program:msdns; json_content:".EventID","570"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006720; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Delete SKD"; program:msdns; json_content:".EventID","571"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006721; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Modify SKD State"; program:msdns; json_content:".EventID","572"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006722; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Add Delegation"; program:msdns; json_content:".EventID","573"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006723; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Create Client Subnet Record"; program:msdns; json_content:".EventID","574"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006724; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Delete Client Subnet Record"; program:msdns; json_content:".EventID","575"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006725; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Update Client Subnet Record"; program:msdns; json_content:".EventID","576"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006726; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Create Server Level Policy"; program:msdns; json_content:".EventID","577"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006727; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Create Zone Level Policy"; program:msdns; json_content:".EventID","578"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006728; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Create Forwarding Policy"; program:msdns; json_content:".EventID","579"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006729; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Delete Server Level Policy"; program:msdns; json_content:".EventID","580"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006730; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Delete Zone Level Policy"; program:msdns; json_content:".EventID","581"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006731; rev:1;)
+
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Delete Forwarding Policy"; program:msdns; json_content:".EventID","582"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006732; rev:1;)
+
