@@ -447,3 +447,5 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-SECURITY] Potential
 
 # Detects Export of Secret Key. By SDrenning off of Golden SAML IOC's
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[WINDOWS-SECURITY] Command to Export Secret Key Detected"; event_id: 4688; content: "certutil |2d|exportPFX";nocase; classtype: suspicious-command; reference: url,github.com/SigmaHQ/sigma/blob/master/rules/powershell; reference: url,sygnia.co/golden-saml-advisory; sid:5005956; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Suspicious Base64 Encoded Commands [1/2]"; program:*Sysmon*; event_id:1; content: "powershell"; nocase; meta_content:" -%sagan% ",e,ec,enc,EncodedCommand; meta_content:" %sagan%",JAB,TVq,SUVY,SQBFAF,SQBuAH,aWV4,aQBlA,Y21k,Qzpc,Yzpc,UEs; meta_within:100; reference:url,gist.github.com/Neo23x0/6af876ee72b51676c82a2db8d2cd3639; classtype:suspicious-command; sid:5007159; rev:1;)
