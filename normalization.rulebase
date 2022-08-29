@@ -550,3 +550,9 @@ rule=: %-:string-to:url%url=%url:quoted-string%%-:rest%
 rule=: %-:string%   %-:string% -  %-:char-to:\x7c%|%-:char-to:\x7c%|%-:char-to:\x7c%|%os:char-to:\x7c%|%avtivitytype:char-to:\x7c%|New Suspicious threat detected - machine %machine:char-to:\x7c%|%-:rest%
 rule=: %-:string%   %-:string% -  %-:char-to:\x7c%|%-:char-to:\x7c%|%-:char-to:\x7c%|%os:char-to:\x7c%|%avtivitytype:char-to:\x7c%|New active threat - machine %machine:char-to:\x7c%|%-:rest%
 
+#Citrix Netscaler LOGIN LOGIN_FAILED
+#
+# 14:25:55 GMT StoreFront 0-PPE-0 : default SSLVPN LOGIN 1756256761 0 : Context rsolo003@10.32.2.21 - SessionId: 1590264 - User rsolo003 - Client_ip 10.32.2.21 - Nat_ip "Mapped Ip" - Vserver 10.15.152.104:443 - Browser_type "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36" - SSLVPN_client_type ICA - Group(s) "N/A"
+
+# 14:25:39 GMT StoreFront 0-PPE-0 : default AAA LOGIN_FAILED 1756254084 0 :  User rsolo003 - Client_ip 10.32.2.21 - Failure_reason "External authentication server denied access" - Browser Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36
+rule=: %timestamp:time-24hr% GMT %-:word% %-:number%-PPE-%-:number% : default SSLVPN %event_id:word% %epoch_time:number% %-:number% : %-:word% %username:char-to:\x40%@%src-ip:ipv4%%-:string-to:Vserver%Vserver %dst-ip:ipv4%:%-:rest%

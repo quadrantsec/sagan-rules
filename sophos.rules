@@ -25,5 +25,804 @@
 #
 #*************************************************************
 
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 08/29/2022
+
 alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Potential Threat Found"; content: "|3a 3a|Threat|3a 3a|"; parse_src_ip: 1; classtype: malware; sid:5005703; rev:1;)
 
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Active Directory synchronization succeeded"; program:sophos; content:"Event::ADSync::Success"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007218; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Active Directory synchronization warning"; program:sophos; content:"Event::ADSync::Warning"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007219; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Active Directory synchronization error"; program:sophos; content:"Event::ADSync::Error"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007220; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] ADSync did not complete"; program:sophos; content:"Event::ADSync::TooLargeError"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007221; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Web Gateway Device re-protected"; program:sophos; content:"Event::CWG::Reprotected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007222; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] New Web Gateway Device registered"; program:sophos; content:"Event::CWG::Registered"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007223; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] MTR threat case created"; program:sophos; content:"Event::EDR.DarkBytes::CaseCreated"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007224; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The device has been detected as a duplicate device. For more information"; program:sophos; content:"Event::Endpoint::CloneDetected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007225; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Policy in compliance"; program:sophos; content:"Event::Endpoint::Compliant"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007226; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Policy non-compliance"; program:sophos; content:"Event::Endpoint::NonCompliant"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007227; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Update succeeded"; program:sophos; content:"Event::Endpoint::UpdateSuccess"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007228; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Reboot recommended after software update"; program:sophos; content:"Event::Endpoint::UpdateRebootRequired"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007229; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Reboot required after software update"; program:sophos; content:"Event::Endpoint::UpdateRebootUrgentlyRequired"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007230; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Reboot required after certificate renewal"; program:sophos; content:"Event::Endpoint::VirtualisationCertificateRenewal"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007231; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Updated successfully"; program:sophos; content:"Event::Endpoint::UpdateFailure::UPDATED_SUCCESSFULLY"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007232; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Failed to install"; program:sophos; content:"Event::Endpoint::UpdateFailure::INSTALL_FAILED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007233; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Installation caught error."; program:sophos; content:"Event::Endpoint::UpdateFailure::INSTALL_CAUGHT_ERROR"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007234; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Download failed from server."; program:sophos; content:"Event::Endpoint::UpdateFailure::DOWNLOAD_FAILED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007235; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The update was cancelled by the user."; program:sophos; content:"Event::Endpoint::UpdateFailure::UPDATE_CANCELLED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007236; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A restart is needed for updates to take effect."; program:sophos; content:"Event::Endpoint::UpdateFailure::RESTART_NEEDED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007237; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Updating failed because no update source has been specified."; program:sophos; content:"Event::Endpoint::UpdateFailure::UPDATE_SOURCE_MISSING"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007238; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] ERROR: Could not find a source for updated package"; program:sophos; content:"Event::Endpoint::UpdateFailure::PACKAGE_SOURCE_MISSING"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007239; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] There was a problem while establishing a connection to the server."; program:sophos; content:"Event::Endpoint::UpdateFailure::CONNECTION_ERROR"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007240; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] ERROR: Could not find a source for updated packages."; program:sophos; content:"Event::Endpoint::UpdateFailure::PACKAGES_SOURCE_MISSING"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007241; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Updating failed"; program:sophos; content:"Event::Endpoint::UpdateFailure::PRODUCT_MISSING"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007242; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Failed to download updates."; program:sophos; content:"Event::Endpoint::UpdateFailure::ERROR_UPDATING_SOPHOS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007243; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Failed to download updates."; program:sophos; content:"Event::Endpoint::UpdateFailure::ERROR_UPDATING_NOT_SOPHOS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007244; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Failed to download updates."; program:sophos; content:"Event::Endpoint::UpdateFailure::ERROR_COPYING_FILES"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007245; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Failed to apply updates."; program:sophos; content:"Event::Endpoint::UpdateFailure::ERROR_UPDATING"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007246; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Failed to download updates."; program:sophos; content:"Event::Endpoint::UpdateFailure::ERROR_CHECKING_SOPHOS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007247; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Failed to download updates."; program:sophos; content:"Event::Endpoint::UpdateFailure::ERROR_CHECKING_VIA_HTTP"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007248; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Failed to download updates."; program:sophos; content:"Event::Endpoint::UpdateFailure::ERROR_CHECKING_VIA_LAN"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007249; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Failed to download updates."; program:sophos; content:"Event::Endpoint::UpdateFailure::ERROR_MOUNTING"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007250; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The update was cancelled by the user."; program:sophos; content:"Event::Endpoint::UpdateFailure::UPDATING_CANCELLED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007251; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A restart is needed for updates to take effect."; program:sophos; content:"Event::Endpoint::UpdateFailure::RESTARTING"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007252; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Sophos AutoUpdate is not running."; program:sophos; content:"Event::Endpoint::UpdateFailure::SOCKET_ERROR"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007253; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Update failed"; program:sophos; content:"Event::Endpoint::UpdateFailure::UNKNOWN_ERROR"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007254; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Controlled application blocked"; program:sophos; content:"Event::Endpoint::Application::Blocked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007255; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Controlled application allowed"; program:sophos; content:"Event::Endpoint::Application::Allowed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007256; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Controlled application detected"; program:sophos; content:"Event::Endpoint::Application::Detected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007257; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Failed to protect"; program:sophos; content:"Event::Endpoint::NotProtected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007258; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] New protected"; program:sophos; content:"Event::Endpoint::Protected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007259; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Endpoint is out of date"; program:sophos; content:"Event::Endpoint::OutOfDate"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007260; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] New endpoint registered"; program:sophos; content:"Event::Endpoint::Registered"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007261; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Endpoint re-protected"; program:sophos; content:"Event::Endpoint::Reprotected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007262; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Real time protection disabled"; program:sophos; content:"Event::Endpoint::SavDisabled"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007263; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Real time protection re-enabled"; program:sophos; content:"Event::Endpoint::SavEnabled"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007264; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Error reported"; program:sophos; content:"Event::Endpoint::SavError"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007265; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Scan completed"; program:sophos; content:"Event::Endpoint::SavFastScanComplete"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007266; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Scan completed"; program:sophos; content:"Event::Endpoint::SavScanComplete"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007267; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Scan aborted"; program:sophos; content:"Event.Endpoint::SavSmartScanAborted"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007268; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Scan completed"; program:sophos; content:"Event.Endpoint::SavSmartScanComplete"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007269; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Scan started"; program:sophos; content:"Event.Endpoint::SavSmartScanStarted"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007270; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] New user added automatically"; program:sophos; content:"Event::Endpoint::UserAutoCreated"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007271; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Low reputation download automatically trusted"; program:sophos; content:"Event::Endpoint::DownloadReputationAutoAuthorised"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007272; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Low reputation download automatically deleted"; program:sophos; content:"Event::Endpoint::DownloadReputationAutoBlocked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007273; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] User trusted low reputation download"; program:sophos; content:"Event::Endpoint::DownloadReputationUserAuthorised"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007274; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] User deleted low reputation download"; program:sophos; content:"Event::Endpoint::DownloadReputationUserBlocked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007275; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Device has been de-duplicated"; program:sophos; content:"Event::Endpoint::Deduplicated::COMPUTER"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007276; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Device has been de-duplicated"; program:sophos; content:"Event::Endpoint::Deduplicated::SERVER"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007277; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Device has been de-duplicated"; program:sophos; content:"Event::Endpoint::Deduplicated::SECURITY_VM"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007278; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Computer auto isolated due to red health"; program:sophos; content:"Event::Endpoint::Isolation::Isolated::SELF"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007279; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Computer isolated by an administrator"; program:sophos; content:"Event::Endpoint::Isolation::Isolated::ADMIN"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007280; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Computer has been isolated"; program:sophos; content:"Event::Endpoint::Isolation::Isolated::ADMIN_UNKNOWN"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007281; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Computer removed from auto isolation"; program:sophos; content:"Event::Endpoint::Isolation::UnIsolated::SELF"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007282; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Computer removed from isolation by an administrator"; program:sophos; content:"Event::Endpoint::Isolation::UnIsolated::ADMIN"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007283; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Computer has been removed from isolation"; program:sophos; content:"Event::Endpoint::Isolation::UnIsolated::ADMIN_UNKNOWN"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007284; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access has been blocked by web filtering"; program:sophos; content:"Event::Endpoint::WebFilteringBlocked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007285; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Website blocked; program:sophos; content:"Event::Endpoint::WebControlViolation::BLOCKED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007286; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Website warned; program:sophos; content:"Event::Endpoint::WebControlViolation::WARNED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007287; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] User bypassed; program:sophos; content:"Event::Endpoint::WebControlViolation::PROCEEDED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007288; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Unknown violation"; program:sophos; content:"Event::Endpoint::WebControlViolation::UNKNOWN"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007289; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Application was blocked by an endpoint firewall."; program:sophos; content:"Event::Endpoint::WindowsFirewall::Blocked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007290; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Application installation: No changes"; program:sophos; content:"Event::Endpoint::AppChange::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007291; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Uninstalled application(s)"; program:sophos; content:"Event::Endpoint::AppChange::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007292; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Installed application(s)"; program:sophos; content:"Event::Endpoint::AppChange::3"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007293; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Application installation: new application(s)"; program:sophos; content:"Event::Endpoint::AppChange::4"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007294; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Application was blocked by an endpoint firewall"; program:sophos; content:"Event::Endpoint::WindowsFirewall::Blocked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007295; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The computer is running an operating system and service pack combination which is no longer supported. Upgrade to continue receiving protection."; program:sophos; content:"Event::Endpoint::UnsupportedOperatingSystem"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007296; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] One or more Sophos services are missing or not running."; program:sophos; content:"Event::Endpoint::ServiceNotRunning"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007297; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] All Sophos services are running."; program:sophos; content:"Event::Endpoint::ServiceRestored"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007298; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your APNS certificate will expire."; program:sophos; content:"Event::Task::RenewApnsCertificate::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007299; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your APNS certificate will expire in 1 day."; program:sophos; content:"Event::Task::RenewApnsCertificate::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007300; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your APNS certificate will expire in less than a day."; program:sophos; content:"Event::Task::RenewApnsCertificate::3"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007301; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your API token will expire"; program:sophos; content:"Event::Task::RenewApiToken::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007302; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your API token has expired."; program:sophos; content:"Event::Task::RenewApiToken::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007303; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] license has expired"; program:sophos; content:"Event::Task::RenewLicense"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007304; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Remote assistance is enabled"; program:sophos; content:"Event::Task::SupportPortalOpen"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007305; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Protect your devices"; program:sophos; content:"Event::Task::ProtectEndpoints"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007306; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Security issue detected"; program:sophos; content:"Event::Task::SecurityIssue"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007307; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Peripheral allowed"; program:sophos; content:"Event::Endpoint::Device::AlertedOnly"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007308; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Peripheral blocked"; program:sophos; content:"Event::Endpoint::Device::Blocked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007309; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Peripheral restricted to read-only"; program:sophos; content:"Event::Endpoint::Device::ReadOnly"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007310; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Sophos Firewall reported computer not sending heartbeat signals"; program:sophos; content:"Event::Endpoint::HeartbeatMissing"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007311; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Sophos Firewall reported computer resumed sending heartbeat signals"; program:sophos; content:"Event::Endpoint::HeartbeatRestored"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007312; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Please add the Exchange information."; program:sophos; content:"Event::Endpoint::Mobile::EasDataMissing"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007313; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] New mobile device added"; program:sophos; content:"Event::Endpoint::Mobile::Added"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007314; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] New mobile device enrolled"; program:sophos; content:"Event::Endpoint::Mobile::Enrolled"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007315; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] New app enrolled for endpoint"; program:sophos; content:"Event::Endpoint::Mobile::EnrolledNewApp"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007316; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The mobile device is now non compliant"; program:sophos; content:"Event::Endpoint::Mobile::NowNonCompliant"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007317; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The mobile device is now non compliant"; program:sophos; content:"Event::Endpoint::Mobile::NowNonCompliant::0"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007318; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The mobile device is now non compliant. Forbidden app installed."; program:sophos; content:"Event::Endpoint::Mobile::NowNonCompliant::GENERAL_BLACKLISTED_APPS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007319; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The mobile device is now non compliant. Forbidden app installed."; program:sophos; content:"Event::Endpoint::Mobile::NowNonCompliant::GENERAL_WHITELISTED_APPS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007320; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The mobile device is now non compliant. Mandatory app not installed."; program:sophos; content:"Event::Endpoint.Mobile::NowNonCompliant::GENERAL_MANDATORY_APPS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007321; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The mobile device is now non compliant"; program:sophos; content:"Event::Endpoint::Mobile::NowNonCompliant::UNKNOWN"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007322; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] User unenrolled app"; program:sophos; content:"Event::Endpoint::Mobile::UnenrolledByUser"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007323; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The mobile device is now compliant."; program:sophos; content:"Event::Endpoint::Mobile::NowCompliant"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007324; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] App has been unenrolled."; program:sophos; content:"Event::Endpoint::Mobile::Unenrolled"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007325; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Please add the information for placeholder"; program:sophos; content:"Event::Endpoint::Mobile::PlaceholderMissing"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007326; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malware locally cleared"; program:sophos; content:"Event::Endpoint::Threat::Dismissed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007327; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malware cleaned up"; program:sophos; content:"Event::Endpoint::Threat::CleanedUp"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007328; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malicious traffic detected"; program:sophos; content:"Event::Endpoint::Threat::CommandAndControlDetected::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007329; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Sophos Firewall detected malicious traffic"; program:sophos; content:"Event::Endpoint::Threat::CommandAndControlDetected::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007330; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malicious traffic detected"; program:sophos; content:"Event::Endpoint::Threat::CommandAndControlDetected::3"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007331; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malicious traffic detection locally cleared"; program:sophos; content:"Event::Endpoint::Threat::CommandAndControlDismissed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007332; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malicious inbound network traffic blocked from a remote computer"; program:sophos; content:"Event::Endpoint::Threat::IpsInboundDetection"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007333; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malicious outbound network traffic blocked"; program:sophos; content:"Event::Endpoint::Threat::IpsInboundDetection::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007334; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malicious outbound network traffic blocked"; program:sophos; content:"Event::Endpoint::Threat::IpsInboundDetection::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007335; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Network Traffic Protection cleaned up a threat"; program:sophos; content:"Event::Endpoint::CoreIpsClean"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007336; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Network Traffic Protection could not clean up a threat"; program:sophos; content:"Event::Endpoint::CoreIpsCleanFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007337; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Running malware cleaned up"; program:sophos; content:"Event::Endpoint::Threat::HIPSCleanedUp"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007338; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Running malware detected"; program:sophos; content:"Event::Endpoint::Threat::HIPSDetected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007339; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Running malware locally cleared"; program:sophos; content:"Event::Endpoint::Threat::HIPSDismissed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007340; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malware detected"; program:sophos; content:"Event::Endpoint::Threat::Detected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007341; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA locally cleared"; program:sophos; content:"Event::Endpoint::Threat::PuaDismissed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007342; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA cleaned up"; program:sophos; content:"Event::Endpoint::Threat::PuaCleanedUp"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007343; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA detected"; program:sophos; content:"Event::Endpoint::Threat::PuaDetected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007344; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Low reputation app detected"; program:sophos; content:"Event::Endpoint::Threat::LowRepAppDetected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007345; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Low reputation app cleaned up"; program:sophos; content:"Event::Endpoint::Threat::LowRepAppCleanedUp"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007346; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Cookies deleted"; program:sophos; content:"Event::Endpoint::HomeCookiesDeleted"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007347; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Cookies found"; program:sophos; content:"Event::Endpoint::HomeCookiesDetected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007348; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Remnants deleted of Potentially Unwanted App"; program:sophos; content:"Event::Endpoint::HomePuaRemnantsDeleted"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007349; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Remnants found of Potentially Unwanted App"; program:sophos; content:"Event::Endpoint::HomePuaRemnantsDetected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007350; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Threat remnants deleted"; program:sophos; content:"Event::Endpoint::HomeThreatRemnantsDeleted"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007351; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Threat remnants found"; program:sophos; content:"Event::Endpoint::HomeThreatRemnantsDetected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007352; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Scan started"; program:sophos; content:"Event::Endpoint::HomeStartStarted"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007353; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Scan completed"; program:sophos; content:"Event::Endpoint::HomeStartFinished"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007354; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Scan cancelled"; program:sophos; content:"Event::Endpoint::HomeStartCancelled"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007355; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Device uninstalled"; program:sophos; content:"Event::Endpoint::HomeEndpointUninstalled"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007356; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] application hijacking prevented"; program:sophos; content:"Event::Endpoint::HmpaApplicationHijacking"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007357; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] malicious behavior prevented"; program:sophos; content:"Event::Endpoint::HmpaBehaviourPrevented"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007358; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] HMPA Camera Mic"; program:sophos; content:"Event::Endpoint::HmpaCameraMic"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007359; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] tracking cookies deleted"; program:sophos; content:"Event::Endpoint::HmpaCookiesDeleted"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007360; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Scan detected cookies"; program:sophos; content:"Event::Endpoint::HmpaCookiesDetected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007361; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] We prevented credential theft"; program:sophos; content:"Event::Endpoint::HmpaCredGuard"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007362; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Credential theft attempt resolved"; program:sophos; content:"Event::Endpoint::HmpaCredGuardResolved"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007363; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] CryptoGuard detected ransomware"; program:sophos; content:"Event::Endpoint::HmpaCryptoGuard"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007364; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] CryptoGuard unblocked process"; program:sophos; content:"Event::Endpoint::HmpaCryptoGuardResolved"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007365; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] CryptoGuard detected a ransomware attack"; program:sophos; content:"Event::Endpoint::HmpaCryptoGuardSMB"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007366; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] CryptoGuard detected a ransomware attack from this device"; program:sophos; content:"Event::Endpoint::HmpaCryptoGuardSMBOrigin"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007367; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] CryptoGuard unblocked access to network shares"; program:sophos; content:"Event::Endpoint::HmpaCryptoGuardSMBResolved"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007368; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] exploit prevented"; program:sophos; content:"Event::Endpoint::HmpaExploitPrevented"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007369; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Detected malware"; program:sophos; content:"Event::Endpoint::HmpaMalwareDetected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007370; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Deleted malware"; program:sophos; content:"Event::Endpoint::HmpaMalwareCleanup"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007371; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] We prevented a privilege escalation exploit"; program:sophos; content:"Event::Endpoint::HmpaPrivGuard"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007372; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Privilege escalation exploit resolved"; program:sophos; content:"Event::Endpoint::HmpaPrivGuardResolved"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007373; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Detected PUA"; program:sophos; content:"Event::Endpoint::HmpaPuaDetected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007374; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Pua has been cleaned up"; program:sophos; content:"Event::Endpoint::HmpaPuaCleanup"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007375; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Safe Browsing detected browser has been compromised"; program:sophos; content:"Event::Endpoint::HmpaSafeBrowsing"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007376; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Scan completed"; program:sophos; content:"Event::Endpoint::HmpaScanCompleted"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007377; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Reboot required for complete cleanup"; program:sophos; content:"Event::Endpoint::HmpaScanReboot"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007378; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Scan started"; program:sophos; content:"Event::Endpoint::HmpaScanStarted"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007379; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Computer is clean"; program:sophos; content:"Event::Endpoint::HmpaScanClean"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007380; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Safe Browsing detected a threat"; program:sophos; content:"Event::Endpoint::HmpaThreat"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007381; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Scan started"; program:sophos; content:"Event::Endpoint::IntensiveScanStarted"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007382; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Scan stage one complete. Beginning stage two."; program:sophos; content:"Event::Endpoint::IntensiveScanPartComplete"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007383; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] AMSI Protection blocked a threat"; program:sophos; content:"Event::Endpoint::CoreAmsiBlocked::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007384; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] AMSI Protection blocked a threat"; program:sophos; content:"Event::Endpoint::CoreAmsiBlocked::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007385; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] AMSI Protection cleaned up a threat."; program:sophos; content:"Event.Endpoint.CoreAmsiClean"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007386; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] AMSI Protection could not clean up a threat."; program:sophos; content:"Event.Endpoint.CoreAmsiCleanFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007387; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malware detected"; program:sophos; content:"Event::Endpoint::CoreDetection"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007388; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malware detected in network location requires attention"; program:sophos; content:"Event::Endpoint::CoreRemoteDetection"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007389; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA detected"; program:sophos; content:"Event::Endpoint::CorePuaDetection"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007390; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA detected in network location requires attention"; program:sophos; content:"Event::Endpoint::CorePuaRemoteDetection"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007391; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malware cleaned up"; program:sophos; content:"Event::Endpoint::CoreClean"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007392; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Manual malware cleanup required"; program:sophos; content:"Event::Endpoint::CoreCleanFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007393; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Created a forensic snapshot"; program:sophos; content:"Event::Endpoint::CoreGenerateForensicSnapshot::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007394; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Created a forensic snapshot"; program:sophos; content:"Event::Endpoint::CoreGenerateForensicSnapshot::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007395; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Could not create a forensic snapshot"; program:sophos; content:"Event::Endpoint::CoreGenerateForensicSnapshotFailed::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007396; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Could not create a forensic snapshot"; program:sophos; content:"Event::Endpoint::CoreGenerateForensicSnapshotFailed::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007397; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malware cleaned up"; program:sophos; content:"Event::Endpoint::CoreHmpaClean"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007398; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Manual malware cleanup required"; program:sophos; content:"Event::Endpoint::CoreHmpaCleanFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007399; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Nothing found to clean up"; program:sophos; content:"Event::Endpoint::CoreHmpaCleanNothingFound"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007400; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Reboot required for complete cleanup"; program:sophos; content:"Event::Endpoint::CoreHmpaReboot"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007401; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] No items were cleaned."; program:sophos; content:"Event::Endpoint::CoreCleanNothingFound"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007402; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA cleaned up"; program:sophos; content:"Event::Endpoint::CorePuaClean"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007403; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA Clean Failed"; program:sophos; content:"Event::Endpoint::CorePuaCleanFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007404; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Manual PUA cleanup required"; program:sophos; content:" ""; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007405; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] No items were cleaned."; program:sophos; content:"Event::Endpoint::CorePuaCleanNothingFound"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007406; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Blocked item cleaned up"; program:sophos; content:"Event::Endpoint::CoreBlocklistClean"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007407; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Manual blocked item cleanup required"; program:sophos; content:"Event::Endpoint::CoreBlocklistCleanFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007408; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] System cleaned up"; program:sophos; content:"Event::Endpoint::CoreSystemClean"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007409; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] System Clean failed"; program:sophos; content:"Event::Endpoint::CoreSystemCleanFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007410; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Restored and associated items"; program:sophos; content:"Event::Endpoint::CoreRestore"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007411; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Restore failed and associated items"; program:sophos; content:"Event::Endpoint::CoreRestoreFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007412; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Restored and associated items"; program:sophos; content:"Event::Endpoint::CorePuaRestore"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007413; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Restore failed and associated items"; program:sophos; content:"Event::Endpoint::CorePuaRestoreFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007414; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Reboot required for complete cleanup"; program:sophos; content:"Event::Endpoint::CoreReboot"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007415; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Reboot required for complete PUA cleanup"; program:sophos; content:"Event::Endpoint::CorePuaReboot"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007416; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Outbreak detected"; program:sophos; content:"Event::Endpoint::CoreOutbreak"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007417; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malware marked as resolved"; program:sophos; content:"Event::Endpoint::CoreDismissed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007418; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Outbreak marked as resolved"; program:sophos; content:"Event::Endpoint::CoreOutbreakDismissed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007419; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Uploaded a forensic snapshot"; program:sophos; content:"Event::Endpoint::CoreUploadForensicSnapshot"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007420; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Could not upload a forensic snapshot"; program:sophos; content:"Event::Endpoint::CoreUploadForensicSnapshotFailed.1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007421; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Could not upload a forensic snapshot"; program:sophos; content:"Event::Endpoint::CoreUploadForensicSnapshotFailed.2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007422; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] An attempt to communicate with a botnet or command and control server has been detected."; program:sophos; content:"Event::Firewall::FirewallAdvancedThreatProtection"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007423; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Firewall Gateway Down"; program:sophos; content:"Event::Firewall::FirewallGatewayDown"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007424; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Firewall Gateway Up"; program:sophos; content:"Event::Firewall::FirewallGatewayUp"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007425; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] One of the HA nodes is down or in a degraded state"; program:sophos; content:"Event::Firewall::FirewallHAStateDegraded"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007426; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Both HA nodes are now connected and at full health."; program:sophos; content:"Event::Firewall::FirewallHAStateRestored"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007427; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The firewall's CPU has been at or above usage"; program:sophos; content:"Event::Firewall::FirewallHighCPUUsage"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007428; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The firewall's Disk usage"; program:sophos; content:"Event::Firewall::FirewallHighDiskUsage"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007429; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The firewall's memory usage"; program:sophos; content:"Event::Firewall::FirewallHighMemoryUsage"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007430; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The firewall's CPU"; program:sophos; content:"Event::Firewall::FirewallMaxCPUUsage"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007431; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] An endpoint that previously had a Security Heartbeat"; program:sophos; content:"Event::Firewall::FirewallMissingHeartbeat"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007432; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Firewall RED tunnel connection restored"; program:sophos; content:"Event::Firewall::FirewallREDTunnelUp"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007433; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Firewall RED tunnel down"; program:sophos; content:"Event::Firewall::FirewallREDTunnelDown"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007434; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Firewall VPN tunnel connection restored"; program:sophos; content:"Event::Firewall::FirewallVPNTunnelUp"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007435; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The firewall connection to Sophos Central has been restored"; program:sophos; content:"Event::Firewall::Reconnected"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007436; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Firewall has not checked in with Sophos Central"; program:sophos; content:"Event::Firewall::LostConnectionToSophosCentral"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007437; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Central firewall reporting has been disabled for this device."; program:sophos; content:"Event::Firewall::FirewallUnAuthorizedToSophosCentral"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007438; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Sophos has separated HA pair device(s) from the same group and shared allocation between them."; program:sophos; content:"Event::Firewall::ReportingLicenseHADisable"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007439; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Central firewall reporting license has been expired and the extension period started."; program:sophos; content:"Event::Firewall::ReportingGracePeriodStart"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007440; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] We have reduced the Central Firewall Reporting licenses allocated for your device/s."; program:sophos; content:"Event::Firewall::RenewalWithLesserQuantity"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007441; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Central Firewall Reporting license has expired"; program:sophos; content:"Event::Firewall::ReportingGracePeriodExtension"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007442; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Central Firewall Reporting license extension period expired"; program:sophos; content:"Event::Firewall::ReportingGracePeriodExpired"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007443; rev:1;)
+
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Central Firewall Reporting XGS license has expired."; program:sophos; content:"Event::Firewall.ReportingXgsLicenseExpired"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007444; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Firewall Reporting XGS Licence will expire"; program:sophos; content:"Event.Firewall::ReportingXgsLicenseNotification"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007445; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Subscriptions are set to expire"; program:sophos; content:"Event::Other::FirewallSubscriptionExpiringSoon"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007446; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Subscriptions (1) are set to expire within the next week."; program:sophos; content:"Event::Other::FirewallSubscriptionAlmostExpired"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007447; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Subscriptions have recently expired."; program:sophos; content:"Event::Other::FirewallSubscriptionExpired"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007448; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A local administrator has signed in and aborted the zero-touch process on this firewall."; program:sophos; content:"Event::Other::ZeroTouchCancelled"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007449; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A new firewall has been successfully registered to Sophos Central."; program:sophos; content:"Event::Other::RegisteredInCentral"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007450; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A firewall was awaiting management approval for more than 30 days"; program:sophos; content:"Event::Other::ManagementApprovalExpired"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007451; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Firewall management has been disabled for this firewall."; program:sophos; content:"Event::Other::ManagementDisabled"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007452; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] This firewall has been de-registered from Sophos Central."; program:sophos; content:"Event::Other::DeregisteredFromSophosCentral"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007453; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A firewall has turned on Sophos Central management or reporting and is awaiting approval to be managed."; program:sophos; content:"Event::Other::WaitingForApproval"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007454; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A firmware update has been started on this firewall."; program:sophos; content:"Event::Other::FirewallFirmwareUpdateInProgress"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007455; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A firmware update has been completed successfully"; program:sophos; content:"Event::Other::FirewallFirmwareUpdateSuccessfullyFinished"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007456; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A firmware update has failed to install successfully on the firewall."; program:sophos; content:"Event::Other::FirewallFirmwareUpdateFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007457; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] AWS account added"; program:sophos; content:"Event::Iaas::Log::AWS_ACCOUNT_ADDED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007458; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] AWS account deleted"; program:sophos; content:"Event::Iaas::Log::AWS_ACCOUNT_DELETED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007459; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] S3 storage health"; program:sophos; content:"Event::Iaas::Log.BUCKET_HEALTH_CHANGED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007460; rev:1;)
+
+# TODO add after and/or threshold
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Invalid AWS credentials"; program:sophos; content:"Event::Iaas::IaasError::INVALID_ACCOUNT_CREDENTIALS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007461; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] AWS account locked"; program:sophos; content:"Event::Iaas::IaasError::ACCOUNT_LOCKED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007462; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] AWS account not authorized"; program:sophos; content:"Event::Iaas::IaasError::NOT_AUTHORIZED_API"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007463; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Incorrect AWS details or IAM permissions"; program:sophos; content:"Event::Iaas::IaasError::INCORRECT_PERMISSIONS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007464; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Duplicated AWS account"; program:sophos; content:"Event::Iaas::IaasError::DUPLICATED_ACCOUNT"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007465; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] AWS account ID changed"; program:sophos; content:"Event::Iaas::IaasError::ACCOUNT_ID_CHANGED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007466; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Too many AWS IAM permissions"; program:sophos; content:"Event::Iaas::IaasError::TOO_MANY_PERMISSIONS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007467; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Incorrect AWS IAM permissions"; program:sophos; content:"Event::Iaas::IaasError::UNAUTHORIZED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007468; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] AWS connection error"; program:sophos; content:"Event::Iaas::IaasError::DEFAULT"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007469; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] S3 storage health; program:sophos; content:"Event::Iaas::BucketError.BUCKET_HEALTH_CHANGED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007470; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Azure Active Directory added"; program:sophos; content:"Event::IaasAzure::AzureLog::AZURE_DIRECTORY_ADDED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007471; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Azure Active Directory removed"; program:sophos; content:"Event::IaasAzure::AzureLog::AZURE_DIRECTORY_REMOVED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007472; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Azure Active Directory modified"; program:sophos; content:"Event::IaasAzure::AzureLog::AZURE_DIRECTORY_MODIFIED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007473; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Invalid Azure credentials"; program:sophos; content:"Event::IaasAzure::AzureError::INVALID_CREDENTIALS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007474; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Azure connection error"; program:sophos; content:"Event::IaasAzure::AzureError::UNKNOWN_ERROR"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007475; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your APNS certificate has expired."; program:sophos; content:"Event::Mobile::ApnsCertificateExpired"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007476; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your APNS certificate was renewed."; program:sophos; content:"Event::Mobile::ApnsCertificateRenewed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007477; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] APNs certificate was revoked."; program:sophos; content:"Event::Mobile::ApnsCertificateRevoked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007478; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Please add the email address for user."; program:sophos; content:"Event::Mobile::UserEmailMissing"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007479; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The renewal of your Heartbeat intermediate certificate has failed."; program:sophos; content:"Event::Protection::CustomerHeartbeatCertificateRenewalFailure"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007480; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Device actions have been cancelled"; program:sophos; content:"Event::Smc::MigrationActionsCancelled"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007481; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Migration cancelled: Migration of your data to the next mobile management version was cancelled."; program:sophos; content:"Event::Smc::MigrationCancelled"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007482; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Migration failed: Migration of your data to the next mobile management version has failed."; program:sophos; content:"Event::Smc::MigrationFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007483; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Migrating your data to the next mobile management version has failed"; program:sophos; content:"Event::Smc::MigrationPreventedByAdminEmail"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007484; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Migration started: Your data is migrated to the next mobile management version."; program:sophos; content:"Event::Smc::MigrationStarted"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007485; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Migration succeeded: Your data was migrated to the next mobile management version."; program:sophos; content:"Event::Smc::MigrationSucceeded"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007486; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Synchronization of your data to the next mobile management version failed."; program:sophos; content:"Event::Smc::SynchronizationFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007487; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Failed to communicate with a Google web service because you have removed Sophos Mobile as an EMM provider from your Android enterprise account."; program:sophos; content:"Event::Smc::AfwNotEnrolled"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007488; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Unapproved Android work app used in a task bundle"; program:sophos; content:"Event::Smc::AfwUnapprovedAppUsedInOtherObjectEvent"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007489; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Android Enterprise connection error (Unauthorized access. Make sure all required APIs are enabled.)"; program:sophos; content:"Event::Smc::AfwClientConnectionError::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007490; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Android Enterprise connection error"; program:sophos; content:"Event::Smc::AfwClientConnectionError::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007491; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Required app not approved in managed Google Play"; program:sophos; content:"Event::Smc::AfwRequiredAppNotApproved::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007492; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Apple DEP terms and conditions have not been accepted yet."; program:sophos; content:"Event::Smc::DepRequiresAcceptingTermsOfUse"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007493; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Man in the middle attack detected in wifi 0"; program:sophos; content:"Event::Smc::MitmAttackEvent::0"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007494; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Man in the middle attack detected in wifi 1"; program:sophos; content:"Event::Smc::MitmAttackEvent::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007495; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Man in the middle attack detected in wifi 2"; program:sophos; content:"Event::Smc::MitmAttackEvent::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007496; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Man in the middle attack detected in wifi 3"; program:sophos; content:"Event::Smc::MitmAttackEvent::3"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007497; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Man in the middle attack detected in wifi 4"; program:sophos; content:"Event::Smc::MitmAttackEvent::4"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007498; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Man in the middle attack detected in wifi 5"; program:sophos; content:"Event::Smc::MitmAttackEvent::5"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007499; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Man in the middle attack detected in wifi 6"; program:sophos; content:"Event::Smc::MitmAttackEvent::6"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007500; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Sophos Mobile License will expire"; program:sophos; content:"Event::Smc::RenewSmcLicense::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007501; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Sophos Mobile License will expire in 1 day."; program:sophos; content:"Event::Smc::RenewSmcLicense::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007502; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Sophos Mobile License will expire in less than a day."; program:sophos; content:"Event::Smc::RenewSmcLicense::3"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007503; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Apple Dep Token will expire"; program:sophos; content:"Event::Smc::RenewAppleDepToken::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007504; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Apple Dep Token will expire in 1 day."; program:sophos; content:"Event::Smc::RenewAppleDepToken::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007505; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Apple Dep Token will expire in less than a day."; program:sophos; content:"Event::Smc::RenewAppleDepToken::3"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007506; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Apple Vpp will expire"; program:sophos; content:"Event::Smc::RenewAppleVpp::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007507; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Apple Vpp will expire in 1 day."; program:sophos; content:"Event::Smc::RenewAppleVpp::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007508; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Apple Vpp will expire in less than a day."; program:sophos; content:"Event::Smc::RenewAppleVpp::3"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007509; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Knox License will expire"; program:sophos; content:"Event::Smc::RenewKnoxLicense::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007510; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Knox License will expire in 1 day."; program:sophos; content:"Event::Smc::RenewKnoxLicense::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007511; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your Knox License will expire in less than a day."; program:sophos; content:"Event::Smc::RenewKnoxLicense::3"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007512; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your configured certificate will expire"; program:sophos; content:"Event::Smc::RenewInstalledCertificate::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007513; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your configured certificate will expire in 1 day."; program:sophos; content:"Event::Smc::RenewInstalledCertificate::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007514; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your configured certificate will expire in less than a day."; program:sophos; content:"Event::Smc::RenewInstalledCertificate::3"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007515; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Web Filter Warning"; program:sophos; content:"Event::Endpoint::Smc::WebFiltering::WARNED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007516; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Web Filter Blocked"; program:sophos; content:"Event::Endpoint::Smc::WebFiltering::BLOCKED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007517; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] User bypassed Web Filter"; program:sophos; content:"Event::Endpoint::Smc::WebFiltering::PROCEEDED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007518; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] reached threshold messages."; program:sophos; content:"Event::SpamOrVirus::Alert"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007519; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Data Loss Prevention failed for target mailbox"; program:sophos; content:"Event::Xgemail::DlpViolationEvent"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007520; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Email DLP error: rule in policy was turned off because it has a regular expression that ran for too long."; program:sophos; content:"Event::Xgemail::DlpRuleDisableEvent"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007521; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Outbound sender rate limited "; program:sophos; content:"Event::RateLimitAlert::Alert"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007522; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Endpoint scan has been initiated"; program:sophos; content:"Event::OutboundMalwareProtection::EndpointScan"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007523; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Sender has been blocked for reaching the spam/virus threshold."; program:sophos; content:"Event::OutboundMalwareProtection::BlockedSender"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007524; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your installed certificate will expire"; program:sophos; content:"Event::Endpoint::Smc::RenewInstalledCertificate::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007525; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your installed certificate will expire in 1 day."; program:sophos; content:"Event::Endpoint::Smc::RenewInstalledCertificate::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007526; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Your installed certificate will expire in less than a day."; program:sophos; content:"Event::Endpoint::Smc::RenewInstalledCertificate::3"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007527; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The mobile device exceeded the mobile data volume threshold."; program:sophos; content:"Event::Endpoint::Smc::DeviceTemThresholdExceeded"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007528; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Can't enroll the UEM agent"; program:sophos; content:"Event::Endpoint::Smc::Uem::EnrollmentFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007529; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] No APNS certificate configured"; program:sophos; content:"Event::Task::NoApnsCertificate"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007530; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Mobile action cancelled"; program:sophos; content:"Event::Endpoint::Mobile::Action::Cancelled"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007531; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Mobile action skipped"; program:sophos; content:"Event::Endpoint::Mobile::Action::Skipped"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007532; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Mobile action failed"; program:sophos; content:"Event::Endpoint::Mobile::Action::Failed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007533; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Mobile action succeeded"; program:sophos; content:"Event::Endpoint::Mobile::Action::Succeeded"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007534; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Computer scan required to complete running malware cleanup"; program:sophos; content:"Event::Endpoint::Threat::HIPSCleanupFailed::FULL_SCAN_REQUIRED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007535; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Running malware not cleaned up"; program:sophos; content:"Event::Endpoint::Threat::HIPSCleanupFailed::CLEANUPABLE"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007536; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Running malware not cleaned up"; program:sophos; content:"Event::Endpoint::Threat::HIPSCleanupFailed::CLEANUP_IN_PROGRESS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007537; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Reboot required to complete running malware cleanup"; program:sophos; content:"Event::Endpoint::Threat::HIPSCleanupFailed::REBOOT_REQUIRED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007538; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Running malware requires manual cleanup"; program:sophos; content:"Event::Endpoint::Threat::HIPSCleanupFailed::NONE"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007539; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Computer scan required to complete cleanup"; program:sophos; content:"Event::Endpoint::Threat::CleanupFailed::FULL_SCAN_REQUIRED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007540; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malware not cleaned up"; program:sophos; content:"Event::Endpoint::Threat::CleanupFailed::CLEANUPABLE"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007541; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malware not cleaned up"; program:sophos; content:"Event::Endpoint::Threat::CleanupFailed::CLEANUP_IN_PROGRESS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007542; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Reboot required to complete cleanup"; program:sophos; content:"Event::Endpoint::Threat::CleanupFailed::REBOOT_REQUIRED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007543; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Manual cleanup required"; program:sophos; content:"Event::Endpoint::Threat::CleanupFailed::NONE"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007544; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Computer scan required to complete PUA cleanup"; program:sophos; content:"Event::Endpoint::Threat::PuaCleanupFailed::FULL_SCAN_REQUIRED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007545; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA not cleaned up"; program:sophos; content:"Event::Endpoint::Threat::PuaCleanupFailed::CLEANUPABLE"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007546; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA not cleaned up"; program:sophos; content:"Event::Endpoint::Threat::PuaCleanupFailed::CLEANUP_IN_PROGRESS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007547; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Reboot required to complete PUA cleanup"; program:sophos; content:"Event::Endpoint::Threat::PuaCleanupFailed::REBOOT_REQUIRED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007548; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Manual PUA cleanup required"; program:sophos; content:"Event::Endpoint::Threat::PuaCleanupFailed::NONE"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007549; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] User devices will be migrated to Server Protection."; program:sophos; content:"Event::Task::MigrateUserDevicesToServers"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007550; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Device Encryption is suspended."; program:sophos; content:"Event::Endpoint::Denc::EncryptionSuspendedEvent"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007551; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Outlook add-in is turned off."; program:sophos; content:"Event::Endpoint::Denc::OutlookPluginDisabledEvent"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007552; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Outlook add-in is turned off."; program:sophos; content:"Event::Endpoint::Denc::OutlookPluginEnabledEvent"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007553; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The authentication reset request has been postponed five times by the user."; program:sophos; content:"Event::Endpoint::Denc::PostponedAuthenticationResetEvent"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007554; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The authentication reset request has been postponed five times by the user for the volume"; program:sophos; content:"Event::Endpoint::Denc::PostponedAuthenticationResetEvent::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007555; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Device Encryption failed on volume"; program:sophos; content:"Event::Endpoint::Enc::DiskEncryptionFailed::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007556; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Device Encryption failed"; program:sophos; content:"Event::Endpoint::Enc::DiskEncryptionFailed::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007557; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Key creation failed for volume"; program:sophos; content:"Event::Endpoint::Enc::Recovery::KeyCreationFailed::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007558; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Key creation failed"; program:sophos; content:"Event::Endpoint::Enc::Recovery::KeyCreationFailed::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007559; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A recovery key has been received"; program:sophos; content:"Event::Endpoint::Enc::Recovery::KeyReceived"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007560; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A recovery key has been revoked"; program:sophos; content:"Event::Endpoint::Enc::Recovery::KeyRevoked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007561; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Device Encryption information for volume"; program:sophos; content:"Event::Endpoint::Enc::DiskEncryptionInformation::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007562; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Device Encryption information"; program:sophos; content:"Event::Endpoint::Enc::DiskEncryptionInformation::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007563; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Device is not encrypted."; program:sophos; content:"Event::Endpoint::Enc::DiskNotEncryptedEvent"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007564; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A volume recovery key is missing."; program:sophos; content:"Event::Endpoint::Enc::RecoveryKeyMissingEvent"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007565; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The recovery key for volume is missing."; program:sophos; content:"Event::Endpoint::Enc::RecoveryKeyMissingEvent::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007566; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The Device Encryption status changed"; program:sophos; content:"Event::Endpoint::Enc::DiskEncryptionStatusChanged::2"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007567; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] File Encryption keys have been synchronized for user"; program:sophos; content:"Event::Endpoint::Fenc::UserKeyringSyncedEvent::1"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007568; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point has bad health."; program:sophos; content:"Event::Wireless::AccessPoint::BadHealth"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007569; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point is not broadcasting any network."; program:sophos; content:"Event::Wireless::AccessPoint::NotBroadcast"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007570; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point is offline."; program:sophos; content:"Event::Wireless::AccessPoint::Offline"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007571; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point done"; program:sophos; content:"Event::Wireless::AccessPoint::CommandDone"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007572; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point configuration failed"; program:sophos; content:"Event::Wireless::AccessPoint::ConfigurationFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007573; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point will be updated with new firmware"; program:sophos; content:"Event::Wireless::AccessPoint::Firmware::UpdateStarted"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007574; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point has been successfully updated with new firmware"; program:sophos; content:"Event::Wireless::AccessPoint::Firmware::UpdateSucceeded"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007575; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point failed to update to the new firmware"; program:sophos; content:"Event::Wireless::AccessPoint::Firmware::UpdateFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007576; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point has high data packet retries"; program:sophos; content:"Event::Wireless::AccessPoint::HighDataPacketRetries"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007577; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point has high data packet retries on 2.4 GHZ Band."; program:sophos; content:"Event::Wireless::AccessPoint::HighDataPacketRetriesGhz24"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007578; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point has high data packet retries on 5 GHZ Band."; program:sophos; content:"Event::Wireless::AccessPoint::HighDataPacketRetriesGhz5"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007579; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] All Access Points will be updated with the new firmware version "; program:sophos; content:"Event::Wireless::Firmware::Global::UpdateStarted"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007580; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] All Access Points have been successfully updated to firmware version"; program:sophos; content:"Event::Wireless::Firmware::Global::UpdateSucceeded"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007581; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Firmware update to version failed"; program:sophos; content:"Event::Wireless::Firmware::Global::UpdateFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007582; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point has a DNS timeout."; program:sophos; content:"Event::Wireless::AccessPoint::DnsTimeout"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007583; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point has high DNS latency"; program:sophos; content:"Event::Wireless::AccessPoint::HighDnsLatency"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007584; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point channel set"; program:sophos; content:"Event::Wireless::AccessPoint::ChannelChangedReason"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007585; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point channel has been changed."; program:sophos; content:"Event::Wireless::AccessPoint::ChannelChanged"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007586; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point low ethernet speed detected."; program:sophos; content:"Event::Wireless::AccessPoint::LowEthernetSpeed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007587; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point ethernet speed restored."; program:sophos; content:"Event::Wireless::AccessPoint::HighEthernetSpeed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007588; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point radius server is unreachable"; program:sophos; content:"Event::Wireless::AccessPoint::RadiusInactive"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007589; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access Point radius server is reachable"; program:sophos; content:"Event::Wireless::AccessPoint::RadiusActive"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007590; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The gateway IP of access point was unreachable"; program:sophos; content:"Event::Wireless::AccessPoint::GatewayNotReachable"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007591; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The access point with gnat+hotspot+vlan has invalid configuration for VLAN"; program:sophos; content:"Event::Wireless::AccessPoint::GnatHotspotVlanInvalidConfiguration"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007592; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Security Heartbeat with Endpoint is enabled for both Firewall and Central Wireless"; program:sophos; content:"Event::Wireless::SyncSecurity::WrongConfig"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007593; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Central management has been resumed."; program:sophos; content:"Event::Endpoint::Management::Resumed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007594; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Central management has been suspended."; program:sophos; content:"Event::Endpoint::Management::Suspended"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007595; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A block transfer action was taken."; program:sophos; content:"Event::Endpoint::DataLossPreventionAutomaticallyBlocked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007596; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] An allow transfer on acceptance by user action was taken."; program:sophos; content:"Event::Endpoint::DataLossPreventionUserAllowed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007597; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] A block transfer on acceptance by user action was taken."; program:sophos; content:"Event::Endpoint::DataLossPreventionUserBlocked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007598; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] An allow file transfer action was taken."; program:sophos; content:"Event::Endpoint::DataLossPreventionAutomaticallyAllowed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007599; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] File Integrity Monitoring - processing has been suspended."; program:sophos; content:"Event::Endpoint::FileIntegrityMonitoring::Suspend"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007600; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] File Integrity Monitoring - processing has been resumed."; program:sophos; content:"Event::Endpoint::FileIntegrityMonitoring::Resume"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007601; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Sent User Activity Verification question to user."; program:sophos; content:"Event::UAV::Requested"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007602; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Sent User Activity Verification question Sophos detected malicious communications from your device"; program:sophos; content:"Event::UAV::Requested::QUESTION_MALICIOUS_COMMUNICATIONS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007603; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Sent User Activity Verification question Sophos detected unusual activity on your device"; program:sophos; content:"Event::UAV::Requested::QUESTION_UNUSUAL_ACTIVITY"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007604; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] User responded to User Activity Verification question"; program:sophos; content:"Event::UAV::Responded"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007605; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] User responded to User Activity Verification question Sophos detected malicious communications from your device"; program:sophos; content:"Event::UAV::Responded::QUESTION_MALICIOUS_COMMUNICATIONS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007606; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] User responded to User Activity Verification question Sophos detected unusual activity on your device"; program:sophos; content:"Event::UAV::Responded::QUESTION_UNUSUAL_ACTIVITY"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007607; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] User did not respond to User Activity Verification question"; program:sophos; content:"Event::UAV::TimedOut"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007608; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] User did not respond to User Activity Verification question Sophos detected malicious communications from your device"; program:sophos; content:"Event::UAV::TimedOut::QUESTION_MALICIOUS_COMMUNICATIONS"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007609; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] User did not respond to User Activity Verification question Sophos detected unusual activity on your device"; program:sophos; content:"Event::UAV::TimedOut::QUESTION_UNUSUAL_ACTIVITY"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007610; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Device is potentially compromised"; program:sophos; content:"Event::UAV::PotentiallyCompromisedDevice"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007611; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Gateway is disconnected"; program:sophos; content:"Event::ZTNA::ZTNAGatewayUnreachable"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007612; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Application is unreachable"; program:sophos; content:"Event::ZTNA::ZTNAApplicationUnreachable"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007613; rev:1;)
+
+# TODO add after and/or thresholding
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] User has failed authentication attempts"; program:sophos; content:"Event::ZTNA::ZTNAAuthenticationFailure"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007614; rev:1;)

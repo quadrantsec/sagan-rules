@@ -271,3 +271,12 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CITRIX] Netscaler - SSL Cer
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CITRIX] Netscaler - VRID changes state to INIT"; content: "VRIDINIT"; classtype: system-event; reference: url,support.citrix.com/article/CTX123875; reference: url,wiki.quadrantsec.com/bin/view/Main/5001431; sid: 5001431; rev:2;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CITRIX] Netscaler - VRID changes state to master"; content: "VRIDUP"; classtype: system-event; reference: url,support.citrix.com/article/CTX123875; reference: url,wiki.quadrantsec.com/bin/view/Main/5001432; sid: 5001432; rev:2;)
 
+#Flexbits set for 8 hrs and noalert
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CITRIX] Netscaler - Impossible Traveler Login Successful [1/2]"; content:"-PPE-"; normalize; event_id:LOGIN; classtype:successful-user; flexbits:set,VPN.Login.Successful,28800; flexbits:noalert; sid:5007210; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CITRIX] Netscaler - Impossible Traveler Login Failed [1/2]"; content:"-PPE-"; normalize; event_id:LOGIN_FAILED; classtype:unsuccessful-user; flexbits:set,VPN.Login.Failed,28800; flexbits:noalert; sid:5007211; rev:1;)
+
+#can't seem to use flexbits:isset,by_dst,VPN.Login.Successful with the rest of them.
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CITRIX] Netscaler - Impossible Traveler Login Successful [2/2]"; content:"-PPE-"; normalize; event_id:LOGIN; classtype:successful-user; flexbits:isset,username,VPN.Login.Successful; flexbits:isnotset,by_src,VPN.Login.Successful; sid:5007212; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CITRIX] Netscaler - Impossible Traveler Login Failed [2/2]"; content:"-PPE-"; normalize; event_id:LOGIN_FAILED; classtype:unsuccessful-user; flexbits:isset,username,VPN.Login.Successful; flexbits:isnotset,by_src,VPN.Login.Successful; sid:5007213; rev:1;)
