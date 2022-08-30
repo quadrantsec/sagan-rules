@@ -110,7 +110,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Auth Activity Audit
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Auth Activity Audit Event Detection Update"; program:CrowdStrike; content:"UserActivityAuditEvent|7c|detection_update|7c|"; classtype:system-event; sid:5007194; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Auth Activity Audit Event Quarantined File Update"; program:CrowdStrike; content:"UserActivityAuditEvent|7c|quarantined_file_update|7c|"; classtype:system-event; sid:5007195; rev:1;)
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Auth Activity Audit Event Quarantined File Update"; program:CrowdStrike; content:"UserActivityAuditEvent|7c|quarantined_file_update|7c|"; classtype:system-event; sid:5007195; rev:1;)
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Auth Activity Audit Event Add SS IOA Exclusion"; program:CrowdStrike; content:"UserActivityAuditEvent|7c|add_ss_ioa_exclusion|7c|"; classtype:system-event; sid:5007196; rev:1;)
 
