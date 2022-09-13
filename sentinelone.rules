@@ -86,7 +86,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Remediate performed
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Quarantine performed successfully"; content:"SentinelOne"; content:"activityType=2004 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006642; sid:5006642; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Kill failed"; content:"SentinelOne"; content:"activityType=2006 "; classtype:trojan-activity; sid:5006643; reference:url,wiki.quadrantsec.com/bin/view/Main/5006643; sid:5006643; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Kill failed"; content:"SentinelOne"; content:"activityType=2006 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006643; sid:5006643; rev:2;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Quarantine failed"; content:"SentinelOne"; content:"activityType=2009 "; classtype:trojan-activity; reference:url,wiki.quadrantsec.com/bin/view/Main/5006644; sid:5006644; rev:1;)
 
