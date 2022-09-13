@@ -109,5 +109,5 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Admin activity Detecte
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Admin activity Detected - Role Assigned"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.assignRole"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006523; parse_src_ip: 1; sid: 5006523; rev:2;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Admin activity Detected - Rule Updated"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.updateRule"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5006524; parse_src_ip: 1; sid: 5006524; rev:2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Admin activity Detected - Rule Updated"; content: "cloudaudit.googleapis.com"; content: "google.admin.AdminService.updateRule"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5007685; parse_src_ip: 1; sid: 5007685; rev:2;)
 

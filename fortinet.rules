@@ -209,7 +209,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Script Entity Rem
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  New SSL VPN Connection From Outside HOME_COUNTRY"; content: "logid=|22|0101039943|22|"; content: "type="; content: "subtype="; classtype: system-event; parse_src_ip: 1; country_code: track by_src, isnot $HOME_COUNTRY; reference: url,wiki.quadrantsec.com/bin/view/Main/5006085; sid: 5006085; rev:1;) #Disabled in favor of successful login via VPN from outside home country
 
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  Successful VPN Login From Outside HOME_COUNTRY"; content: "logid=|22|0101039424|22|"; content: "type="; content: "subtype="; classtype: suspicious-traffic; parse_src_ip: 1; country_code: track by_src, isnot $HOME_COUNTRY; reference: url,wiki.quadrantsec.com/bin/view/Main/5006085; sid: 5006085; rev:1;) #Disabled for now. 
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  Successful VPN Login From Outside HOME_COUNTRY"; content: "logid=|22|0101039424|22|"; content: "type="; content: "subtype="; classtype: suspicious-traffic; parse_src_ip: 1; country_code: track by_src, isnot $HOME_COUNTRY; reference: url,wiki.quadrantsec.com/bin/view/Main/5007684; sid: 5007684; rev:1;) #Disabled for now. 
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET]  SSL Decryption Failed"; content: "logid=|22|0105048009|22|"; content: "type="; content: "subtype="; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5006086; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006086; rev:1;)
 

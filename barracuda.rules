@@ -62,7 +62,7 @@
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[BARRACUDA] Brute force login attempt [5/5]"; content: "FAILED_LOGIN"; parse_src_ip: 2; reference: url,wiki.quadrantsec.com/bin/view/Main/5002945; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; xbits: set, brute_force ,track ip_src, expire 21600; classtype: brute-force; sid:5002945; rev:7;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[BARRACUDA] Successful Directory Traversal Exploit"; content: "SLASH_DOT_IN_URL"; content: !"DENY"; parse_src_ip: 2; parse_dst_ip: 3; reference: url,portswigger.net/web-security/file-path-traversal; classtype: exploit-attempt; sid: 5002789 rev:4;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[BARRACUDA] Successful Directory Traversal Exploit"; content: "SLASH_DOT_IN_URL"; content: !"DENY"; parse_src_ip: 2; parse_dst_ip: 3; reference: url,portswigger.net/web-security/file-path-traversal; classtype: exploit-attempt; sid: 5007688; rev:4;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[BARRACUDA] Successful Directory Traversal Exploit"; content: "DIRECTORY_TRAVERSAL_BEYOND_ROOT"; content: !"DENY"; parse_src_ip: 2; parse_dst_ip: 3; reference: url,portswigger.net/web-security/file-path-traversal; classtype: exploit-attempt; sid: 5007674; rev:4;)
 
