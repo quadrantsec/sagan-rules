@@ -378,7 +378,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA detected"; program:s
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA detected in network location requires attention"; program:sophos; content:"Event::Endpoint::CorePuaRemoteDetection"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007391; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malware cleaned up"; program:sophos; content:"Event::Endpoint::CoreClean"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007392; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Malware cleaned up"; program:sophos; content:"Event::Endpoint::CoreClean|7c|"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007392; rev:2;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Manual malware cleanup required"; program:sophos; content:"Event::Endpoint::CoreCleanFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007393; rev:1;)
 
