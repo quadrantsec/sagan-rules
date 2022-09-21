@@ -46,4 +46,5 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service starting"; c
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[NXLOG] Service starting"; content: "stopping nxlog service"; flexbits: set,nxlog_shutdown,1200; flexbits:noeve; classtype: program-error; program: nxlog; reference: url,wiki.quadrantsec.com/bin/view/Main/5005746; sid:5005746; rev:2;)
 
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NXLOG-FIM] A critical file was changed"; program:nxlog-fim-crit; classtype:system-event; sid:5007693; rev:1;)
 
