@@ -62,27 +62,26 @@
 
 # New Barracuda Rules by Douglas Schauer, June/July 2022
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Brute force login attempt [5/5]"; content: "FAILED_LOGIN"; parse_src_ip: 2; reference: url,wiki.quadrantsec.com/bin/view/Main/5002945; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; xbits: set, brute_force ,track ip_src, expire 21600; classtype: brute-force; sid:5002945; rev:7;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Directory Traversal Exploit"; content: "DIRECTORY_TRAVERSAL_BEYOND_ROOT"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; reference: url,portswigger.net/web-security/file-path-traversal; classtype: exploit-attempt; sid: 5007725; rev:5;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Directory Traversal Exploit"; content: "DIRECTORY_TRAVERSAL_BEYOND_ROOT"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; reference: url,portswigger.net/web-security/file-path-traversal; classtype: exploit-attempt; sid: 5002782; rev:5;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Connection from Bluedot listed IP"; bluedot: type ip_reputation, track_by_src, mdate_effective_period 6 months; content: "GEO_IP"; content: !"DENY"; program: web; parse_src_ip: 2; parse_dst_ip: 3; classtype: exploit-attempt; sid: 5007726; rev: 5;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Directory Traversal Exploit"; content: "SLASH_DOT_IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; reference: url,portswigger.net/web-security/file-path-traversal; classtype: exploit-attempt; sid: 5002789 rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] SQL Injection Attack"; content: "SQL_INJECTION_IN_HEADER"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007727; rev: 5;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Connection from Bluedot listed IP"; bluedot: type ip_reputation, track_by_src, mdate_effective_period 6 months; content: "GEO_IP"; content: !"DENY"; program: web; parse_src_ip: 2; parse_dst_ip: 3; classtype: exploit-attempt; sid: 5002783; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] LDAP Injection Attack"; content: "LDAP_INJECTION_MEDIUM_IN_HEADER"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007728; rev: 5;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] SQL Injection Attack"; content: "SQL_INJECTION_IN_HEADER"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5002784; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Remote File included in URL"; content: "REMOTE_FILE_INCLUSION_IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007729; rev: 5;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] LDAP Injection Attack"; content: "LDAP_INJECTION_MEDIUM_IN_HEADER"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5002785; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] XSS Attack"; content: "CROSS_SITE_SCRIPTING_IN_URL" content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007730; rev: 5;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Remote File included in URL"; content: "REMOTE_FILE_INCLUSION_IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5002786; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "COOKIE_EXPIRED IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007731; rev: 5;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] XSS Attack"; content: "CROSS_SITE_SCRIPTING_IN_URL" content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5002787; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "COOKIE_TAMPERED";  content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007732; rev: 5;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "COOKIE_EXPIRED IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5002788; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "COOKIE_REPLAY_MISMATCHED";  content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007733; rev: 5;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "COOKIE_TAMPERED";  content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5002790 rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "UNRECOGNIZED_COOKIE"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007734; rev: 5;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "COOKIE_REPLAY_MISMATCHED";  content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5002791 rev: 5;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Brute force login attempt [5/5]"; content: "FAILED_LOGIN"; parse_src_ip: 2; reference: url,wiki.quadrantsec.com/bin/view/Main/5002945; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; xbits: set, brute_force ,track ip_src, expire 21600; classtype: brute-force; sid:5007735; rev:7;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "UNRECOGNIZED_COOKIE"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5002792; rev: 5;)
-
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Directory Traversal Exploit"; content: "SLASH_DOT_IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; reference: url,portswigger.net/web-security/file-path-traversal; classtype: exploit-attempt; sid: 5007736; rev: 5;)
