@@ -1,0 +1,51 @@
+# Sagan windows-clipboard.rules
+# Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 10/17/2022
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] Get-ADGroupMember Command"; program:Clipboard; content:"Get-ADGroupMember"; classtype:suspicious-command; sid:5008362; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] Get-ADUser Command"; program:Clipboard; content:"Get-ADUser"; classtype:suspicious-command; sid:5008363; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] Service being stopped"; program:Clipboard; content:"net stop"; content:!"SnowInventoryClient"; classtype:suspicious-command; sid:5008364; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] Powershell Policy Bypass Command"; program:Clipboard; content:"powershell -ExecutionPolicy Bypass"; classtype:suspicious-command; sid:5008365; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] Disable Windows Defender Command"; program:Clipboard; content:"\SOFTWARE\Policies\Microsoft\Windows Defender"; content:"DisableAntiSpyware"; classtype:suspicious-command; sid:5008366; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] Disable Realtime Monitoring Command"; program:Clipboard; content:"Set-MpPreference -DisableRealtimeMonitoring"; nocase; classtype:suspicious-command; sid:5008367; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] Uninstall Windows Defender Command"; program:Clipboard; content:"Uninstall-WindowsFeature -Name Windows-Defender"; nocase; classtype:suspicious-command; sid:5008368; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] Remoe-exec psexec command"; program:Clipboard; content:"remote-exec psexec"; nocase; classtype:suspicious-command; sid:5008369; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] Powershell encodedcommand"; program:Clipboard; content:"powershell"; nocase; content:"-encodedcommand"; nocase; classtype:suspicious-command; sid:5008370; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] rundll32 command"; program:Clipboard; content:"rundll32.exe"; nocase; classtype:suspicious-command; sid:5008371; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] rundll32 command with DllRegisterServer"; program:Clipboard; content:"rundll32.exe"; nocase; content:"DllRegisterServer"; nocase; classtype:suspicious-command; sid:5008372; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] net commands"; program:Clipboard; meta_content:"net %sagan%",group,user; meta_nocase; classtype:suspicious-command; sid:5008373; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] net commands"; program:Clipboard; meta_content:"net %sagan%",group,user; meta_nocase; classtype:suspicious-command; sid:5008374; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] query user command"; program:Clipboard; content:"query user"; nocase; classtype:suspicious-command; sid:5008375; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] rwinsta command"; program:Clipboard; content:"rwinsta /server"; nocase; classtype:suspicious-command; sid:5008376; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] nltest command"; program:Clipboard; content:"nltest /dclist"; nocase; classtype:suspicious-command; sid:5008377; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] netstat output v1"; program:Clipboard; content:"Active Connections"; classtype:suspicious-command; sid:5008378; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] netstat output v2"; program:Clipboard; content:"TCP"; content:"ESTABLISHED"; classtype:suspicious-command; sid:5008379; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] copy from share drive to local C: command"; program:Clipboard; content:"copy \\";nocase; content:"\C$\"; nocase; distance:0; content:"C:\"; distance:0; classtype:suspicious-command; sid:5008380; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] bitsadmin file transfer command"; program:Clipboard; content:"bitsadmin /transfer"; nocase; classtype:suspicious-command; sid:5008381; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-CLIPBOARD] proxychains command"; program:Clipboard; content:"proxychains "; nocase; classtype:suspicious-command; sid:5008382; rev:1;)
