@@ -164,3 +164,4 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[DYNAMIC] Darktrace logs det
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] zingbox logs detected via program."; program:zws; dynamic_load: $RULE_PATH/zingbox.rules; classtype:dynamic-rules; sid:5007673; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] aws-iam logs detected via program."; program:iam.amazonaws.com; dynamic_load: $RULE_PATH/aws-iam.rules; classtype:dynamic-rules; sid:5008341; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] aws-cloudtrail logs detected via program."; program:cloudtrail.amazonaws.com; dynamic_load: $RULE_PATH/aws-cloudtrail.rules; classtype:dynamic-rules; sid:5008342; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] windows clipboard logs detected via program."; program:clipboard; dynamic_load: $RULE_PATH/windows-clipboard.rules; classtype:dynamic-rules; sid:5008384; rev:1;)
