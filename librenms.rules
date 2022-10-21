@@ -25,6 +25,6 @@
 #
 #*************************************************************
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[LibreNMS] - Warning Alert"; content: " [Warning] "; classtype: system-event; program: librenms; reference: url,wiki.quadrantsec.com/bin/view/Main/5008152; sid: 5008152; rev:1;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[LibreNMS] - Warning Alert"; content: " [Critical] "; classtype: system-event; program: librenms; reference: url,wiki.quadrantsec.com/bin/view/Main/5008153; sid: 5008153; rev:1;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[LibreNMS] - Warning Alert"; content: " [OK] "; classtype: system-event; program: librenms; reference: url,wiki.quadrantsec.com/bin/view/Main/5008154; sid: 5008154; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[LibreNMS] - Warning Alert"; content: " [Warning] "; classtype: system-event; program: librenms; reference: url,wiki.quadrantsec.com/bin/view/Main/5008152; sid: 5008385; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[LibreNMS] - Warning Alert"; content: " [Critical] "; classtype: system-event; program: librenms; reference: url,wiki.quadrantsec.com/bin/view/Main/5008153; sid: 5008386; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[LibreNMS] - Warning Alert"; content: " [OK] "; classtype: system-event; program: librenms; reference: url,wiki.quadrantsec.com/bin/view/Main/5008154; sid: 5008387; rev:1;)
