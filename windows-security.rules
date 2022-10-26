@@ -471,9 +471,9 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Attack on Sysm
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Attack on Sysmon - Process Injection Duplicate Handle"; program:*Security*; event_id:4656; content:"Object Name:"; nocase; meta_content:"%sagan%",sysmon.exe,sysmon64.exe; meta_nocase; meta_distance:0; content:"Duplicate handle into"; nocase; reference:url,codewhitesec.blogspot.com/2022/09/attacks-on-sysmon-revisited-sysmonente.html; classtype:suspicious-command; sid:5007702; rev:1;)
 
 #2022-10-17 Bryant Smith
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-SECURITY] Service being stopped by net command v1"; program:*Sysmon*|*Security*; event_id:4688,1; content:"C|3a 5c 5c|Windows|5c 5c|system32|5c 5c|net1 stop"; nocase; classtype:suspicious-command; sid:5008343; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-SECURITY] Service being stopped by net command v1"; program:*Sysmon*|*Security*; event_id:4688,1; content:"C|3a 5c 5c|Windows|5c 5c|system32|5c 5c|net1 stop"; nocase; meta_content:"%sagan%",|5c 5c|Windows|5c 5c|Temp,|5c 5c|AppData|5c 5c|Local|5c 5c|Temp|; meta_nocase; classtype:suspicious-command; sid:5008343; rev:2;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-SECURITY] Service being stopped by net command v2"; program:*Sysmon*|*Security*; event_id:4688,1; content:"C|3a 5c|Windows|5c|system32|5c|net1 stop"; nocase; content:!"SnowInventoryClient"; classtype:suspicious-command; sid:5008344; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-SECURITY] Service being stopped by net command v2"; program:*Sysmon*|*Security*; event_id:4688,1; content:"C|3a 5c|Windows|5c|system32|5c|net1 stop"; nocase; meta_content:"%sagan%",|5c|Windows|5c|Temp,|5c|AppData|5c|Local|5c|Temp; content:!"SnowInventoryClient"; classtype:suspicious-command; sid:5008344; rev:2;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Disable Windows Security"; program:*Sysmon|*Security; event_id:1,4688; meta_content:"%sagan%",DisableRealtimeMonitoring,DisableAntiSpyware,Uninstall-WindowsFeature|20|-Name|20|Windows-Defender; meta_nocase; classtype:suspicious-command; sid:5008347; rev:1;)
 
