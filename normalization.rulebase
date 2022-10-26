@@ -372,6 +372,7 @@ rule=: %username:char-to:\x3a%: user NOT in sudoers %-:rest%
 rule=: %username:char-to:\x3a%: ignoring time stamp from the future %-:rest%
 rule=: %username:char-to:\x3a%: %-:number% incorrect password attempt ; %-:rest%
 rule=: %username:char-to:\x3a%: %-:number% incorrect password attempts %-:rest%
+rule=: %username:char-to:\x3a%: PWD=%-:rest%
 
 #*****************************************************************************
 # Rsync
@@ -547,8 +548,8 @@ rule=: %-:string-to:url%url=%url:quoted-string%%-:rest%
 
 # Champ Clark III / 2022-08-16
 
-rule=: %-:string%   %-:string% -  %-:char-to:\x7c%|%-:char-to:\x7c%|%-:char-to:\x7c%|%os:char-to:\x7c%|%avtivitytype:char-to:\x7c%|New Suspicious threat detected - machine %machine:char-to:\x7c%|%-:rest%
-rule=: %-:string%   %-:string% -  %-:char-to:\x7c%|%-:char-to:\x7c%|%-:char-to:\x7c%|%os:char-to:\x7c%|%avtivitytype:char-to:\x7c%|New active threat - machine %machine:char-to:\x7c%|%-:rest%
+rule=: %-:word%   %-:word% -  %-:char-to:\x7c%|%-:char-to:\x7c%|%-:char-to:\x7c%|%os:char-to:\x7c%|%avtivitytype:char-to:\x7c%|New Suspicious threat detected - machine %machine:char-to:\x7c%|%-:rest%
+rule=: %-:word%   %-:word% -  %-:char-to:\x7c%|%-:char-to:\x7c%|%-:char-to:\x7c%|%os:char-to:\x7c%|%avtivitytype:char-to:\x7c%|New active threat - machine %machine:char-to:\x7c%|%-:rest%
 
 #Citrix Netscaler LOGIN LOGIN_FAILED
 #
