@@ -1,0 +1,49 @@
+# Sagan windows-applocker.rules
+# Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+# following conditions are met:
+#
+# 4798.rules all_windows.rules azureEventHub_notes.txt logs rules test.rules to_azureEventHub.sh Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+# disclaimer.
+# 4798.rules all_windows.rules azureEventHub_notes.txt logs rules test.rules to_azureEventHub.sh Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+# following disclaimer in the documentation and/or other materials provided with the distribution.
+# 4798.rules all_windows.rules azureEventHub_notes.txt logs rules test.rules to_azureEventHub.sh Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+# from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+# INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+# USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+# Windows Applocker rules.
+#
+# Eventlog to syslog service. This is what we primarily use.
+# http://code.google.com/p/eventlog-to-syslog/
+#
+# Rules converted from https://github.com/tcw3bb/ISC_Posts/blob/master/OSSEC_AppLocker_Local_Rule.xml
+
+# Champ Clark (08/19/2014)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-APPLOCKER] Allowed program to execute"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id:8003; classtype: suspicious-command; program: AppLocker; reference: url,wiki.quadrantsec.com/bin/view/Main/5008410; sid:5008410; metadata: old_sid 5002090; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-APPLOCKER] Application blocked"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 8004; classtype: suspicious-command; program: AppLocker; reference: url,wiki.quadrantsec.com/bin/view/Main/5008411; sid:5008411; metadata: old_sid 5002091; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-APPLOCKER] Allowed an MSI or script to execute"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 8005; classtype: suspicious-command; program: AppLocker; reference: url,wiki.quadrantsec.com/bin/view/Main/5008412; sid:5008412; metadata: old_sid 5002092; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-APPLOCKER] Allowed MSI/Script, but would have blocked"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 8006; classtype: suspicious-command; program: AppLocker; reference: url,wiki.quadrantsec.com/bin/view/Main/5008413; sid:5008413; metadata: old_sid 5002093; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-APPLOCKER] Prevent MSI/Script to execute"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 8007; classtype: suspicious-command; program: AppLocker; reference: url,wiki.quadrantsec.com/bin/view/Main/5008414; sid:5008414; metadata: old_sid 5002094; rev:3;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-APPLOCKER] Package application allowed"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 8020; classtype: suspicious-command; program: AppLocker; reference: url,wiki.quadrantsec.com/bin/view/Main/5008415; sid:5008415; metadata: old_sid 5002095; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-APPLOCKER] Package application audited"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 8021; classtype: suspicious-command; program: AppLocker; reference: url,wiki.quadrantsec.com/bin/view/Main/5008416; sid:5008416; metadata: old_sid 5002096; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-APPLOCKER] Package application disabled"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 8022; classtype: suspicious-command; program: AppLocker; reference: url,wiki.quadrantsec.com/bin/view/Main/5008417; sid:5008417; metadata: old_sid 5002097; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-APPLOCKER] Package application installation allowed"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 8023; classtype: suspicious-command; program: AppLocker; reference: url,wiki.quadrantsec.com/bin/view/Main/5008418; sid:5008418; metadata: old_sid 5002098; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-APPLOCKER] Package application installation audited"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 8024; classtype: suspicious-command; program: AppLocker; reference: url,wiki.quadrantsec.com/bin/view/Main/5008419; sid:5008419; metadata: old_sid 5002099; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-APPLOCKER] Package application installation disabled"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 8025; classtype: suspicious-command; program: AppLocker; reference: url,wiki.quadrantsec.com/bin/view/Main/5008420; sid:5008420; metadata: old_sid 5002100; rev:3;)
+
+
