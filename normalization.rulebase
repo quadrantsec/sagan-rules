@@ -557,3 +557,10 @@ rule=: %-:word%   %-:word% -  %-:char-to:\x7c%|%-:char-to:\x7c%|%-:char-to:\x7c%
 
 # 14:25:39 GMT StoreFront 0-PPE-0 : default AAA LOGIN_FAILED 1756254084 0 :  User rsolo003 - Client_ip 10.32.2.21 - Failure_reason "External authentication server denied access" - Browser Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36
 rule=: %timestamp:time-24hr% GMT %-:word% %-:number%-PPE-%-:number% : default SSLVPN %event_id:word% %epoch_time:number% %-:number% : %-:word% %username:char-to:\x40%@%src-ip:ipv4%%-:string-to:Vserver%Vserver %dst-ip:ipv4%:%-:rest%
+
+#*****************************************************************************
+# Netwrix
+#*****************************************************************************
+
+# 25407: DataSource : Logon Activity Action : Failed Logon Message: Failed Logon Logon Where : dom42wbr.gibbonslaw.local ObjectType : Logon Who : GIBBONSLAW\leclerc.adm What : N/A When : 2022-11-01T23:03:12Z Workstation : cms31wbr.gibbonslaw.local Details : Cause: Pre-authentication information was invalid: usually means bad password., This entry represents 2 matching events occurring within 600 seconds.
+rule=: %-:number%: DataSource : Logon Activity Action : Failed Logon Message: Failed Logon Logon Where : %server:word% ObjectType : Logon Who : %-:char-to:\%\%username:word% What : N/A When : %-:date-iso%T%-:time-24hr%Z Workstation : %hostname:word% Details%-:rest%
