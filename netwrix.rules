@@ -1,0 +1,126 @@
+# Sagan netwrix.rules
+# Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 11/22/2022
+
+#=======================
+# Active Directory Rules
+#=======================
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Security Group Added"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Added"; content:"Message: Added group"; distance:1; content:"Group Type: |22|Universal Security Group|22|"; classtype:successful-user; sid:5010287; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory User Removed from Universal Security Group"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Removed"; content:"Message: Removed group"; distance:1; content:"Group Type: |22|Universal Security Group|22|"; classtype:successful-user; sid:5010288; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Member Added to Security Group"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Modified"; content:"Message: Modified group"; distance:1; content:"Details : Security Universal Group"; content:"Added:"; distance:0; classtype:successful-user; sid:5010289; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Member AdmPwdExpirationTime changed"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Modified"; content:"Message: Modified computer"; distance:1; content:"Details : ms-Mcs-AdmPwdExpirationTime changed"; distance:0; classtype:successful-user; sid:5010290; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Computer OS version changed"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Modified"; content:"Message: Modified computer"; distance:1; content:"Details : Computer Operating System Version changed"; distance:0; classtype:successful-user; sid:5010291; rev:1;)
+
+#=======================
+# Logon Activity Rules
+#=======================
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Logon Activity - Successful Logon"; program:Netwrix_Auditor_Integration; content:"DataSource : Logon Activity"; content:"Action : Successful"; content:"Message: Successful Logon"; classtype:successful-user; sid:5010292; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Logon Activity - Successful Logoff"; program:Netwrix_Auditor_Integration; content:"DataSource : Logon Activity"; content:"Action : Logoff"; content:"Message: Logoff"; classtype:successful-user; sid:5010293; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Logon Activity - Possible Brute Force Attempt [10/1]"; program:Netwrix_Auditor_Integration; content:"DataSource : Logon Activity"; content:"Action : Failed"; content:"Message: Failed Logon"; normalize; after:track by_username, count 10, seconds 300; threshold:type suppress, track by_username, count 1, seconds 3600; classtype:unsuccessful-user; sid:5010294; rev:1;)
+
+#=======================
+# Self Audit Rules
+#=======================
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Self Audit - Successful Logon Local"; program:Netwrix_Auditor_Integration; content:"DataSource : Self-audit"; content:"Action : Successful Logon"; content:"Message: Successful Logon Local"; classtype:successful-user; sid:5010295; rev:1;)
+
+#=======================
+# User Activity Rules
+#=======================
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] User Activity (Video) - Session Start"; program:Netwrix_Auditor_Integration; content:"DataSource : User Activity (Video)"; content:"Action : Session start"; classtype:system-event; sid:5010296; rev:1;)
+
+# NOTE may be able to normalize this one and extract the What: part
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] User Activity (Video) - Activated Window"; program:Netwrix_Auditor_Integration; content:"DataSource : User Activity (Video)"; content:"Action : Activated"; content:"Message: Activated Window"; classtype:successful-user; sid:5010297; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] User Activity (Video) - Activated Window - Powershell"; program:Netwrix_Auditor_Integration; content:"DataSource : User Activity (Video)"; content:"Action : Activated"; content:"Message: Activated Window"; content:"What : Windows PowerShell"; classtype:successful-user; sid:5010298; rev:1;)
+#What : Search and Cortana application
+#Netwrix Auditor
+
+#=======================
+# User Activity Rules
+#=======================
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Added"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Added VirtualMachine"; content:"Powered On"; classtype:system-event; sid:5010299; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Removed"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Removed VirtualMachine"; classtype:system-event; sid:5010300; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - HostSystem Modified Red to Yellow"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Modified HostSystem"; content:"|22|Red|22| to |22|Yellow|22|"; classtype:system-event; sid:5010301; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - HostSystem Modified Yellow to Green"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Modified HostSystem"; content:"|22|Yellow|22| to |22|Green|22|"; classtype:system-event; sid:5010302; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - HostSystem Modified Green to Yellow"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Modified HostSystem"; content:"|22|Green|22| to |22|Yellow|22|"; classtype:system-event; sid:5010303; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - HostSystem Modified Yellow to Red"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Modified HostSystem"; content:"|22|Yellow|22| to |22|Red|22|"; classtype:system-event; sid:5010304; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Modified Snapshot added"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Modified VirtualMachine"; content:"Added Snapshot"; classtype:system-event; sid:5010305; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Modified Snapshot removed"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Modified VirtualMachine"; content:"Removed Snapshot"; classtype:system-event; sid:5010306; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Modified Removed IP Address"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Modified VirtualMachine"; content:"Removed IP Address"; classtype:system-event; sid:5010307; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Modified Added IP Address"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Modified VirtualMachine"; content:"Added IP Address"; classtype:system-event; sid:5010308; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Modified Powered Off"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Modified VirtualMachine"; content:"to |22|Powered Off|22|"; classtype:system-event; sid:5010309; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Modified Powered On"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Modified VirtualMachine"; content:"to |22|Powered On|22|"; classtype:system-event; sid:5010310; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Modified Name Changed"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Renamed VirtualMachine"; classtype:system-event; sid:5010311; rev:1;)
+
+#=======================
+# Windows Server Rules
+#=======================
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - System Service Modified"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Modified System Service"; content:"Start Mode changed from |22|Manual|22| to |22|Auto|22|"; classtype:system-event; sid:5010312; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - System Service Modified"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Modified System Service"; content:"Start Mode changed from |22|Auto|22| to |22|Manual|22|"; classtype:system-event; sid:5010313; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - Scheduled Task Modified"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Modified Scheduled Task"; classtype:system-event; sid:5010314; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - Scheduled Task Added"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Added Scheduled Task"; classtype:system-event; sid:5010315; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - System Service Added"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Added System Service"; content:"Path to executable"; content:!"|22|C:\Program Files"; classtype:system-event; sid:5010316; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - System Service Removed"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Removed System Service"; classtype:system-event; sid:5010317; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - Added Disk Partition"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Added Disk Partition"; classtype:system-event; sid:5010318; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - Added Hard Drive"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Added Hard Drive"; classtype:system-event; sid:5010319; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - Modified Hard Drive"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Modified Hard Drive"; classtype:system-event; sid:5010320; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - Removed Hard Drive"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Removed Hard Drive"; classtype:system-event; sid:5010321; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - Added Pointing Device"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Added Pointing Device"; classtype:system-event; sid:5010322; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - Added Keyboard"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Added Keyboard"; classtype:system-event; sid:5010323; rev:1;)
+
+
