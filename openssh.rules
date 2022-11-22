@@ -92,6 +92,6 @@ drop any $EXTERNAL_NET any -> $HOME_NET any (msg:"[OPENSSH] SYSLOG Authenticatio
 
 # Added by Robert Nunley - 02/20/2014 (rnunley@quadrantsec.com)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[OPENSSH] Fail2Ban SSH Suspicious Activity"; content: "Fail2Ban"; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: brute-force; reference: url,wiki.quadrantsec.com/bin/view/Main/5001974; parse_src_ip: 1; sid: 5001974; rev:4;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[OPENSSH] Fail2Ban SSH Suspicious Activity"; content: "Fail2Ban"; content:!"Fail2Ban Service"; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: brute-force; reference: url,wiki.quadrantsec.com/bin/view/Main/5001974; parse_src_ip: 1; sid: 5001974; rev:5;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[OPENSSH] Bad protocol version from UNKNOWN IP - network scan or possible attack [0/3]"; content: "Bad protocol version identification"; content:"UNKNOWN"; parse_src_ip: 1; parse_port; normalize; default_proto: tcp; default_dst_port: $SSH_PORT; parse_port; threshold: type suppress, track by_src, count 3, seconds 300; classtype: non-standard-protocol; program: sshd; reference: url,wiki.quadrantsec.com/bin/view/Main/5003986; sid:5003986; rev:1;) 
