@@ -38,3 +38,6 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[DUO] Authentication - Brute
 
 # DUO Alert for User Placed in to Bypass Status by Kevin McAree @ Quadrant Information Security
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[DUO] User Placed in Bypass"; content: "user_update"; content: "Bypass"; classtype: system-event; program: duo; sid: 5010333; rev: 1)
+
+# Rule created to alert on an admin generating a "bypass code" for a user by Kevin McAree @ Quadrant Information Security 11-29-2022
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[DUO] Bypass Code Generated"; content: "bypass_create"; classtype: system-event; program: duo; sid: 5010334; rev: 1)
