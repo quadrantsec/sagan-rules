@@ -41,6 +41,9 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Member
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Computer OS version changed"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Modified"; content:"Message: Modified computer"; distance:1; content:"Details : Computer Operating System Version changed"; distance:0; classtype:successful-user; sid:5010291; rev:1;)
 
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Computer Removed"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Removed"; content:"Message: Removed computer"; distance:1; classtype:system-event; sid:5010336; rev:1;)
+
+
 #=======================
 # Logon Activity Rules
 #=======================
@@ -123,4 +126,5 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - System
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - Added Keyboard"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Added Keyboard"; classtype:system-event; sid:5010323; rev:1;)
 
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Environment Variable Added"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Added Environment Variables"; classtype:system-event; sid:5010337; rev:1;)
 
