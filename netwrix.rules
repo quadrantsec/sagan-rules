@@ -43,6 +43,11 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Member
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Computer Removed"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Removed"; content:"Message: Removed computer"; distance:1; classtype:system-event; sid:5010336; rev:1;)
 
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Computer Modified"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Modified"; content:"Message: Modified computer"; distance:1; classtype:system-event; sid:5010338; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Computer Modified Encryption Type: 0x17"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Modified"; content:"Message: Modified computer"; distance:1; content:"Supported Encryption Type changed to |22|23|22|"; reference:url,redsiege.com/tools-techniques/2020/10/detecting-kerberoasting/; classtype:system-event; sid:5010339; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Computer Modified"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Modified"; content:"Message: Added computer"; distance:1; classtype:system-event; sid:5010340; rev:1;)
 
 #=======================
 # Logon Activity Rules
