@@ -72,11 +72,9 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Logon Activity - Possib
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] User Activity (Video) - Activated Window"; program:Netwrix_Auditor_Integration; content:"DataSource : User Activity (Video)"; content:"Action : Activated"; content:"Message: Activated Window"; classtype:successful-user; sid:5010297; rev:1;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] User Activity (Video) - Activated Window - Powershell"; program:Netwrix_Auditor_Integration; content:"DataSource : User Activity (Video)"; content:"Action : Activated"; content:"Message: Activated Window"; content:"What : Windows PowerShell"; classtype:successful-user; sid:5010298; rev:1;)
-#What : Search and Cortana application
-#Netwrix Auditor
 
 #=======================
-# User Activity Rules
+# VMware
 #=======================
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Added"; program:Netwrix_Auditor_Integration; content:"DataSource : VMware"; content:"Message: Added VirtualMachine"; content:"Powered On"; classtype:system-event; sid:5010299; rev:1;)
 
@@ -133,3 +131,6 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - System
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Environment Variable Added"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Added Environment Variables"; classtype:system-event; sid:5010337; rev:1;)
 
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Local User Modified Unlock Changed"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Modified Local User"; content:"Unlocked changed from |22|Yes|22| to |22|No|22|"; classtype:system-event; sid:5010456; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Local User Modified Unlock Changed"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Modified Local User"; content:"Unlocked changed from |22|No|22| to |22|Yes|22|"; classtype:system-event; sid:5010457; rev:1;)
