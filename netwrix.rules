@@ -134,3 +134,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - System
 alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Local User Modified Unlock Changed"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Modified Local User"; content:"Unlocked changed from |22|Yes|22| to |22|No|22|"; classtype:system-event; sid:5010456; rev:1;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Local User Modified Unlock Changed"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Modified Local User"; content:"Unlocked changed from |22|No|22| to |22|Yes|22|"; classtype:system-event; sid:5010457; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Added Local User"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Added Local User"; classtype:system-event; sid:5010470; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Added Add or Remove Programs"; program:Netwrix_Auditor_Integration; content:"DataSource : Windows Server"; content:"Message: Added Add or Remove Programs"; classtype:system-event; sid:55010471; rev:1;)
