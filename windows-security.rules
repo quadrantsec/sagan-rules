@@ -496,3 +496,15 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Blackbasta ran
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] bcedit safeboot command (Blackbasta)"; program:*Sysmon*|*Security*; event_id:1,4688; content:"bcdedit"; nocase; content:"set"; distance:0; content:"safeboot"; distance:0; reference:url,www.deepinstinct.com/blog/black-basta-ransomware-threat-emergence; classtype:trojan-activity; sid:5008400; rev:1;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Fax service installed - Possible BlackBasta"; program:*Security*; content:"EventID=|22|7045|22|"; nocase; content:"ServiceName=|22|Fax|22|"; content:"A service was installed in the system"; reference:url,minerva-labs.com/blog/new-black-basta-ransomware-hijacks-windows-fax-service/; classtype:trojan-activity; sid:5010458; rev:1;)
+
+alert tcp $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Password Protected Zip File Opened"; program:*Security*; event_id:5379; content:"Microsoft_Windows_Shell_ZipFolder"; reference:url,www.socinvestigation.com/windows-event-id-5379-to-detect-malicious-password-protected-file-unlock/; classtype:suspicious-command; sid:5010484; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Comsrvc MiniDump Command"; program:*Security*|*Sysmon*; event_id:1,4688; content:"rundll32.exe"; content:"C:\Windows\System32\comsvcs.dll, MiniDump"; nocase; distance:0; reference:url,gist.github.com/JohnLaTwC/3e7dd4cd8520467df179e93fb44a434e; classtype:suspicious-command; sid:5010485; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Comsrvc MiniDump Command"; program:*Security*|*Sysmon*; event_id:1,4688; content:"rundll32.exe"; content:"C:\Windows\System32\comsvcs.dll,MiniDump"; nocase; distance:0; reference:url,gist.github.com/JohnLaTwC/3e7dd4cd8520467df179e93fb44a434e; classtype:suspicious-command; sid:5010486; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Comsrvc MiniDump Command"; program:*Security*|*Sysmon*; event_id:1,4688; content:"rundll32"; content:"comsvcs,#24"; nocase; distance:0; reference:url,gist.github.com/JohnLaTwC/3e7dd4cd8520467df179e93fb44a434e; classtype:suspicious-command; sid:5010487; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Comsrvc MiniDump Command via Service Control"; program:*Security*|*Sysmon*; event_id:1,4688; content:"sc.exe"; content:"create"; content:"binpath="; content:"C:\Windows\System32\comsvcs.dll"; nocase; reference:url,gist.github.com/JohnLaTwC/3e7dd4cd8520467df179e93fb44a434e; classtype:suspicious-command; sid:5010488; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Possible Obfuscation - CMD with Carrot in Redirection"; program:*Security*|*Sysmon*; event_id:1,4688; content:"cmd.exe"; content:"2^>"; reference:url,blog.alphathreat.in/index.php?post/2021/08/03/Malware-techniques%3A-Windows-Command-Obfuscation; classtype:suspicious-command; sid:5010489; rev:1;)
