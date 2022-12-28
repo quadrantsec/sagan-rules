@@ -187,7 +187,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Possible Pro
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] System.Convert from base64 to byte code"; program:*PoserShell*; event_id:400,600,800,4103,4104; content:"byte[]"; nocase; content:"System.Convert"; nocase; distance:0; content:"FromBase64"; nocase; distance:0; reference:url,michaelkoczwara.medium.com/cobalt-strike-powershell-payload-analysis-eecf74b3c2f7; classtype:successful-user; sid:5010334; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Mimikatz Keyword In Script"; program:*PowerShell*; event_id:4103,4104,600,800; content:"Mimikatz"; nocase; classtype:trojan-activity; sid:5010477; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Mimikatz Keyword In Script"; program:*PowerShell*; event_id:4103,4104,600,800; content:!"sentinelbreakpoints"; nocase; content:"Mimikatz"; nocase; classtype:trojan-activity; sid:5010477; rev:2;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Mimikittenz Keyword In Script"; program:*PowerShell*; event_id:4103,4104,600,800; content:"Mimikittenz"; nocase; classtype:trojan-activity; sid:5010478; rev:1;)
 
