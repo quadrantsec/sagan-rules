@@ -200,3 +200,11 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Mimikatz Com
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Net.WebClient DownloadString"; program:*PowerShell*; event_id:4103,4104,600,800; content:"New|2d|Object Net|2e|WebClient|29 2e|DownloadString"; nocase; reference:url,adsecurity.org/?page_id=1821; classtype:trojan-activity; sid:5010482; rev:1;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Chrome Login Data Retrieval"; program:*PowerShell*; event_id:4103,4104,600,800; content:"AppData\Local\Google\Chrome\User Data\Default\Login Data"; nocase; content:"dpapi::chrome"; classtype:trojan-activity; sid:5010483; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Possible obfuscated script with multiple &gt characters"; program:*PowerShell*; event_id:4103,4104,600,800; content:"string"; nocase; content:"&gt"; nocase; pcre:"/([^(?:&gt)]*&gt){20}/i"; classtype:trojan-activity; sid:5010731; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Possible obfuscated script with multiple split commands"; program:*PowerShell*; event_id:4103,4104,600,800; content:"-split"; nocase; pcre:"/([^(?:split)]*split){4}/i"; classtype:trojan-activity; sid:5010732; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Possible obfuscated script with multiple split commands"; program:*PowerShell*; event_id:4103,4104,600,800; content:"-split"; nocase; pcre:"/([^(?:split)]*split){4}/i"; classtype:trojan-activity; sid:5010733; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Possible obfuscated script with multiple decimal numbers"; program:*PowerShell*; event_id:4103,4104,600,800; content:"char[]"; nocase; pcre:"/(\d+\s*,\s*){200}/i"; classtype:trojan-activity; sid:5010734; rev:1;)
