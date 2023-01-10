@@ -151,3 +151,17 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Potential Ker
 alert any $HOME_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Pass the Hash Detected"; json_map:"message",".Message"; event_id:4624; content:!"Account Name: SYSTEM"; content:!"Network Account Name: netwrix-svc"; content:"Logon Type: 9"; content:"Logon Process: seclogo"; content:"Authentication Package: Negotiate"; classtype:trojan-activity; reference:url,thedfirreport.com/2021/08/29/cobalt-strike-a-defenders-guide/; reference:url,blog.netwrix.com/2021/11/30/how-to-detect-pass-the-hash-attacks/; sid:5008395; rev:3;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Potential AS-REP Roasting Activity Detected - EID 4768"; event_id:4768; content:"Ticket Options|3a| 0x4080010"; content:"Ticket Encryption Type|3a| 0x17"; content: !"|24|"; content:"Pre-Authentication Type|3a| 0"; classtype:successful-admin; reference:url,https://blog.certcube.com/as-rep-roasting-attack/; sid:5008406; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Veeam PoC Defaults (CVE-2022-26500)"; meta_content:"%sagan%",VeeamDeploymentDll.dll,poc.dll; meta_nocase; reference:url,defense.one/d/36-cve-2022-26500-cve-2022-26501-veeam-rce-analysis; classtype:trojan-activity; sid:5010735; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Response to exploit attempt (CVE-2022-26500)"; content:"<RIResponse"; content:"PersistentConnection="; content:"RemotePath="; reference:url,defense.one/d/36-cve-2022-26500-cve-2022-26501-veeam-rce-analysis; classtype:trojan-activity; sid:5010736; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Possible Local PrivEsc (CVE-2022-26503)"; content:"127.0.0.1:9395/VeeamService"; nocase; reference:url,defense.one/d/36-cve-2022-26500-cve-2022-26501-veeam-rce-analysis; classtype:trojan-activity; sid:5010737; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Command line options used by ExploitRemotingService"; program:*Security*|*Sysmon*; event_id:1,4688; meta_content:"%sagan%",-usecom,-useser,-uselease,-autodir; reference:cve,2022-26503; reference:url,github.com/tyranid/ExploitRemotingService; classtype:trojan-activity; sid:5010738; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Possible Powershell useage via IPSInvokerService"; meta_content:"%sagan%",IPSInvokerService,CpsInvokerService; meta_nocase; reference:cve,2022-26504; reference:url,defense.one/d/36-cve-2022-26500-cve-2022-26501-veeam-rce-analysis; classtype:trojan-activity; sid:5010739; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Possible Exploitation of CVE-2022-26504"; content:"|3a|8732/InvokerWrapperService"; nocase; reference:cve,2022-26504; reference:url,defense.one/d/36-cve-2022-26500-cve-2022-26501-veeam-rce-analysis; classtype:trojan-activity; sid:5010740; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Possible Exploitation of CVE-2022-26504"; content:"servervmm.sinsinology.local"; nocase; reference:cve,2022-26504; reference:url,defense.one/d/36-cve-2022-26500-cve-2022-26501-veeam-rce-analysis; classtype:trojan-activity; sid:5010741; rev:1;)
