@@ -1,0 +1,43 @@
+# Sagan tenable.rules
+# Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 01/17/2023
+
+#alert any [$HOME_NET,!127.0.0.1] any -> $HOME_NET any (msg:"[TENABLE] audit.log.view"; program:tenable_io_data; content:"|22|action|22 3a 20 22|audit.log.view|22|"; classtype:system-event; reference:url,developer.tenable.com/reference/audit-log-events; sid:5010891; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[TENABLE] session.create"; program:tenable_io_data; content:"|22|action|22 3a 20 22|session.create|22|"; classtype:system-event; reference:url,developer.tenable.com/reference/audit-log-events; sid:5010892; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[TENABLE] session.delete"; program:tenable_io_data; content:"|22|action|22 3a 20 22|session.delete|22|"; classtype:system-event; reference:url,developer.tenable.com/reference/audit-log-events; sid:5010893; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[TENABLE] session.impersonation.end"; program:tenable_io_data; content:"|22|action|22 3a 20 22|session.impersonation.end|22|"; classtype:system-event; reference:url,developer.tenable.com/reference/audit-log-events; sid:5010894; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[TENABLE] session.impersonation.start"; program:tenable_io_data; content:"|22|action|22 3a 20 22|session.impersonation.start|22|"; classtype:system-event; reference:url,developer.tenable.com/reference/audit-log-events; sid:5010895; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[TENABLE] user.authenticate.mfa"; program:tenable_io_data; content:"|22|action|22 3a 20 22|user.authenticate.mfa|22|"; classtype:system-event; reference:url,developer.tenable.com/reference/audit-log-events; sid:5010896; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[TENABLE] user.authenticate.password"; program:tenable_io_data; content:"|22|action|22 3a 20 22|user.authenticate.password|22|"; classtype:system-event; reference:url,developer.tenable.com/reference/audit-log-events; sid:5010897; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[TENABLE] user.create"; program:tenable_io_data; content:"|22|action|22 3a 20 22|user.create|22|"; classtype:system-event; reference:url,developer.tenable.com/reference/audit-log-events; sid:5010898; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[TENABLE] users.delete"; program:tenable_io_data; content:"|22|action|22 3a 20 22|users.delete|22|"; classtype:system-event; reference:url,developer.tenable.com/reference/audit-log-events; sid:5010899; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[TENABLE] user.impersonation.end"; program:tenable_io_data; content:"|22|action|22 3a 20 22|user.impersonation.end|22|"; classtype:system-event; reference:url,developer.tenable.com/reference/audit-log-events; sid:5010900; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[TENABLE] user.impersonation.start"; program:tenable_io_data; content:"|22|action|22 3a 20 22|user.impersonation.start|22|"; classtype:system-event; reference:url,developer.tenable.com/reference/audit-log-events; sid:5010901; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[TENABLE] user.logout"; program:tenable_io_data; content:"|22|action|22 3a 20 22|user.logout|22|"; classtype:system-event; reference:url,developer.tenable.com/reference/audit-log-events; sid:5010902; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[TENABLE] user.update"; program:tenable_io_data; content:"|22|action|22 3a 20 22|user.update|22|"; classtype:system-event; reference:url,developer.tenable.com/reference/audit-log-events; sid:5010903; rev:1;)
