@@ -1,5 +1,5 @@
-# Sagan windows-auth.rules
-# Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
+# Sagan github.rules
+# Copyright (c) 2009-2023. Quadrant Information Security <www.quadrantsec.com>
 # All rights reserved.
 #
 # Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
@@ -28,6 +28,7 @@
 # rules by "William Harding" <wharding@quadrantsec.com>
 # 2023-01-23
 
+alert any any any -> any any (msg: "[GITHUB] Release Detected"; program: github; json_content: ".action", "released"; classtype: configuration-change; sid:5010905; rev:1;)
 alert any any any -> any any (msg: "[GITHUB] Item Deleted"; program: github; json_content: ".action", "deleted"; classtype: configuration-change; sid:5010906; rev:1;)
 alert any any any -> any any (msg: "[GITHUB] Repository Archived"; program: github; json_content: ".action", "archived"; classtype: configuration-change; sid:5010907; rev:1;)
 alert any any any -> any any (msg: "[GITHUB] Member Added"; program: github; json_content: ".action", "member_added"; classtype: configuration-change; sid:5010908; rev:1;)
