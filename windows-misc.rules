@@ -165,3 +165,5 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Possible Powershel
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Possible Exploitation of CVE-2022-26504"; content:"|3a|8732/InvokerWrapperService"; nocase; reference:cve,2022-26504; reference:url,defense.one/d/36-cve-2022-26500-cve-2022-26501-veeam-rce-analysis; classtype:trojan-activity; sid:5010740; rev:1;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Possible Exploitation of CVE-2022-26504"; content:"servervmm.sinsinology.local"; nocase; reference:cve,2022-26504; reference:url,defense.one/d/36-cve-2022-26500-cve-2022-26501-veeam-rce-analysis; classtype:trojan-activity; sid:5010741; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] OWASSRF in Exchange for RCE"; program:*Security*|*Sysmon*; event_id:1,4688; content:"\powershell.exe"; content:"\w3wp.exe"; distance:0; reference:cve,2022-41080; reference:cve,2022-41082; reference:url,www.rapid7.com/blog/post/2022/12/21/cve-2022-41080-cve-2022-41082-rapid7-observed-exploitation-of-owassrf-in-exchange-for-rce/; classtype:trojan-activity; sid:5010904; rev:1;)
