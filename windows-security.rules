@@ -491,11 +491,11 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] A service was 
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] A service was installed in the system (rundll32 public directory)"; program:System; event_id:7045; content:"Service File Name"; content:"rundll32"; distance:0; content:"C:\users\public\"; nocase; distance:0; classtype:suspicious-command; sid:5008360; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Blackbasta ransomware file extension detected (.basta)"; program:*Security*,*Sysmon*; event_id:11,4663,567,5145; content:".basta "; nocase; after: track by_src, count 10, seconds 300; threshold: type suppress, track by_src, count 10, seconds 3600; classtype:ransomware; sid:5008361; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Blackbasta ransomware file extension detected (.basta)"; program:*Security*|*Sysmon*; event_id:11,4663,567,5145; content:".basta "; nocase; after: track by_src, count 10, seconds 300; threshold: type suppress, track by_src, count 10, seconds 3600; classtype:ransomware; sid:5008361; rev:2;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] bcedit safeboot command (Blackbasta)"; program:*Sysmon*|*Security*; event_id:1,4688; content:"bcdedit"; nocase; content:"set"; distance:0; content:"safeboot"; distance:0; reference:url,www.deepinstinct.com/blog/black-basta-ransomware-threat-emergence; classtype:trojan-activity; sid:5008400; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Fax service installed - Possible BlackBasta"; program:*Security*; content:"EventID=|22|7045|22|"; nocase; content:"ServiceName=|22|Fax|22|"; content:"A service was installed in the system"; reference:url,minerva-labs.com/blog/new-black-basta-ransomware-hijacks-windows-fax-service/; classtype:trojan-activity; sid:5010458; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Fax service installed - Possible BlackBasta"; program:*System*|*Service*; content:"EventID=|22|7045|22|"; nocase; content:"ServiceName=|22|Fax|22|"; content:"A service was installed in the system"; reference:url,minerva-labs.com/blog/new-black-basta-ransomware-hijacks-windows-fax-service/; classtype:trojan-activity; sid:5010458; rev:1;)
 
 alert tcp $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Password Protected Zip File Opened"; program:*Security*; event_id:5379; content:"Microsoft_Windows_Shell_ZipFolder"; reference:url,www.socinvestigation.com/windows-event-id-5379-to-detect-malicious-password-protected-file-unlock/; classtype:suspicious-command; sid:5010484; rev:1;)
 
