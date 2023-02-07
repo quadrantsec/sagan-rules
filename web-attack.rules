@@ -29,11 +29,11 @@
 
 # Added by Robert Nunley (rnunley@quadantsec.com)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] Havij SQL Injection Tool Identified"; content: "0x31303235343830303536"; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference: url,wiki.quadrantsec.com/bin/view/Main/5001699; sid: 5001699; rev:2;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] UNION ALL SELECT in URL - Possible SQL Injection"; content: "0%27%20union%20all%20select%20"; nocase; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1;  reference: url,wiki.quadrantsec.com/bin/view/Main/5001700; sid: 5001700; rev:2;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] SQL Injection Using Encapsulated Data - x=x"; content: "%20and%20%27x%27%3D%27x"; nocase; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference: url,wiki.quadrantsec.com/bin/view/Main/5001701; sid: 5001701; rev:2;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] SQL Injection Using Encapsulated Data - 1=1"; content: "%20and%20%271%27%3D%271"; nocase; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference: url,wiki.quadrantsec.com/bin/view/Main/5001702; sid: 5001702; rev:2;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] SQL Injection Using Hex Encoding"; content: "concat"; content: "unhex"; nocase; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference: url,wiki.quadrantsec.com/bin/view/Main/5001703; sid: 5001703; rev:2;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] Havij SQL Injection Tool Identified"; content: "0x31303235343830303536"; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; sid: 5001699; rev:2;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] UNION ALL SELECT in URL - Possible SQL Injection"; content: "0%27%20union%20all%20select%20"; nocase; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1;  sid: 5001700; rev:2;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] SQL Injection Using Encapsulated Data - x=x"; content: "%20and%20%27x%27%3D%27x"; nocase; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; sid: 5001701; rev:2;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] SQL Injection Using Encapsulated Data - 1=1"; content: "%20and%20%271%27%3D%271"; nocase; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; sid: 5001702; rev:2;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] SQL Injection Using Hex Encoding"; content: "concat"; content: "unhex"; nocase; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; sid: 5001703; rev:2;)
 
 # Added by Robert Nunley (Nov272013)
 

@@ -26,25 +26,25 @@
 #*************************************************************
 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Anonymous netbios-ssn login attempt detected"; content: "Anonymous netbios-ssn login attempt"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; reference: url,wiki.quadrantsec.com/bin/view/Main/5004305; sid:5004305; rev: 2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Anonymous netbios-ssn login attempt detected"; content: "Anonymous netbios-ssn login attempt"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; sid:5004305; rev: 2;) 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] HTTP connection to risky Internet site detected"; content: "HTTP connection to risky Internet site detecte"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; reference: url,wiki.quadrantsec.com/bin/view/Main/5004306; sid:5004306; rev: 2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] HTTP connection to risky Internet site detected"; content: "HTTP connection to risky Internet site detecte"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; sid:5004306; rev: 2;) 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] https connection to risky Internet site detected"; content: "https connection to risky Internet site detected"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; reference: url,wiki.quadrantsec.com/bin/view/Main/5004307; sid:5004307; rev: 2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] https connection to risky Internet site detected"; content: "https connection to risky Internet site detected"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; sid:5004307; rev: 2;) 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Manufacturer default username and password in inbound http login detected"; content: "Manufacturer default username and password in inbound http login"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; reference: url,wiki.quadrantsec.com/bin/view/Main/5004308; sid:5004308; rev: 2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Manufacturer default username and password in inbound http login detected"; content: "Manufacturer default username and password in inbound http login"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; sid:5004308; rev: 2;) 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Risk level increased to Medium"; content: "Risk level increase"; content: "|22|label|22 3a 22|updated risk level|22 2c 22|value|22 3a 22|Medium|22|"; parse_src_ip: 1; classtype: suspicious-traffic; priority: 3; program: zws; reference: url,wiki.quadrantsec.com/bin/view/Main/5004309; sid:5004309; rev: 3;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Risk level increased to Medium"; content: "Risk level increase"; content: "|22|label|22 3a 22|updated risk level|22 2c 22|value|22 3a 22|Medium|22|"; parse_src_ip: 1; classtype: suspicious-traffic; priority: 3; program: zws; sid:5004309; rev: 3;) 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Risk level increased to High"; content: "Risk level increase"; content: "|22|label|22 3a 22|updated risk level|22 2c 22|value|22 3a 22|High|22|"; parse_src_ip: 1; classtype: suspicious-traffic; program: zws; reference: url,wiki.quadrantsec.com/bin/view/Main/5004310; sid:5004310; rev: 3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Risk level increased to High"; content: "Risk level increase"; content: "|22|label|22 3a 22|updated risk level|22 2c 22|value|22 3a 22|High|22|"; parse_src_ip: 1; classtype: suspicious-traffic; program: zws; sid:5004310; rev: 3;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Unencrypted sensitive information in HTTP request detected"; content: "Unencrypted sensitive information in HTTP request"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; reference: url,wiki.quadrantsec.com/bin/view/Main/5004311; sid:5004311; rev: 2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Unencrypted sensitive information in HTTP request detected"; content: "Unencrypted sensitive information in HTTP request"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; sid:5004311; rev: 2;) 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Unsecure application usage by camera"; content: "Unsecure application usage by camera"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; reference: url,wiki.quadrantsec.com/bin/view/Main/5004312; sid:5004312; rev: 2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Unsecure application usage by camera"; content: "Unsecure application usage by camera"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; sid:5004312; rev: 2;) 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Unsecured outbound HTTP connections to the Internet detected"; content: "Unsecured outbound HTTP connections to the Internet"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; reference: url,wiki.quadrantsec.com/bin/view/Main/5004313; sid:5004313; rev: 2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Unsecured outbound HTTP connections to the Internet detected"; content: "Unsecured outbound HTTP connections to the Internet"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; sid:5004313; rev: 2;) 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Username same as password in FTP login"; content: "Username same as password in FTP login"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; reference: url,wiki.quadrantsec.com/bin/view/Main/5004314; sid:5004314; rev: 2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Username same as password in FTP login"; content: "Username same as password in FTP login"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; sid:5004314; rev: 2;) 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Weak Basic Authentication over HTTP detected"; content: "Weak Basic Authentication over HTTP"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; reference: url,wiki.quadrantsec.com/bin/view/Main/5004315; sid:5004315; rev: 2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZINGBOX] Weak Basic Authentication over HTTP detected"; content: "Weak Basic Authentication over HTTP"; parse_src_ip:1; classtype: suspicious-traffic; program: zws; sid:5004315; rev: 2;) 
 

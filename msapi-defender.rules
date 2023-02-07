@@ -26,6 +26,6 @@
 #*************************************************************
 #
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-DEFENDER] WindowsDefenderAtp alert detected"; json_content: ".detectionSource","WindowsDefenderAtp"; classtype: suspicious-traffic; reference: url,wiki.quadrantsec.com/bin/view/Main/5006525; sid:5006525; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-DEFENDER] WindowsDefenderAv alert detected"; json_content: ".detectionSource","WindowsDefenderAv"; classtype: suspicious-traffic; reference: url,wiki.quadrantsec.com/bin/view/Main/5006526; sid:5006526; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-DEFENDER] WindowsDefenderAtp alert detected"; json_content: ".detectionSource","WindowsDefenderAtp"; classtype: suspicious-traffic; sid:5006525; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-DEFENDER] WindowsDefenderAv alert detected"; json_content: ".detectionSource","WindowsDefenderAv"; classtype: suspicious-traffic; sid:5006526; rev: 1;)
 

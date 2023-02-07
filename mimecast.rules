@@ -29,21 +29,21 @@
 
 # Anti-Virus Logs  "Virus="
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] Potential Virus was recieved"; program: MIMECAST; content: "Virus="; nocase; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; reference: url,wiki.quadrantsec.com/bin/view/Main/5005768; classtype: bad-unknown; sid:5005768; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] Potential Virus was recieved"; program: MIMECAST; content: "Virus="; nocase; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005768; rev: 1;)
 
 # Target Threat Protection - Internal Email Protect logs   "urlCategory="
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] Internal email protection"; program: MIMECAST; content: "urlCategory="; nocase; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; reference: url,wiki.quadrantsec.com/bin/view/Main/5005769; classtype: bad-unknown; sid:5005769; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] Internal email protection"; program: MIMECAST; content: "urlCategory="; nocase; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005769; rev: 1;)
 
 # Targeted Threat Protection - Impersonation Protect logs "An internal user name has been impersonated"  
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] An internal user name has been impersonated"; program: MIMECAST; content: "Definition=Default Impersonation Definition"; nocase; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; reference: url,wiki.quadrantsec.com/bin/view/Main/5005770; classtype: bad-unknown; sid:5005770; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] An internal user name has been impersonated"; program: MIMECAST; content: "Definition=Default Impersonation Definition"; nocase; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005770; rev: 1;)
 
 # Targeted Threat Protection - URL Protect logs "A user has clicked on link that is potentially malicious"
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] A user has clicked on link that is potentially malicious"; program: MIMECAST; content: "reason=malicious"; content: "url="; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; reference: url,wiki.quadrantsec.com/bin/view/Main/5005771; classtype: bad-unknown; sid:5005771; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] A user has clicked on link that is potentially malicious"; program: MIMECAST; content: "reason=malicious"; content: "url="; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005771; rev: 1;)
 
 # Targeted Threat Protection - Attachment Protect logs "The Mimecast sandbox has detected a potentially malicious file:"
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] Internal email protection"; program: MIMECAST; content: "Route=Inbound"; content: "md5="; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; reference: url,wiki.quadrantsec.com/bin/view/Main/5005772; classtype: bad-unknown; sid:5005772; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] Internal email protection"; program: MIMECAST; content: "Route=Inbound"; content: "md5="; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005772; rev: 1;)
 
