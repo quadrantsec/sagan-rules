@@ -26,23 +26,23 @@
 # TRENDMICRO rules by Corey Fisher - 02/18/2016 (first rule)
 # Other rules by Jennifer Shannon
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Virus Found Unable to Quarantine"; content: "SLF_INCIDENT_EVT_VIRUS_FOUND_PASS_THRU"; content: "Unable to quarantine file"; program: TMCM; parse_src_ip: 1; reference: url,wiki.quadrantsec.com/bin/view/Main/5002797; classtype: suspicious-traffic; sid:5002797; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Virus Found Unable to Quarantine"; content: "SLF_INCIDENT_EVT_VIRUS_FOUND_PASS_THRU"; content: "Unable to quarantine file"; program: TMCM; parse_src_ip: 1; classtype: suspicious-traffic; sid:5002797; rev:3;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Application Control Logs Detected"; content: "LogApplicationControl"; classtype: suspicious-traffic; program: TRENDMICRO; reference: url,wiki.quadrantsec.com/bin/view/Main/5003788; sid:5003788; rev:2;) 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Device Control Logs Detected"; content: "LogDeviceControl"; classtype: suspicious-traffic; program: TRENDMICRO; reference: url,wiki.quadrantsec.com/bin/view/Main/5003789; sid:5003789; rev:2 ;) 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Behavior Monitoring Logs Detected"; content: "LogBehaviorMonitoring"; classtype: suspicious-traffic; program: TRENDMICRO; reference: url,wiki.quadrantsec.com/bin/view/Main/5003790; sid:5003790; rev:2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Application Control Logs Detected"; content: "LogApplicationControl"; classtype: suspicious-traffic; program: TRENDMICRO; sid:5003788; rev:2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Device Control Logs Detected"; content: "LogDeviceControl"; classtype: suspicious-traffic; program: TRENDMICRO; sid:5003789; rev:2 ;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Behavior Monitoring Logs Detected"; content: "LogBehaviorMonitoring"; classtype: suspicious-traffic; program: TRENDMICRO; sid:5003790; rev:2;) 
 
 # Not enough data to complete these. 
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Network Virus Logs Detected"; content: "xxxxxxxxx"; classtype: suspicious-traffic; program: TRENDMICRO; reference: url,wiki.quadrantsec.com/bin/view/Main/5003791; sid:5003791; rev:2;) 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Outbreak Defense Logs Detected"; content: "xxxxxxxxx"; classtype: suspicious-traffic; program: TRENDMICRO; reference: url,wiki.quadrantsec.com/bin/view/Main/5003792; sid:5003792; rev:2;) 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Predictive Machine Learning Logs Detected"; content: "xxxxxxxxx"; classtype: suspicious-traffic; program: TRENDMICRO; reference: url,wiki.quadrantsec.com/bin/view/Main/5003793; sid:5003793; rev:2;) 
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Network Virus Logs Detected"; content: "xxxxxxxxx"; classtype: suspicious-traffic; program: TRENDMICRO; sid:5003791; rev:2;) 
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Outbreak Defense Logs Detected"; content: "xxxxxxxxx"; classtype: suspicious-traffic; program: TRENDMICRO; sid:5003792; rev:2;) 
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Predictive Machine Learning Logs Detected"; content: "xxxxxxxxx"; classtype: suspicious-traffic; program: TRENDMICRO; sid:5003793; rev:2;) 
 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Spyware Logs Detected"; content: "LogSpyware"; classtype: suspicious-traffic; program: TRENDMICRO; reference: url,wiki.quadrantsec.com/bin/view/Main/5003794; sid:5003794; rev:2;) 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Url Filtering Logs Detected"; content: "LogUrlFiltering"; classtype: suspicious-traffic; program: TRENDMICRO; reference: url,wiki.quadrantsec.com/bin/view/Main/5003795; sid:5003795; rev:2;) 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Virus Logs Detected"; content: "LogVirus"; classtype: suspicious-traffic; program: TRENDMICRO; reference: url,wiki.quadrantsec.com/bin/view/Main/5003796; sid:5003796; rev:2;) 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Web Reputation Logs Detected"; content: "LogWebReputation"; classtype: suspicious-traffic; program: TRENDMICRO; reference: url,wiki.quadrantsec.com/bin/view/Main/5003797; sid:5003797; rev:2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Spyware Logs Detected"; content: "LogSpyware"; classtype: suspicious-traffic; program: TRENDMICRO; sid:5003794; rev:2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Url Filtering Logs Detected"; content: "LogUrlFiltering"; classtype: suspicious-traffic; program: TRENDMICRO; sid:5003795; rev:2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Virus Logs Detected"; content: "LogVirus"; classtype: suspicious-traffic; program: TRENDMICRO; sid:5003796; rev:2;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[TRENDMICRO] Web Reputation Logs Detected"; content: "LogWebReputation"; classtype: suspicious-traffic; program: TRENDMICRO; sid:5003797; rev:2;) 
 
 # TrendMicro ServerProtect - WHarding - 20220802
 

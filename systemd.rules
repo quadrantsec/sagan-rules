@@ -27,10 +27,10 @@
 
 #Rules to catch failed services while using systemd by jsuain 20220207
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] SERVICE_START Failure"; program: audit; content: "SERVICE|5F|START"; content: "res|3D|failed"; after: track by_src, count 5, seconds 30; threshold: type suppress, track by_src, count 5, seconds 300; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005972; sid:5005972; rev:2;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] SERVICE_START Failure"; program: audit; content: "SERVICE|5F|START"; content: "res|3D|failed"; after: track by_src, count 5, seconds 30; threshold: type suppress, track by_src, count 5, seconds 300; classtype: system-error; sid:5005972; rev:2;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Service Failed to Start"; program: systemd; content: "Failed|20|to|20|start";after: track by_src, count 5, seconds 30; threshold: type suppress, track by_src, count 5, seconds 300; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005973; sid:5005973; rev:2;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Service Failed to Start"; program: systemd; content: "Failed|20|to|20|start";after: track by_src, count 5, seconds 30; threshold: type suppress, track by_src, count 5, seconds 300; classtype: system-error; sid:5005973; rev:2;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Service Failed"; program: systemd; content: "|2E|service|3A 20|Failed"; after: track by_src, count 5, seconds 30; threshold: type suppress, track by_src, count 5, seconds 300; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005974; sid:5005974; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Service Failed"; program: systemd; content: "|2E|service|3A 20|Failed"; after: track by_src, count 5, seconds 30; threshold: type suppress, track by_src, count 5, seconds 300; classtype: system-error; sid:5005974; rev:3;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Sagan Config Failure"; program: sagan; content: "|5B|E|5D|"; content: "The|20|configuration|20|file"; content: "cannot|20|be|20|found|21 20|Abort|21|"; after: track by_src, count 5, seconds 30; threshold: type suppress, track by_src, count 5, seconds 300; classtype: system-error; reference: url,wiki.quadrantsec.com/bin/view/Main/5005975; sid:5005975; rev:2;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSTEMD] Sagan Config Failure"; program: sagan; content: "|5B|E|5D|"; content: "The|20|configuration|20|file"; content: "cannot|20|be|20|found|21 20|Abort|21|"; after: track by_src, count 5, seconds 30; threshold: type suppress, track by_src, count 5, seconds 300; classtype: system-error; sid:5005975; rev:2;)
