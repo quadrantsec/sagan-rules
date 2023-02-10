@@ -152,7 +152,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Pass the Hash Det
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Potential AS-REP Roasting Activity Detected - EID 4768"; event_id:4768; content:"Ticket Options|3a| 0x4080010"; content:"Ticket Encryption Type|3a| 0x17"; content: !"|24|"; content:"Pre-Authentication Type|3a| 0"; classtype:successful-admin; reference:url,https://blog.certcube.com/as-rep-roasting-attack/; sid:5008406; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Veeam PoC Defaults (CVE-2022-26500)"; meta_content:"%sagan%",VeeamDeploymentDll.dll,poc.dll; meta_nocase; reference:url,defense.one/d/36-cve-2022-26500-cve-2022-26501-veeam-rce-analysis; classtype:trojan-activity; sid:5010735; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Veeam PoC Defaults (CVE-2022-26500)"; meta_content:"%sagan%",|5c|VeeamDeploymentDll.dll,|5c|poc.dll; meta_nocase; reference:url,defense.one/d/36-cve-2022-26500-cve-2022-26501-veeam-rce-analysis; classtype:trojan-activity; sid:5010735; rev:2;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Response to exploit attempt (CVE-2022-26500)"; content:"<RIResponse"; content:"PersistentConnection="; content:"RemotePath="; reference:url,defense.one/d/36-cve-2022-26500-cve-2022-26501-veeam-rce-analysis; classtype:trojan-activity; sid:5010736; rev:1;)
 
