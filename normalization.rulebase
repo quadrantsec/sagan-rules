@@ -245,7 +245,9 @@ rule=: Postponed keyboard-interactive for invalid user %username:word% from %src
 rule=: Failed keyboard-interactive/pam for invalid user %username:word% from %src-ip:ipv4% port %src-port:number% ssh2
 rule=: input_userauth_request: invalid user %username:word% [preauth]
 rule=: Invalid user %username:word% from %src-ip:ipv4%
-rule=: Disconnecting: Too many authentication failures for %username:word% from %src-ip:ipv4% port %src-port:number% ssh2 [preauth]
+rule=: Invalid user %username:word% from %src-ip:ipv4% port %src-port:number%
+rule=: Disconnecting: Too many authentication failures for %username:word% from %src-ip:ipv4% port %src-port:number% ssh2 %-:rest%
+rule=: Disconnected from invalid user %username:word% %src-ip:ipv4% port %src-port:number% %-:rest%
 rule=: Did not receive identification string from %src-ip:ipv6% port %src-port:number%
 rule=: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=%src-host:word%
 rule=: Did not receive identification string from %src-p:ipv4%
