@@ -33,5 +33,5 @@
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[SAGAN] System stop sending logs"; content: "TRACK-CLIENT-NOLOGS"; normalize; classtype: network-event; sid:5010938; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SAGAN] System has started sending logs again"; content: "TRACK-CLIENT-NOLOGS"; normalize; classtype: network-event; sid:5010939; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SAGAN] System has started sending logs again"; content: "TRACK-CLIENT-LOGS"; normalize; classtype: network-event; sid:5010939; rev:2;)
 
