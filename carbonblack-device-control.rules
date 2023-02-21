@@ -31,6 +31,6 @@
 # rules by "Casey Pennington" <cpennington@quadrantsec.com>
 # 02/21/2023
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[CARBONBLACK-USB-APPROVAL] created usb approval"; program:cb_usb_approval_data; content:"|22|action|22 3a 20 22|created|22|"; classtype:system-event; reference:url,https://developer.carbonblack.com/reference/carbon-black-cloud/cb-defense/latest/device-control-api/; sid:5010938; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CARBONBLACK-USB-APPROVAL] created usb approval"; program:cb_usb_approval_data; content:"|22|action|22 3a 20 22|created|22|"; classtype:system-event; reference:url,https://developer.carbonblack.com/reference/carbon-black-cloud/cb-defense/latest/device-control-api/; sid:5010940; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[CARBONBLACK-USB-APPROVAL] updated usb approval"; program:cb_usb_approval_data; content:"|22|action|22 3a 20 22|updated|22|"; classtype:system-event; reference:url,https://developer.carbonblack.com/reference/carbon-black-cloud/cb-defense/latest/device-control-api/; sid:5010939; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CARBONBLACK-USB-APPROVAL] updated usb approval"; program:cb_usb_approval_data; content:"|22|action|22 3a 20 22|updated|22|"; classtype:system-event; reference:url,https://developer.carbonblack.com/reference/carbon-black-cloud/cb-defense/latest/device-control-api/; sid:5010941; rev:1;)
