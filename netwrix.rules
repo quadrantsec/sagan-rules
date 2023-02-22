@@ -49,6 +49,8 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Comput
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Computer Modified"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Modified"; content:"Message: Added computer"; distance:1; classtype:system-event; sid:5010340; rev:1;)
 
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory User Removed"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Removed"; content:"Message: Removed user"; distance:1; classtype:successful-user; sid:5010943; rev:1;)
+
 #=======================
 # Logon Activity Rules
 #=======================

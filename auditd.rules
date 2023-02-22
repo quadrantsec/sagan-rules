@@ -29,24 +29,24 @@
 # Look for suspicious command line execution via auditd via audispd.
 #
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] ./a.out execution attempt"; content: "type=EXECVE"; content:"|22|./a.out|22|"; classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005619; program: audispd; sid:5005619; rev:1;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] gcc execution"; content: "type=EXECVE"; content:"|22|gcc|22|"; classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005620; program: audispd; sid:5005620; rev:1;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] telnet execution"; content: "type=EXECVE"; content:"|22|telnet|22|";  classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005621; program: audispd; sid:5005621; rev:1;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] nmap execution"; content: "type=EXECVE"; content:"|22|nmap|22|";  classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005622; program: audispd; sid:5005622; rev:1;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] /etc/passwd access"; content: "type=EXECVE"; content:"|22|/etc/passwd|22|";  classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005623; program: audispd; sid:5005623; rev:1;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] /etc/shadow access"; content: "type=EXECVE"; content:"|22|/etc/shadow|22|";  classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005624; program: audispd; sid:5005624; rev:1;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] make execution"; content: "type=EXECVE"; content:"|22|make|22|";  classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005625; program: audispd; sid:5005625; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] ./a.out execution attempt"; content: "type=EXECVE"; content:"|22|./a.out|22|"; classtype: suspicious-command; program: audispd; sid:5005619; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] gcc execution"; content: "type=EXECVE"; content:"|22|gcc|22|"; classtype: suspicious-command; program: audispd; sid:5005620; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] telnet execution"; content: "type=EXECVE"; content:"|22|telnet|22|";  classtype: suspicious-command; program: audispd; sid:5005621; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] nmap execution"; content: "type=EXECVE"; content:"|22|nmap|22|";  classtype: suspicious-command; program: audispd; sid:5005622; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] /etc/passwd access"; content: "type=EXECVE"; content:"|22|/etc/passwd|22|";  classtype: suspicious-command; program: audispd; sid:5005623; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] /etc/shadow access"; content: "type=EXECVE"; content:"|22|/etc/shadow|22|";  classtype: suspicious-command; program: audispd; sid:5005624; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] make execution"; content: "type=EXECVE"; content:"|22|make|22|";  classtype: suspicious-command; program: audispd; sid:5005625; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] .bash_history access"; content: "type=EXECVE"; content:"|22|.bash_history|22|";  classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005626; program: audispd; sid:5005626; rev:1;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] .bash_history access"; content: "type=EXECVE"; content:"|22|.bash_history|22|";  classtype: suspicious-command; program: audispd; sid:5005626; rev:1;) 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] /tmp/sh access"; content: "type=EXECVE"; content:"|22|/tmp/sh|22|";  classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005627; program: audispd; sid:5005627; rev:1;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] suidperl access"; content: "type=EXECVE"; content:"|22|suidperl|22|";  classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005628; program: audispd; sid:5005628; rev:1;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] iptables command access"; content: "type=EXECVE"; content:"|22|iptables|22|"; classtype: suspicious-command; reference: url,wiki.quadrantsec.com/bin/view/Main/5005629; program: audispd; sid:5005629; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] /tmp/sh access"; content: "type=EXECVE"; content:"|22|/tmp/sh|22|";  classtype: suspicious-command; program: audispd; sid:5005627; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] suidperl access"; content: "type=EXECVE"; content:"|22|suidperl|22|";  classtype: suspicious-command; program: audispd; sid:5005628; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] iptables command access"; content: "type=EXECVE"; content:"|22|iptables|22|"; classtype: suspicious-command; program: audispd; sid:5005629; rev:1;)
 
 # CVS-2014-6271 (09/24/2014 - Champ Clark III)
 # This likely won't work via auditd
 #
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] Remote execution attempt via CVE-2014-6271"; content: "type=EXECVE"; content:"|28 29| { |3a 3b|}"; content: program: audispd; classtype: exploit-attempt; xbits: set, exploit_attempt,track ip_src, expire 86400; reference: url,wiki.quadrantsec.com/bin/view/Main/5005630; reference: url,web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271; sid:5005630; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[AUDITD] Remote execution attempt via CVE-2014-6271"; content: "type=EXECVE"; content:"|28 29| { |3a 3b|}"; content: program: audispd; classtype: exploit-attempt; xbits: set, exploit_attempt,track ip_src, expire 86400; reference: url,web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271; sid:5005630; rev:1;)
 
 # Submitted by Aleksey Chudov (07/14/2015). 
 

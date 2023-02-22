@@ -1,4 +1,4 @@
-# Sagan msapi-airinvestigation.rules
+# Sagan sagan.rules
 # Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
 # All rights reserved.
 #
@@ -24,13 +24,14 @@
 #  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 #*************************************************************
-#
-# These rules are for the Office 365 Management API
-# https://docs.microsoft.com/en-us/office/office-365-management-api/office-365-management-apis-overview
-#
-# These rules work best with a JSON input map.  See the "msapi" mapping.  See the Sagan
-# JSON documentation for more information
-#
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-THREATINTEL] AirInvestigation Started"; json_content: ".Workload","AirInvestigation"; json_content: ".Status","Investigation Started"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; classtype: misc-attack; reference: url,docs.microsoft.com/en-us/microsoft-365/security/office-365-security/automated-investigation-response-office?view=o365-worldwide; sid:5004862; rev: 2;)
+# These are rule for the Sagan engine.  Sagan processor generate syslog data, which these
+# rules can create alerts on!
+
+# These are for tracking who is logging to Sagan.  This requires that the Sagan 
+# "track-clients" be configured and enabled.
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SAGAN] System stop sending logs"; content: "TRACK-CLIENT-NOLOGS"; normalize; classtype: network-event; sid:5010938; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SAGAN] System has started sending logs again"; content: "TRACK-CLIENT-LOGS"; normalize; classtype: network-event; sid:5010939; rev:2;)
 

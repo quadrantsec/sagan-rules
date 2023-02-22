@@ -245,7 +245,9 @@ rule=: Postponed keyboard-interactive for invalid user %username:word% from %src
 rule=: Failed keyboard-interactive/pam for invalid user %username:word% from %src-ip:ipv4% port %src-port:number% ssh2
 rule=: input_userauth_request: invalid user %username:word% [preauth]
 rule=: Invalid user %username:word% from %src-ip:ipv4%
-rule=: Disconnecting: Too many authentication failures for %username:word% from %src-ip:ipv4% port %src-port:number% ssh2 [preauth]
+rule=: Invalid user %username:word% from %src-ip:ipv4% port %src-port:number%
+rule=: Disconnecting: Too many authentication failures for %username:word% from %src-ip:ipv4% port %src-port:number% ssh2 %-:rest%
+rule=: Disconnected from invalid user %username:word% %src-ip:ipv4% port %src-port:number% %-:rest%
 rule=: Did not receive identification string from %src-ip:ipv6% port %src-port:number%
 rule=: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=%src-host:word%
 rule=: Did not receive identification string from %src-p:ipv4%
@@ -564,3 +566,15 @@ rule=: %timestamp:time-24hr% GMT %-:word% %-:number%-PPE-%-:number% : default SS
 
 # 25407: DataSource : Logon Activity Action : Failed Logon Message: Failed Logon Logon Where : dom42wbr.gibbonslaw.local ObjectType : Logon Who : GIBBONSLAW\leclerc.adm What : N/A When : 2022-11-01T23:03:12Z Workstation : cms31wbr.gibbonslaw.local Details : Cause: Pre-authentication information was invalid: usually means bad password., This entry represents 2 matching events occurring within 600 seconds.
 rule=: %-:number%: DataSource : Logon Activity Action : Failed Logon Message: Failed Logon Logon Where : %server:word% ObjectType : Logon Who : %-:char-to:\%\%username:word% What : N/A When : %-:date-iso%T%-:time-24hr%Z Workstation : %hostname:word% Details%-:rest%
+
+#*****************************************************************************
+# Sagan 
+#*****************************************************************************
+
+rule=: TRACK-CLIENT-LOGS - The IP address %src-ip:ipv4% was previously not sending logs. %-:rest%
+rule=: TRACK-CLIENT-LOGS - The IP address %src-ip:ipv6% was previously not sending logs. %-:rest%
+
+rule=: TRACK-CLIENT-NOLOGS - Logs have not been received from IP address %src-ip:ipv4% in over %-:number% minutes. %-:rest%
+rule=: TRACK-CLIENT-NOLOGS - Logs have not been received from IP address %src-ip:ipv5% in over %-:number% minutes. %-:rest%
+
+

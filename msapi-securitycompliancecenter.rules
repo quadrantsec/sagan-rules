@@ -32,9 +32,9 @@
 # JSON documentation for more information
 #
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-SECURITYCOMPLIANCECENTER] Alert Triggered"; json_content: ".Workload","SecurityComplianceCenter"; json_content: ".Operation", "AlertTriggered"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; classtype: suspicious-traffic; reference: url,wiki.quadrantsec.com/bin/view/Main/5005081; sid:5005081; rev: 2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-SECURITYCOMPLIANCECENTER] Alert Triggered"; json_content: ".Workload","SecurityComplianceCenter"; json_content: ".Operation", "AlertTriggered"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; classtype: suspicious-traffic; sid:5005081; rev: 2;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-SECURITYCOMPLIANCECENTER] Alert Entity Generated"; json_content: ".Workload","SecurityComplianceCenter"; json_content: ".Operation", "AlertEntityGenerated"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; classtype: suspicious-traffic; reference: url,wiki.quadrantsec.com/bin/view/Main/5005082; sid:5005082; rev: 2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-SECURITYCOMPLIANCECENTER] Alert Entity Generated"; json_content: ".Workload","SecurityComplianceCenter"; json_content: ".Operation", "AlertEntityGenerated"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; classtype: suspicious-traffic; sid:5005082; rev: 2;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-SECURITYCOMPLIANCECENTER] Alert Updated"; json_content: ".Workload","AlertUpdated"; json_content: ".Operation", "AlertEntityGenerated"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; classtype: suspicious-traffic; reference: url,wiki.quadrantsec.com/bin/view/Main/5005083; sid:5005083; rev: 2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-SECURITYCOMPLIANCECENTER] Alert Updated"; json_content: ".Workload","AlertUpdated"; json_content: ".Operation", "AlertEntityGenerated"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; classtype: suspicious-traffic; sid:5005083; rev: 2;)
 
