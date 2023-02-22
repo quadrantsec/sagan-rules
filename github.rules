@@ -1,0 +1,48 @@
+# Sagan github.rules
+# Copyright (c) 2009-2023. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+# following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+# INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+# USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "William Harding" <wharding@quadrantsec.com>
+# 2023-01-23
+
+alert any any any -> any any (msg: "[GITHUB] Release Detected"; program: github; json_content: ".action", "released"; classtype: configuration-change; sid:5010944; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Item Deleted"; program: github; json_content: ".action", "deleted"; classtype: configuration-change; sid:5010945; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Repository Archived"; program: github; json_content: ".action", "archived"; classtype: configuration-change; sid:5010946; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Member Added"; program: github; json_content: ".action", "member_added"; classtype: configuration-change; sid:5010947; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Member Invited"; program: github; json_content: ".action", "member_invited"; classtype: configuration-change; sid:5010948; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Member Removed"; program: github; json_content: ".action", "member_removed"; classtype: configuration-change; sid:5010949; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Item Created"; program: github; json_content: ".action", "created"; classtype: configuration-change; sid:5010950; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Item Create"; program: github; json_content: ".action", "create"; classtype: configuration-change; sid:5010951; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Item Edited"; program: github; json_content: ".action", "edited"; classtype: configuration-change; sid:5010952; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Repository Prereleased"; program: github; json_content: ".action", "prereleased"; classtype: configuration-change; sid:5010953; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Repository Removed"; program: github; json_content: ".action", "removed"; classtype: configuration-change; sid:5010954; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Item Removed From Repository"; program: github; json_content: ".action", "removed_from_repository"; classtype: configuration-change; sid:5010954; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Item Renamed"; program: github; json_content: ".action", "renamed"; classtype: configuration-change; sid:5010955; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Item Resolved"; program: github; json_content: ".action", "resolve"; classtype: configuration-change; sid:5010956; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Repository Published"; program: github; json_content: ".action", "published"; classtype: configuration-change; sid:5010957; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Item Added To Repository"; program: github; json_content: ".action", "added_to_repository"; classtype: configuration-change; sid:5010958; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Item Added"; program: github; json_content: ".action", "added"; classtype: configuration-change; sid:5010959; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Status Event"; program: github; json_content: ".status", "cancelled"; classtype: configuration-change; sid:5010960; rev:1;)
