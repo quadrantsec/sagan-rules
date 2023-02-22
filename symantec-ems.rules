@@ -36,7 +36,7 @@
 
 # Multiple login failures - Brute Force
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYMANTEC-EMS] Multiple authentication failures"; content: "failed authentication for internal PGP Desktop"; content:!"null"; parse_src_ip: 2; default_proto: tcp; default_dst_port: 389; classtype: brute-force; program: pgp/client; threshold:suppress, track by_src, count 5, seconds 300; xbits: set,brute_force,track ip_src, expire 21600; sid: 5001677; rev:5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYMANTEC-EMS] Multiple authentication failures"; content: "failed authentication for internal PGP Desktop"; content:!"null"; parse_src_ip: 2; default_proto: tcp; default_dst_port: 389; classtype: brute-force; program: pgp/client; threshold:type suppress, track by_src, count 5, seconds 300; xbits: set,brute_force,track ip_src, expire 21600; sid: 5001677; rev:6;)
 
 # Unsuccessful login
 
