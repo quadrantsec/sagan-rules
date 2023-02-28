@@ -42,3 +42,5 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Impossible Travel Act
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Suspicious Inbox Manipulation Rule"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_INBOX_HIDING"; classtype: configuration-change; sid: 5007208; rev: 1;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Possible Unknown MCAS Alert"; program: MCAS; json_content: ".Operation", "MCAS_ALERT"; json_contains; classtype: bad-unknown; sid: 5007209; rev: 1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Mass Download Attempt"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_DOWNLOAD"; json_contains; classtype: bad-unknown; sid: 5011307; rev: 1;)
