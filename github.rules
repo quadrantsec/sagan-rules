@@ -39,7 +39,7 @@ alert any any any -> any any (msg: "[GITHUB] Item Create"; program: github; json
 alert any any any -> any any (msg: "[GITHUB] Item Edited"; program: github; json_content: ".action", "edited"; classtype: configuration-change; sid:5010952; rev:1;)
 alert any any any -> any any (msg: "[GITHUB] Repository Prereleased"; program: github; json_content: ".action", "prereleased"; classtype: configuration-change; sid:5010953; rev:1;)
 alert any any any -> any any (msg: "[GITHUB] Repository Removed"; program: github; json_content: ".action", "removed"; classtype: configuration-change; sid:5010954; rev:1;)
-alert any any any -> any any (msg: "[GITHUB] Item Removed From Repository"; program: github; json_content: ".action", "removed_from_repository"; classtype: configuration-change; sid:5010954; rev:1;)
+alert any any any -> any any (msg: "[GITHUB] Item Removed From Repository"; program: github; json_content: ".action", "removed_from_repository"; classtype: configuration-change; sid:5010961; rev:1;)
 alert any any any -> any any (msg: "[GITHUB] Item Renamed"; program: github; json_content: ".action", "renamed"; classtype: configuration-change; sid:5010955; rev:1;)
 alert any any any -> any any (msg: "[GITHUB] Item Resolved"; program: github; json_content: ".action", "resolve"; classtype: configuration-change; sid:5010956; rev:1;)
 alert any any any -> any any (msg: "[GITHUB] Repository Published"; program: github; json_content: ".action", "published"; classtype: configuration-change; sid:5010957; rev:1;)
