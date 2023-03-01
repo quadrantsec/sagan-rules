@@ -389,7 +389,7 @@ rule=: auth failed on module %-:word% from %-:word% (%src-ip:char-to:\x29%): %-:
 rule=: Accepted password for %username:word% from %src-ip:ipv4%
 
 #*****************************************************************************
-# Microsoft Windows (via Evt2sys or NXLog
+# Microsoft Windows (via Evt2sys or NXLog)
 #*****************************************************************************
 
 # Note the space at the end!
