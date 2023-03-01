@@ -51,6 +51,10 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory Comput
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory User Removed"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Removed"; content:"Message: Removed user"; distance:1; classtype:successful-user; sid:5010943; rev:1;)
 
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory msFVE-RecoveryInformation Removed"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Removed"; content:"Message: Removed msFVE-RecoveryInformation"; distance:1; content:"Details : ms-Mcs-AdmPwdExpirationTime changed"; distance:0; classtype:successful-user; sid:5011307; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Active Directory User Added"; program:Netwrix_Auditor_Integration; content:"Active Directory Action : Added"; content:"Message: Added user"; distance:1; content:!"Details : Security Universal Group"; classtype:successful-user; sid:5011308; rev:1;)
+
 #=======================
 # Logon Activity Rules
 #=======================
