@@ -452,6 +452,10 @@ rule=: TACACS+ Client: Authentication error. Server is %DSTIP:ipv4%, user name i
 # Windows
 #*****************************************************************************
 
+# 1006: The share denied access to the client
+
+rule=: 1006: The share denied access to the client. Client Name: %clientname:word% Client Address: %clientaddress:ipv4%:%-:number% User Name: %username:string-to: Session ID% Session ID: %-:word% Share Name: %sharename:string-to: Share Path% Share Path: %sharepath:string-to: Status% Status: %status:string-to: Mapped Access% Mapped Access%-:rest%
+
 # 18456:
 
 rule=: %eventid:word% Login failed for user '%username:char-to:\x27%'. Reason: Could not find a login matching the name provided. [CLIENT: %src-ip:ipv4%]
