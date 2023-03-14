@@ -590,6 +590,6 @@ rule=: TRACK-CLIENT-LOGS - The IP address %src-ip:ipv4% was previously not sendi
 rule=: TRACK-CLIENT-LOGS - The IP address %src-ip:ipv6% was previously not sending logs. %-:rest%
 
 rule=: TRACK-CLIENT-NOLOGS - Logs have not been received from IP address %src-ip:ipv4% in over %-:number% minutes. %-:rest%
-rule=: TRACK-CLIENT-NOLOGS - Logs have not been received from IP address %src-ip:ipv4% in over %-:number% minutes. %-:rest%
+rule=: TRACK-CLIENT-NOLOGS - Logs have not been received from IP address %src-ip:ipv6% in over %-:number% minutes. %-:rest%
 
 
