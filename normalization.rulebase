@@ -452,6 +452,10 @@ rule=: TACACS+ Client: Authentication error. Server is %DSTIP:ipv4%, user name i
 # Windows
 #*****************************************************************************
 
+# 1006: The share denied access to the client
+
+rule=: 1006: The share denied access to the client. Client Name: %clientname:word% Client Address: %clientaddress:ipv4%:%-:number% User Name: %username:string-to: Session ID% Session ID: %-:word% Share Name: %sharename:string-to: Share Path% Share Path: %sharepath:string-to: Status% Status: %status:string-to: Mapped Access% Mapped Access%-:rest%
+
 # 18456:
 
 rule=: %eventid:word% Login failed for user '%username:char-to:\x27%'. Reason: Could not find a login matching the name provided. [CLIENT: %src-ip:ipv4%]
@@ -466,6 +470,10 @@ rule=: %-:string-to:Account Name:%Account Name: %-:string-to:Account Name:%Accou
 # This is for Microsoft Windows event 4624:
 
 rule=: %-:string-to:Account Name:%Account Name: %-:string-to:Account Name:%Account Name: %Username:word% %-:string-to:Network Address:%Network Address: %Src-IP:ipv4% %-:rest%
+
+# 4724: An attempt was made to reset an account's password
+
+rule=: 4724: An attempt was made to reset an account's password. Subject: Security ID: %subject-sid:word% Account Name: %subject-account:string-to: Account Domain% Account Domain: %-:word% Logon ID: %-:word% Target Account: Security ID: %target-sid:word% Account Name: %username:string-to: Account Domain% Account Domain: %-:rest%
 
 # Windows Account Lockout: There are 2 rules for the first log. The idea is if there is a caller computer both rules will fire off and the 2nd rule will just not have a caller computer name. If there is not a caller computer, only rule 2 will fire and rule 1 will not work... in theory
 
@@ -506,6 +514,11 @@ rule=: %-:word% A user account was unlocked. Subject: Security ID: %-:word% Acco
 # This is for Microsoft Windows event 4769:
 
 rule=: %-:string-to:Account Name:%Account Name: %username:char-to:\x40%%-:string-to:Client Address:%Client Address: ::ffff:%src-ip:ipv4% %-:rest%
+
+# 5136: A directory service object was modified
+
+rule=: 5136: A directory service object was modified. Subject: Security ID: %subject-sid:word% Account Name: %subject-account:word% Account Domain: %subject-domain:word% Logon ID: %-:word% Directory Service: Name: %-:word% Type: Active Directory Domain Services Object: DN: %username:string-to: GUID% GUID: %-:word% Class: %-:word% Attribute: LDAP Display Name: %attribute:string-to: Syntax% Syntax (OID): %-:word% Value: %value:string-to: Operation% Operation: %-:rest%
+
 
 # Added 2017/02/06
 
@@ -577,6 +590,6 @@ rule=: TRACK-CLIENT-LOGS - The IP address %src-ip:ipv4% was previously not sendi
 rule=: TRACK-CLIENT-LOGS - The IP address %src-ip:ipv6% was previously not sending logs. %-:rest%
 
 rule=: TRACK-CLIENT-NOLOGS - Logs have not been received from IP address %src-ip:ipv4% in over %-:number% minutes. %-:rest%
-rule=: TRACK-CLIENT-NOLOGS - Logs have not been received from IP address %src-ip:ipv5% in over %-:number% minutes. %-:rest%
+rule=: TRACK-CLIENT-NOLOGS - Logs have not been received from IP address %src-ip:ipv6% in over %-:number% minutes. %-:rest%
 
 
