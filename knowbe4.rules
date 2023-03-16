@@ -1,0 +1,51 @@
+# Sagan knowbe4.rules
+# Copyright (c) 2009-2023. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 03/15/2023
+
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] unknown category Level unknown_severity"; program:knowbe4; content:"category|22 3a 22|unknown|22|"; content:"priority|22 3a 22|unknown_severity|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011349; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] unknown category Level low"; program:knowbe4; content:"category|22 3a 22|unknown|22|"; content:"priority|22 3a 22|low|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011350; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] unknown category Level medium"; program:knowbe4; content:"category|22 3a 22|unknown|22|"; content:"priority|22 3a 22|medium|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011351; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] unknown category Level high"; program:knowbe4; content:"category|22 3a 22|unknown|22|"; content:"priority|22 3a 22|high|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011352; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] unknown category Level critical"; program:knowbe4; content:"category|22 3a 22|unknown|22|"; content:"priority|22 3a 22|critical|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011353; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] clean category Level unknown_severity"; program:knowbe4; content:"category|22 3a 22|clean|22|"; content:"priority|22 3a 22|unknown_severity|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011354; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] clean category Level low"; program:knowbe4; content:"category|22 3a 22|clean|22|"; content:"priority|22 3a 22|low|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011355; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] clean category Level medium"; program:knowbe4; content:"category|22 3a 22|clean|22|"; content:"priority|22 3a 22|medium|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011356; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] clean category Level high"; program:knowbe4; content:"category|22 3a 22|clean|22|"; content:"priority|22 3a 22|high|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011357; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] clean category Level critical"; program:knowbe4; content:"category|22 3a 22|clean|22|"; content:"priority|22 3a 22|critical|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011358; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] spam category Level unknown_severity"; program:knowbe4; content:"category|22 3a 22|spam|22|"; content:"priority|22 3a 22|unknown_severity|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011359; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] spam category Level low"; program:knowbe4; content:"category|22 3a 22|spam|22|"; content:"priority|22 3a 22|low|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011360; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] spam category Level medium"; program:knowbe4; content:"category|22 3a 22|spam|22|"; content:"priority|22 3a 22|medium|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011361; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] spam category Level high"; program:knowbe4; content:"category|22 3a 22|spam|22|"; content:"priority|22 3a 22|high|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011362; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] spam category Level critical"; program:knowbe4; content:"category|22 3a 22|spam|22|"; content:"priority|22 3a 22|critical|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011363; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] threat category Level unknown_severity"; program:knowbe4; content:"category|22 3a 22|threat|22|"; content:"priority|22 3a 22|unknown_severity|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011364; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] threat category Level low"; program:knowbe4; content:"category|22 3a 22|threat|22|"; content:"priority|22 3a 22|low|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011365; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] threat category Level medium"; program:knowbe4; content:"category|22 3a 22|threat|22|"; content:"priority|22 3a 22|medium|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011366; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] threat category Level high"; program:knowbe4; content:"category|22 3a 22|threat|22|"; content:"priority|22 3a 22|high|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011367; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[KNOWBE4] threat category Level critical"; program:knowbe4; content:"category|22 3a 22|threat|22|"; content:"priority|22 3a 22|critical|22|"; classtype:system-event; reference:url,developer.knowbe4.com/graphql/phisher/query/phisherMessage; sid:5011368; rev:1;)

@@ -105,7 +105,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] URL belongs to a 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] FTP attempt"; content: "80000 type="; content: "user="; content: "group="; classtype: suspicious-traffic; sid: 5000972; rev:2;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Entered system conserve mode!"; content: "22802 type="; content: "entered system conserve mode"; classtype: hardware-event; sid: 5000973; rev:2;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Leaving system conserve mode"; content: "22803 type="; content: "exited system conserve mode"; classtype: hardware-event; sid: 5000974; rev:2;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] General CRITICAL event"; content: "devname="; content: "pri=critical"; classtype: hardware-event; sid: 5000975; rev:2;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] General CRITICAL event"; content: "devname="; content: "pri=critical"; content:!"Alarm Cleared"; classtype: hardware-event; sid: 5000975; rev:3;)
 
 # 01/04/2013
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Botnet traffic detected"; content: "app_list=|22|BotnetOnly|22| app_type=|22|Botnet|22|"; classtype: trojan-activity; parse_src_ip: 1; parse_dst_ip: 2; sid: 5001627; rev:3;)
