@@ -1,0 +1,58 @@
+# Sagan aws-access-analyzer.rules
+# Copyright (c) 2009-2023. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 03/22/2023
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (ApplyArchiveRule) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|ApplyArchiveRule"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011373; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (CancelPolicyGeneration) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|CancelPolicyGeneration"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011374; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (CreateAccessPreview) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|CreateAccessPreview"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011375; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (CreateAnalyzer) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|CreateAnalyzer"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011376; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (CreateArchiveRule) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|CreateArchiveRule"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011377; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (DeleteAnalyzer) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|DeleteAnalyzer"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011378; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (DeleteArchiveRule) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|DeleteArchiveRule"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011379; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (GetAccessPreview) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|GetAccessPreview"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011380; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (GetAnalyzedResource) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|GetAnalyzedResource"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011381; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (GetAnalyzer) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|GetAnalyzer"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011382; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (GetArchiveRule) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|GetArchiveRule"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011383; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (GetFinding) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|GetFinding"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011384; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (GetGeneratedPolicy) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|GetGeneratedPolicy"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011385; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (ListAccessPreviewFindings) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|ListAccessPreviewFindings"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011386; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (ListAccessPreviews) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|ListAccessPreviews"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011387; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (ListAnalyzedResources) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|ListAnalyzedResources"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011388; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (ListAnalyzers) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|ListAnalyzers"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011389; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (ListArchiveRules) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|ListArchiveRules"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011390; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (ListFindings) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|ListFindings"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011391; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (ListPolicyGenerations) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|ListPolicyGenerations"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011392; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (ListTagsForResource) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|ListTagsForResource"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011393; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (StartPolicyGeneration) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|StartPolicyGeneration"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011394; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (StartResourceScan) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|StartResourceScan"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011395; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (TagResource) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|TagResource"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011396; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (UntagResource) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|UntagResource"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011397; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (UpdateArchiveRule) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|UpdateArchiveRule"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011398; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (UpdateFindings) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|UpdateFindings"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011399; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[IAM-ACCESS-ANALYZER] IAM Access Analyzer event detected (ValidatePolicy) "; program:access-analyzer.amazonaws.com; content:"eventName|22 3a 20 22|ValidatePolicy"; classtype:system-event; reference:url,docs.aws.amazon.com/access-analyzer/latest/APIReference/Welcome.html; sid:5011400; rev:1;)
