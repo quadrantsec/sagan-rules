@@ -85,3 +85,21 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tamp
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Brute force login attempt [5/5]"; content: "FAILED_LOGIN"; parse_src_ip: 2; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; xbits: set, brute_force ,track ip_src, expire 21600; classtype: brute-force; sid:5007735; rev:7;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Directory Traversal Exploit"; content: "SLASH_DOT_IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; reference: url,portswigger.net/web-security/file-path-traversal; classtype: exploit-attempt; sid: 5007736; rev: 5;)
+
+# Barracuda Impersonation Rules by William Harding - 2023-04-06
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Spam"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "spam"; sid:xxxxxxx; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Phishing"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "phishing"; sid:xxxxxxx; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Business Email Compromise/Spoofing"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "becSpoofing"; sid:xxxxxxx; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Blackmail"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "blackmail"; sid:xxxxxxx; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Account Takeover - Threat Found via Sign Ins"; program:Sentinel; json_content: ".payload.category", "Account Takeover Alert"; json_content: ".payload.type", "Sign Ins"; sid:xxxxxxx; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Account Takeover - Threat Found via Inbox Rules"; program:Sentinel; json_content: ".payload.category", "Account Takeover Alert"; json_content: ".payload.type", "Inbox Rules"; sid:xxxxxxx; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Account Takeover - Threat Found via Email"; program:Sentinel; json_content: ".payload.category", "Account Takeover Alert"; json_content: ".payload.type", "Email"; sid:xxxxxxx; rev:1;)
+
+#--------------------------------------------------------------
