@@ -207,4 +207,4 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Possible obf
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Possible obfuscated script with multiple split commands"; program:*PowerShell*; event_id:4103,4104,600,800; content:"-split"; nocase; pcre:"/([^(?:split)]*split){4}/i"; classtype:trojan-activity; sid:5010733; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Possible obfuscated script with multiple decimal numbers"; program:*PowerShell*; event_id:4103,4104,600,800; content:"char[]"; nocase; content:!"C|3a 5c|Program|20|Files|5c|SentinelOne"; pcre:"/(\d+\s*,\s*){200}/i"; classtype:trojan-activity; sid:5010734; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Possible obfuscated script with multiple decimal numbers"; program:*PowerShell*; event_id:4103,4104,600,800; content:"char[]"; nocase; content:!"C|3a 5c|Program|20|Files|5c|SentinelOne"; nocase; pcre:"/(\d+\s*,\s*){200}/i"; classtype:trojan-activity; sid:5010734; rev:2;)
