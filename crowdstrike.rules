@@ -28,13 +28,13 @@
 # rules by "Bryant Smith" <bsmith@quadrantsec.com>
 # 08/23/2022
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CROWDSTRIKE] CrowdStrike High Severity Event Reported "; content: "DetectionSummaryEvent"; nocase; content: "SeverityName=|22|High"; nocase; classtype:exploit-attempt; sid:5004756; rev:2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CROWDSTRIKE] CrowdStrike High Severity Event Reported "; content: "DetectionSummaryEvent|4"; nocase; classtype:exploit-attempt; sid:5004756; rev:3;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CROWDSTRIKE] CrowdStrike Critical Severity Event Reported "; content: "DetectionSummaryEvent"; nocase; content: "SeverityName=|22|Critical"; nocase; content: !"BullPlugin.exe"; nocase; classtype:exploit-attempt; sid:5004757; rev:2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CROWDSTRIKE] CrowdStrike Critical Severity Event Reported "; content: "DetectionSummaryEvent|5"; nocase; content: !"BullPlugin.exe"; nocase; classtype:exploit-attempt; sid:5004757; rev:3;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CROWDSTRIKE] CrowdStrike Low Severity Event Reported "; content: "DetectionSummaryEvent"; nocase; content: "SeverityName=|22|Low"; nocase; content:!"BullPlugin"; nocase; classtype:exploit-attempt; sid:5004758; rev:2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CROWDSTRIKE] CrowdStrike Low Severity Event Reported "; content: "DetectionSummaryEvent|2"; nocase; content:!"BullPlugin"; nocase; classtype:exploit-attempt; sid:5004758; rev:3;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CROWDSTRIKE] CrowdStrike Medium Severity Event Reported "; content: "DetectionSummaryEvent"; nocase; content: "SeverityName=|22|Medium"; nocase; classtype:exploit-attempt; sid:5004759; rev:2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CROWDSTRIKE] CrowdStrike Medium Severity Event Reported "; content: "DetectionSummaryEvent|3"; nocase; classtype:exploit-attempt; sid:5004759; rev:3;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CROWDSTRIKE] CrowdStrike Remote Response Session Start Event Reported"; content: "RemoteResponseSessionStartEvent"; nocase; classtype:suspicious-traffic; sid:5004785; rev:2;)
 
@@ -137,6 +137,18 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection, process 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Prevention, operation blocked"; program:CrowdStrike; content:"patternDisposition=Prevention, operation blocked"; reference:url,www.reddit.com/r/crowdstrike/comments/rbbzwi/pattern_disposition_values_in_detect_api/; flexbits:set, Crowdstrike.patternDisposition.Prevention, 10; classtype:malware; sid:5010466; rev:1;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection, operation would have been blocked if related prevention policy setting was enabled"; program:CrowdStrike; content:"patternDisposition=Detection, operation would have been blocked"; reference:url,www.reddit.com/r/crowdstrike/comments/rbbzwi/pattern_disposition_values_in_detect_api/; flexbits:set, Crowdstrike.patternDisposition.Detection, 10; classtype:malware; sid:5010467; rev:1;)
 
+# bs 02 May 2023
+# Incidents
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - INFO Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=INFO"; classtype:system-event; sid:5012073; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - LOW Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=LOW"; classtype:system-event; sid:5012074; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - MEDIUM Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=MEDIUM"; classtype:system-event; sid:5012075; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - HIGH Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=HIGH"; classtype:system-event; sid:5012076; rev:1;)
+
+# Detections
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection - INFO Level"; content:"CrowdStrike"; content:"Detections"; content:"severityName=INFO"; classtype:system-event; sid:5012077; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection - LOW Level"; content:"CrowdStrike"; content:"Detections"; content:"severityName=LOW"; classtype:system-event; sid:5012078; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection - MEDIUM Level"; content:"CrowdStrike"; content:"Detections"; content:"severityName=MEDIUM"; classtype:system-event; sid:5012079; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection - HIGH Level"; content:"CrowdStrike"; content:"Detections"; content:"severityName=HIGH"; classtype:system-event; sid:5012080; rev:1;)
 
 
 #=================================================================================================================

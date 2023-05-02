@@ -1,5 +1,5 @@
 # Sagan fortinet.rules
-# Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
+# Copyright (c) 2009-2023. Quadrant Information Security <www.quadrantsec.com>
 # All rights reserved.
 #
 # Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
@@ -27,6 +27,8 @@
 # These are mostly taken from Fortigate 4.0 Message reference manual. 
 
 # These are primarily for Legacy Fortigate logs. New logs are covered by Fortinet-648.rules
+
+# Log Reference: https://fortinetweb.s3.amazonaws.com/docs.fortinet.com/v2/attachments/b43f86b1-9e63-11ed-8e6d-fa163e15d75b/FortiOS_7.2.4_Log_Reference.pdf
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Protect profile changed"; content: "32151 type="; content: "changed protection profile"; classtype: configuration-change; sid: 5000898; rev:2;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] ICMP traffic disallowed"; content: "16003 type="; parse_src_ip: 1; classtype: not-suspicious; sid: 5000899; rev:3;)
