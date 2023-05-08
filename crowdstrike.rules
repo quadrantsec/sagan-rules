@@ -145,10 +145,10 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - MEDIUM L
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - HIGH Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=HIGH"; classtype:system-event; sid:5012076; rev:1;)
 
 # Detections
-alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection - INFO Level"; content:"CrowdStrike"; content:"Detections"; content:"severityName=INFO"; classtype:system-event; sid:5012077; rev:1;)
-alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection - LOW Level"; content:"CrowdStrike"; content:"Detections"; content:"severityName=LOW"; classtype:system-event; sid:5012078; rev:1;)
-alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection - MEDIUM Level"; content:"CrowdStrike"; content:"Detections"; content:"severityName=MEDIUM"; classtype:system-event; sid:5012079; rev:1;)
-alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection - HIGH Level"; content:"CrowdStrike"; content:"Detections"; content:"severityName=HIGH"; classtype:system-event; sid:5012080; rev:1;)
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection - INFO Level"; content:"CrowdStrike"; content:"Detections"; content:"severityName=INFO"; classtype:system-event; sid:5012077; rev:1;)
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection - LOW Level"; content:"CrowdStrike"; content:"Detections"; content:"severityName=LOW"; classtype:system-event; sid:5012078; rev:1;)
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection - MEDIUM Level"; content:"CrowdStrike"; content:"Detections"; content:"severityName=MEDIUM"; classtype:system-event; sid:5012079; rev:1;)
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection - HIGH Level"; content:"CrowdStrike"; content:"Detections"; content:"severityName=HIGH"; classtype:system-event; sid:5012080; rev:1;)
 
 
 #=================================================================================================================
