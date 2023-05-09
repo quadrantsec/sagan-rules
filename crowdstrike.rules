@@ -139,7 +139,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection, operatio
 
 # bs 02 May 2023
 # Incidents
-alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - INFO Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=INFO"; classtype:system-event; sid:5012073; rev:1;)
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - INFO Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=INFO"; classtype:system-event; sid:5012073; rev:1;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - LOW Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=LOW"; classtype:system-event; sid:5012074; rev:1;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - MEDIUM Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=MEDIUM"; classtype:system-event; sid:5012075; rev:1;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - HIGH Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=HIGH"; classtype:system-event; sid:5012076; rev:1;)
