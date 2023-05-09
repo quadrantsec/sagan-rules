@@ -592,4 +592,11 @@ rule=: TRACK-CLIENT-LOGS - The IP address %src-ip:ipv6% was previously not sendi
 rule=: TRACK-CLIENT-NOLOGS - Logs have not been received from IP address %src-ip:ipv4% in over %-:number% minutes. %-:rest%
 rule=: TRACK-CLIENT-NOLOGS - Logs have not been received from IP address %src-ip:ipv6% in over %-:number% minutes. %-:rest%
 
+#*****************************************************************************
+# CrowdStrike
+#*****************************************************************************
 
+#127.0.0.1|user|notice|notice|baptist-lae|2023-05-02T10:15:36Z|2023-05-02T10:15:36+00:00|CEF|
+# 0|CrowdStrike|FalconHost|1.0|Incidents|1|cat=Incidents cs1Label=incidentType cs1=UNUSUAL_ACTIVITY severityNameLabel=severityName severityName=INFO msg=User access patterns detected as anomalous. Such activities may indicate potential threats such as endpoint infection, compromised account or other risks. Falcon monitors the activity and will escalate severity or incident type when necessary. deviceCustomDate1Label=startTime deviceCustomDate1=May 02 2023 10:15:35 deviceCustomDate2Label=endTime deviceCustomDate2=1683022536087 cs2Label=identityProtectionIncidentId cs2=INC-17533 duser=BH.LOCAL\\BHLEARN153 cs3Label=endpointIp cn1Label=numberOfCompromisedEntities cn1=1 cn2Label=numbersOfAlerts cn2=1 cs4Label=falconHostLink cs4=https://falcon.us-2.crowdstrike.com/identity-protection/incidents/INC-17533 stateLabel=state state=NEW
+
+rule=: 0|%-:char-to:\x7c%|FalconHost|1.0|Incidents|1|cat=Incidents cs1Label=%-:word% cs1=%-:word% severityNameLabel=%-:word% severityName=%-:word% msg=%-:string-to:cs2=%cs2=%username:char-to:\x20%%-:rest%
