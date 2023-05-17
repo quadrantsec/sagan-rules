@@ -35,7 +35,7 @@
 # Champ Clark III 2018/09/12
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] ALERT_ANUBIS_DETECTION_VELOCITY"; content: "ALERT_ANUBIS_DETECTION_VELOCITY"; parse_src_ip: 1;classtype:successful-user; sid:5003802; rev:3;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] ALERT_CABINET_EVENT_MATCH_AUDIT"; content: "ALERT_CABINET_EVENT_MATCH_AUDIT"; classtype:unsuccessful-user; sid:5003803; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] ALERT_CABINET_EVENT_MATCH_AUDIT"; content: "ALERT_CABINET_EVENT_MATCH_AUDIT"; parse_src_ip: 1; classtype:unsuccessful-user; sid:5003803; rev:3;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] ALERT_ANUBIS_DETECTION_NEW_COUNTRY"; content: "ALERT_ANUBIS_DETECTION_NEW_COUNTRY"; content: !"ResultStatus|22 3a 22|Resolved"; classtype:unsuccessful-user; sid:5003804; rev:4;)
 
 # "Custom Alerts"
@@ -64,7 +64,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] ALERT_COMPROMISED_ACC
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] EVENT_CATEGORY_CREATE_USER"; content: "EVENT_CATEGORY_CREATE_USER"; classtype:unsuccessful-user; reference: url,docs.microsoft.com/en-us/cloud-app-security/monitor-alerts; sid:5003817; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] EVENT_CATEGORY_DELETE_USER"; content: "EVENT_CATEGORY_DELETE_USER"; classtype:unsuccessful-user; reference: url,docs.microsoft.com/en-us/cloud-app-security/monitor-alerts; sid:5003820; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_ADMIN_ACTIVITY"; content: "ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_ADMIN_ACTIVITY"; classtype:unsuccessful-user; reference: url,docs.microsoft.com/en-us/cloud-app-security/monitor-alerts; sid:5003929; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_ADMIN_ACTIVITY"; content: "ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_ADMIN_ACTIVITY"; classtype:unsuccessful-user; parse_src_ip: 1; reference: url,docs.microsoft.com/en-us/cloud-app-security/monitor-alerts; sid:5003929; rev:1;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] ALERT_MANAGEMENT_DISCOVERY_BREACHED_APP"; content: "ALERT_MANAGEMENT_DISCOVERY_BREACHED_APP"; classtype:unsuccessful-user; reference: url,docs.microsoft.com/en-us/cloud-app-security/monitor-alerts; sid:5003930; rev:1;)
 
