@@ -25,6 +25,8 @@
 #
 #*************************************************************
 
+#Reference: https://www.sonicwall.com/techdocs/pdf/sonicos-6-5-4-log-events-reference-guide.pdf
+
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SONICWALL] Possible TCP Port Scan"; content: "Possible port scan detected"; content: "TCP scanned port list"; default_proto: tcp; normalize; parse_src_ip: 2; parse_dst_ip: 3; classtype: network-scan; sid: 5001083; rev:4;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SONICWALL] Possible UDP Port Scan"; content: "Possible port scan detected"; content: "UDP scanned port list"; default_proto: udp; normalize; parse_src_ip: 2; parse_dst_ip: 3; classtype: network-scan; sid: 5001085; rev:4;)
 
@@ -175,3 +177,9 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[SONICWALL] Radio frequency t
 #alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[SONICWALL] WLAN sequence number out of order - sequencing error/EMF interference/rogue AP"; content: "WLAN sequence number out of order"; classtype: network-event; parse_src_ip: 1; parse_dst_ip: 2; reference: url,www.sonicwall.com/downloads/SonicOS_Log_Event_Reference_Guide.pdf; sid:5002734; rev:2;)
 
 #alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[SONICWALL] Gateway Anti-Virus Alert"; content: "m|3d|809"; content: "Gateway Anti-Virus Alert"; classtype: suspicious-traffic; parse_src_ip: 2; parse_dst_ip:3; reference: url,software.sonicwall.com/Manual/232-001655-00_Rev_A_SonicOS_Enhanced_5.1_Log_Event_Reference_Guide.pdf; sid:5003983; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SONICWALL] IP Spoof Detected"; content: "IP Spoof Detected"; default_proto: tcp; normalize; parse_src_ip: 2; parse_dst_ip: 3; classtype:suspicious-traffic; sid:5012101; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SONICWALL] Wrong Admin Password"; content: "Wrong Admin Password"; default_proto: tcp; normalize; parse_src_ip: 2; parse_dst_ip: 3; classtype:suspicious-traffic; sid:5012102; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SONICWALL] Admin Login Disabled"; content: "Admin Login Disabled"; default_proto: tcp; normalize; parse_src_ip: 2; parse_dst_ip: 3; classtype:suspicious-traffic; sid:5012103; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SONICWALL] Smurf Attack"; content: "Smurf Attack"; default_proto: tcp; normalize; parse_src_ip: 2; parse_dst_ip: 3; classtype:suspicious-traffic; sid:5012104; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SONICWALL] Forbidden E-Mail Attachment"; content: "E-Mail Attachment"; default_proto: tcp; normalize; parse_src_ip: 2; parse_dst_ip: 3; classtype:suspicious-traffic; sid:5012105; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SONICWALL] Using LDAP Without TLS"; content: "Using LDAP Without TLS"; default_proto: tcp; normalize; parse_src_ip: 2; parse_dst_ip: 3; classtype:suspicious-traffic; sid:5012106; rev:1;)
