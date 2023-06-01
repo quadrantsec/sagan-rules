@@ -29,7 +29,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] SNMP Authenticat
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Attempted RSHELL connection"; content: "RCMD-4-RSHPORTATTEMPT"; default_proto: tcp; default_dst_port: 514; classtype: unsuccessful-user; sid: 5000052; rev:4;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Line protocol changed state up/down"; content: "LINK-3-UPDOWN"; classtype: network-event; sid: 5000053; rev:3;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Line protocol changed state up/down"; content: "LINEPROTO-5-UPDOWN"; classtype: network-event; sid: 5000054; rev:3;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Configuration from console"; content: "SYS-5-CONFIG_I"; parse_src_ip: 1; classtype: configuration-change; sid: 5000055; rev:5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Configuration from console"; content: "SYS-5-CONFIG_I|3a| Configured from console"; parse_src_ip: 1; classtype: configuration-change; sid: 5000055; rev:6;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] IOS configuration changed"; content: "SYS-5-CONFIG"; classtype: configuration-change; sid:5000111; rev:5;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Successful login"; content: "SEC_LOGIN-5-LOGIN_SUCCESS"; classtype: successful-admin; sid:5000112; rev:3;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Failed login"; content: "SEC_LOGIN-4-LOGIN_FAILED"; classtype: unsuccessful-admin; normalize; sid:5001520; rev:2;)
