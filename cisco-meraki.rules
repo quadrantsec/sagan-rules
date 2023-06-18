@@ -46,7 +46,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-MERAKI] SSID Spoofing
 
 # Security_event
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] Malicious file blocked by amp"; content: "malicious action=block"; classtype: suspicious-traffic; reference: url,documentation.meraki.com/MX-Z/Content_Filtering_and_Threat_Protection/; sid:5003045; rev:2;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] Malicious file blocked by amp"; content: "malicious action=block"; parse_src_ip: 1; parse_dst_ip: 2; classtype: suspicious-traffic; reference: url,documentation.meraki.com/MX-Z/Content_Filtering_and_Threat_Protection/; sid:5003045; rev:3;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] File issued retrospective malicious disposition"; content: "malicious action=allow"; classtype: suspicious-traffic; reference: url,documentation.meraki.com/MX-Z/Content_Filtering_and_Threat_Protection/; sid:5003046; rev:2;)
 
