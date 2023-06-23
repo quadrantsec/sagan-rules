@@ -87,7 +87,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] DC - Clock sk
 #if_sid 18207,18208 - see msauth rules. Sagan can do the same, rules just need to be written.
 # Same with "Kerberos failures that may indicate an attack"
 #
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] Administrator group changed"; pcre: "/ ID:\s+\p*S-1-5-32-544\p*/"; classtype: unsuccessful-user; program: *Security*; reference: url,wiki.quadrantsec.com/bin/view/Main/XXXXXXX; sid: XXXXXXX; rev:4;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] Administrator group changed"; pcre: "/ ID:\s+\p*S-1-5-32-544\p*/"; classtype: unsuccessful-user; program: *Security*; sid: XXXXXXX; rev:5;)
 
 # 09/18/2012 Sniffty Dugen
 

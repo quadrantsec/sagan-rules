@@ -39,7 +39,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Login Failure - Brute 
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] IAM Policy Change"; content: "cloudaudit.googleapis.com"; content: "SetIamPolicy"; classtype: system-event; sid: 5005998; rev:2;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Suspicious Login"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.suspiciousLogin"; classtype: system-event; reference: url,wiki.quadrantsec.com/bin/view/Main/5005999`; parse_src_ip: 1; sid: 5005999; rev:2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Suspicious Login"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.suspiciousLogin"; classtype: system-event; parse_src_ip: 1; sid: 5005999; rev:3;)
 
 #alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Alert Center Activity"; content: "cloudaudit.googleapis.com"; content: "|22|eventType|22|:|22|ALERT_CENTER|22|"; classtype: system-event; sid: 5006000; rev:2;)
 

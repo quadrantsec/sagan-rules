@@ -47,7 +47,7 @@
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEEK] Protocol Violation [0/5]"; content: "ProtocolViolation"; program: bro|zeek; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: policy-violation; sid: 5000884; threshold: type suppress, track by_src, count 5, seconds 120; rev:5;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEEK] Sensitive Login [0/5]"; content: "SensitiveLogin"; program: bro|zeek; parse_src_ip: 1; parse_dst_ip: 2; default_proto: tcp; classtype: suspicious-login; sid: 5000885; threshold: type suppress, track by_src, count 5, seconds 120; rev:5;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEEK] Sensitive Connection [0/5]"; content: "SensitiveConnection"; program: parse_src_ip: 1; parse_dst_ip: 2; bro; default_proto: tcp; classtype: suspicious-traffic;   sid: 5000886; threshold: type suppress, track by_src, count 5, seconds 120; rev:5;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEEK] Sensitive Username in password [0/5]"; program: bro|zeek; parse_src_ip: 1; parse_dst_ip: 2; content: "SensitiveUsernameInPassword"; default_proto: tcp; classtype: successful-admin; url,wiki.quadrantsec.com/bin/view/Main/5000887; sid: 5000887; threshold: type suppress, track by_src, count 5, seconds 120; rev:5;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEEK] Sensitive Username in password [0/5]"; program: bro|zeek; parse_src_ip: 1; parse_dst_ip: 2; content: "SensitiveUsernameInPassword"; default_proto: tcp; classtype: successful-admin; sid: 5000887; threshold: type suppress, track by_src, count 5, seconds 120; rev:6;)
 
 # Robert Nunley & Champ Clark -  06/10/2014
 
