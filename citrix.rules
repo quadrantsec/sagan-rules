@@ -280,3 +280,5 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[CITRIX] Netscaler - Impossible T
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CITRIX] Netscaler - Impossible Traveler Login Successful [2/2]"; content:"-PPE-"; normalize; event_id:LOGIN; classtype:successful-user; flexbits:isset,username,VPN.Login.Successful; flexbits:isnotset,by_src,VPN.Login.Successful; sid:5007212; rev:1;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CITRIX] Netscaler - Impossible Traveler Login Failed [2/2]"; content:"-PPE-"; normalize; event_id:LOGIN_FAILED; classtype:unsuccessful-user; flexbits:isset,username,VPN.Login.Successful; flexbits:isnotset,by_src,VPN.Login.Successful; sid:5007213; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CITRIX] Possible Privilege Escalation - Restricted Shell Bypass"; content:"CLI CMD_EXECUTED"; content:"Command |22|man|20|"; reference:url,www.resillion.com/wp-content/uploads/2023/07/Resillion-Citrix-Vulnerability-Report-1.pdf; classtype:trojan-activity; sid:5013581; rev:1;)
