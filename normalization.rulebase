@@ -1,6 +1,6 @@
 # version=2
 # Sagan normalize.rulebase
-# Copyright (c) 2009-2019, Quadrant Information Security <www.quadrantsec.com>
+# Copyright (c) 2009-2023, Quadrant Information Security <www.quadrantsec.com>
 # All rights reserved.
 #
 # This file is used in conjunction with liblognorm.
@@ -469,7 +469,7 @@ rule=: %-:string-to:Account Name:%Account Name: %-:string-to:Account Name:%Accou
 
 # This is for Microsoft Windows event 4624:
 
-rule=: %-:string-to:Account Name:%Account Name: %-:string-to:Account Name:%Account Name: %Username:word% %-:string-to:Network Address:%Network Address: %Src-IP:ipv4% %-:rest%
+rule=: %-:string-to:Account Name:%Account Name: %-:string-to:Account Name:%Account Name: %username:word% %-:string-to:Network Address:%Network Address: %src-ip:ipv4% %-:rest%
 
 # 4724: An attempt was made to reset an account's password
 
