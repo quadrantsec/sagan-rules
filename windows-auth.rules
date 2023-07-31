@@ -322,3 +322,5 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] Vulnerable Ne
 
 # NOTE needs json-parse-data: enabled
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] The computer attempted to validate the credentials. Username does not exist. [100/1]"; program:*Security*; json_map:"event_id",".EventID"; event_id:4776; json_map:"hostname",".Workstation"; json_content:".Status","0xc0000064"; after:track by_hostname, count 100, seconds 60; threshold: type suppress, track by_hostname, count 1, seconds 60; reference:url,docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4776; classtype:unsuccessful-user; sid:5007689; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User removed from Domain Administrators group"; event_id: 4729,633; pcre: "/S-1-5-21-\d{5,15}\-\d{5,15}\-\d{5,15}-512 /"; program: *Security*; classtype: successful-admin; sid: 5013680; rev:1;)
