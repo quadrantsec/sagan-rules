@@ -156,11 +156,14 @@ rule=: Teardown %proto:word% connection %-:number% for outside:%src-ip:ipv4%/%sr
 rule=: %-:word% %-:number% %-:number% %-:word% %-:word% %-:word% %-:word% %-:word% NOTICE Failed-Attempt: Authentication failed, ACSVersion=%-:word% ConfigVersionId=%-:word% Device IP Address=%src-ip:char-to:\x2c%, Device Port=%src-port:char-to:\x2c%, UserName=%username:char-to:\x2c%, Protocol=%-:word% RequestLatency=%-:word% NetworkDeviceName=%-:word% Type=Authentication, Action=Login, Privilege-Level=%-:word% Authen-Type=%-:word% Service=Login, User=%-:word% Port=%-:word% Remote-Address=%dst-ip:char-to:\x2c%, %-:rest%
 
 #Cisco meraki normalization
+#1690812638.429532373 STE215_Breakroom events type=8021x_eap_failure radio='1' vap='0' client_mac='B8:8A:60:79:FD:65' identity='host/WS-4497.sbmgroup.local' aid='1020865390'
+rule=: %-:number%.%-:number% %-:word% events type=%-:word% radio='%-:number%' vap='%-:number%' client_mac='%string:mac48%' %-:rest%
+
 #1609348633.422414486 AP_1_05 events type=disassociation radio='0' vap='1' client_mac='B8:31:B5:89:9A:6A'
 rule=: %-:number%.%-:number% %-:alpha%_%-:number%_%-:number% events type=%-:word% radio='%-:number%' vap='%-:number%' client_mac='%srcmac:mac48%' %-:rest%
 
 ##1609440458.095981119 Temp_IDF_AP events type=disassociation radio='0' vap='1' client_mac='74:70:FD:7C:60:55'
-rule=: %-:number%.%-:number% %-:alpha%_%-:alpha%_%-:alpha% events type=%-:word% radio='%-:number%' vap='%-:number%' client_mac='%srcmac:mac48%'
+rule=: %-:number%.%-:number% %-:alpha%_%-:alpha%_%-:alpha% events type=%-:word% radio='%-:number%' vap='%-:number%' client_mac='%srcmac:mac48%%-:rest%'
 
 
 #*****************************************************************************
