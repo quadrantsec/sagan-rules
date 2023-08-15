@@ -28,7 +28,7 @@
 # rules by "Bryant Smith" <bsmith@quadrantsec.com>
 # 05/17/2023
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[HALCYON] Execution Blocked - Learning Mode (No Action Taken)"; program:halcyon_webapi_data; content:"Execution Blocked - Learning Mode"; reference:url,api.halcyon.ai/docs; classtype:trojan-activity; sid:5012089; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2023_05_17, updated_at 2023_05_17, mitre_tactic_id TA0002, mitre_technique_id T1204;)
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[HALCYON] Execution Blocked - Learning Mode (No Action Taken)"; program:halcyon_webapi_data; content:"Execution Blocked - Learning Mode"; reference:url,api.halcyon.ai/docs; classtype:trojan-activity; sid:5012089; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2023_05_17, updated_at 2023_05_17, mitre_tactic_id TA0002, mitre_technique_id T1204;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[HALCYON] Execution Blocked"; program:halcyon_webapi_data; content:"Execution Blocked"; content:!"Learning Mode"; reference:url,api.halcyon.ai/docs; classtype:trojan-activity; sid:5012090; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2023_05_17, updated_at 2023_05_17, mitre_tactic_id TA0002, mitre_technique_id T1204;)
 
