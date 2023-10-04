@@ -97,6 +97,8 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] User Activity (Video) -
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Removed"; program:netwrix_auditor_api_data; json_content:".DataSource","VMware"; json_content:".Action","Removed"; json_contains; json_content:".ObjectType","VirtualMachine"; classtype:system-event; sid:5013760; rev:1;)
 
+#Reference: https://helpcenter.netwrix.com/bundle/Auditor_10.0/page/Content/NA_System_Health/NA_Health_Status_Monitoring_Overview.htm
+
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - HostSystem Modified Red to Yellow"; program:netwrix_auditor_api_data; json_content:".DataSource","VMware"; json_content:".Action","Modified"; json_contains; json_content:".ObjectType","VirtualMachine"; content:"|22|Red|22| to |22|Yellow|22|"; classtype:system-event; sid:5013761; rev:1;)
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - HostSystem Modified Yellow to Green"; program:netwrix_auditor_api_data; json_content:".DataSource","VMware"; json_content:".Action","Modified"; json_contains; json_content:".ObjectType","VirtualMachine"; content:"|22|Yellow|22| to |22|Green|22|"; classtype:system-event; sid:5013762; rev:1;)
@@ -107,7 +109,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] User Activity (Video) -
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Modified Snapshot added"; program:netwrix_auditor_api_data; json_content:".DataSource","VMware"; json_content:".Action","Modified"; json_contains; json_content:".ObjectType","VirtualMachine"; content:"Added Snapshot"; classtype:system-event; sid:5013765; rev:1;)
 
-#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Modified Snapshot removed"; program:netwrix_auditor_api_data; json_content:".DataSource","VMware"; json_content:".Action","Modified"; json_contains; json_content:".ObjectType","VirtualMachine"; content:"Removed Snapshot"; classtype:system-event; sid:5013766; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Modified Snapshot removed"; program:netwrix_auditor_api_data; json_content:".DataSource","VMware"; json_content:".Action","Modified"; json_contains; json_content:".ObjectType","VirtualMachine"; content:"Removed Snapshot"; classtype:system-event; sid:5013766; rev:1;)
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] VMware - VirtualMachine Modified Removed IP Address"; program:netwrix_auditor_api_data; json_content:".DataSource","VMware"; json_content:".Action","Modified"; json_contains; json_content:".ObjectType","VirtualMachine"; content:"Removed IP Address"; classtype:system-event; sid:5013767; rev:1;)
 
@@ -149,9 +151,9 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server - System
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Environment Variable Added"; program:netwrix_auditor_api_data; json_content:".DataSource","Windows Server"; json_content:".Action","Added"; json_contains; content:"Environment Variables"; classtype:system-event; sid:5013784; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Local User Modified Unlock Changed"; program:netwrix_auditor_api_data; json_content:".DataSource","Windows Server"; json_content:".Action","Modified"; json_contains; content:"Unlocked changed from |22|Yes|22| to |22|No|22|"; classtype:system-event; sid:5013785; rev:1;)
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Local User Modified Unlock Changed"; program:netwrix_auditor_api_data; json_content:".DataSource","Windows Server"; json_content:".Action","Modified"; json_contains; content:"Unlocked changed from |22|Yes|22| to |22|No|22|"; classtype:system-event; sid:5013785; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Local User Modified Unlock Changed"; program:netwrix_auditor_api_data; json_content:".DataSource","Windows Server"; json_content:".Action","Modified"; json_contains; content:"Unlocked changed from |22|No|22| to |22|Yes|22|"; classtype:system-event; sid:5013786; rev:1;)
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Local User Modified Unlock Changed"; program:netwrix_auditor_api_data; json_content:".DataSource","Windows Server"; json_content:".Action","Modified"; json_contains; content:"Unlocked changed from |22|No|22| to |22|Yes|22|"; classtype:system-event; sid:5013786; rev:1;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[NETWRIX] Windows Server Added Local User"; program:netwrix_auditor_api_data; json_content:".DataSource","Windows Server"; json_content:".Action","Added"; json_contains; content:"Local User"; classtype:system-event; sid:5013787; rev:1;)
 
