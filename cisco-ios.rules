@@ -91,7 +91,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] High CPU usage d
 # %AUTHPRIV-3-SYSTEM_MSG: pam_aaa:Authentication failed for user cisco from 10.10.10.10 - sshd[27924]
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Authentication Failure SSH"; content: "%AUTHPRIV-3-SYSTEM_MSG|3a|"; content: "sshd["; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: unsuccessful-admin; sid: 5001668; rev:4;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Authentication Failure SSH - Brute force [5/5]"; content: "%AUTHPRIV-3-SYSTEM_MSG|3a|"; content: "sshd["; xbits: set,brute_force,track ip_src,expire 21600; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: brute-force; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001670; rev:10;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Authentication Failure SSH - Brute force [5/5]"; content: "%AUTHPRIV-3-SYSTEM_MSG|3a|"; content: "sshd["; parse_src_ip:1; xbits: set,brute_force,track ip_src,expire 21600; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: brute-force; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001670; rev:11;)
 
 # %DAEMON-3-SYSTEM_MSG: error: PAM: Authentication failure for illegal user cisco from 10.10.10.10 - sshd[27926]
 
@@ -124,9 +124,9 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] HSRP State Chang
 # %PARSER-5-CFGLOG_LOGGEDCMD: User:bob  logged command:!exec: enable
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Command logged"; content: "%PARSER-5-CFGLOG_LOGGEDCMD"; classtype: misc-activity; sid: 5001871; rev:2;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Enable command executed"; content: "%PARSER-5-CFGLOG_LOGGEDCMD"; content: "exec"; nocase; content: "enable"; nocase; classtype: successful-admin; sid: 5001872; rev:2;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Enable command executed"; content: "%PARSER-5-CFGLOG_LOGGEDCMD"; content: "exec"; nocase; content: "enable"; nocase; classtype: successful-admin; sid: 5001872; rev:2;)
 
 # Jan 22 16:03:51: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: bob] [Source: 10.10.0.1] [localport: 22] at 16:03:51 UTC Wed Jan 22 2014
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Login Success"; content: "%PARSER-5-CFGLOG_LOGGEDCMD"; default_proto: tcp; classtype: successful-admin; parse_src_ip: 1; parse_port; sid: 5001952; rev:2;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Login Success"; content: "%PARSER-5-CFGLOG_LOGGEDCMD"; default_proto: tcp; classtype: successful-admin; parse_src_ip: 1; parse_port; sid: 5001952; rev:2;)
 
