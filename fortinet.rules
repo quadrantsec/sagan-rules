@@ -174,7 +174,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] VoIP-SIP session 
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Infected File Detected Within Email"; content: "logid=|22|0211008194|22|"; content: "type="; content: "subtype="; classtype: suspicious-traffic; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006066; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[EXPERIMENTAL][FORTINET] Attack Detected by UDP/TCP Signature"; content: "logid=|22|0419016384|22|"; content: "type="; content: "subtype="; content: !"action=|22|dropped|22|"; content:!"severity=|22|low|22|"; content:!"severity=|22|info|22|"; content:!"SSL.Anonymous.Ciphers.Negotiation"; classtype: misc-attack; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006067; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Attack Detected by UDP/TCP Signature"; content: "logid=|22|0419016384|22|"; content: "type="; content: "subtype="; content: !"action=|22|dropped|22|"; content:!"severity=|22|low|22|"; content:!"severity=|22|info|22|"; content:!"SSL.Anonymous.Ciphers.Negotiation"; classtype: misc-attack; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006067; rev:3;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Attack detected by ICMP Signature"; content: "logid=|22|0419016385|22|"; content: "type="; content: "subtype="; classtype: misc-attack; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006068; rev:1;)
 
