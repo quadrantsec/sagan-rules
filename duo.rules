@@ -34,7 +34,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[DUO] User Reported Fraudule
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[DUO] Admin Login Failure"; content: "admin_login_error"; content: "Invalid password attempt"; parse_src_ip: 1; classtype: unsuccessful-admin; program: duo; sid: 5006033; rev: 2;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[DUO] Authentication - Brute Force"; content: "event|5F|type|22 3A 20 22|authentication"; content: "result|22 3A 20 22|denied"; threshold: type suppress, track by_username, count 5, seconds 300; classtype: attempted-user; program: duo; sid:5006528; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[DUO] Authentication - Brute Force"; content: "event|5F|type|22 3A 20 22|authentication"; content: "result|22 3A 20 22|denied"; parse_src_ip: 2; threshold: type suppress, track by_username, count 5, seconds 300; classtype: attempted-user; program: duo; sid:5006528; rev: 3;)
 
 # DUO Alert for User Placed in to Bypass Status by Kevin McAree @ Quadrant Information Security
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[DUO] User Placed in Bypass"; content: "user_update"; content: "Bypass"; classtype: system-event; program: duo; sid: 5010333; rev: 1)
