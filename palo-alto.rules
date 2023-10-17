@@ -24,6 +24,8 @@
 #  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 #*************************************************************
+#Reference: https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields
+#
 # Palo Alto Rules  Created by Robert Nunley (rnunley@quadrantsec.com)
 # 10/23/2015
 
