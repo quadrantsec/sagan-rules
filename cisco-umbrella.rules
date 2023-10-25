@@ -26,7 +26,8 @@
 #*************************************************************
 
 # rules by "Bryant Smith" <bsmith@quadrantsec.com>
-# 003/27/2023
+# 03/27/2023
+# reference: https://docs.umbrella.com/deployment-umbrella/docs/new-content-category-definitions
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[CISCO-UMBRELLA] Adult domain category detected"; program:umbrella-*; content:"Allowed"; content:"Adult"; parse_src_ip:1; classtype:suspicious-traffic; reference:url,docs.umbrella.com/deployment-umbrella/docs/log-formats-and-versioning; sid:5011441; rev:1;)
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[CISCO-UMBRELLA] Advertisements domain category detected"; program:umbrella-*; content:"Allowed"; content:"Advertisements"; parse_src_ip:1; classtype:suspicious-traffic; reference:url,docs.umbrella.com/deployment-umbrella/docs/log-formats-and-versioning; sid:5011442; rev:1;)
