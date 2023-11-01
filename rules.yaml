@@ -1,0 +1,361 @@
+%YAML 1.1
+---
+
+##############################################################################
+# Rule sets! - "Arrgh Villains! No quarter shall be given here!"
+##############################################################################
+
+rules-files:
+
+  #############################################################################
+  # Dynamic rules - Only use if you have the 'dynamic_load' processor enabled #
+  #############################################################################
+
+  - $RULE_PATH/dynamic.rules
+
+  #############################################################################
+  # GeoIP rules - Only use if you have $HOME_COUNTRY and 'geoip' core enabled #
+  #############################################################################
+
+  - $RULE_PATH/azure-eventhub-ad-geoip.rules
+  - $RULE_PATH/azureEventHub_windows-geoip.rules
+  - $RULE_PATH/checkpoint-geoip.rules
+  - $RULE_PATH/cisco-geoip.rules
+  - $RULE_PATH/cisco-ise-geoip.rules
+  - $RULE_PATH/citrix-geoip.rules
+  - $RULE_PATH/courier-geoip.rules
+  - $RULE_PATH/f5-big-ip-geoip.rules
+  - $RULE_PATH/fatpipe-geoip.rules
+  - $RULE_PATH/fortinet-geoip.rules
+  - $RULE_PATH/imapd-geoip.rules
+  - $RULE_PATH/juniper-geoip.rules
+  - $RULE_PATH/mcas-geoip.rules
+  - $RULE_PATH/msapi-azuread-geoip.rules
+  - $RULE_PATH/msapi-exchange-geoip.rules
+  - $RULE_PATH/msapi-microsoftflow-geoip.rules
+  - $RULE_PATH/msapi-microsoftforms-geoip.rules
+  - $RULE_PATH/msapi-microsoftstream-geoip.rules
+  - $RULE_PATH/msapi-microsoftteams-geoip.rules
+  - $RULE_PATH/msapi-onedrive-geoip.rules
+  - $RULE_PATH/msapi-powerbi-geoip.rules
+  - $RULE_PATH/msapi-sharepoint-geoip.rules
+  - $RULE_PATH/openssh-geoip.rules
+  - $RULE_PATH/palo-alto-geoip.rules
+  - $RULE_PATH/proftpd-geoip.rules
+  - $RULE_PATH/riverbed-geoip.rules
+  - $RULE_PATH/snort-geoip.rules
+  - $RULE_PATH/ssh-tectia-server-geoip.rules
+  - $RULE_PATH/vmware-geoip.rules
+  - $RULE_PATH/vsftpd-geoip.rules
+  - $RULE_PATH/watchguard-geoip.rules
+  - $RULE_PATH/windows-geoip.rules
+  - $RULE_PATH/windows-owa-geoip.rules
+  - $RULE_PATH/zimbra-geoip.rules
+
+  #############################################################################
+  # Bluedot rules - Only use if bluedot has been confgured in the yaml file.
+  #############################################################################
+
+  - $RULE_PATH/bluedot.rules
+  - $RULE_PATH/checkpoint-bluedot.rules
+  - $RULE_PATH/cisco-bluedot.rules
+  - $RULE_PATH/cisco-ise-bluedot.rules
+  - $RULE_PATH/citrix-bluedot.rules
+  - $RULE_PATH/cloudgenix-bluedot.rules
+  - $RULE_PATH/courier-bluedot.rules
+  - $RULE_PATH/f5-big-ip-bluedot.rules
+  - $RULE_PATH/fatpipe-bluedot.rules
+  - $RULE_PATH/fortinet-bluedot.rules
+  - $RULE_PATH/imapd-bluedot.rules
+  - $RULE_PATH/juniper-bluedot.rules
+  - $RULE_PATH/msapi-azuread-bluedot.rules
+  - $RULE_PATH/msapi-exchange-bluedot.rules
+  - $RULE_PATH/msapi-microsoftflow-bluedot.rules
+  - $RULE_PATH/msapi-microsoftforms-bluedot.rules
+  - $RULE_PATH/msapi-microsoftstream-bluedot.rules
+  - $RULE_PATH/msapi-microsoftteams-bluedot.rules
+  - $RULE_PATH/msapi-onedrive-bluedot.rules
+  - $RULE_PATH/msapi-powerbi-bluedot.rules
+  - $RULE_PATH/msapi-sharepoint-bluedot.rules
+  - $RULE_PATH/openssh-bluedot.rules
+  - $RULE_PATH/proftpd-bluedot.rules
+  - $RULE_PATH/riverbed-bluedot.rules
+  - $RULE_PATH/snort-bluedot.rules
+  - $RULE_PATH/ssh-tectia-server-bluedot.rules
+  - $RULE_PATH/vmware-bluedot.rules
+  - $RULE_PATH/vsftpd-bluedot.rules
+  - $RULE_PATH/windows-bluedot.rules
+  - $RULE_PATH/windows-owa-bluedot.rules
+  - $RULE_PATH/zeek-bluedot.rules
+  - $RULE_PATH/zscaler-bluedot.rules
+
+  #############################################################################
+  # Aetas rules - Only use if $SAGAN_HOUR/$SAGAN_DAY is defined!              #
+  #############################################################################
+
+  - $RULE_PATH/azureEventHub_windows-aetas.rules
+  - $RULE_PATH/checkpoint-aetas.rules
+  - $RULE_PATH/cisco-aetas.rules
+  - $RULE_PATH/fatpipe-aetas.rules
+  - $RULE_PATH/fortinet-aetas.rules
+  - $RULE_PATH/juniper-aetas.rules
+  - $RULE_PATH/openssh-aetas.rules
+  - $RULE_PATH/proftpd-aetas.rules
+  - $RULE_PATH/riverbed-aetas.rules
+  - $RULE_PATH/ssh-tectia-server-aetas.rules
+  - $RULE_PATH/windows-aetas.rules
+
+  #############################################################################
+  # Blacklist rules - Make sure the 'blacklist' processor is enabled!         #
+  #############################################################################
+
+  - $RULE_PATH/azureEventHub_windows-blacklist.rules
+  - $RULE_PATH/blacklist.rules
+  - $RULE_PATH/checkpoint-blacklist.rules
+  - $RULE_PATH/cisco-blacklist.rules
+  - $RULE_PATH/cisco-ise-blacklist.rules
+  - $RULE_PATH/citrix-blacklist.rules
+  - $RULE_PATH/windows-blacklist.rules
+  - $RULE_PATH/windows-owa-blacklist.rules
+
+  #############################################################################
+  # Correlated rules - Rules that use xbits to detect malicious behavor       #
+  #############################################################################
+
+  - $RULE_PATH/azureEventHub_windows-correlated.rules
+  - $RULE_PATH/cisco-correlated.rules
+  - $RULE_PATH/citrix-correlated.rules
+  - $RULE_PATH/courier-correlated.rules
+  - $RULE_PATH/fatpipe-correlated.rules
+  - $RULE_PATH/fortinet-correlated.rules
+  - $RULE_PATH/imapd-correlated.rules
+  - $RULE_PATH/openssh-correlated.rules
+  - $RULE_PATH/ssh-tectia-server-correlated.rules
+  - $RULE_PATH/vmware-correlated.rules
+  - $RULE_PATH/vsftpd-correlated.rules
+  - $RULE_PATH/windows-correlated.rules
+  - $RULE_PATH/windows-owa-correlated.rules
+
+  #############################################################################
+  # Bro Intel rules - Make sure the 'bro-intel processor is enabled!          #
+  #############################################################################
+
+  - $RULE_PATH/azureEventHub_windows-zeekintel.rules
+  - $RULE_PATH/cisco-ise-zeek-intel.rules
+  - $RULE_PATH/cisco-zeek-intel.rules
+  - $RULE_PATH/citrix-zeek-intel.rules
+  - $RULE_PATH/windows-owa-zeekintel.rules
+  - $RULE_PATH/windows-zeekintel.rules
+  - $RULE_PATH/zeek-intel.rules
+  - $RULE_PATH/zeeks.rules
+
+
+  #############################################################################
+  # Standard rules - Rules that do not require any dependencies.              #
+  #############################################################################
+
+  - $RULE_PATH/adtran.rules
+  - $RULE_PATH/airtables.rules
+  - $RULE_PATH/apache.rules
+  - $RULE_PATH/apc-emu.rules
+  - $RULE_PATH/arp.rules
+  - $RULE_PATH/artillery.rules
+  - $RULE_PATH/as400.rules
+  - $RULE_PATH/asterisk.rules
+  - $RULE_PATH/attack.rules
+  - $RULE_PATH/auditd.rules
+  - $RULE_PATH/aws-access-analyzer.rules
+  - $RULE_PATH/aws-account.rules
+  - $RULE_PATH/aws-apigateway.rules
+  - $RULE_PATH/aws-appconfig.rules
+  - $RULE_PATH/aws-application-insights.rules
+  - $RULE_PATH/aws-appsync.rules
+  - $RULE_PATH/aws-artifact.rules
+  - $RULE_PATH/aws-athena.rules
+  - $RULE_PATH/aws-autoscaling.rules
+  - $RULE_PATH/aws-cloudtrail.rules
+  - $RULE_PATH/aws-cognito.rules
+  - $RULE_PATH/aws-detective.rules
+  - $RULE_PATH/aws-guardduty.rules
+  - $RULE_PATH/aws-iam.rules
+  - $RULE_PATH/aws-sts.rules
+  - $RULE_PATH/azure-eventhub-ad.rules
+  - $RULE_PATH/azureEventHub_azureActivity.rules
+  - $RULE_PATH/azureEventHub_entra.rules
+  - $RULE_PATH/azureEventHub_windows-applocker.rules
+  - $RULE_PATH/azureEventHub_windows-auth.rules
+  - $RULE_PATH/azureEventHub_windows-clipboard.rules
+  - $RULE_PATH/azureEventHub_windows-emet.rules
+  - $RULE_PATH/azureEventHub_windows-malware.rules
+  - $RULE_PATH/azureEventHub_windows-misc.rules
+  - $RULE_PATH/azureEventHub_windows-mssql.rules
+  - $RULE_PATH/azureEventHub_windows-powershell.rules
+  - $RULE_PATH/azureEventHub_windows-security.rules
+  - $RULE_PATH/azureEventHub_windows-sysmon.rules
+  - $RULE_PATH/barracuda.rules
+  - $RULE_PATH/bash.rules
+  - $RULE_PATH/bind.rules
+  - $RULE_PATH/bonding.rules
+  - $RULE_PATH/cacti-thold.rules
+  - $RULE_PATH/carbonblack-app-control.rules
+  - $RULE_PATH/carbonblack-cloud.rules
+  - $RULE_PATH/carbonblack-endpoint-standard.rules
+  - $RULE_PATH/centrify.rules
+  - $RULE_PATH/checkpoint.rules
+  - $RULE_PATH/cisco-amp.rules
+  - $RULE_PATH/cisco-cucm.rules
+  - $RULE_PATH/cisco-ios.rules
+  - $RULE_PATH/cisco-ise.rules
+  - $RULE_PATH/cisco-malware.rules
+  - $RULE_PATH/cisco-meraki.rules
+  - $RULE_PATH/cisco-pixasa.rules
+  - $RULE_PATH/cisco-prime.rules
+  - $RULE_PATH/cisco-sca-alarms.rules
+  - $RULE_PATH/cisco-sca-observables.rules
+  - $RULE_PATH/cisco-sdee.rules
+  - $RULE_PATH/cisco-umbrella.rules
+  - $RULE_PATH/cisco-wlc.rules
+  - $RULE_PATH/citrix.rules
+  - $RULE_PATH/cloudgenix.rules
+  - $RULE_PATH/cloudtrail.rules
+  - $RULE_PATH/confluent.rules
+  - $RULE_PATH/courier.rules
+  - $RULE_PATH/crowdstrike.rules
+  - $RULE_PATH/cyberark.rules
+  - $RULE_PATH/cylance.rules
+  - $RULE_PATH/darktrace.rules
+  - $RULE_PATH/deleted.rules
+  - $RULE_PATH/dellemcunity.rules
+  - $RULE_PATH/digitalpersona.rules
+  - $RULE_PATH/dovecot.rules
+  - $RULE_PATH/duo.rules
+  - $RULE_PATH/dynamic.rules
+  - $RULE_PATH/f5-big-ip.rules
+  - $RULE_PATH/fatpipe.rules
+  - $RULE_PATH/fingerprint.rules
+  - $RULE_PATH/fipaypin.rules
+  - $RULE_PATH/fortinet-malware.rules
+  - $RULE_PATH/fortinet.rules
+  - $RULE_PATH/fortiSandbox.rules
+  - $RULE_PATH/ftpd.rules
+  - $RULE_PATH/gcp-cloud-audit.rules
+  - $RULE_PATH/gcp-scc.rules
+  - $RULE_PATH/github.rules
+  - $RULE_PATH/grsec.rules
+  - $RULE_PATH/halcyon.rules
+  - $RULE_PATH/honeyd.rules
+  - $RULE_PATH/hordeimp.rules
+  - $RULE_PATH/hostapd.rules
+  - $RULE_PATH/huawei.rules
+  - $RULE_PATH/imapd.rules
+  - $RULE_PATH/incapsula.rules
+  - $RULE_PATH/ipop3d.rules
+  - $RULE_PATH/juniper.rules
+  - $RULE_PATH/kismet.rules
+  - $RULE_PATH/knockd.rules
+  - $RULE_PATH/knowbe4.rules
+  - $RULE_PATH/librenms.rules
+  - $RULE_PATH/linux-kernel.rules
+  - $RULE_PATH/mcafee-web-gateway.rules
+  - $RULE_PATH/mcas.rules
+  - $RULE_PATH/microsoft-atp.rules
+  - $RULE_PATH/milter.rules
+  - $RULE_PATH/mimecast.rules
+  - $RULE_PATH/mongodb.rules
+  - $RULE_PATH/msapi-airinvestigation.rules
+  - $RULE_PATH/msapi-azuread.rules
+  - $RULE_PATH/msapi-defender.rules
+  - $RULE_PATH/msapi-exchange.rules
+  - $RULE_PATH/msapi-mcas.rules
+  - $RULE_PATH/msapi-onedrive.rules
+  - $RULE_PATH/msapi-securitycompliancecenter.rules
+  - $RULE_PATH/msapi-sharepoint.rules
+  - $RULE_PATH/msapi-threatintelligence.rules
+  - $RULE_PATH/ms-defender.rules
+  - $RULE_PATH/msdns-audit.rules
+  - $RULE_PATH/msexchange-activemonitoring.rules
+  - $RULE_PATH/msexchange-management.rules
+  - $RULE_PATH/mysql.rules
+  - $RULE_PATH/netskope.rules
+  - $RULE_PATH/netwrix-api-integration.rules
+  - $RULE_PATH/netwrix.rules
+  - $RULE_PATH/nexpose.rules
+  - $RULE_PATH/nfcapd-malware.rules
+  - $RULE_PATH/nfcapd.rules
+  - $RULE_PATH/nginx.rules
+  - $RULE_PATH/ninjarmm.rules
+  - $RULE_PATH/ntp.rules
+  - $RULE_PATH/nxlog.rules
+  - $RULE_PATH/okta.rules
+  - $RULE_PATH/onelogin.rules
+  - $RULE_PATH/openssh.rules
+  - $RULE_PATH/openvpn.rules
+  - $RULE_PATH/oracle.rules
+  - $RULE_PATH/palo-alto.rules
+  - $RULE_PATH/passwordstate.rules
+  - $RULE_PATH/php.rules
+  - $RULE_PATH/postfix.rules
+  - $RULE_PATH/postgresql.rules
+  - $RULE_PATH/pptp.rules
+  - $RULE_PATH/procurve.rules
+  - $RULE_PATH/proftpd.rules
+  - $RULE_PATH/proofpoint.rules
+  - $RULE_PATH/proxy-malware.rules
+  - $RULE_PATH/pure-ftpd.rules
+  - $RULE_PATH/racoon.rules
+  - $RULE_PATH/ransomcare.rules
+  - $RULE_PATH/riverbed.rules
+  - $RULE_PATH/roundcube.rules
+  - $RULE_PATH/rsa-dpm.rules
+  - $RULE_PATH/rsync.rules
+  - $RULE_PATH/sagan.rules
+  - $RULE_PATH/samba.rules
+  - $RULE_PATH/sendmail.rules
+  - $RULE_PATH/sentinelone.rules
+  - $RULE_PATH/snort.rules
+  - $RULE_PATH/solaris.rules
+  - $RULE_PATH/sonicwall.rules
+  - $RULE_PATH/sophos.rules
+  - $RULE_PATH/squid.rules
+  - $RULE_PATH/ssh-tectia-server.rules
+  - $RULE_PATH/su.rules
+  - $RULE_PATH/symantec-ems.rules
+  - $RULE_PATH/syslog.rules
+  - $RULE_PATH/systemd.rules
+  - $RULE_PATH/tcp.rules
+  - $RULE_PATH/telnet.rules
+  - $RULE_PATH/tenable.rules
+  - $RULE_PATH/trendmicro.rules
+  - $RULE_PATH/tripwire.rules
+  - $RULE_PATH/vmpop3d.rules
+  - $RULE_PATH/vmware.rules
+  - $RULE_PATH/vpopmail.rules
+  - $RULE_PATH/vsftpd.rules
+  - $RULE_PATH/watchguard.rules
+  - $RULE_PATH/web-attack.rules
+  - $RULE_PATH/weblabrinth.rules
+  - $RULE_PATH/windows-applocker.rules
+  - $RULE_PATH/windows-auth.rules
+  - $RULE_PATH/windows-clipboard.rules
+  - $RULE_PATH/windows-emet.rules
+  - $RULE_PATH/windows-malware.rules
+  - $RULE_PATH/windows-misc.rules
+  - $RULE_PATH/windows-mssql.rules
+  - $RULE_PATH/windows-owa.rules
+  - $RULE_PATH/windows-powershell.rules
+  - $RULE_PATH/windows.rules
+  - $RULE_PATH/windows-security.rules
+  - $RULE_PATH/windows-sysmon.rules
+  - $RULE_PATH/wordpress.rules
+  - $RULE_PATH/xinetd.rules
+  - $RULE_PATH/yubikey.rules
+  - $RULE_PATH/zeus.rules
+  - $RULE_PATH/zimbra.rules
+  - $RULE_PATH/zingbox.rules
+  - $RULE_PATH/zscaler.rules
+
+  #############################################################################
+  # Custom Rules - Rules that are customer specific                           #
+  #############################################################################
+
+  #- $RULE_PATH/example.rules
