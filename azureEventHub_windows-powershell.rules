@@ -1,5 +1,5 @@
 # Sagan windows-powershell.rules
-# Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
+# Copyright (c) 2009-2023. Quadrant Information Security <www.quadrantsec.com>
 # All rights reserved.
 #
 # Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
@@ -163,7 +163,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Access to Mi
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Local User Created"; program: *PowerShell*; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id:400,800,4103,4104; content:"New-LocalUser"; nocase; reference:url,github.com/SigmaHQ/sigma/blob/master/rules/windows/powershell/powershell_script/posh_ps_create_local_user.yml; classtype:suspicious-command; sid:5009367; metadata: old_sid 5007154; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Cmdlet Scheduled Task Created"; program: *PowerShell*; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id:400,800,4103,4104; content:"New-ScheduledTask"; nocase; content:"Register-ScheduledTask"; nocase; meta_content:"%sagan$",Invoke-CimMethod,-ClassName,PS_ScheduledTask,-NameSpace,Root\\Microsoft\\Windows\\TaskScheduler; meta_nocase; reference:url,github.com/SigmaHQ/sigma/blob/master/rules/windows/powershell/powershell_script/posh_ps_cmdlet_scheduled_task.yml; classtype:suspicious-command; sid:5009368; metadata: old_sid 5007155; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Cmdlet Scheduled Task Created"; program: *PowerShell*; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id:400,800,4103,4104; content:"New-ScheduledTask"; nocase; content:"Register-ScheduledTask"; nocase; meta_content:"%sagan%",Invoke-CimMethod,-ClassName,PS_ScheduledTask,-NameSpace,Root\\Microsoft\\Windows\\TaskScheduler; meta_nocase; reference:url,github.com/SigmaHQ/sigma/blob/master/rules/windows/powershell/powershell_script/posh_ps_cmdlet_scheduled_task.yml; classtype:suspicious-command; sid:5009368; metadata: old_sid 5007155; rev:2;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-POWERSHELL] Dnscat Exfil Tool Execution"; program: *PowerShell*; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id:400,800,4103,4104; content:"Start-Dnscat2"; nocase; reference:url,github.com/SigmaHQ/sigma/blob/master/rules/windows/powershell/powershell_script/posh_ps_dnscat_execution.yml; classtype:suspicious-command; sid:5009369; metadata: old_sid 5007156; rev:1;)
 

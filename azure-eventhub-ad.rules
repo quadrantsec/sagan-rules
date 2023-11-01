@@ -1,5 +1,5 @@
 # Sagan azure-eventhub-ad.rules
-# Copyright (c) 2009-2022. Quadrant Information Security <www.quadrantsec.com>
+# Copyright (c) 2009-2023. Quadrant Information Security <www.quadrantsec.com>
 # All rights reserved.
 #
 # Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
@@ -37,7 +37,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[AZURE-EVENTHUB-AD] Risk Eve
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[AZURE-EVENTHUB-AD] Risk Event Detected - suspiciousIPAddress"; program: azureEventHub; json_content:".properties.riskEventTypes","suspiciousIPAddress"; json_contains; json_map: "src_ip", ".callerIpAddress"; json_map: "dest_ip", ".callerIpAddress"; json_map: "username", ".properties.userPrincipalName"; classtype: suspicious-traffic; reference:url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema; sid:5004765; rev: 4;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[AZURE-EVENTHUB-AD] Risk Event Detected - leakedCredentials"; program: azureEventHub; content:".properties.riskEventTypes","leakedCredentials"; json_contains; json_map: "src_ip", ".callerIpAddress"; json_map: "dest_ip", ".callerIpAddress"; json_map: "username", ".properties.userPrincipalName"; classtype: correlated-attack; reference:url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema; sid:5004766; rev: 4;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[AZURE-EVENTHUB-AD] Risk Event Detected - leakedCredentials"; program: azureEventHub; json_content:".properties.riskEventTypes","leakedCredentials"; json_contains; json_map: "src_ip", ".callerIpAddress"; json_map: "dest_ip", ".callerIpAddress"; json_map: "username", ".properties.userPrincipalName"; classtype: correlated-attack; reference:url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema; sid:5004766; rev: 5;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[AZURE-EVENTHUB-AD] Risk Event Detected - investigationsThreatIntelligence"; program: azureEventHub; json_content:".properties.riskEventTypes","investigationsThreatIntelligence"; json_contains; json_map: "src_ip", ".callerIpAddress"; json_map: "dest_ip", ".callerIpAddress"; json_map: "username", ".properties.userPrincipalName"; classtype: correlated-attack; reference:url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema; sid:5004767; rev: 4;)
 
