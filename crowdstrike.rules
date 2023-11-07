@@ -142,7 +142,10 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Prevention/Quaranti
 # bs 02 May 2023
 # Incidents
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - INFO Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=INFO"; normalize; threshold:type suppress, track by_username, count 5, seconds 3600; classtype:system-event; sid:5012073; rev:1;)
-alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - LOW Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=LOW"; normalize; threshold:type suppress, track by_username, count 5, seconds 3600; classtype:system-event; sid:5012074; rev:1;)
+
+# Disabled as signature provides no actionable value. -- JHall 20231106
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - LOW Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=LOW"; normalize; threshold:type suppress, track by_username, count 5, seconds 3600; classtype:system-event; sid:5012074; rev:1;)
+
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - MEDIUM Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=MEDIUM"; normalize; threshold:type suppress, track by_username, count 5, seconds 3600; classtype:system-event; sid:5012075; rev:1;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Incident - HIGH Level"; content:"CrowdStrike"; content:"Incidents"; content:"severityName=HIGH"; normalize; threshold:type suppress, track by_username, count 5, seconds 3600; classtype:system-event; sid:5012076; rev:1;)
 
