@@ -31,6 +31,6 @@
 # These rules work best with a JSON input map.  See the "msapi" mapping.  See the Sagan
 # JSON documentation for more information
 #
+#Reference: https://learn.microsoft.com/en-us/exchange/client-developer/web-service-reference/ews-operations-in-exchange
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-EXCHANGE] Data Loss Prevention Rule Match"; json_content: ".Workload","Exchange"; json_content: ".Operation", "DlpRuleMatch"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; classtype: misc-attack; sid:5004863; rev: 2;)
-
