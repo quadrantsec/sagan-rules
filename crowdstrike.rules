@@ -124,7 +124,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Network Access In A
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Document Access In A Detection Summary Event"; program:CrowdStrike; content:"Document Access In A Detection Summary Event"; classtype:malware; sid:5007201; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Executable Written In A Detection Summary Event"; program:CrowdStrike; content:"Executable Written In A Detection Summary Event"; classtype:malware; sid:5007202; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Executable Written In A Detection Summary Event"; program:CrowdStrike; content:"Executable Written In A Detection Summary Event"; content:!"Prevention, operation blocked"; classtype:malware; sid:5007202; rev:2;)
 
 #BS 09 Dec 2022
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Detection, standard detection"; program:CrowdStrike; content:"patternDisposition=Detection, standard detection"; reference:url,www.reddit.com/r/crowdstrike/comments/rbbzwi/pattern_disposition_values_in_detect_api/; flexbits:set, Crowdstrike.patternDisposition.Detection, 10; classtype:malware; sid:5010459; rev:1;)
