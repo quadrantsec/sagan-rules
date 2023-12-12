@@ -80,7 +80,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] Virtual route
 
 # VRRP transition
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] VRRP transition"; content: "VRRP transition"; content: "changed"; classtype: system-event; sid:5003053; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] VRRP transition"; content: "VRRP transition"; content: "changed"; classtype: system-event; sid:5003053; rev:3;)
 
 # Blocked DHCP server response
 
