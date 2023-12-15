@@ -80,7 +80,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Agent disabled"; co
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Network quarantine performed successfully"; content:"SentinelOne"; content:"activityType=1001"; classtype:trojan-activity; sid:5006639; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Kill performed successfull (Process Terminated"; content:"SentinelOne"; content:"activityType=2001"; classtype:trojan-activity; sid:5006640; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Kill performed successful (Process Terminated"; content:"SentinelOne"; content:"activityType=2001"; classtype:trojan-activity; sid:5006640; rev:1;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Remediate performed successfully"; content:"SentinelOne"; content:"activityType=2002"; classtype:trojan-activity; sid:5006641; rev:1;)
 
