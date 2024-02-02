@@ -213,3 +213,4 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] RansomCare logs det
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Netwrix logs detected via program."; program:netwrix_auditor_api_data; dynamic_load: $RULE_PATH/netwrix-api-integration.rules; classtype:dynamic-rules; sid:5013789; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Salesforce logs detected via program."; program:salesforce_streaming_api_data; dynamic_load: $RULE_PATH/salesforce.rules; classtype:dynamic-rules; sid:5014058; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] AWS Signin logs detected via program."; program:signin.amazonaws.com; dynamic_load: $RULE_PATH/aws-signin.rules; classtype:dynamic-rules; sid:5014089; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Imperva logs detected via program."; program:Incapsula; dynamic_load: $RULE_PATH/imperva.rules; classtype:dynamic-rules; sid:5014197; rev:1;)
