@@ -72,6 +72,6 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSLOG] syslog-ng suspend w
 # Added by Robert Nunley 02/20/2014 (rnunley@quadantsec.com)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYSLOG] SCSI task abort"; content: "scsi"; content: "task abort"; classtype: hardware-event; program: kernel; sid: 5001972; rev:1;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYSLOG] Remounting filesystem read-only"; content: "Remounting filesystem read-only"; classtype: hardware-event; program: kernel; sid: 5001973; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYSLOG] Remounting filesystem read-only"; content: "Remounting filesystem read-only"; classtype: hardware-event; program: kernel; sid: 5001973; rev:1;)
 
 
