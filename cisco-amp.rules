@@ -131,3 +131,6 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] iOS Network Detec
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CISCO-SECUREENDPOINT] Exploit attempt was detected"; program:*CiscoSecureEndpoint*; content:"102: An exploit attempt was detected"; classtype:trojan-activity; sid:5008352; rev:1;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CISCO-SECUREENDPOINT] Exploit attempt was prevented"; program:*CiscoSecureEndpoint*; content:"100: An exploit attempt was prevented"; classtype:trojan-activity; sid:5008355; rev:1;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CISCO-SECUREENDPOINT] Event Engine Detection"; program:*CiscoSecureEndpoint*; content:"401: {Description: EVENT_ENGINE_DETECTION_RESULT"; classtype:trojan-activity; sid:5008356; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-SECUREENDPOINT] Threat Detected"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648222"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid:5014313; rev:1;)
+
