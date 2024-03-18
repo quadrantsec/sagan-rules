@@ -210,7 +210,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User account r
 # Rule added by Brian Echeverry ( becheverry@quadrantsec.com) - 02/21/2014
 # Disabled by default.  Possible xbit rule canidate (?)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] Account locked out (ADMINISTRATOR)"; event_id: 4740,644; content: "administrator"; nocase; classtype: unsuccessful-user; program: *Security*; sid: 5001978; rev:5;) 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] Account locked out (ADMINISTRATOR)"; event_id: 4740,644; content:!"$ Account Domain|3a|"; content:"administrator"; nocase; classtype:unsuccessful-user; program:*Security*; sid:5001978; rev:6;)
 
 # You'll want to populate the "WINDOWS_DOMAINS" before enabling this rule. 
 # Champ Clark - 03/03/2014
