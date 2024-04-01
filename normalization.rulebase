@@ -522,6 +522,9 @@ rule=: %-:string-to:Account Name:%Account Name: %username:char-to:\x40%%-:string
 
 rule=: 5136: A directory service object was modified. Subject: Security ID: %subject-sid:word% Account Name: %subject-account:word% Account Domain: %subject-domain:word% Logon ID: %-:word% Directory Service: Name: %-:word% Type: Active Directory Domain Services Object: DN: %username:string-to: GUID% GUID: %-:word% Class: %-:word% Attribute: LDAP Display Name: %attribute:string-to: Syntax% Syntax (OID): %-:word% Value: %value:string-to: Operation% Operation: %-:rest%
 
+# 5145: A network share object was checked...
+rule=: 5145: A network share object was checked to see whether client can be granted desired access. Subject: Security ID: %securityID:word% Account Name: %user:word% Account Domain: %-:word% Logon ID: %-:word% Network Information: Object Type: File Source Address: %src-ip:ipv4% Source Port: %string:number%%-:rest%
+rule=:5145: A network share object was checked to see whether client can be granted desired access. Subject: Security ID: %securityID:word% Account Name: %user:word% Account Domain: %-:word% Logon ID: %-:word% Network Information: Object Type: File Source Address: %src-ip:ipv4% Source Port: %string:number%%-:rest%
 
 # Added 2017/02/06
 
