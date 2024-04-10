@@ -27,7 +27,7 @@
 
 # rules by "Brian Echeverry" <becheverry@quadrantsec.com>
 # 2018/05/25
-
+# Reference: https://www.cisco.com/c/en/us/td/docs/security/firepower/610/api/db-access/Database_Access/Schema-System.html
 # These rules apply to Cisco AMP for endpoint events acquired via API
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Policy Update"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648130"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003874; rev:1;)
