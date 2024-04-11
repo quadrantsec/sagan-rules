@@ -27,7 +27,7 @@
 
 # rules by "Brian Echeverry" <becheverry@quadrantsec.com>
 # 2018/05/25
-
+# Reference: https://www.cisco.com/c/en/us/td/docs/security/firepower/610/api/db-access/Database_Access/Schema-System.html
 # These rules apply to Cisco AMP for endpoint events acquired via API
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Policy Update"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648130"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003874; rev:1;)
@@ -35,9 +35,12 @@
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Scan Completed, No Detections"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|554696715"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003876; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Scan Completed With Detections"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1091567628"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid:5003877; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Scan Failed"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|2165309453"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-error; sid:5003878; rev:1;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Threat Detected"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1090519054"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid:5003879; rev:1;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Threat Quarantined"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648143"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003880; rev:1;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Quarantine Failure"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|2164260880"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-error; sid:5003881; rev:1;)
+
+#the use of username is mapped internally to string.  the .detection is not a username but something like 'Gen:Variant.Jatommy.3.3433'
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Threat Detected"; program:CISCO-AMP; content:"|22|event_type_id|22 3A|1090519054"; threshold:type suppress, track by_src&by_username, count 1, seconds 86400; json_map:"username",".detection"; json_map:"src_ip",".computer.network_addresses[].ip"; json_map:"dest_ip",".computer.external_ip"; normalize; classtype:suspicious-traffic; sid:5003879; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Threat Quarantined"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648143"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003880; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Quarantine Failure"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|2164260880"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-error; sid:5003881; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Threat Detected in Exclusion"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648145"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003882; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Quarantine Restore Requested"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|570425394"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003883; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Quarantined Item Restored"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648149"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003884; rev:1;)
@@ -47,9 +50,9 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Threat Detected i
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Failed to Delete From Quarantine"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|2164260889"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-error; sid:5003888; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Attempting Quarantine Delete"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648151"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003889; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Cloud Recall Restore from Quarantine"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648154"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003890; rev:1;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Cloud Recall Quarantine Successful"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648155"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003891; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Cloud Recall Quarantine Successful"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648155"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003891; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Cloud Recall Restore from Quarantine Failed"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|2164260892"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003892; rev:1;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Cloud Recall Quarantine Attempt Failed"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|2164260893"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-error; sid:5003893; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Cloud Recall Quarantine Attempt Failed"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|2164260893"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-error; sid:5003893; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Install Started"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648158"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003894; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Install Failure"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|2164260895"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-error; sid:5003895; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Uninstall"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648166"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003896; rev:1;)
@@ -59,9 +62,9 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Threat Detected i
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Password Has Been Reset"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1005"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003900; rev:1;)
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Policy Update Failure"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|2164260866"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-error; sid:5003901; rev:1;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Cloud Recall Restore of False Positive"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648146"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003902; rev:1;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Cloud Recall Quarantine of False Negative"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648147"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003903; rev:1;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Execution Blocked"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648168"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003904; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Cloud Recall Restore from Quarantine Started"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648146"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003902; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Cloud Recall Quarantine Started"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648147"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003903; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Execution Blocked"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648168"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003904; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Quarantine Restore Started"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648150"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003905; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Application Registered"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|570425396"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003906; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Application Deregistered"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|570425397"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid:5003907; rev:1;)
@@ -106,7 +109,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Microsoft Notepad
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Endpoint IOC Scan Detection Summary"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1090519089"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid: 5003850; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Connection to suspicious domain"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1107296277"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid: 5003851; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Threat Detected in Low Prevalence Executable"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1107296278"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid: 5003852; rev:1;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Vulnerable Application Detected"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1107296279"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid: 5003853; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Vulnerable Application Detected"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1107296279"; content:!"|22|severity|22 3a 22|Low|22|"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid: 5003853; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Suspicious Download"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1107296280"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid: 5003854; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Microsoft CHM Compromise"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1107296281"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid: 5003855; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Suspicious Cscript Launch"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1107296282"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid: 5003856; rev:1;)
@@ -118,7 +121,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Suspicious Cscrip
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Product Update Completed"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648136"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-event; sid: 5003862; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Potential Ransomware"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1107296284"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid: 5003863; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Possible Webshell"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1107296283"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid: 5003864; rev:1;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Exploit Prevention"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1090519103"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid: 5003865; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Exploit Prevention"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1090519103"; content:"|22|application|22 3a 22|chrome.exe|22|"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid: 5003865; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Critical Fault Raised"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|2164260931"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-error; sid: 5003866; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Major Fault Raised"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|1090519107"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-error; sid: 5003867; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-AMP] Minor Fault Raised"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648195"; parse_src_ip: 2; parse_dst_ip: 1; classtype: system-error; sid: 5003868; rev:1;)
@@ -134,3 +137,6 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[CISCO-SECUREENDPOINT] Event Engi
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-SECUREENDPOINT] Threat Detected"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648222"; parse_src_ip: 2; parse_dst_ip: 1; classtype: suspicious-traffic; sid:5014313; rev:1;)
 
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CISCO-SECUREENDPOINT] Endpoint Isolation Start Success"; program:CISCO-AMP; content:"|22|event_type_id|22 3A|553648202"; parse_src_ip: 2; parse_dst_ip: 1; reference:url,https://www.cisco.com/c/en/us/td/docs/security/firepower/610/api/db-access/Database_Access/Schema-System.html; classtype:suspicious-traffic; sid:5014545; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-SECUREENDPOINT] Endpoint Isolation Stop Success"; program: CISCO-AMP; content: "|22|event_type_id|22 3A|553648204"; parse_src_ip: 2; parse_dst_ip: 1; reference:url,https://www.cisco.com/c/en/us/td/docs/security/firepower/610/api/db-access/Database_Access/Schema-System.html; classtype:system-event; sid:5014546; rev:1;)
