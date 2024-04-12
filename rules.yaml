@@ -255,6 +255,7 @@ rules-files:
   - $RULE_PATH/knockd.rules
   - $RULE_PATH/knowbe4.rules
   - $RULE_PATH/librenms.rules
+  - $RULE_PATH/linux.rules
   - $RULE_PATH/linux-kernel.rules
   - $RULE_PATH/mcafee-web-gateway.rules
   - $RULE_PATH/mcas.rules
