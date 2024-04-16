@@ -474,6 +474,10 @@ rule=: %-:string-to:Account Name:%Account Name: %-:string-to:Account Name:%Accou
 
 rule=: %-:string-to:Account Name:%Account Name: %-:string-to:Account Name:%Account Name: %username:word% %-:string-to:Network Address:%Network Address: %src-ip:ipv4% %-:rest%
 
+#4662: An operation was performed on an object. Subject : Security ID: S-1-5-21-1848214942-2750813456-1026469966-108143 Account Name: WHarding Account Domain: GATE Logon ID: 0xB7F85337 Object: Object Server: DS Object Type: %{bf967aba-0de6-11d0-a285-00aa003049e2} Object Name: %{2a873ae7-98ad-441f-9cad-4f7dd7a1a9c8} Handle ID: 0x0 Operation: Operation Type: Object Access Accesses: READ_CONTROL Access Mask: 0x20000 Properties: READ_CONTROL {bf967aba-0de6-11d0-a285-00aa003049e2} Additional Information: Parameter 1: - Parameter 2:
+rule=: 4662: An operation was performed on an object. Subject : Security ID: %-:word% Account Name: %username:word% %-:rest%
+rule=:4662: An operation was performed on an object. Subject : Security ID: %-:word% Account Name: %username:word% %-:rest%
+
 # 4724: An attempt was made to reset an account's password
 
 rule=: 4724: An attempt was made to reset an account's password. Subject: Security ID: %subject-sid:word% Account Name: %subject-account:string-to: Account Domain% Account Domain: %-:word% Logon ID: %-:word% Target Account: Security ID: %target-sid:word% Account Name: %username:string-to: Account Domain% Account Domain: %-:rest%
