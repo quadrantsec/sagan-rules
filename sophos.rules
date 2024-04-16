@@ -400,7 +400,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Manual malware cleanup r
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] No items were cleaned."; program:sophos; content:"Event::Endpoint::CoreCleanNothingFound"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007402; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA cleaned up"; program:sophos; content:"Event::Endpoint::CorePuaClean"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007403; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA cleaned up"; program:sophos; content:"Event::Endpoint::CorePuaClean"; content:!"Event::Endpoint::CorePuaCleanFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007403; rev:1; metadata:updated_at 2024_04_11;)
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] PUA Clean Failed"; program:sophos; content:"Event::Endpoint::CorePuaCleanFailed"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007404; rev:1;)
 
