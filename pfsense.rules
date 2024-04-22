@@ -1,0 +1,47 @@
+# Sagan pfsense.rules
+# Copyright (c) 2009-2023. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 04/22/2024
+
+#Reference: https://securitylabs.datadoghq.com/cloud-security-atlas/vulnerabilities/security-group-open-to-internet/
+
+#inbound
+alert any $HOME_NET any -> $HOME_NET any (msg:"[PFSENSE] Inbound Connection to Ports 20-25,69 Blocked"; program:filterlog; content:",blocked,in,"; meta_content:"|2c|%sagan%|2c|",20,21,22,23,25,69; parse_src_ip:1; parse_dst_ip:2; reference:url,https://docs.netgate.com/pfsense/en/latest/monitoring/logs/raw-filter-format.html; classtype:suspicious-traffic; sid:5014564; rev:1; metadata:deployment Endpoint,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_04_11, updated_at 2023_04_11, mitre_tactic_id TA0008, mitre_technique_id T1071;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[PFSENSE] Inbound Connection to Ports 20-25 Allowed"; program:filterlog; content:",pass,in"; meta_content:"|2c|%sagan%|2c|",20,21,22,23,25; parse_src_ip:1; parse_dst_ip:2; reference:url,https://docs.netgate.com/pfsense/en/latest/monitoring/logs/raw-filter-format.html; classtype:suspicious-traffic; sid:5014565; rev:1; metadata:deployment Endpoint,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_04_11, updated_at 2023_04_11, mitre_tactic_id TA0008, mitre_technique_id T1071;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[PFSENSE] Inbound Connection to Ports 137,139,445 Blocked"; program:filterlog; content:",blocked,in"; meta_content:"|2c|%sagan%|2c|",137,139,445; parse_src_ip:1; parse_dst_ip:2; reference:url,https://docs.netgate.com/pfsense/en/latest/monitoring/logs/raw-filter-format.html; classtype:suspicious-traffic; sid:5014566; rev:1; metadata:deployment Endpoint,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_04_11, updated_at 2023_04_11, mitre_tactic_id TA0008, mitre_technique_id T1071;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[PFSENSE] Inbound Connection to Ports 137,139,445 Allowed"; program:filterlog; content:",pass,in"; meta_content:"|2c|%sagan%|2c|",137,139,445; parse_src_ip:1; parse_dst_ip:2; reference:url,https://docs.netgate.com/pfsense/en/latest/monitoring/logs/raw-filter-format.html; classtype:suspicious-traffic; sid:5014567; rev:1; metadata:deployment Endpoint,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_04_11, updated_at 2023_04_11, mitre_tactic_id TA0008, mitre_technique_id T1071;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[PFSENSE] Inbound Connection to RDP Port Blocked"; program:filterlog; content:",blocked,in"; content:",3389,"; parse_src_ip:1; parse_dst_ip:2; reference:url,https://docs.netgate.com/pfsense/en/latest/monitoring/logs/raw-filter-format.html; classtype:suspicious-traffic; sid:5014568; rev:1; metadata:deployment Endpoint,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_04_11, updated_at 2023_04_11, mitre_tactic_id TA0008, mitre_technique_id T1071;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[PFSENSE] Inbound Connection to RDP Port Allowed"; program:filterlog; content:",pass,in"; content:",3389,"; parse_src_ip:1; parse_dst_ip:2; reference:url,https://docs.netgate.com/pfsense/en/latest/monitoring/logs/raw-filter-format.html; classtype:suspicious-traffic; sid:5014569; rev:1; metadata:deployment Endpoint,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_04_11, updated_at 2023_04_11, mitre_tactic_id TA0008, mitre_technique_id T1071;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[PFSENSE] Inbound Connection to SQL Server Blocked"; program:filterlog; content:",blocked,in"; meta_content:"|2c|%sagan%|2c|",1433,3306,5432; parse_src_ip:1; parse_dst_ip:2; reference:url,https://docs.netgate.com/pfsense/en/latest/monitoring/logs/raw-filter-format.html; classtype:suspicious-traffic; sid:5014570; rev:1; metadata:deployment Endpoint,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_04_11, updated_at 2023_04_11, mitre_tactic_id TA0008, mitre_technique_id T1071;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[PFSENSE] Inbound Connection to SQL Server Allowed"; program:filterlog; content:",allowed,in"; meta_content:"|2c|%sagan%|2c|",1433,3306,5432; parse_src_ip:1; parse_dst_ip:2; reference:url,https://docs.netgate.com/pfsense/en/latest/monitoring/logs/raw-filter-format.html; classtype:suspicious-traffic; sid:5014571; rev:1; metadata:deployment Endpoint,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_04_11, updated_at 2023_04_11, mitre_tactic_id TA0008, mitre_technique_id T1071;)
+
+#outbound
+alert any $HOME_NET any -> $HOME_NET any (msg:"[PFSENSE] Outbound Connection to RDP Port Blocked"; program:filterlog; content:",blocked,out"; content:",3389,"; parse_src_ip:2; parse_dst_ip:1; reference:url,https://docs.netgate.com/pfsense/en/latest/monitoring/logs/raw-filter-format.html; classtype:suspicious-traffic; sid:5014572; rev:1; metadata:deployment Endpoint,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_04_11, updated_at 2023_04_11, mitre_tactic_id TA0008, mitre_technique_id T1071;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[PFSENSE] Outbound Connection to RDP Port Allowed"; program:filterlog; content:",pass,out"; content:",3389,"; parse_src_ip:2; parse_dst_ip:1; reference:url,https://docs.netgate.com/pfsense/en/latest/monitoring/logs/raw-filter-format.html; classtype:suspicious-traffic; sid:5014573; rev:1; metadata:deployment Endpoint,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_04_11, updated_at 2023_04_11, mitre_tactic_id TA0008, mitre_technique_id T1071;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[PFSENSE] Outbound Connection to SSH Port Blocked"; program:filterlog; content:",blocked,out"; content:",22,"; parse_src_ip:2; parse_dst_ip:1; reference:url,https://docs.netgate.com/pfsense/en/latest/monitoring/logs/raw-filter-format.html; classtype:suspicious-traffic; sid:5014574; rev:1; metadata:deployment Endpoint,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_04_11, updated_at 2023_04_11, mitre_tactic_id TA0008, mitre_technique_id T1071;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[PFSENSE] Outbound Connection to SSH Port Allowed"; program:filterlog; content:",pass,out"; content:",22,"; parse_src_ip:2; parse_dst_ip:1; reference:url,https://docs.netgate.com/pfsense/en/latest/monitoring/logs/raw-filter-format.html; classtype:suspicious-traffic; sid:5014575; rev:1; metadata:deployment Endpoint,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_04_11, updated_at 2023_04_11, mitre_tactic_id TA0008, mitre_technique_id T1071;)
