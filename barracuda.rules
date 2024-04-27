@@ -27,79 +27,79 @@
 #
 # Barracuda rules by Corey Fisher - 02/17/2016
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Last Auto Backup Time Changed"; content: "CHANGE last_auto_backup_time"; content: "debug|8f"; program: web; classtype: system-event; sid:5002782; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Last Auto Backup Time Changed"; content: "CHANGE last_auto_backup_time"; content: "debug|8f"; program: web; classtype: system-event; sid:5002782; rev:4; metadata: mitre_technique_id T1059 T1562;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Spyware Exploit"; content: "Spyware.Exploit.Misc.MD"; content: "pcaptor"; program: pcaptor; parse_src_ip: 1; parse_dst_ip: 2; classtype: suspicious-traffic; sid:5002783; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Spyware Exploit"; content: "Spyware.Exploit.Misc.MD"; content: "pcaptor"; program: pcaptor; parse_src_ip: 1; parse_dst_ip: 2; classtype: suspicious-traffic; sid:5002783; rev:4; metadata: mitre_technique_id T1064 T1204;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] AdWare Win32 Agent"; content: "AdWare.Win32.Agent.bjx"; content: "pcaptor"; program: pcaptor; parse_src_ip: 1; parse_dst_ip: 2; classtype: suspicious-traffic; sid:5002784; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] AdWare Win32 Agent"; content: "AdWare.Win32.Agent.bjx"; content: "pcaptor"; program: pcaptor; parse_src_ip: 1; parse_dst_ip: 2; classtype: suspicious-traffic; sid:5002784; rev:4; metadata: mitre_technique_id T1064 T1204;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Login"; content: "LOGIN"; content: !"FAILED_LOGIN"; program: web; parse_src_ip: 1; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: system-event; sid:5002785; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Login"; content: "LOGIN"; content: !"FAILED_LOGIN"; program: web; parse_src_ip: 1; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: system-event; sid:5002785; rev:4; metadata: mitre_technique_id T1071 T1078;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Failed Login"; content: "FAILED_LOGIN"; program: web; parse_src_ip: 1; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: unsuccessful-admin; sid:5002786; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Failed Login"; content: "FAILED_LOGIN"; program: web; parse_src_ip: 1; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: unsuccessful-admin; sid:5002786; rev:4; metadata: mitre_technique_id T1078 T1110;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Brute force login attempt [5/5]"; content: "FAILED_LOGIN"; program: web; parse_src_ip: 1; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; xbits: set, brute_force ,track ip_src, expire 21600; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: brute-force; sid:5002945; rev:6;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Brute force login attempt [5/5]"; content: "FAILED_LOGIN"; program: web; parse_src_ip: 1; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; xbits: set, brute_force ,track ip_src, expire 21600; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: brute-force; sid:5002945; rev:7;  metadata: mitre_technique_id T1078 T1110;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Spyware Filter Change"; content: "spy_exempted"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002787; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Spyware Filter Change"; content: "spy_exempted"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002787; rev:4; metadata: mitre_technique_id T1105 T1133;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Snort Enabled"; content: "snort_enabled"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002788; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Snort Enabled"; content: "snort_enabled"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002788; rev:4; metadata: mitre_technique_id T1105 T1133;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Ipoque Enabled"; content: "ipoque_enabled"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002789; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Ipoque Enabled"; content: "ipoque_enabled"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002789; rev:4; metadata: mitre_technique_id T1105 T1133;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Failed Login Log Change"; content: "failed_login"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002790; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Failed Login Log Change"; content: "failed_login"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002790; rev:4; metadata: mitre_technique_id T1078 T1105;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Change to URL Whitelist"; content: "spy_url_whitelist"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002791; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Change to URL Whitelist"; content: "spy_url_whitelist"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002791; rev:4; metadata: mitre_technique_id T1105;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Change to URL Blacklist"; content: "spy_url_blacklist"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002792; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Change to URL Blacklist"; content: "spy_url_blacklist"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002792; rev:4; metadata: mitre_technique_id T1105;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Policy Block Change"; content: "policy_block"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002793; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Policy Block Change"; content: "policy_block"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002793; rev:4; metadata: mitre_technique_id T1105 T1133;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] User Password Changed"; content: "user_password"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002794; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] User Password Changed"; content: "user_password"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002794; rev:4; metadata: mitre_technique_id T1003 T1078;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] System Password Changed"; content: "system_password"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002795; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] System Password Changed"; content: "system_password"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002795; rev:4; metadata: mitre_technique_id T1003 T1078;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] System Shutdown"; content: "set_set_shutdown"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002796; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] System Shutdown"; content: "set_set_shutdown"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002796; rev:4; metadata: mitre_technique_id T1562.001 T1562.002;)
 
 
 # New Barracuda Rules by Douglas Schauer, June/July 2022
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Directory Traversal Exploit"; content: "DIRECTORY_TRAVERSAL_BEYOND_ROOT"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; reference: url,portswigger.net/web-security/file-path-traversal; classtype: exploit-attempt; sid: 5007725; rev:5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Directory Traversal Exploit"; content: "DIRECTORY_TRAVERSAL_BEYOND_ROOT"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; reference: url,portswigger.net/web-security/file-path-traversal; classtype: exploit-attempt; sid: 5007725; rev:6; metadata: mitre_technique_id T1059 T1110;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Connection from Bluedot listed IP"; bluedot: type ip_reputation, track_by_src, mdate_effective_period 6 months; content: "GEO_IP"; content: !"DENY"; program: web; parse_src_ip: 2; parse_dst_ip: 3; classtype: exploit-attempt; sid: 5007726; rev: 5;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Connection from Bluedot listed IP"; bluedot: type ip_reputation, track_by_src, mdate_effective_period 6 months; content: "GEO_IP"; content: !"DENY"; program: web; parse_src_ip: 2; parse_dst_ip: 3; classtype: exploit-attempt; sid: 5007726; rev: 6; metadata: mitre_technique_id T1071.001;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] SQL Injection Attack"; content: "SQL_INJECTION_IN_HEADER"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007727; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] SQL Injection Attack"; content: "SQL_INJECTION_IN_HEADER"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007727; rev: 6; metadata: mitre_technique_id T1059 T1190;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] LDAP Injection Attack"; content: "LDAP_INJECTION_MEDIUM_IN_HEADER"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007728; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] LDAP Injection Attack"; content: "LDAP_INJECTION_MEDIUM_IN_HEADER"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007728; rev: 6; metadata: mitre_technique_id T1059 T1190;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Remote File included in URL"; content: "REMOTE_FILE_INCLUSION_IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007729; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Remote File included in URL"; content: "REMOTE_FILE_INCLUSION_IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007729; rev: 6; metadata: mitre_technique_id T1059 T1190;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] XSS Attack"; content: "CROSS_SITE_SCRIPTING_IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007730; rev: 6;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] XSS Attack"; content: "CROSS_SITE_SCRIPTING_IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007730; rev: 7; metadata: mitre_technique_id T1059 T1190;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "COOKIE_EXPIRED IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007731; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "COOKIE_EXPIRED IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007731; rev: 6; metadata: mitre_technique_id T1078 T1550;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "COOKIE_TAMPERED";  content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007732; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "COOKIE_TAMPERED";  content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007732; rev: 6; metadata: mitre_technique_id T1078 T1550;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "COOKIE_REPLAY_MISMATCHED";  content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007733; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "COOKIE_REPLAY_MISMATCHED";  content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007733; rev: 6; metadata: mitre_technique_id T1078 T1550;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "UNRECOGNIZED_COOKIE"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007734; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Web Session Tampering"; content: "UNRECOGNIZED_COOKIE"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007734; rev: 6; metadata: mitre_technique_id T1078 T1550;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Brute force login attempt [5/5]"; content: "FAILED_LOGIN"; parse_src_ip: 2; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; xbits: set, brute_force ,track ip_src, expire 21600; classtype: brute-force; sid:5007735; rev:7;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Brute force login attempt [5/5]"; content: "FAILED_LOGIN"; parse_src_ip: 2; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; xbits: set, brute_force ,track ip_src, expire 21600; classtype: brute-force; sid:5007735; rev:8; metadata: mitre_technique_id T1051 T1110;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Directory Traversal Exploit"; content: "SLASH_DOT_IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; reference: url,portswigger.net/web-security/file-path-traversal; classtype: exploit-attempt; sid: 5007736; rev: 5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Directory Traversal Exploit"; content: "SLASH_DOT_IN_URL"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; reference: url,portswigger.net/web-security/file-path-traversal; classtype: exploit-attempt; sid: 5007736; rev: 6; metadata: mitre_technique_id T1059 T1005;)
 
 # Barracuda Impersonation Rules by William Harding - 2023-04-06
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Spam"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "spam"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011594; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Spam"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "spam"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011594; rev:2; metadata: mitre_technique_id T1566.001 T1566.002;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Phishing"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "phishing"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011595; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Phishing"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "phishing"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011595; rev:2; metadata: mitre_technique_id T1566.001 T1566.002;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Business Email Compromise/Spoofing"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "becSpoofing"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011596; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Business Email Compromise/Spoofing"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "becSpoofing"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011596; rev:2; metadata: mitre_technique_id T1566.002 T1566.003;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Blackmail"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "blackmail"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011597; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Blackmail"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "blackmail"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011597; rev:2; metadata: mitre_technique_id T1566.001 T1588;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Account Takeover - Threat Found via Sign Ins"; program:Sentinel; json_content: ".payload.category", "Account Takeover Alert"; json_content: ".payload.type", "Sign Ins"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011598; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Account Takeover - Threat Found via Sign Ins"; program:Sentinel; json_content: ".payload.category", "Account Takeover Alert"; json_content: ".payload.type", "Sign Ins"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011598; rev:2; metadata: mitre_technique_id T1078 T1110;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Account Takeover - Threat Found via Inbox Rules"; program:Sentinel; json_content: ".payload.category", "Account Takeover Alert"; json_content: ".payload.type", "Inbox Rules"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011599; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Account Takeover - Threat Found via Inbox Rules"; program:Sentinel; json_content: ".payload.category", "Account Takeover Alert"; json_content: ".payload.type", "Inbox Rules"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011599; rev:2; metadata: mitre_technique_id T1078 T1560.001;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Account Takeover - Threat Found via Email"; program:Sentinel; json_content: ".payload.category", "Account Takeover Alert"; json_content: ".payload.type", "Email"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011600; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Account Takeover - Threat Found via Email"; program:Sentinel; json_content: ".payload.category", "Account Takeover Alert"; json_content: ".payload.type", "Email"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5011600; rev:2; metadata: mitre_technique_id T1078 T1110;)
 
 #--------------------------------------------------------------
