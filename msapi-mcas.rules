@@ -29,18 +29,18 @@
 # Initial Signature Set Written by by William Harding @ Quadrant Information Security
 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Activity from Infrequent Country"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_NEW_COUNTRY"; classtype: suspicious-traffic; sid: 5007203; rev: 1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Activity from Infrequent Country"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_NEW_COUNTRY"; classtype: suspicious-traffic; sid: 5007203; rev: 2; metadata: mitre_technique_id T1078 T1102;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Mass Delete"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_DELETE"; classtype: system-event; sid: 5007204; rev: 1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Mass Delete"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_DELETE"; classtype: system-event; sid: 5007204; rev: 2; metadata: mitre_technique_id T1070 T1107;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Repeated Failed Logins"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_FAILED_LOGIN"; classtype: brute-force; sid: 5007205; rev: 1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Repeated Failed Logins"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_FAILED_LOGIN"; classtype: brute-force; sid: 5007205; rev: 2; metadata: mitre_technique_id T1078 T1110;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Activity from an Anonymous Proxy"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_RISKY_IP_ANONYMOUS"; classtype: suspicious-traffic; sid: 5007206; rev: 1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Activity from an Anonymous Proxy"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_RISKY_IP_ANONYMOUS"; classtype: suspicious-traffic; sid: 5007206; rev: 2; metadata: mitre_technique_id T1078 T1563 T1564;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Impossible Travel Activity"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_VELOCITY"; classtype: suspicious-traffic; sid: 5007207; rev: 1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Impossible Travel Activity"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_VELOCITY"; classtype: suspicious-traffic; sid: 5007207; rev: 2; metadata: mitre_technique_id T1078;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Suspicious Inbox Manipulation Rule"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_INBOX_HIDING"; classtype: configuration-change; sid: 5007208; rev: 1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Suspicious Inbox Manipulation Rule"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_INBOX_HIDING"; classtype: configuration-change; sid: 5007208; rev: 2; metadata: mitre_technique_id T1078 T1564;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Possible Unknown MCAS Alert"; program: MCAS; json_meta_content:! ".Operation",MCAS_ALERT_ANUBIS_DETECTION_NEW_COUNTRY,MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_DELETE,MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_FAILED_LOGIN,MCAS_ALERT_ANUBIS_DETECTION_RISKY_IP_ANONYMOUS,MCAS_ALERT_ANUBIS_DETECTION_VELOCITY,MCAS_ALERT_ANUBIS_DETECTION_INBOX_HIDING,MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_DOWNLOAD,MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_ADMIN_ACTIVITY; json_contains: ".Operation", "MCAS_ALERT"; classtype: bad-unknown; sid: 5007209; rev: 3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Possible Unknown MCAS Alert"; program: MCAS; json_meta_content:! ".Operation",MCAS_ALERT_ANUBIS_DETECTION_NEW_COUNTRY,MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_DELETE,MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_FAILED_LOGIN,MCAS_ALERT_ANUBIS_DETECTION_RISKY_IP_ANONYMOUS,MCAS_ALERT_ANUBIS_DETECTION_VELOCITY,MCAS_ALERT_ANUBIS_DETECTION_INBOX_HIDING,MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_DOWNLOAD,MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_ADMIN_ACTIVITY; json_contains: ".Operation", "MCAS_ALERT"; classtype: bad-unknown; sid: 5007209; rev: 4; metadata: mitre_technique_id T????;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Mass Download Attempt"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_DOWNLOAD"; json_contains; classtype: bad-unknown; sid: 5011309; rev: 1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Mass Download Attempt"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_REPEATED_ACTIVITY_DOWNLOAD"; json_contains; classtype: bad-unknown; sid: 5011309; rev: 2; metadata: mitre_technique_id T1002 T1048;)
