@@ -229,7 +229,6 @@ rules-files:
   - $RULE_PATH/digitalpersona.rules
   - $RULE_PATH/dovecot.rules
   - $RULE_PATH/duo.rules
-  - $RULE_PATH/dynamic.rules
   - $RULE_PATH/f5-big-ip.rules
   - $RULE_PATH/fatpipe.rules
   - $RULE_PATH/fingerprint.rules
