@@ -292,6 +292,7 @@ rules-files:
   - $RULE_PATH/oracle.rules
   - $RULE_PATH/palo-alto.rules
   - $RULE_PATH/passwordstate.rules
+  - $RULE_PATH/pfsense.rules
   - $RULE_PATH/php.rules
   - $RULE_PATH/postfix.rules
   - $RULE_PATH/postgresql.rules
