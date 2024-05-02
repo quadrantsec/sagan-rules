@@ -1,0 +1,45 @@
+# Sagan linux-security.rules
+# Copyright (c) 2009-2024. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 05/02/2024
+#
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-SECURITY] Suspicious Discovery Command (netstat)"; content:"netstat "; reference:url,https://sandflysecurity.com/linux-compromise-detection-command-cheatsheet.pdf; classtype:trojan-activity; sid:5014610; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0007, mitre_technique_id T1087;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-SECURITY] Suspicious Discovery Command (strings)"; content:"strings /proc/"; reference:url,https://sandflysecurity.com/linux-compromise-detection-command-cheatsheet.pdf; classtype:trojan-activity; sid:5014611; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0007, mitre_technique_id T1087;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-SECURITY] Suspicious Discovery Command (ls -al)"; content:"ls -al /proc/"; reference:url,https://sandflysecurity.com/linux-compromise-detection-command-cheatsheet.pdf; classtype:trojan-activity; sid:5014612; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0007, mitre_technique_id T1087;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-SECURITY] Suspicious Discovery Command (find)"; content:"find "; content:"-name |22|.*|22|"; reference:url,https://sandflysecurity.com/linux-compromise-detection-command-cheatsheet.pdf; classtype:trojan-activity; sid:5014613; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0007, mitre_technique_id T1087;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-SECURITY] Suspicious Discovery Command (find nouser)"; content:"find "; content:"-nouser"; reference:url,https://sandflysecurity.com/linux-compromise-detection-command-cheatsheet.pdf; classtype:trojan-activity; sid:5014614; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0007, mitre_technique_id T1087;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-SECURITY] Suspicious Discovery Command (find executables)"; content:"find "; content:"-type f -exec"; reference:url,https://sandflysecurity.com/linux-compromise-detection-command-cheatsheet.pdf; classtype:trojan-activity; sid:5014615; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0007, mitre_technique_id T1087;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-SECURITY] Suspicious Discovery Command (find authorized_keys)"; content:"find "; content:"authorized_kyes"; reference:url,https://sandflysecurity.com/linux-compromise-detection-command-cheatsheet.pdf; classtype:trojan-activity; sid:5014616; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0007, mitre_technique_id T1087;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-SECURITY] Suspicious Discovery Command (crontab)"; content:"crontab -l"; reference:url,https://sandflysecurity.com/linux-compromise-detection-command-cheatsheet.pdf; classtype:trojan-activity; sid:5014617; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0007, mitre_technique_id T1087;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-SECURITY] Suspicious Discovery Command (systemctl)"; content:"systemctl list-timers"; reference:url,https://sandflysecurity.com/linux-compromise-detection-command-cheatsheet.pdf; classtype:trojan-activity; sid:5014618; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0007, mitre_technique_id T1087;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-SECURITY] Suspicious Command (> /dev/null)"; content:"> /dev/null & rm"; reference:url,https://blog.apnic.net/2019/10/14/how-to-basic-linux-malware-process-forensics-for-incident-responders/; classtype:trojan-activity; sid:5014619; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0007, mitre_technique_id T1087;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-SECURITY] Suspicious Command (/proc/<PID>/cmdline)"; content:"/proc/"; content:"/cmdline" reference:url,https://blog.apnic.net/2019/10/14/how-to-basic-linux-malware-process-forensics-for-incident-responders/; classtype:trojan-activity; sid:5014620; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0007, mitre_technique_id T1087;)
+alert any $HOME_NET any -> $HOME_NET any (msg: "[LINUX-SECURITY] Download/Use Of LinPEAS Detected - Privesc Tool"; content: "linpeas.sh"; nocase; classtype: suspicious-traffic; reference: url,https://book.hacktricks.xyz/linux-hardening/linux-privilege-escalation-checklist; sid:5014621; rev:1; metadata:created_on 2024_04_18, severity critical;)
+alert any $HOME_NET any -> $HOME_NET any (msg: "[LINUX-SECURITY] Download/Use Of FRP Detected - Reverse Proxy Creation Tool"; content: "frpc"; nocase; content: "frpc.toml"; classtype: suspicious-traffic; reference: url,https://github.com/fatedier/frp; sid:5014622; rev:1; metadata:created_on 2024_04_18;)
+alert any $HOME_NET any -> $HOME_NET any (msg: "[LINUX-SECURITY] Download/Use Of SoCat Detected - Data Transfer Tool"; content: "socat "; nocase; classtype: suspicious-traffic; reference: url,https://www.baeldung.com/linux/socat-command; sid:5014623; rev:1; metadata:created_on 2024_04_18;)

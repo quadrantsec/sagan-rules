@@ -1,0 +1,39 @@
+# Sagan linux-auditd.rules
+# Copyright (c) 2009-2024. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 05/02/2024
+#
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] Failed SUDO SU Command"; content:"type=USER_CMD"; content:"cmd=|22|su|22|"; content:"exe=|22|/usr/bin/sudo|22|"; content:"res=failed"; reference:url,https://pberba.github.io/security/2021/11/23/linux-threat-hunting-for-persistence-account-creation-manipulation/; classtype:trojan-activity; sid:5014602; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0003, mitre_technique_id T1136.001;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] Failed SUDO Auth"; content:"type=USER_AUTH"; content:"exe=|22|/usr/bin/sudo|22|"; content:"res=failed"; reference:url,https://pberba.github.io/security/2021/11/23/linux-threat-hunting-for-persistence-account-creation-manipulation/; classtype:trojan-activity; sid:5014603; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0003, mitre_technique_id T1136.001;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] Local Account Created"; meta_content:"comm=|22|%sagan%|22|",useradd,adduser; reference:url,https://pberba.github.io/security/2021/11/23/linux-threat-hunting-for-persistence-account-creation-manipulation/; classtype:trojan-activity; sid:5014604; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0003, mitre_technique_id T1136.001;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] SSH Authorized Key File Updated"; content:"syscall=257"; content:"success=yes"; content:"name=|22|.ssh/authorized_keys|22|"; reference:url,https://pberba.github.io/security/2021/11/23/linux-threat-hunting-for-persistence-account-creation-manipulation/; classtype:trojan-activity; sid:5014605; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0003, mitre_technique_id T1136.001;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] File Permission Changeds Using chown/chmod"; content:"syscall=59"; content:"success=yes"; meta_content:"comm=|22|%sagan%|22|",chmod,chown; reference:url,https://pberba.github.io/security/2021/11/23/linux-threat-hunting-for-persistence-account-creation-manipulation/; classtype:trojan-activity; sid:5014606; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0003, mitre_technique_id T1136.001;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] File Overwrite using /dev/null or /dev/zero"; content:"syscall=59"; content:"success=yes"; meta_content:"/dev/%sagan%",null,zero; reference:url,https://www.socinvestigation.com/detect-most-common-malicious-actions-in-the-linux-environment/; classtype:trojan-activity; sid:5014607; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0003, mitre_technique_id T1136.001;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] Immutable File Attr Removed"; content:"syscall=59"; content:"success=yes"; content:"chattr"; content:"-i"; reference:url,https://www.socinvestigation.com/detect-most-common-malicious-actions-in-the-linux-environment/; classtype:trojan-activity; sid:5014608; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0003, mitre_technique_id T1136.001;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] Systemctl Service Start or Reload"; content:"syscall=59"; content:"success=yes"; content:"systemctl"; meta_content:"%sagan%",daemon-reload,start,restart; reference:url,https://www.socinvestigation.com/detect-most-common-malicious-actions-in-the-linux-environment/; classtype:trojan-activity; sid:5014609; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0003, mitre_technique_id T1136.001;)
