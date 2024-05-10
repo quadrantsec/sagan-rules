@@ -1,0 +1,42 @@
+# Sagan linux-security.rules
+# Copyright (c) 2009-2024. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 05/02/2024
+#
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-SECURITY] Suspicious Command (> /dev/null)"; content:"> /dev/null & rm"; reference:url,https://blog.apnic.net/2019/10/14/how-to-basic-linux-malware-process-forensics-for-incident-responders/; classtype:trojan-activity; sid:5014632; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0007, mitre_technique_id T1087;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[LINUX-SECURITY] Suspicious Command (/proc/<PID>/cmdline)"; content:"/proc/"; content:"/cmdline" reference:url,https://blog.apnic.net/2019/10/14/how-to-basic-linux-malware-process-forensics-for-incident-responders/; classtype:trojan-activity; sid:5014633; rev:1; metadata:deployment Server,affected_product NONE,affected_version NONE,mitigation NONE,deprecation_reason NONE,tag NONE, created_at 2024_01_25, updated_at 2024_01_25, mitre_tactic_id TA0007, mitre_technique_id T1087;)
+alert any $HOME_NET any -> $HOME_NET any (msg: "[LINUX-SECURITY] Download/Use Of LinPEAS Detected - Privesc Tool"; content: "linpeas.sh"; nocase; classtype: suspicious-traffic; reference: url,https://book.hacktricks.xyz/linux-hardening/linux-privilege-escalation-checklist; sid:5014634; rev:1; metadata:created_on 2024_04_18, severity critical;)
+alert any $HOME_NET any -> $HOME_NET any (msg: "[LINUX-SECURITY] Download/Use Of FRP Detected - Reverse Proxy Creation Tool"; content: "frpc"; nocase; content: "frpc.toml"; classtype: suspicious-traffic; reference: url,https://github.com/fatedier/frp; sid:5014635; rev:1; metadata:created_on 2024_04_18;)
+alert any $HOME_NET any -> $HOME_NET any (msg: "[LINUX-SECURITY] Download/Use Of SoCat Detected - Data Transfer Tool"; content: "socat "; nocase; classtype: suspicious-traffic; reference: url,https://www.baeldung.com/linux/socat-command; sid:5014636; rev:1; metadata:created_on 2024_04_18;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg: "[LINUX-SECURITY] Multiple Failed SUDO Auth Attempts"; content:"sudo|3a|auth"; content:"authentication failure"; after:track by_src, count 3, seconds 300; threshold:type suppress, track by_src, count 1, seconds 86400; classtype:suspicious-traffic; reference:url,https://www.socinvestigation.com/detect-most-common-malicious-actions-in-the-linux-environment/; sid:5014637; rev:1; metadata:created_on 2024_05_06;)
+alert any $HOME_NET any -> $HOME_NET any (msg: "[LINUX-SECURITY] User Added Command Detected"; content:"COMMAND="; meta_content:"%sagan%",adduser,useradd; classtype:suspicious-traffic; reference:url,https://pberba.github.io/security/2021/11/23/linux-threat-hunting-for-persistence-account-creation-manipulation/; sid:5014638; rev:1; metadata:created_on 2024_05_06;)
+alert any $HOME_NET any -> $HOME_NET any (msg: "[LINUX-SECURITY] New User Detected"; meta_content:"%sagan%",useradd,adduser; content:"new user|3a|"; classtype:suspicious-traffic; reference:url,https://pberba.github.io/security/2021/11/23/linux-threat-hunting-for-persistence-account-creation-manipulation/; sid:5014639; rev:1; metadata:created_on 2024_05_06;)
+alert any $HOME_NET any -> $HOME_NET any (msg: "[LINUX-SECURITY] User Added to SUDO Group Command Detected"; content:"usermod -aG sudo"; classtype:suspicious-traffic; reference:url,https://pberba.github.io/security/2021/11/23/linux-threat-hunting-for-persistence-account-creation-manipulation/; sid:5014640; rev:1; metadata:created_on 2024_05_06;)
+alert any $HOME_NET any -> $HOME_NET any (msg: "[LINUX-SECURITY] File Changed to Executable Permissions"; content:"COMMAND="; content:"chmod +x"; content:!"docker-compose"; classtype:suspicious-traffic; reference:url,https://pberba.github.io/security/2021/11/23/linux-threat-hunting-for-persistence-account-creation-manipulation/; sid:5014641; rev:1; metadata:created_on 2024_05_06;)
