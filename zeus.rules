@@ -25,11 +25,11 @@
 #
 #*************************************************************
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEUS] Authentication failure"; content: "Authentication failure"; classtype: unsuccessful-user; program: zeus; sid: 5000279; rev:4; metadata: mitre_technique_id T1078 T1110;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEUS] Configuration warning [ignored]"; content: "Unknown directive; classtype: system-event; program: zeus; sid: 5000280; rev:4; metadata: mitre_technique_id T1069 T1082;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEUS] Informational message"; pcre: "/^[\S+ \S+] INFO|^[\S+ \S+] SSL/"; classtype: system-event; program: zeus; sid: 5000281; rev:4; metadata: mitre_technique_id T1033 T1082;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEUS] Warning message"; pcre: "/^[\S+ \S+] WARN/"; classtype: system-event; program: zeus; sid: 5000282; rev:4; metadata: mitre_technique_id T1070 T1107;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEUS] Serious message"; pcre: "/^[\S+ \S+] SERIOUS/"; classtype: system-event; program: zeus; sid: 5000283; rev:4; metadata: mitre_technique_id T1005 T1074;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEUS] Fatal message"; pcre: "/^[\S+ \S+] FATAL/"; classtype: system-event; program: zeus; sid: 5000284; rev:4; metadata: mitre_technique_id T1107 T1485;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEUS] Authentication failure"; content: "Authentication failure"; classtype: unsuccessful-user; program: zeus; sid: 5000279; rev:4; metadata: mitre_technique_id T1078;mitre_technique_id T1110;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEUS] Configuration warning [ignored]"; content: "Unknown directive; classtype: system-event; program: zeus; sid: 5000280; rev:4; metadata: mitre_technique_id T1069;mitre_technique_id T1082;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEUS] Informational message"; pcre: "/^[\S+ \S+] INFO|^[\S+ \S+] SSL/"; classtype: system-event; program: zeus; sid: 5000281; rev:4; metadata: mitre_technique_id T1033;mitre_technique_id T1082;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEUS] Warning message"; pcre: "/^[\S+ \S+] WARN/"; classtype: system-event; program: zeus; sid: 5000282; rev:4; metadata: mitre_technique_id T1070;mitre_technique_id T1107;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEUS] Serious message"; pcre: "/^[\S+ \S+] SERIOUS/"; classtype: system-event; program: zeus; sid: 5000283; rev:4; metadata: mitre_technique_id T1005;mitre_technique_id T1074;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[ZEUS] Fatal message"; pcre: "/^[\S+ \S+] FATAL/"; classtype: system-event; program: zeus; sid: 5000284; rev:4; metadata: mitre_technique_id T1107;mitre_technique_id T1485;)
 
 
