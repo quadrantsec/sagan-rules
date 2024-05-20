@@ -27,37 +27,37 @@
 #
 # Barracuda rules by Corey Fisher - 02/17/2016
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Last Auto Backup Time Changed"; content: "CHANGE last_auto_backup_time"; content: "debug|8f"; program: web; classtype: system-event; sid:5002782; rev:4; metadata: mitre_technique_id T1059 T1562;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Last Auto Backup Time Changed"; content: "CHANGE last_auto_backup_time"; content: "debug|8f"; program: web; classtype: system-event; sid:5002782; rev:4; metadata: mitre_technique_id T1059;mitre_technique_id T1562;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Spyware Exploit"; content: "Spyware.Exploit.Misc.MD"; content: "pcaptor"; program: pcaptor; parse_src_ip: 1; parse_dst_ip: 2; classtype: suspicious-traffic; sid:5002783; rev:4; metadata: mitre_technique_id T1064 T1204;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Spyware Exploit"; content: "Spyware.Exploit.Misc.MD"; content: "pcaptor"; program: pcaptor; parse_src_ip: 1; parse_dst_ip: 2; classtype: suspicious-traffic; sid:5002783; rev:4; metadata: mitre_technique_id T1064;mitre_technique_id T1204;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] AdWare Win32 Agent"; content: "AdWare.Win32.Agent.bjx"; content: "pcaptor"; program: pcaptor; parse_src_ip: 1; parse_dst_ip: 2; classtype: suspicious-traffic; sid:5002784; rev:4; metadata: mitre_technique_id T1064 T1204;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] AdWare Win32 Agent"; content: "AdWare.Win32.Agent.bjx"; content: "pcaptor"; program: pcaptor; parse_src_ip: 1; parse_dst_ip: 2; classtype: suspicious-traffic; sid:5002784; rev:4; metadata: mitre_technique_id T1064;mitre_technique_id T1204;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Login"; content: "LOGIN"; content: !"FAILED_LOGIN"; program: web; parse_src_ip: 1; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: system-event; sid:5002785; rev:4; metadata: mitre_technique_id T1071 T1078;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Login"; content: "LOGIN"; content: !"FAILED_LOGIN"; program: web; parse_src_ip: 1; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: system-event; sid:5002785; rev:4; metadata: mitre_technique_id T1071;mitre_technique_id T1078;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Failed Login"; content: "FAILED_LOGIN"; program: web; parse_src_ip: 1; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: unsuccessful-admin; sid:5002786; rev:4; metadata: mitre_technique_id T1078 T1110;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Failed Login"; content: "FAILED_LOGIN"; program: web; parse_src_ip: 1; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: unsuccessful-admin; sid:5002786; rev:4; metadata: mitre_technique_id T1078;mitre_technique_id T1110;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Brute force login attempt [5/5]"; content: "FAILED_LOGIN"; program: web; parse_src_ip: 1; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; xbits: set, brute_force ,track ip_src, expire 21600; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: brute-force; sid:5002945; rev:7;  metadata: mitre_technique_id T1078 T1110;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Brute force login attempt [5/5]"; content: "FAILED_LOGIN"; program: web; parse_src_ip: 1; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; xbits: set, brute_force ,track ip_src, expire 21600; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: brute-force; sid:5002945; rev:7;  metadata: mitre_technique_id T1078;mitre_technique_id T1110;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Spyware Filter Change"; content: "spy_exempted"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002787; rev:4; metadata: mitre_technique_id T1105 T1133;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Spyware Filter Change"; content: "spy_exempted"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002787; rev:4; metadata: mitre_technique_id T1105;mitre_technique_id T1133;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Snort Enabled"; content: "snort_enabled"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002788; rev:4; metadata: mitre_technique_id T1105 T1133;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Snort Enabled"; content: "snort_enabled"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002788; rev:4; metadata: mitre_technique_id T1105;mitre_technique_id T1133;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Ipoque Enabled"; content: "ipoque_enabled"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002789; rev:4; metadata: mitre_technique_id T1105 T1133;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Ipoque Enabled"; content: "ipoque_enabled"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002789; rev:4; metadata: mitre_technique_id T1105;mitre_technique_id T1133;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Failed Login Log Change"; content: "failed_login"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002790; rev:4; metadata: mitre_technique_id T1078 T1105;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Failed Login Log Change"; content: "failed_login"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002790; rev:4; metadata: mitre_technique_id T1078;mitre_technique_id T1105;)
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Change to URL Whitelist"; content: "spy_url_whitelist"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002791; rev:4; metadata: mitre_technique_id T1105;)
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Change to URL Blacklist"; content: "spy_url_blacklist"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002792; rev:4; metadata: mitre_technique_id T1105;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Policy Block Change"; content: "policy_block"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002793; rev:4; metadata: mitre_technique_id T1105 T1133;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Policy Block Change"; content: "policy_block"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002793; rev:4; metadata: mitre_technique_id T1105;mitre_technique_id T1133;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] User Password Changed"; content: "user_password"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002794; rev:4; metadata: mitre_technique_id T1003 T1078;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] User Password Changed"; content: "user_password"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002794; rev:4; metadata: mitre_technique_id T1003;mitre_technique_id T1078;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] System Password Changed"; content: "system_password"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002795; rev:4; metadata: mitre_technique_id T1003 T1078;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] System Password Changed"; content: "system_password"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002795; rev:4; metadata: mitre_technique_id T1003;mitre_technique_id T1078;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] System Shutdown"; content: "set_set_shutdown"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002796; rev:4; metadata: mitre_technique_id T1562.001 T1562.002;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] System Shutdown"; content: "set_set_shutdown"; content: "CHANGE"; program: web; parse_src_ip: 1; classtype: system-event; sid:5002796; rev:4; metadata: mitre_technique_id T1562.001;mitre_technique_id T1562.002;)
 
 
 # New Barracuda Rules by Douglas Schauer, June/July 2022
