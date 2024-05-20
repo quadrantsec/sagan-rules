@@ -80,7 +80,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] Remote access
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] General account database changed"; event_id: 640; classtype: system-event; program: *Security*; sid: 5001193; rev:7;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] DC  - Integrity check on decrypted"; event_id: 4768,4771,681,676,675; content: "Failure Code|3a| 0x1F"; classtype: exploit-attempt; program: *Security*; sid: 5001195; rev:10;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] DC - Possible replay attack"; event_id: 4768,4771,681,676,675; content: "Failure Code|3a| 0x22"; classtype: exploit-attempt; program: *Security*; sid: 5001196; rev:9;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] DC - Clock skew too great"; event_id: 4768,4771,681,676,675; content: "Failure Code|3a| 0x25"; threshold: type suppress, track by_src, count 1, seconds 86400; classtype: exploit-attempt; parse_src_ip: 1; program: *Security*; sid: 5001197; rev:10;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] DC - Clock skew too great"; event_id: 4768,4771,681,676,675; content: "Failure Code|3a| 0x25"; threshold: type suppress, track by_src, count 1, seconds 86400; classtype: exploit-attempt; parse_src_ip: 1; program: *Security*; sid: 5001197; rev:10;)
 
 # Tied to SIDs.
 
