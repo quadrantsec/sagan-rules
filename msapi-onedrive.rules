@@ -32,4 +32,4 @@
 # JSON documentation for more information
 #
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-ONEDRIVE] DLP Rule Match"; json_content: ".Workload","OneDrive"; json_content: ".Operation", "DLPRuleMatch"; content:"DetectedValues["; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; classtype: suspicious-traffic; sid:5005014; rev: 4; metadata: mitre_technique_id T1008 T1048;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-ONEDRIVE] DLP Rule Match"; json_content: ".Workload","OneDrive"; json_content: ".Operation", "DLPRuleMatch"; content:"DetectedValues["; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; classtype: suspicious-traffic; sid:5005014; rev: 4; metadata: mitre_technique_id T1008;mitre_technique_id T1048;)
