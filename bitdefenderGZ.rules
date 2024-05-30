@@ -1,0 +1,80 @@
+# Sagan bitdefenderGZ.rules
+# Copyright (c) 2009-2024. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 05/30/2024
+
+#References:
+#https://www.bitdefender.com/business/support/en/77212-237089-event-types.html
+#https://www.bitdefender.com/business/support/en/77209-322695-security-telemetry-events-sent-to-siem.html
+#https://www.bitdefender.com/business/support/en/77211-135325-push-event-json-rpc-messages.html
+
+#Antiphishing
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Phishing/Fraud Link Detected (blocked)"; program:BitdefenderGZ; content:"act=aph_blocked"; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:trojan-activity; sid:5014660; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Phishing/Fraud Link Detected (report only)"; program:BitdefenderGZ; content:"act=reportOnly"; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:trojan-activity; sid:5014661; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+#Antimalware
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Malicious File Detected (Blocked)"; program:BitdefenderGZ; content:"BitdefenderGZMalwareType=file"; meta_content:"act=%sagan%",deleted,blocked,quarantined,disinfected; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:trojan-activity; sid:5014662; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Malicious File Detected (Not Blocked)"; program:BitdefenderGZ; content:"BitdefenderGZMalwareType=file"; meta_content:!"act=%sagan%",deleted,blocked,quarantined,disinfected; content:!"BitdefenderGZBlockedMalwareCnt=1"; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:trojan-activity; sid:5014663; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Malicious Process Detected (Blocked)"; program:BitdefenderGZ; content:"BitdefenderGZMalwareType=process"; meta_content:"act=%sagan%",deleted,blocked,quarantined,disinfected; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:trojan-activity; sid:5014664; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Malicious Process Detected (Not Blocked)"; program:BitdefenderGZ; content:"BitdefenderGZMalwareType=process"; meta_content:!"act=%sagan%",deleted,blocked,quarantined,disinfected; content:!"BitdefenderGZBlockedMalwareCnt=1"; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:trojan-activity; sid:5014665; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Malicious Entity Detected (Blocked)"; program:BitdefenderGZ; meta_content:"BitdefenderGZMalwareType=%sagan%",file,process; meta_content:"act=%sagan%",deleted,blocked,quarantined,disinfected; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:trojan-activity; sid:5014666; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Malicious Entity Detected (Not Blocked)"; program:BitdefenderGZ; meta_content:"BitdefenderGZMalwareType=%sagan%",file,process; meta_content:!"act=%sagan%",deleted,blocked,quarantined,disinfected; content:!"BitdefenderGZBlockedMalwareCnt=1"; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:trojan-activity; sid:5014667; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+#Advanced Threat Control
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Advanced Threat Control IDS Blocked APP"; program:BitdefenderGZ; content:"BitdefenderGZModule=avc"; content:"BitdefenderGZExploitType=IDS Blocked APP"; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:system-event; sid:5014668; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Advanced Threat Control AVC Blocked APP"; program:BitdefenderGZ; content:"BitdefenderGZModule=avc"; content:"BitdefenderGZExploitType=AVC Blocked APP"; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:system-event; sid:5014669; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Advanced Threat Control AVC Blocked Exploit"; program:BitdefenderGZ; content:"BitdefenderGZModule=avc"; content:"BitdefenderGZExploitType=AVC Blocked Exploit"; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:system-event; sid:5014670; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+#Data Protection
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] HTTP Data Protection Event Detected"; program:BitdefenderGZ; content:"BitdefenderGZModule=dp"; content:"BitdefenderGZTargetType=http"; content:"data_protection_blocked"; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:system-event; sid:5014671; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] MAIL Data Protection Event Detected"; program:BitdefenderGZ; content:"BitdefenderGZModule=dp"; content:"BitdefenderGZTargetType=mail"; content:"data_protection_blocked"; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:system-event; sid:5014672; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+
+#Firewall
+
+#Uninstall
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Agent Uninstalled"; program:BitdefenderGZ; content:"BitdefenderGZModule=uninstall"; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:system-event; sid:5014673; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+#Exchange Malware Detection
+
+#Exchange User Credentials
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Exchange User Credentials Update Needed"; program:BitdefenderGZ; content:"BitdefenderGZModule=exchange-user-credentials"; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:system-event; sid:5014674; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+#Hyper Detect event
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Hyper Detect event (Blocked)"; program:BitdefenderGZ; content:"BitdefenderGZMalwareType=hd"; meta_content:"act=%sagan%",deleted,blocked,quarantined,disinfected; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:trojan-activity; sid:5014675; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BitdefenderGZ] Hyper Detect event (Allowed)"; program:BitdefenderGZ; content:"BitdefenderGZMalwareType=hd"; meta_content:!"act=%sagan%",deleted,blocked,quarantined,disinfected; parse_src_ip:1; reference:url,https://www.bitdefender.com/business/support/en/77212-237089-event-types.html; classtype:trojan-activity; sid:5014676; rev:1; metadata:created_at 2024_01_20, updated_at 2024_01_20;)
+
