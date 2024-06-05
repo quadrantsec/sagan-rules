@@ -219,3 +219,4 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] JAMF Protect logs d
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] pfSense logs detected via program."; program:filterlog; dynamic_load: $RULE_PATH/pfsense.rules; classtype:dynamic-rules; sid:5014576; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Linux Auditd logs detected via program."; content:"type="; content:"msg=audit"; dynamic_load: $RULE_PATH/linux-auditd.rules; classtype:dynamic-rules; sid:5014642; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Linux Auth logs detected via program."; content:"pam_unix("; dynamic_load: $RULE_PATH/linux-security.rules; classtype:dynamic-rules; sid:5014643; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Bitdefender GZ logs detected via program."; program:BitdefenderGZ; dynamic_load: $RULE_PATH/bitdefenderGZ.rules; classtype:dynamic-rules; sid:5014677; rev:1;)
