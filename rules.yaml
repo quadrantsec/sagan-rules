@@ -195,6 +195,7 @@ rules-files:
   - $RULE_PATH/barracuda.rules
   - $RULE_PATH/bash.rules
   - $RULE_PATH/bind.rules
+  - $RULE_PATH/bitdefenderGZ.rules
   - $RULE_PATH/bonding.rules
   - $RULE_PATH/cacti-thold.rules
   - $RULE_PATH/carbonblack-app-control.rules
@@ -292,6 +293,7 @@ rules-files:
   - $RULE_PATH/oracle.rules
   - $RULE_PATH/palo-alto.rules
   - $RULE_PATH/passwordstate.rules
+  - $RULE_PATH/pfsense.rules
   - $RULE_PATH/php.rules
   - $RULE_PATH/postfix.rules
   - $RULE_PATH/postgresql.rules

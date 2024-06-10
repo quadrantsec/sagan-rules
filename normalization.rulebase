@@ -259,9 +259,14 @@ rule=: Bad protocol version identification '%-:char-to:\x27%' from %src-ip:ipv4%
 rule=: Bad protocol version identification '%-:char-to:\x27%' from %src-ip:ipv6% port %src-port:number%
 rule=: Bad protocol version identification '' from %src-ip:ipv4% port %src-port:number%
 rule=: Bad protocol version identification '' from %src-ip:ipv6% port %src-port:number%
-rule=: password check failed for user (%src-ip:char-to:\x29%)
+#rule=: password check failed for user (%src-ip:char-to:\x29%)
 rule=: User %username:word% from %src-ip:ipv4% not allowed %-:rest%
 rule=: User %username:word% from %src-ip:ipv6% not allowed %-:rest%
+
+#*****************************************************************************
+# Yubikey
+#*****************************************************************************
+rule=: password check failed for user (%username:char-to:\x29%)
 
 #*****************************************************************************
 # Palo-Alto

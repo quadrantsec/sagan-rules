@@ -26,26 +26,26 @@
 #*************************************************************
 # This is for both "su" and "sudo"
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] SUDO user NOT in sudoers"; content:"user NOT in sudoers"; classtype: unsuccessful-admin;program: sudo; sid: 5000024; rev:2;)
-drop syslog $EXTERNAL_NET any -> $HOME_NET any (msg: "[SU] SUDO authentication failure - Brute force [3/5]"; content: "authentication failure"; classtype: brute-force; normalize; program: sudo; after: track by_src, count 3, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5000025; rev:9;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] SUDO user NOT in sudoers"; content:"user NOT in sudoers"; classtype: unsuccessful-admin;program: sudo; sid: 5000024; rev:2;)
+#drop syslog $EXTERNAL_NET any -> $HOME_NET any (msg: "[SU] SUDO authentication failure - Brute force [3/5]"; content: "authentication failure"; classtype: brute-force; normalize; program: sudo; after: track by_src, count 3, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5000025; rev:9;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SU] SUDO authentication failure"; content: "authentication failure"; classtype: unsuccessful-admin; normalize; program: sudo; sid: 5001526; rev:3;) 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] Successful su as root"; content:"Successful su for root"; classtype: successful-admin; program: su; normalize; sid: 5000027; rev:4;)
-drop syslog $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] FAILED su - Brute force [5/5]"; content:"FAILED su"; classtype: brute-force; program: su; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5000028; rev:6;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] Successful su as root"; content:"Successful su for root"; classtype: successful-admin; program: su; normalize; sid: 5000027; rev:4;)
+#drop syslog $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] FAILED su - Brute force [5/5]"; content:"FAILED su"; classtype: brute-force; program: su; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5000028; rev:6;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] FAILED su"; content:"FAILED su"; classtype: unsuccessful-admin; program: su; sid: 5001527; rev:2;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] Three failed attempts to run sudo"; content: "3 incorrect password attempts"; classtype: unsuccessful-admin;program: sudo; sid: 5000132; rev:2;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] Three failed attempts to run sudo"; content: "3 incorrect password attempts"; classtype: unsuccessful-admin;program: sudo; sid: 5000132; rev:2;)
 
 # The will catch "sudo su -" and "sudo -i".  It will NOT catch "sudo su - {username}" (for example : "sudo su - oracle")
 # Steve Rawl's modications.
 # 2018/09/25
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] Successful sudo to ROOT executed"; content: "USER=root"; content: "COMMAND="; content:!"incorrect password attempts"; content:!"NOT in sudoers"; pcre: "/COMMAND=(?!([A-Za-z0-9_.\/-]+)?su\s-\s[A-Za-z0-9]+)/"; classtype: successful-admin; program: sudo; sid: 5000133; rev:9;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] Successful sudo to ROOT executed"; content: "USER=root"; content: "COMMAND="; content:!"incorrect password attempts"; content:!"NOT in sudoers"; pcre: "/COMMAND=(?!([A-Za-z0-9_.\/-]+)?su\s-\s[A-Za-z0-9]+)/"; classtype: successful-admin; program: sudo; sid: 5000133; rev:9;)
 
 # This will catch attempts to "sudo su - root".
 # 2018/09/25
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] Successful sudo to user ROOT executed"; content: "USER=root"; content: "COMMAND="; content:!"incorrect password attempts"; content:!"NOT in sudoers"; content: "su - root"; classtype: successful-admin; program: sudo; sid:5003928; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] Successful sudo to user ROOT executed"; content: "USER=root"; content: "COMMAND="; content:!"incorrect password attempts"; content:!"NOT in sudoers"; content: "su - root"; classtype: successful-admin; program: sudo; sid:5003928; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] su as 'root' suceeded"; content: "su root"; content: "succeeded for root"; classtype: successful-admin; program: su; normalize; sid: 5000409; rev:4;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SU] su as 'root' suceeded"; content: "su root"; content: "succeeded for root"; classtype: successful-admin; program: su; normalize; sid: 5000409; rev:4;)
 
 #  Rules added by Brian Echeverry ( becheverry@quadrantsec.com) - 10/21/2015
 

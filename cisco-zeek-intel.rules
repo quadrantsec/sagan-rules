@@ -23,17 +23,17 @@
 #  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 #  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-#
+# Cisco Anyconnect
 # For log examples,  see cisco-geoip.rules. 
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] VPN Login from Bro Intel IP"; program: %ASA*-6-716038; zeek-intel: by_src; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid: 5002250; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] VPN Login from Bro Intel IP"; program: %*-6-716038; zeek-intel: by_src; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid: 5002250; rev: 3;)
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] Console login from Bro Intel IP"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; zeek-intel: by_src; classtype: successful-user; parse_src_ip: 1; sid: 5002251; rev:3;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] Login permitted from Bro Intel IP"; program: %ASA*-6-605005; zeek-intel: by_src; default_proto: tcp; classtype: successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid: 5002252; rev: 3;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] WebVPN login from Bro Intel IP"; program: %ASA*-6-716001; zeek-intel: by_src; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid: 5002253; rev: 3;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] VPN disconnect from Bro Intel IP"; program: %ASA*-4-113019; zeek-intel: by_src; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid: 5002254; rev: 3;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] VPN login from Bro Intel IP"; program: %ASA*-6-734001; zeek-intel: by_src; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid: 5002255; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] Login permitted from Bro Intel IP"; program: %*-6-605005; zeek-intel: by_src; default_proto: tcp; classtype: successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid: 5002252; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] WebVPN login from Bro Intel IP"; program: %*-6-716001; zeek-intel: by_src; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid: 5002253; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] VPN disconnect from Bro Intel IP"; program: %*-4-113019; zeek-intel: by_src; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid: 5002254; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] VPN login from Bro Intel IP"; program: %*-6-734001; zeek-intel: by_src; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid: 5002255; rev: 3;)
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] ACS Login success from Bro Intel IP"; program: CisACS_01_PassedAuth; zeek-intel: by_src; classtype: successful-user; parse_src_ip: 2; sid: 5002256; rev: 3;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] VPN login from Bro Intel IP [2]"; program: %ASA*-6-722022|%ASA*-6-722023; zeek-intel: by_src; classtype: successful-user; parse_src_ip: 1; sid: 5002257; rev: 3;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] FTP file transfer from Bro Intel IP"; program: %ASA*-6-303002; zeek-intel: by_src; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid: 5002258; rev: 3;)
-alert syslog $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] FTP file transfer from Bro Intel IP"; program: %ASA*-6-303002; zeek-intel: by_dst; classtype: successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid: 5002259; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] VPN login from Bro Intel IP [2]"; program: %*-6-722022|%*-6-722023; zeek-intel: by_src; classtype: successful-user; parse_src_ip: 1; sid: 5002257; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] FTP file transfer from Bro Intel IP"; program: %*-6-303002; zeek-intel: by_src; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid: 5002258; rev: 3;)
+alert syslog $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-ZEEK-INTEL] FTP file transfer from Bro Intel IP"; program: %*-6-303002; zeek-intel: by_dst; classtype: successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid: 5002259; rev: 3;)
 
