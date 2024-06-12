@@ -33,4 +33,4 @@
 #
 #Reference: https://learn.microsoft.com/en-us/exchange/client-developer/web-service-reference/ews-operations-in-exchange
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-EXCHANGE] Data Loss Prevention Rule Match"; json_content: ".Workload","Exchange"; json_content: ".Operation", "DlpRuleMatch"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; classtype: misc-attack; sid:5004863; rev: 2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-EXCHANGE] Data Loss Prevention Rule Match"; json_content: ".Workload","Exchange"; json_content: ".Operation", "DlpRuleMatch"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; classtype: misc-attack; sid:5004863; rev: 3; metadata: mitre_technique_id T1008, mitre_technique_id T1048, mitre_technique_id T1114;)
