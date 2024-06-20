@@ -25,6 +25,87 @@
 #
 #*************************************************************
 
+# Look for suspicious command line execution via auditd via audispd.
+#
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] ./a.out execution attempt"; content: "type=EXECVE"; content:"|22|./a.out|22|"; classtype: suspicious-command; program: audispd; sid:5005619; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] gcc execution"; content: "type=EXECVE"; content:"|22|gcc|22|"; classtype: suspicious-command; program: audispd; sid:5005620; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] telnet execution"; content: "type=EXECVE"; content:"|22|telnet|22|";  classtype: suspicious-command; program: audispd; sid:5005621; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] nmap execution"; content: "type=EXECVE"; content:"|22|nmap|22|";  classtype: suspicious-command; program: audispd; sid:5005622; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] /etc/passwd access"; content: "type=EXECVE"; content:"|22|/etc/passwd|22|";  classtype: suspicious-command; program: audispd; sid:5005623; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] /etc/shadow access"; content: "type=EXECVE"; content:"|22|/etc/shadow|22|";  classtype: suspicious-command; program: audispd; sid:5005624; rev:1;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] make execution"; content: "type=EXECVE"; content:"|22|make|22|";  classtype: suspicious-command; program: audispd; sid:5005625; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] .bash_history access"; content: "type=EXECVE"; content:"|22|.bash_history|22|";  classtype: suspicious-command; program: audispd; sid:5005626; rev:1;) 
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] /tmp/sh access"; content: "type=EXECVE"; content:"|22|/tmp/sh|22|";  classtype: suspicious-command; program: audispd; sid:5005627; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] suidperl access"; content: "type=EXECVE"; content:"|22|suidperl|22|";  classtype: suspicious-command; program: audispd; sid:5005628; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] iptables command access"; content: "type=EXECVE"; content:"|22|iptables|22|"; classtype: suspicious-command; program: audispd; sid:5005629; rev:1;)
+
+# CVS-2014-6271 (09/24/2014 - Champ Clark III)
+# This likely won't work via auditd
+#
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] Remote execution attempt via CVE-2014-6271"; content: "type=EXECVE"; content:"|28 29| { |3a 3b|}"; content: program: audispd; classtype: exploit-attempt; xbits: set, exploit_attempt,track ip_src, expire 86400; reference: url,web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271; sid:5005630; rev:1;)
+
+# Submitted by Aleksey Chudov (07/14/2015). 
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] .mysql_history access"; content: "type=EXECVE"; content:"|22|.mysql_history|22|"; classtype:suspicious-command; program:audispd; sid:5005631; rev:1;);
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] Netcat execution"; content: "type=EXECVE"; meta_content: "|22|%sagan%|22|",nc,ncat,netcat; classtype:suspicious-command; program:audispd; sid:5005632; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] PHP execution"; content: "type=EXECVE"; content:"|22|php|22|"; classtype:suspicious-command; program:audispd; sid:5005633; rev:1;)
+
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] /dev/tcp access"; content: "type=EXECVE"; content:"|22|/dev/tcp|22|"; classtype:suspicious-command; program:audispd; sid:5005634; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] /dev/udp access"; content: "type=EXECVE"; content:"|22|/dev/udp|22|"; classtype:suspicious-command; program:audispd; sid:5005635; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] stunnel execution"; content: "type=EXECVE"; content:"|22|stunnel|22|"; classtype:suspicious-command; program:audispd; sid:5005636; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] SSH agent forwarding"; content: "type=EXECVE"; content:"|22|ssh|22|"; content:"|22|-A|22|"; classtype:suspicious-command; program:audispd; sid:5005637; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] SSH dynamic forwarding"; content: "type=EXECVE"; content:"|22|ssh|22|"; content:"|22|-D|22| "; classtype:suspicious-command; program:audispd; sid:5005638; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] SSH GSSAPI forwarding"; content: "type=EXECVE"; content:"|22|ssh|22|"; content:"|22|-K|22|"; classtype:suspicious-command; program:audispd; sid:5005639; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] SSH local forwarding"; content: "type=EXECVE"; content:"|22|ssh|22|"; content:"|22|-L|22|"; classtype:suspicious-command; program:audispd; sid:5005640; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] SSH remote forwarding"; content: "type=EXECVE"; content:"|22|ssh|22|"; content:"|22|-R|22|"; classtype:suspicious-command; program:audispd; sid:5005641; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] SSH input and output forwarding"; content: "type=EXECVE"; content:"|22|ssh|22|"; content:"|22|-W|22|"; classtype:suspicious-command; program:audispd; sid:5005642; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] SSH tunnel forwarding"; content: "type=EXECVE"; content:"|22|ssh|22|"; content:"|22|-w|22|"; classtype:suspicious-command; program:audispd; sid:5005643; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] SSH X11 forwarding"; content: "type=EXECVE"; content:"|22|ssh|22|"; content:"|22|-X|22|"; classtype:suspicious-command; program:audispd; sid:5005644; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] SSH X11 trusted forwarding"; content: "type=EXECVE"; content:"|22|ssh|22|"; content:"|22|-Y|22|"; classtype:suspicious-command; program:audispd; sid:5005645; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] sudoedit access"; content: "type=EXECVE"; content:"|22|sudoedit|22|"; classtype:suspicious-command; program:audispd; sid:5005646; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] CVE-2021-3156 sudoedit exploit attempt"; content: "type=EXECVE"; content:"|22|sudoedit|22|"; content: "|22|-s|22|"; content: "\"; classtype:suspicious-command; program:audispd; sid:5005647; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] socat execution"; content: "type=EXECVE"; content:"|22|socat|22|"; classtype:suspicious-command; program:audispd; sid:5005648; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] wget execution"; content: "type=EXECVE"; content:"|22|wget|22|"; classtype:suspicious-command; program:audispd; sid:5005649; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] curl execution"; content: "type=EXECVE"; content:"|22|curl|22|"; classtype:suspicious-command; program:audispd; sid:5005650; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] base64 execution"; content: "type=EXECVE"; content:"|22|base64|22|"; classtype:suspicious-command; program:audispd; sid:5005651; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] /tmp/haxhax execution"; content: "type=EXECVE"; content:"|22|/tmp/haxhax|22|"; classtype:suspicious-command; program:audispd; sid:5005652; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] /tmp/ns_sploit execution"; content: "type=EXECVE"; content:"|22|/tmp/ns_sploit|22|"; classtype:suspicious-command; program:audispd; sid:5005653; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] /tmp/ysocereal.jar execution"; content: "type=EXECVE"; content:"|22|/tmp/ysocereal.jar|22|"; classtype:suspicious-command; program:audispd; sid:5005654; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] authorized_keys accessed"; content: "type=EXECVE"; content:"|22|authorized_keys|22|"; classtype:suspicious-command; program:audispd; sid:5005655; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] chmod u+s execution"; content: "type=EXECVE"; content:"|22|chmod|22|"; content: "|22|u+s|22|"; classtype:suspicious-command; program:audispd; sid:5005656; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] chmod +s execution"; content: "type=EXECVE"; content:"|22|chmod|22|"; content: "|22|+s|22|"; classtype:suspicious-command; program:audispd; sid:5005657; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] chmod +s execution"; content: "type=EXECVE"; content:"|22|chmod|22|"; content: "|22|+s|22|"; classtype:suspicious-command; program:audispd; sid:5005674; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] ksh has been copied"; content: "type=EXECVE"; content:"|22|cp|22|"; content: "|22|/bin/ksh|22|"; classtype:suspicious-command; program:audispd; sid:5005658; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] sh has been copied"; content: "type=EXECVE"; content:"|22|cp|22|"; content: "|22|/bin/sh|22|"; classtype:suspicious-command; program:audispd; sid:5005659; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] bash has been copied"; content: "type=EXECVE"; content:"|22|cp|22|"; content: "|22|/bin/bash|22|"; classtype:suspicious-command; program:audispd; sid:5005660; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] zsh has been copied"; content: "type=EXECVE"; content:"|22|cp|22|"; content: "|22|/bin/zsh|22|"; classtype:suspicious-command; program:audispd; sid:5005661; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] zsh has been copied"; content: "type=EXECVE"; content:"|22|cp|22|"; content: "|22|/bin/zsh|22|"; classtype:suspicious-command; program:audispd; sid:5005662; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] chmod +x of something in /tmp"; content: "type=EXECVE"; content:"|22|chmod|22|"; content: "|22|+x|22|"; content: "|22|/tmp"; classtype:suspicious-command; program:audispd; sid:5005663; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] whoami execution"; content: "type=EXECVE"; content:"|22|whoami|22|"; classtype:suspicious-command; program:audispd; sid:5005664; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] id execution"; content: "type=EXECVE"; content:"a0=|22|id|22|"; classtype:suspicious-command; program:audispd; sid:5005665; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] /etc/security/passwd access"; content: "type=EXECVE"; content:"|22|/etc/security/passwd|22|"; classtype:suspicious-command; program:audispd; sid:5005666; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] getent passwd execution"; content: "type=EXECVE"; content:"|22|getent|22|"; content: "|22|passwd|22|"; classtype:suspicious-command; program:audispd; sid:5005667; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] python -m SimpleHTTPServer execution"; content: "type=EXECVE"; content:"|22|python"; content: "|22|-m|22|"; content: "|22|SimpleHTTPServer|22|"; classtype:suspicious-command; program:audispd; sid:5005668; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] python3 -m http.server"; content: "type=EXECVE"; content: "|22|python"; content:"|22|-m|22|"; content: "|22|http.server|22|"; classtype:suspicious-command; program:audispd; sid:5005669; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] /etc/sudoers access"; content: "type=EXECVE"; content:"|22|/etc/sudoers|22|"; classtype:suspicious-command; program:audispd; sid:5005670; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] netstat execution"; content: "type=EXECVE"; content:"|22|netstat|22|"; classtype:suspicious-command; program:audispd; sid:5005671; rev:1;)
+
+# a0="mkdir" a1=202E
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] mkdir starting with a space"; content: "type=EXECVE"; content:"|22|mkdir|22|"; content: "a1=20"; classtype:suspicious-command; program:audispd; sid:5005672; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[LINUX-AUDITD] mkdir starting with a period"; content: "type=EXECVE"; content:"|22|mkdir|22|"; content: "a1=|22|."; classtype:suspicious-command; program:audispd; sid:5005673; rev:1;)
+
+
 # rules by "Bryant Smith" <bsmith@quadrantsec.com>
 # 05/02/2024
 #
