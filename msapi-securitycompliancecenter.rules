@@ -64,6 +64,8 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-SECURITYCOMPLIANCECEN
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-SECURITYCOMPLIANCECENTER] Insight Generated - Significant mail flow without TLS"; program:SecurityComplianceCenter; json_content: ".Operation", "InsightGenerated"; json_content:".Name","Inbound OnPremises connector seeing significant mail flow without TLS"; json_map: "program",".Workload"; classtype:suspicious-traffic; sid:5014184; rev:1;)
 
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[MSAPI-SECURITYCOMPLIANCECENTER] eDiscovery Search Started Or Exported"; program:SecurityComplianceCenter; json_content: ".Operation", "AlertTriggered"; content:"eDiscoverySearchStartedOrExported"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".Data.f3u"; json_map: "program",".Workload"; threshold:type suppress, track by_username, count 1, seconds 86400; classtype:suspicious-traffic; sid:5014678; rev:1;)
+
 
 
 
