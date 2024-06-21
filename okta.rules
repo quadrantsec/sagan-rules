@@ -60,3 +60,9 @@ alert any $EXTERNAL_NET any -> any $HOME_NET (msg: "[OKTA] CORRELATED LOGIN AFTE
 ##Signature Playbook: 'This rule is designed to trigger on correlated login events shortly after multiple failed logins from the same source IP.'
 ##Sample Logs:
 ##SEE BRUTE FORCE RULES
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[OKTA] Successful MFA Authentication from Outside HOME_COUNTRY"; program:okta-system-log_relayer; json_content:".eventType","user.authentication.auth_via_mfa"; json_content:".outcome.result","SUCCESS"; country_code:track by_src,isnot $HOME_COUNTRY; parse_src_ip:1; reference:url,https://developer.okta.com/docs/reference/api/event-types/; classtype:trojan-activity; sid:5014679; rev:1; metadata:created_at 2024_05_07, updated_at 2024_05_07;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[OKTA] Failed MFA Authentication from Outside HOME_COUNTRY"; program:okta-system-log_relayer; json_content:".eventType","user.authentication.auth_via_mfa"; json_content:".outcome.result","FAILURE"; country_code:track by_src,isnot $HOME_COUNTRY; parse_src_ip:1; reference:url,https://developer.okta.com/docs/reference/api/event-types/; classtype:trojan-activity; sid:5014680; rev:1; metadata:created_at 2024_05_07, updated_at 2024_05_07;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[OKTA] User Authentication from Outside HOME_COUNTRY"; program:okta-system-log_relayer; json_content:".eventType","user.authentication"; json_contains; json_content:".outcome.result","SUCCESS"; json_content:!".eventType","user.authentication.auth_via_mfa"; country_code:track by_src,isnot $HOME_COUNTRY; parse_src_ip:1; reference:url,https://developer.okta.com/docs/reference/api/event-types/; classtype:trojan-activity; sid:5014681; rev:1; metadata:created_at 2024_05_07, updated_at 2024_05_07;)
