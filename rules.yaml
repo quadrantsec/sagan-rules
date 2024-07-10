@@ -196,6 +196,7 @@ rules-files:
   - $RULE_PATH/bash.rules
   - $RULE_PATH/bind.rules
   - $RULE_PATH/bitdefenderGZ.rules
+  - $RULE_PATH/bomgar.rules
   - $RULE_PATH/bonding.rules
   - $RULE_PATH/cacti-thold.rules
   - $RULE_PATH/carbonblack-app-control.rules
