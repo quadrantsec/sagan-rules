@@ -418,3 +418,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CARBONBLACK-APP-CONTROL] Se
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CARBONBLACK-APP-CONTROL] Disk configuration change detected"; content: "Disk configuration change detected"; content: "event"; parse_src_ip: 1; program: 1|bit9|carbonblack; classtype: system-event; sid: 5002927; rev:3;)
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[CARBONBLACK-APP-CONTROL] Carbon Black Alert Triggered"; program:carbonblack; parse_src_ip: 1; parse_dst_ip: 2; classtype:system-event; sid:5008383; rev:1;)
+
+alert any any any -> any any (msg: "[CARBONBLACK] Audit - Bypass Action Detected"; content:"|22|description|22 3a 20 22|Set BYPASS to on"; content:"|22|type|22 3a 20 22|AUDIT|22|"; parse_src_ip: 1; program: carbonblack; classtype:suspicious-traffic; sid:5014939; rev: 2;)
+
+alert any any any -> any any (msg: "[CARBONBLACK] Audit - Bypass Action Detected"; content:"|22|description|22 3a 20 22|Set BYPASS to off"; content:"|22|type|22 3a 20 22|AUDIT|22|"; parse_src_ip: 1; program: carbonblack; classtype:suspicious-traffic; sid:5014940; rev: 1;)
