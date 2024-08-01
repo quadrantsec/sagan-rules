@@ -329,6 +329,7 @@ rules-files:
   - $RULE_PATH/tenable.rules
   - $RULE_PATH/trendmicro.rules
   - $RULE_PATH/tripwire.rules
+  - $RULE_PATH/veeam.rules
   - $RULE_PATH/vmpop3d.rules
   - $RULE_PATH/vmware.rules
   - $RULE_PATH/vpopmail.rules

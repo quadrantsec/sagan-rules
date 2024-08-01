@@ -221,3 +221,4 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Linux Auditd logs d
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Linux Auth logs detected via program."; content:"pam_unix("; dynamic_load: $RULE_PATH/linux-security.rules; classtype:dynamic-rules; sid:5014643; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Bitdefender GZ logs detected via program."; program:BitdefenderGZ; dynamic_load: $RULE_PATH/bitdefenderGZ.rules; classtype:dynamic-rules; sid:5014677; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Bomgar logs detected via program."; program:bomgar; dynamic_load: $RULE_PATH/bomgar.rules; classtype:dynamic-rules; sid:5014934; rev:2;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Veeam logs detected via program."; program:veeam; dynamic_load: $RULE_PATH/veeam.rules; classtype:dynamic-rules; sid:5015069; rev:1;)
