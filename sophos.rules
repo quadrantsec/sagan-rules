@@ -184,7 +184,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Application was blocked 
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Application installation: new application(s)"; program:sophos; content:"Event::Endpoint::AppChange::4"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007294; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Application was blocked by an endpoint firewall"; program:sophos; content:"Event::Endpoint::WindowsFirewall::Blocked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007295; rev:1;)
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Application was blocked by an endpoint firewall"; program:sophos; content:"Event::Endpoint::WindowsFirewall::Blocked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007295; rev:1;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] The computer is running an operating system and service pack combination which is no longer supported. Upgrade to continue receiving protection."; program:sophos; content:"Event::Endpoint::UnsupportedOperatingSystem"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007296; rev:1;)
 
