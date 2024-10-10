@@ -86,3 +86,45 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] Virtual route
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] Blocked DHCP server response"; content: "Blocked DHCP"; classtype: system-event; sid:5003054; rev:2;)
 
+
+#Added by BSmith on 10/10/2024 - Mostly the same as above but there was a change to the log structure, so the rules needed to be adujusted a bit.  Keeping the old rule above for backward compatability.
+
+
+#Reference: https://documentation.meraki.com/General_Administration/Monitoring_and_Reporting/Syslog_Event_Types_and_Log_Samples
+
+#Many rules have been duplicated and adjusted for the json logs.
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-MERAKI] SSID Spoofing Detected"; content: "type|22 3a 20 22|ssid_spoofing_detected"; classtype: suspicious-traffic; reference: url,meraki.cisco.com/lib/pdf/meraki_whitepaper_air_marshal.pdf; sid:5015127; rev:1;)
+
+# VPN connectivity change
+
+# alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-MERAKI] VPN connectivity change"; content: "type|22 3a 20 22|vpn_connectivity_change"; classtype: suspicious-traffic; sid:5015128; rev:1;)
+
+# Security_event
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] IDS Alert Detected"; program:meraki_dashboard_api_data; content:"eventType|22 3a 20 22|IDS Alert"; content:!"|22|blocked|22 3a 20|true"; parse_src_ip: 1; parse_dst_ip: 2; classtype: suspicious-traffic; reference: url,documentation.meraki.com/MX-Z/Content_Filtering_and_Threat_Protection/; sid:5015129; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] VPN Auth Failed Brute Force [25/1]"; program:meraki_dashboard_api_data; content:"type|22 3a 20 22|anyconnect_vpn_auth_failure"; parse_src_ip: 1; after:track by_src, count 25, seconds 120; threshold: type suppress, track by_string, count 1, seconds 86400; normalize; classtype: suspicious-traffic; reference: url,documentation.meraki.com/MX-Z/Content_Filtering_and_Threat_Protection/; sid:5015130; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] Malicious file blocked by amp"; content: "malicious"; content:"action|22 3a 20 22|block"; parse_src_ip: 1; parse_dst_ip: 2; classtype: suspicious-traffic; reference: url,documentation.meraki.com/MX-Z/Content_Filtering_and_Threat_Protection/; sid:5015131; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] File issued retrospective malicious disposition"; content: "malicious"; content:"action=|22 3a 20 22|allow"; classtype: suspicious-traffic; reference: url,documentation.meraki.com/MX-Z/Content_Filtering_and_Threat_Protection/; sid:5015132; rev:1;)
+
+## MERAKI MR Access Points Rules ##
+
+# WPA failed authentication attempt
+#Not tracking failed auth.  Any disconnect would trigger the rule.
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] WPA failed authentication attempt"; content: "auth_neg_failed|22 3a 20 22|1|22|; content: "type|22 3a 20 22|disassociation"; classtype: attempted-user; sid:5015133; metadata: disabled_on 2023_08_02; rev:1;)
+
+# 802.1x failed authentication attempt
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] 802.1x EAP(RADIUS) failed authentication attempt [10/1]"; content:"type|22 3a 20 22|8021x_eap_failure"; after:track by_src, count 10, seconds 300; threshold: type suppress, track by_string, count 1, seconds 86400; parse_src_ip:1; normalize; classtype: attempted-user; sid:5015134; metadata: updated_on 2023_08_02; rev:1;)
+
+# Wireless packet flood detected
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] WPA failed authentication attempt"; content: "type|22 3a 20 22|device_packet_flood"; content: "packet|22 3a 20 22|deauth22"; classtype: attempted-user; reference: url,meraki.cisco.com/lib/pdf/meraki_whitepaper_air_marshal.pdf; sid:5015135; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] WIPS Mac Spoofing Attack Detected"; content: "type|22 3a 20 22|mac_spoofing_attack"; classtype:attempted-user; reference:url,https://documentation.meraki.com/General_Administration/Monitoring_and_Reporting/Syslog_Event_Types_and_Log_Samples; sid:5015136; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] IP Conflicts - Martian SRC Detected"; content: "type|22 3a 20 22|mac_spoofing_attack"; content:"|22|Client|22 3a|"; content:!"169.254."; classtype:attempted-user; reference:url,https://documentation.meraki.com/General_Administration/Monitoring_and_Reporting/Syslog_Event_Types_and_Log_Samples; sid:5015137; rev:1;)
+
