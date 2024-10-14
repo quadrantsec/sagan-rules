@@ -188,9 +188,9 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SONICWALL] Using LDAP Withou
 # There are 2 versions of the below rules: One for events sent in generic syslog and one for events sent in JSON. Created by Charles Goggins on 10/14/2024
 
 
-alert any any any -> any any (msg: "[SONICWALL] VPN Radius Authetication Failed - Brute Force [3/1]"; content: "m=140 "; content: "fw_action="; parse_src_ip: 2; after: track by_src&by_string, count 3, seconds 60; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: brute-force; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015138; rev:1;)
+alert any any any -> any any (msg: "[SONICWALL] VPN Radius Authentication Failed - Brute Force [3/1]"; content: "m=140 "; content: "fw_action="; parse_src_ip: 2; after: track by_src&by_string, count 3, seconds 60; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: brute-force; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015138; rev:1;)
 
-alert any any any -> any any (msg: "[SONICWALL] VPN Radius Authetication Failed - Brute Force [3/1]"; program: sonicwall; content: "|22|msgid|22 3a 20|140|2c|"; parse_src_ip: 1; after: track by_src&by_string, count 3, seconds 60; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: brute-force; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015139; rev:1;)
+alert any any any -> any any (msg: "[SONICWALL] VPN Radius Authentication Failed - Brute Force [3/1]"; program: sonicwall; content: "|22|msgid|22 3a 20|140|2c|"; parse_src_ip: 1; after: track by_src&by_string, count 3, seconds 60; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: brute-force; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015139; rev:1;)
 
 alert any any any -> any any (msg: "[SONICWALL] VPN Login Detected for Admin User"; content: "m=235 "; content: "fw_action="; parse_src_ip: 2; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015140; rev:1;)
 
