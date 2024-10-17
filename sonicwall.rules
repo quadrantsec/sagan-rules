@@ -183,3 +183,52 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SONICWALL] Admin Login Disab
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SONICWALL] Smurf Attack"; content: "Smurf Attack"; default_proto: tcp; normalize; parse_src_ip: 2; parse_dst_ip: 3; classtype:suspicious-traffic; sid:5012104; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SONICWALL] Forbidden E-Mail Attachment"; content: "E-Mail Attachment"; default_proto: tcp; normalize; parse_src_ip: 2; parse_dst_ip: 3; classtype:suspicious-traffic; sid:5012105; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SONICWALL] Using LDAP Without TLS"; content: "Using LDAP Without TLS"; default_proto: tcp; normalize; parse_src_ip: 2; parse_dst_ip: 3; classtype:suspicious-traffic; sid:5012106; rev:1;)
+
+#=============================================================================
+# There are 2 versions of the below rules: One for events sent in generic syslog and one for events sent in JSON. Created by Charles Goggins on 10/14/2024
+
+
+alert any any any -> any any (msg: "[SONICWALL] VPN Radius Authentication Failed - Brute Force [3/1]"; content: "m=140 "; content: "fw_action="; parse_src_ip: 2; after: track by_src&by_string, count 3, seconds 60; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: brute-force; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015138; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] VPN Radius Authentication Failed - Brute Force [3/1]"; program: sonicwall; content: "|22|msgid|22 3a 20|140|2c|"; parse_src_ip: 1; after: track by_src&by_string, count 3, seconds 60; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: brute-force; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015139; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] VPN Login Detected for Admin User"; content: "m=235 "; content: "fw_action="; parse_src_ip: 2; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015140; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] VPN Login Detected for Admin User"; program: sonicwall; content: "|22|msgid|22 3a 20|235|2c|"; parse_src_ip: 1; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015141; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] Admin Login from External IP detected"; content: "m=236 "; content: "fw_action="; parse_src_ip: 2; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015142; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] Admin Login from External IP detected"; program: sonicwall; content: "|22|msgid|22 3a 20|236|2c|"; parse_src_ip: 1; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015143; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] User Login from External IP detected"; content: "m=238 "; content: "fw_action="; parse_src_ip: 2; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015144; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] User Login from External IP detected"; program: sonicwall; content: "|22|msgid|22 3a 20|238|2c|"; parse_src_ip: 1; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015145; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] VPN Login from Outside HOME_COUNTRY"; meta_content: "m=%sagan% ", 235,237; content: "fw_action="; parse_src_ip: 2; country_code: track by_src, isnot $HOME_COUNTRY; classtype: suspicious-traffic; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015146; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] VPN Login from Outside HOME_COUNTRY"; program: sonicwall; meta_content: "|22|msgid|22 3a 20|%sagan%|2c|", 235,237; parse_src_ip: 1; country_code: track by_src, isnot $HOME_COUNTRY; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015147; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] Radius Authentication Failed - Brute Force [3/1]"; content: "m=243 "; content: "fw_action="; parse_src_ip: 2; after: track by_src&by_string, count 3, seconds 60; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: brute-force; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015148; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] Radius Authentication Failed - Brute Force [3/1]"; program: sonicwall; content: "|22|msgid|22 3a 20|243|2c|"; parse_src_ip: 1; after: track by_src&by_string, count 3, seconds 60; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: brute-force; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015149; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] User Login from Unauthorized Location Detected"; content: "m=246 "; content: "fw_action="; parse_src_ip: 2; classtype: suspicious-traffic; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015150; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] User Login from Unauthorized Location Detected"; program: sonicwall; content: "|22|msgid|22 3a 20|246|2c|"; parse_src_ip: 1; classtype: suspicious-traffic; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015151; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] VPN Certificate Was Found on revocation List"; content: "m=279 "; content: "fw_action="; parse_src_ip: 2; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015152; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] VPN Certificate Was Found on revocation List"; program: sonicwall; content: "|22|msgid|22 3a 20|279|2c|"; parse_src_ip: 1; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015153; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] A Rogue Access Point Was Detected on the Network"; content: "m=546 "; content: "fw_action="; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015154; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] A Rogue Access Point Was Detected on the Network"; program: sonicwall; content: "|22|msgid|22 3a 20|546|2c|"; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015155; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] A Guest Account Was Created on Appliance"; content: "m=558 "; content: "fw_action="; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015156; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] A Guest Account Was Created on Appliance"; program: sonicwall; content: "|22|msgid|22 3a 20|558|2c|"; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015157; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] A Guest Account Was Re-Enabled on Appliance"; content: "m=561 "; content: "fw_action="; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015158; rev:1;)
+
+alert any any any -> any any (msg: "[SONICWALL] A Guest Account Was Re-Enabled on Appliance"; program: sonicwall; content: "|22|msgid|22 3a 20|561|2c|"; classtype: system-event; reference: url,https://www.sonicwall.com/techdocs/pdf/SonicOS-X_7.0.1_LogEvents_ReferenceGuide.pdf; sid:5015159; rev:1;)
+#============================================================================
