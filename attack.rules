@@ -28,7 +28,7 @@
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ATTACK] Buffer overflow attempt on rpc.statd"; pcre: "/gethostbyname error for \W+/"; classtype: exploit-attempt; program: rpc.statd; sid:5000095; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ATTACK] Buffer overflow attempt on WU-FTPD version prior to 2.6" ; pcre: "/\S+ FTP LOGIN FROM \.+ 0bin0sh/"; classtype: exploit-attempt; program: ftpd; sid:5000096; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ATTACK] Possible buffer overflow attempt"; content: "?????????????????????"; threshold: type suppress, track by_src, count 3, seconds 300; classtype: suspicious-traffic; sid:5000097; rev:3;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ATTACK] 'Null' user change some information"; content: "changed by"; content: "null";  classtype: exploit-attempt; sid:5000098; rev:2;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ATTACK] 'Null' user change some information"; content: "changed by null"; nocase;  classtype: exploit-attempt; sid:5000098; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ATTACK] Possible buffer overflow attempt [yppasswd?]" ; content: "@@@@@@@@@@@@@@@@@@@@@@@@@"; classtype: exploit-attempt; sid:5000365; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ATTACK] Heap overflow in the Solaris cachefsd service" ; content: "Segmentation Fault"; content: "core dumped";  program: cachefsd; classtype: exploit-attempt; sid:5000366; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[ATTACK] Stack overflow attempt with SEGV [Solaris]"; content: "attempt to execute code on stack by"; nocase; classtype: exploit-attempt; sid:5000099; rev:2;)

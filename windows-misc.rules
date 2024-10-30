@@ -115,7 +115,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Microsoft Ant
 
 # Rules added by Brian Echeverry ( becheverry@quadrantsec.com) - 10/21/2015
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Unable to log events to security log"; event_id: 521; content: !"Status code: 0x0 Value"; parse_src_ip: 0; threshold: type suppress, track by_src, count 1, seconds 86400; classtype: program-error; program: *Security*; sid:5002564; rev:6; metadata: updated_on 2024_10_23;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Unable to log events to security log"; event_id: 521; content: !"Status code: 0x0 Value"; classtype: program-error; program: *Security*; sid:5002564; rev:6; metadata: updated_on 2024_10_23;)
 
 # Added by Champ Clark III (04/20/2016) - Great read at http://pastebin.com/raw/0SNSvyjJ
 
