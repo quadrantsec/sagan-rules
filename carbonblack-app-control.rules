@@ -424,3 +424,5 @@ alert any any any -> any any (msg:"[CARBONBLACK] Audit - Bypass Action Detected 
 alert any any any -> any any (msg:"[CARBONBLACK] Audit - Bypass Action Detected (off)"; content:"|22|description|22 3a 20 22|Set BYPASS to off"; parse_src_ip: 1; program:carbonblack; classtype:suspicious-traffic; sid:5014940; rev: 1;)
 
 #alert any any any -> any any (msg:"[CARBONBLACK] Audit - Sensor Bypass Enabled"; content:"|22|description|22 3a 20 22|Sensor Bypass Enabled"; parse_src_ip: 1; program:carbonblack; classtype:suspicious-traffic; sid:5015119; rev: 1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[CARBONBLACK] User Password Changed"; program:carbonblack; content:"Changed Password. Invalidated sessions"; parse_src_ip:1; normalize; classtype:user-activity; sid:5015200; rev:1; metadata:created_at 2024_12_13, updated_at 2024_12_13, mitre_tactic_id TA0003, mitre_technique_id T1098;)
