@@ -51,3 +51,11 @@ drop any $EXTERNAL_NET any -> $HOME_NET any (msg:"[VMWARE] User authentication f
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[VMWARE] Lost access to volume"; content: "Event 37 : "; default_proto:tcp; classtype: hardware-event; program: Hostd; sid: 5001099; rev:2;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[VMWARE] Possible HD/Datastore failure"; content: ": 1672: "; default_proto:tcp; classtype: hardware-event; program: vmkernel; sid: 5001100; rev:2;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[VMWARE] User login successful"; content: "Accepted password"; default_proto:tcp; classtype:  successful-admin; program: Hostd; normalize; sid: 5001101; rev:3;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[VMWARE] SSH Port Forwarding Tunnel Detected"; program:*hostd*|*authd*|*shell*; content:"ssh"; nocase; content:"-R"; content:"127.0.0.1|3a|"; parse_src_ip:1; normalize; reference:url,https://www.sygnia.co/blog/esxi-ransomware-ssh-tunneling-defense-strategies/; classtype:suspicious-activity; sid:5015203; rev:1; metadata:created_at 2024_01_27, updated_at 2024_01_27;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[VMWARE] SSH Access Has Been Enabled (hostd)"; program:*hostd*; content:"esx.audit.ssh.enabled"; nocase; parse_src_ip:1; normalize; reference:url,https://www.sygnia.co/blog/esxi-ransomware-ssh-tunneling-defense-strategies/; classtype:suspicious-activity; sid:5015204; rev:1; metadata:created_at 2024_01_27, updated_at 2024_01_27;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[VMWARE] SSH Access Has Been Enabled (authd)"; program:*authd*; content:"SSH login enabled"; nocase; parse_src_ip:1; normalize; reference:url,https://www.sygnia.co/blog/esxi-ransomware-ssh-tunneling-defense-strategies/; classtype:suspicious-activity; sid:5015205; rev:1; metadata:created_at 2024_01_27, updated_at 2024_01_27;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[VMWARE] SSH Access Has Been Enabled (authd)"; program:*authd*; content:"SSH login enabled"; nocase; parse_src_ip:1; normalize; reference:url,https://www.sygnia.co/blog/esxi-ransomware-ssh-tunneling-defense-strategies/; classtype:suspicious-activity; sid:5015206; rev:1; metadata:created_at 2024_01_27, updated_at 2024_01_27;)
