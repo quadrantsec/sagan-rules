@@ -52,7 +52,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] User role assigned"
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Machine requested permission to uninstall SentinelOne agent"; content:"SentinelOne"; content:"activityType=49"; pcre:"/activityType=[\d]{2}\b/"; classtype:system-event; sid:5006625; rev:2;)
 
-#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Machine was uninstalled"; content:"SentinelOne"; content:"activityType=51"; pcre:"/activityType=[\d]{2}\b/"; classtype:system-event; sid:5006626; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Machine was uninstalled"; content:"SentinelOne"; content:"activityType=51"; pcre:"/activityType=[\d]{2}\b/"; classtype:system-event; sid:5006626; rev:2;)
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Admin approved SentinelOne agent uninstall request"; content:"SentinelOne"; content:"activityType=52"; pcre:"/activityType=[\d]{2}\b/"; classtype:system-event; sid:5006627; rev:2;)
 
