@@ -549,7 +549,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail 
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (ResetDBParameterGroup)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|ResetDBParameterGroup|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005547; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (RestoreDBClusterFromSnapshot)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|RestoreDBClusterFromSnapshot|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005548; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (RestoreDBClusterFromSnapshot)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|RestoreDBClusterFromSnapshot|22|"; classtype: bad-unknown; reference: url,www.darkreading.com/application-security/hidden-dangers-of-microsoft-365-s-power-automate-and-ediscovery-tools; sid:5005548; rev:2;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CLOUDTRAIL] RDS cloudtrail event detected - (RestoreDBClusterToPointInTime)"; program: rds.amazonaws.com; content: "event detectedName|22 3a 20 22|RestoreDBClusterToPointInTime|22|"; classtype: bad-unknown; reference: url,www.gorillastack.com/news/cloudtrail-event detected-names/; sid:5005549; rev:1;)
 

@@ -42,7 +42,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New blocked threat"
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] SentinelOne - New Console Logout Activity"; content:"SentinelOne"; content:"activityType=33"; pcre:"/activityType=[\d]{2}\b/"; classtype:system-event; sid:5006620; rev:2;)
 
-#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] User role assigned"; content:"SentinelOne"; content:"activityType=37"; pcre:"/activityType=[\d]{2}\b/"; classtype:system-event; sid:5006621; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] User role assigned"; content:"SentinelOne"; content:"activityType=37"; pcre:"/activityType=[\d]{2}\b/"; classtype:system-event; sid:5006621; rev:2;)
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Machine updated successfully"; content:"SentinelOne"; content:"activityType=43"; pcre:"/activityType=[\d]{2}\b/"; classtype:system-event; sid:5006622; rev:2;)
 
@@ -52,7 +52,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New blocked threat"
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Machine requested permission to uninstall SentinelOne agent"; content:"SentinelOne"; content:"activityType=49"; pcre:"/activityType=[\d]{2}\b/"; classtype:system-event; sid:5006625; rev:2;)
 
-#alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Machine was uninstalled"; content:"SentinelOne"; content:"activityType=51"; pcre:"/activityType=[\d]{2}\b/"; classtype:system-event; sid:5006626; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Machine was uninstalled"; content:"SentinelOne"; content:"activityType=51"; pcre:"/activityType=[\d]{2}\b/"; classtype:system-event; sid:5006626; rev:2;)
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Admin approved SentinelOne agent uninstall request"; content:"SentinelOne"; content:"activityType=52"; pcre:"/activityType=[\d]{2}\b/"; classtype:system-event; sid:5006627; rev:2;)
 

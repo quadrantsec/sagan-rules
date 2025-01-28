@@ -74,6 +74,8 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[MSAPI-SECURITYCOMPLIANCECENT
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[MSAPI-SECURITYCOMPLIANCECENTER] User Created Forwarding Rule to external domain"; program:SecurityComplianceCenter; json_content: ".Operation", "InsightGenerated"; content:"started forwarding emails from your organization to external domains"; json_map: "program",".Workload"; reference:url,https://attack.mitre.org/techniques/T1114/003/; classtype:suspicious-traffic; sid:5015070; rev:1; metadata:created_at 2024_07_30 updated_at 2024_07_30;)
 
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[MSAPI-SECURITYCOMPLIANCECENTER] Activity from a Risky IP address Detected"; program:SecurityComplianceCenter; json_content: ".Operation", "AlertTriggered"; content:"MCAS_ALERT_ANUBIS_DETECTION_RISKY_IP_SUSPICIOUS"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".Data.f3u"; json_map: "program",".Workload"; classtype:suspicious-activity; sid:5015202; rev:1;)
+
 
 
 #=============================================================================================
