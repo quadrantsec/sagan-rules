@@ -1,0 +1,93 @@
+# Sagan box.rules
+# Copyright (c) 2009-2024. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 01/31/2025
+#
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] [Bluedot] A user is logging in from a device we have not seen before"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","ADD_LOGIN_ACTIVITY_DEVICE"; bluedot:type ip_reputation,track by_src,none,Malicious,Tor; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:user-activity; sid:5015206; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Admin console used to log in to a managed user's account"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","ADMIN_LOGIN"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:admin-activity; sid:5015207; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] When an admin role changes for a user"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","CHANGE_ADMIN_ROLE"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:user-activity; sid:5015208; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] [Bluedot] User was invited to a collaboration"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","COLLABORATION_INVITE"; bluedot:type ip_reputation,track by_src,none,Malicious,Tor; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:user-activity; sid:5015209; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] A policy set in the Admin console is triggered"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","CONTENT_WORKFLOW_ABNORMAL_DOWNLOAD_ACTIVITY"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015210; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Files Copied in Excess (100/300sec)"; program:box-api_data; json_map:"src_ip",".ip_address"; json_map:"username",".created_by.login"; json_content:".event_type","COPY"; after:track by_src&by_username, count 100, seconds 300; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015211; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Files Deleted in Excess (50/300sec)"; program:box-api_data; json_map:"src_ip",".ip_address"; json_map:"username",".created_by.login"; json_content:".event_type","DELETE"; after:track by_src&by_username, count 50, seconds 300; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015212; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Files Downloaded in Excess (50/300sec)"; program:box-api_data; json_map:"src_ip",".ip_address"; json_map:"username",".created_by.login"; json_content:".event_type","DOWNLOAD"; json_content:!".service_name","CloudAlly"; after:track by_src&by_username, count 50, seconds 300; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015213; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Device Trust check failed"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","DEVICE_TRUST_CHECK_FAILED"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:user-activity; sid:5015214; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Multifactor authentication has been disabled"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","DISABLE_MULTI_FACTOR_AUTH"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:user-activity; sid:5015215; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Device detected by the CrowdStrike Falcon platform"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","EDR_CROWDSTRIKE_DEVICE_DETECTED"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:user-activity; sid:5015216; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Access allowed to a device not identified by the CrowdStrike Falcon platform"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","EDR_CROWDSTRIKE_ACCESS_ALLOWED_NO_CROWDSTRIKE_DEVICE"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:user-activity; sid:5015217; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Access revoked to a device identified by the CrowdStrike Falcon platform"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","EDR_CROWDSTRIKE_ACCESS_REVOKED"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:user-activity; sid:5015218; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Multiple Failed Login Attempts By IP&Username (10/300sec)"; program:box-api_data; json_map:"src_ip",".ip_address"; json_map:"username",".created_by.login"; json_content:".event_type","FAILED_LOGIN"; after:track by_src&by_username, count 10, seconds 300; xbits:set,brute-force,track ip_src,expire 300; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:user-activity; sid:5015219; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Multiple Failed Login Attempts By IP (10/300sec)"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","FAILED_LOGIN"; after:track by_src&by_username, count 10, seconds 300; xbits:set,brute-force,track ip_src,expire 300; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:user-activity; sid:5015220; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] File marked as malicious"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","FILE_MARKED_MALICIOUS"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:trojan-activity; sid:5015221; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] A watermarked file is downloaded"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","FILE_WATERMARKED_DOWNLOAD"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015222; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] A group admin is created"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","GROUP_ADMIN_CREATED"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015223; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] A new group has been created"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","GROUP_CREATION"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015224; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Successful Login from Outside HOME_COUNTRY"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","LOGIN"; country_code:track by_src,isnot $HOME_COUNTRY; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015225; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Successful Login After Brute Force"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","LOGIN"; xbits:isset,brute-force,track ip_src; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015226; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] New user created"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","NEW_USER"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015227; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] An OAuth 2.0 access token has been revoked"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","OAUTH2_ACCESS_TOKEN_REVOKE"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015228; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Shield detected an anomalous download, session, location, or malicious content"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","SHIELD_ALERT"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015229; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] End user blocked from downloading a file based on a shield access policy"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","SHIELD_DOWNLOAD_BLOCKED"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015230; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Access to an external collaboration is blocked"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","SHIELD_EXTERNAL_COLLAB_ACCESS_BLOCKED"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015231; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] An invite to externally collaborate is blocked"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","SHIELD_EXTERNAL_COLLAB_INVITE_BLOCKED"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015232; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Access to a shared link is blocked"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","SHIELD_SHARED_LINK_ACCESS_BLOCKED"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015233; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Copying items blocked due to information barrier restrictions"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","SHIELD_INFORMATION_BARRIER_ITEM_COPY_BLOCKED"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015234; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Transferring items blocked due to information barrier restrictions"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","SHIELD_INFORMATION_BARRIER_ITEM_OWNER_TRANSFER_BLOCKED"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015235; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Suspicious File Uploaded"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","UPLOAD"; json_meta_content:".source.item_name",|2e|exe,|2e|dll; json_meta_contains; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015236; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+
+
