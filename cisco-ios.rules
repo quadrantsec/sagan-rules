@@ -91,11 +91,11 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] High CPU usage d
 # %AUTHPRIV-3-SYSTEM_MSG: pam_aaa:Authentication failed for user cisco from 10.10.10.10 - sshd[27924]
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Authentication Failure SSH"; content: "%AUTHPRIV-3-SYSTEM_MSG|3a|"; content: "sshd["; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: unsuccessful-admin; sid: 5001668; rev:4;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Authentication Failure SSH - Brute force [5/5]"; content: "%AUTHPRIV-3-SYSTEM_MSG|3a|"; content: "sshd["; parse_src_ip:1; xbits: set,brute_force,track ip_src,expire 21600; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: brute-force; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001670; rev:11;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Authentication Failure SSH - Brute force [5/5]"; content: "%DAEMON-3-SYSTEM_MSG|3a|"; content:"Authentication failure for"; content: !"illegal"; content: "sshd["; parse_src_ip:1; xbits: set,brute_force,track ip_src,expire 21600; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: brute-force; after: track by_src, count 5, seconds 300; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001670; rev:12;)
 
 # %DAEMON-3-SYSTEM_MSG: error: PAM: Authentication failure for illegal user cisco from 10.10.10.10 - sshd[27926]
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Illegal User SSH"; content: "%DAEMON-3-SYSTEM_MSG|3a|"; content: "sshd["; parse_src_ip: 1; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: unsuccessful-admin; sid: 5001669; rev:6;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Illegal User SSH"; content: "%DAEMON-3-SYSTEM_MSG|3a|"; content: "Authentication failure for illegal user"; content: "sshd["; parse_src_ip: 1; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: unsuccessful-admin; sid: 5001669; rev:7;)
 
 # %USER-3-SYSTEM_MSG: FATAL: bad tty - login (no program)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] FATAL - bad tty - login (no program)"; content: "%USER-3-SYSTEM_MSG|3a|"; content: "FATAL: bad tty"; content: "no program";  classtype: system-event; sid: 5001671; rev:5;)
