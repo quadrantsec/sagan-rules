@@ -74,4 +74,11 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[SYSLOG] syslog-ng suspend w
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYSLOG] SCSI task abort"; content: "scsi"; content: "task abort"; classtype: hardware-event; program: kernel; sid: 5001972; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[SYSLOG] Remounting filesystem read-only"; content: "Remounting filesystem read-only"; classtype: hardware-event; program: kernel; sid: 5001973; rev:1;)
 
+alert any any any -> any any (msg: "[SYSLOG] SSH Service in Restart Loop (25)"; content: "starting ssh |28|count 25|29|"; nocase; classtype: hardware-event; sid: 5015341; syslog_facility: kern; rev:1;)
+alert any any any -> any any (msg: "[SYSLOG] SSH Service in Restart Loop (50)"; content: "starting ssh |28|count 50|29|"; nocase; classtype: hardware-event; sid: 5015342; syslog_facility: kern; rev:1;)
+alert any any any -> any any (msg: "[SYSLOG] SSH Service in Restart Loop (100)"; content: "starting ssh |28|count 100|29|"; nocase; classtype: hardware-event; sid: 5015343; syslog_facility: kern; rev:1;)
+alert any any any -> any any (msg: "[SYSLOG] SSH Service in Restart Loop (250)"; content: "starting ssh |28|count 250|29|"; nocase; classtype: hardware-event; sid: 5015344; syslog_facility: kern; rev:1;)
+alert any any any -> any any (msg: "[SYSLOG] SSH Service in Restart Loop (500)"; content: "starting ssh |28|count 500|29|"; nocase; classtype: hardware-event; sid: 5015345; syslog_facility: kern; rev:1;)
+
+
 
