@@ -137,7 +137,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Event log has
 
 #alert any $HOME_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Fan failure detected"; content:" 10|3a| Fan "; content:" has failed"; classtype: hardware-event; program: System; sid:5003040; rev:2;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Installation of PSEXEC service via Security Audit "; meta_content:"%sagan%",psexesvc,psexec; meta_nocase; meta_content:!"%sagan%",ForeScout,nxlog,ccmsetup; event_id:7045,4697,601; classtype: suspicious-traffic; program: *Security*|System|Service_Control_Manager; reference: url,pastebin.com/raw/0SNSvyjJ; sid:5003105; metadata: updated_on 2023_08_02; rev:7;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] CRITICAL - Installation of PSEXEC service via Security Audit "; meta_content:"%sagan%",psexesvc,psexec; meta_nocase; meta_content:!"%sagan%",ForeScout,nxlog,ccmsetup; event_id:7045,4697,601; classtype: suspicious-traffic; program: *Security*|System|Service_Control_Manager; reference: url,pastebin.com/raw/0SNSvyjJ; sid:5003105; metadata: updated_on 2023_08_02; rev:8;)
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Installation of PSEXEC service via SCM"; meta_content:"%sagan%",psexesvc,psexec; meta_nocase; content: " 7045|3a| "; content:!"ForeScout"; nocase; content:!"nxlog"; nocase; content:!"ccmsetup"; nocase; classtype: suspicious-traffic; program: System|Service_Control_Manager; reference: url,pastebin.com/raw/0SNSvyjJ; sid:5003106; metadata: disabled_on 2023_08_08; rev:3;)
 
