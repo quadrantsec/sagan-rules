@@ -128,3 +128,6 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] WIPS Mac Spoo
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] IP Conflicts - Martian SRC Detected"; content: "type|22 3a 20 22|mac_spoofing_attack"; content:"|22|Client|22 3a|"; content:!"169.254."; classtype:attempted-user; reference:url,https://documentation.meraki.com/General_Administration/Monitoring_and_Reporting/Syslog_Event_Types_and_Log_Samples; sid:5015137; rev:1;)
 
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CISCO-AIRMARSHAL] Rogue SSID Detected"; content:"airmarshal_events"; content:"rogue_ssid_detected"; reference:url,https://documentation.meraki.com/General_Administration/Monitoring_and_Reporting/Syslog_Event_Types_and_Log_Samples; classtype:suspicious-activity; sid:5015339; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CISCO-AIRMARSHAL] SSID Spoofing Detected"; content:"airmarshal_events"; content:"ssid_spoofing_detected"; reference:url,https://documentation.meraki.com/General_Administration/Monitoring_and_Reporting/Syslog_Event_Types_and_Log_Samples; classtype:suspicious-activity; sid:5015340; rev:1;)
