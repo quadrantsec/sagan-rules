@@ -143,9 +143,9 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[CISCO-IOS] File Added via Web Us
 
 #alert any any any -> any any (msg: "[SWITCH-HARDWARE] Faulty System Fan(s) Detected"; content: "faulty system fan|28|s|29|) in the system"; json_map: "src_ip",".xff"; threshold: type suppress, track by_src, count 1, seconds 10800; classtype: hardware-event; sid:5015346; rev:1;)
 
-#alert any any any -> any any (msg: "[SWITCH-HARDWARE] System Shutting Down - Faulty System Fans"; content: "System shutting down in"; content: "seconds because"; content: "faulty system fan|28|s|29| exceeds limit"; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: hardware-event; sid:5015347; rev:2;)
+#alert any any any -> any any (msg: "[SWITCH-HARDWARE] System Shutting Down - Faulty System Fans"; content: "Shutting down system in"; content: "seconds because"; content: "faulty system fan|28|s|29| exceeds limit"; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: hardware-event; sid:5015347; rev:3;)
 
-#alert any any any -> any any (msg: "[SWITCH-HARDWARE] System Shutting Down - CatchAll"; content: "System shutting down in"; content: "seconds because"; content: !"faulty system fan|28|s|29| exceeds limit"; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: hardware-event; sid:5015348; rev:1;)
+#alert any any any -> any any (msg: "[SWITCH-HARDWARE] System Shutting Down - CatchAll"; content: "Shutting down system in"; content: "seconds because"; content: !"faulty system fan|28|s|29| exceeds limit"; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: hardware-event; sid:5015348; rev:2;)
 
 #alert any any any -> any any (msg: "[SWITCH-HARDWARE] Chassis Fan Failure Event - Total Failure"; pcre:"/chassis:  Fan failure: Fan: \d Failures: (\d)+/"; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 5, seconds 3600; classtype: hardware-event; sid:5015349; rev:1;)
 
