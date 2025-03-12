@@ -1,5 +1,5 @@
 # Sagan aws-iam.rules
-# Copyright (c) 2009-2023. Quadrant Information Security <www.quadrantsec.com>
+# Copyright (c) 2009-2023. Quadrant Information Security <www.quadrantsec.comg
 # All rights reserved.
 #
 # Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
@@ -208,7 +208,6 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS-IAM] Identity and Access Man
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS-IAM] Identity and Access Management event detected (PutUserPolicy) "; program:iam.amazonaws.com; json_content:".eventName","PutUserPolicy"; parse_src_ip: 1; content: !"|22|mfaAuthenticated|22 3a 20 22|true|22|"; content: ! "AWSReservedSSO_AWSAdministratorAccess"; content: ! "AWSServiceRole"; classtype:system-event; reference:url,docs.aws.amazon.com/IAM/latest/APIReference/API_Operations.html; sid:5008267; rev:1;)
 
-#ss
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS-IAM] Identity and Access Management event detected (RemoveClientIDFromOpenIDConnectProvider) "; program:iam.amazonaws.com; json_content:".eventName","RemoveClientIDFromOpenIDConnectProvider"; parse_src_ip: 1; content: !"|22|mfaAuthenticated|22 3a 20 22|true|22|"; content: ! "AWSReservedSSO_AWSAdministratorAccess"; content: ! "AWSServiceRole"; classtype:system-event; reference:url,docs.aws.amazon.com/IAM/latest/APIReference/API_Operations.html; sid:5008268; rev:1;)
 
@@ -260,7 +259,6 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS-IAM] Identity and Access Man
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS-IAM] Identity and Access Management event detected (UpdateSAMLProvider) "; program:iam.amazonaws.com; json_content:".eventName","UpdateSAMLProvider"; parse_src_ip: 1; content: !"|22|mfaAuthenticated|22 3a 20 22|true|22|"; content: ! "AWSReservedSSO_AWSAdministratorAccess"; content: ! "AWSServiceRole"; classtype:system-event; reference:url,docs.aws.amazon.com/IAM/latest/APIReference/API_Operations.html; sid:5008301; rev:1;)
 
-#ss
 alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS-IAM] Identity and Access Management event detected (UpdateServerCertificate) "; program:iam.amazonaws.com; json_content:".eventName","UpdateServerCertificate"; parse_src_ip: 1; content: !"|22|mfaAuthenticated|22 3a 20 22|true|22|"; content: ! "AWSReservedSSO_AWSAdministratorAccess"; content: ! "AWSServiceRole"; classtype:system-event; reference:url,docs.aws.amazon.com/IAM/latest/APIReference/API_Operations.html; sid:5008302; rev:1;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS-IAM] Identity and Access Management event detected (UpdateServiceSpecificCredential) "; program:iam.amazonaws.com; json_content:".eventName","UpdateServiceSpecificCredential"; parse_src_ip: 1; content: !"|22|mfaAuthenticated|22 3a 20 22|true|22|"; content: ! "AWSReservedSSO_AWSAdministratorAccess"; content: ! "AWSServiceRole"; classtype:system-event; reference:url,docs.aws.amazon.com/IAM/latest/APIReference/API_Operations.html; sid:5008303; rev:1;)
