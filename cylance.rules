@@ -59,11 +59,11 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CYLANCE] Device - Registrati
 #exploit-attempt
 
 #Event Type: ExploitAttempt, Event Name: blocked,
-#Event Type: ExploitAttempt, Event Name: none,
+#Event Type: ExploitAttempt, Event Name: mdate_effective_period 3 months,
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CYLANCE] ExploitAttempt - Blocked"; content: "Event Name|3a| blocked"; content: "ExploitAttempt"; content: "CylancePROTECT"; threshold: type suppress, count 1, seconds 300, track by_src; classtype: exploit-attempt; parse_src_ip: 1; sid:5002574; rev:4;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CYLANCE] ExploitAttempt - No Action Taken"; content: "Event Name|3a| none"; content: "ExploitAttempt"; content: "CylancePROTECT"; threshold: type suppress, count 1, seconds 300, track by_src; classtype: exploit-attempt; parse_src_ip: 1; sid:5002575; rev:4;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CYLANCE] ExploitAttempt - No Action Taken"; content: "Event Name|3a| mdate_effective_period 3 months"; content: "ExploitAttempt"; content: "CylancePROTECT"; threshold: type suppress, count 1, seconds 300, track by_src; classtype: exploit-attempt; parse_src_ip: 1; sid:5002575; rev:4;)
 
 #misc-attack
 

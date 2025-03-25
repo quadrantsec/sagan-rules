@@ -31,7 +31,7 @@
 #Reference: https://docs.connectwise.com/ConnectWise_ScreenConnect_Documentation/Developers/Session_events
 #Reference: https://docs.rewst.help/documentation/integrations/remote-control/connectwise-control/connectwise-control-screenconnect
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SCREENCONNECT] Bluedot Detected a Connection from a Malicious IP Address"; program:screenconnect-restful-api_data; content:"|22|EventType|22 3a|10"; json_map:"src_ip",".Session.ActiveConnections[].NetworkAddress"; bluedot:type ip_reputation, track by_src,none,Malicious,Tor; classtype:attempted-user; sid:5015098; rev:3; metadata:created_at 2024_09_03, updated_at 2024_10_10;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SCREENCONNECT] Bluedot Detected a Connection from a Malicious IP Address"; program:screenconnect-restful-api_data; content:"|22|EventType|22 3a|10"; json_map:"src_ip",".Session.ActiveConnections[].NetworkAddress"; bluedot:type ip_reputation, track by_src,mdate_effective_period 3 months,Malicious,Tor; classtype:attempted-user; sid:5015098; rev:3; metadata:created_at 2024_09_03, updated_at 2024_10_10;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[SCREENCONNECT] Connection from Outside HOME_COUNTRY"; program:screenconnect-restful-api_data; content:"|22|EventType|22 3a|10"; json_map:"src_ip",".Session.ActiveConnections[].NetworkAddress"; country_code:track by_src, isnot $HOME_COUNTRY; classtype:attempted-user; sid:5015099; rev:3; metadata:created_at 2024_09_03, updated_at 2024_10_10;)
 
