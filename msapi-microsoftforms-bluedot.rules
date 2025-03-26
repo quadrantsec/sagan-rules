@@ -32,5 +32,5 @@
 # JSON documentation for more information
 #
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-MICROSOFTFORMS-GEOIP] Action from Bluedot listed IP"; content:"ClientIP"; json_content: ".Workload","MicrosoftForms"; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5004893; rev: 2; metadata:updated_at 2024_04_11;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-MICROSOFTFORMS-GEOIP] Action from Bluedot listed IP"; content:"ClientIP"; json_content: ".Workload","MicrosoftForms"; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5004893; rev: 2; metadata:updated_at 2024_04_11;)
 
