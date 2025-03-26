@@ -57,7 +57,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Administrator is 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Reason unknown error"; content: "32010|22| type="; content: "reason=unknown"; classtype: hardware-event; sid: 5000922; rev:2;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Out of error mode"; content: "32012|22| type="; content: "out of error mode"; classtype: hardware-event; sid: 5000923; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Administrator removed logs"; content: "32013|22| type="; meta_content: "%sagan%",cleared,deleted,removed; classtype: configuration-change; sid: 5000924; rev:4;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] License about to expired"; content: "32014|22| type="; content: "license will expire"; classtype: program-error; sid: 5000925; rev:2;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] License about to expire"; content: "32014|22| type="; content: "license will expire"; classtype: program-error; sid: 5000925; rev:3;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Log disk is full"; content: "32015|22| type="; content: "Log disk is"; content: "full"; classtype: hardware-event; sid: 5000926; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Corrupted MAC packet detected"; content: "32020|22| type="; content: "Corrupted MAC packet detected"; classtype: network-event; sid: 5000927; rev:2;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Action reboot or shutdown"; content: "32095|22| type="; meta_content: "%sagan%",action=reboot,action=shutdown"; classtype: hardware-event; sid: 5000928; rev:4;)
