@@ -141,13 +141,13 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[CISCO-IOS] File Added via Web Us
 #The below rules are not necessarily Cisco related
 #Put in place on 3/5/2025 and initially disabled intentionally - Charles Goggins
 
-#alert any any any -> any any (msg: "[SWITCH-HARDWARE] Faulty System Fan(s) Detected"; content: "faulty system fan|28|s|29|) in the system"; json_map: "src_ip",".xff"; threshold: type suppress, track by_src, count 1, seconds 10800; classtype: hardware-event; sid:5015346; rev:1;)
+#alert any any any -> any any (msg: "[SWITCH-HARDWARE] Faulty System Fan(s) Detected"; content: "faulty system fan|28|s|29|) in the system"; json_map: "src_ip",".xff"; threshold: type suppress, track by_src, count 1, seconds 10800; classtype: hardware-event; sid:5015501; rev:2;)
 
-#alert any any any -> any any (msg: "[SWITCH-HARDWARE] System Shutting Down - Faulty System Fans"; content: "Shutting down system in"; content: "seconds because"; content: "faulty system fan|28|s|29| exceeds limit"; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: hardware-event; sid:5015347; rev:3;)
+#alert any any any -> any any (msg: "[SWITCH-HARDWARE] System Shutting Down - Faulty System Fans"; content: "Shutting down system in"; content: "seconds because"; content: "faulty system fan|28|s|29| exceeds limit"; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: hardware-event; sid:5015502; rev:4;)
 
-#alert any any any -> any any (msg: "[SWITCH-HARDWARE] System Shutting Down - CatchAll"; content: "Shutting down system in"; content: "seconds because"; content: !"faulty system fan|28|s|29| exceeds limit"; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: hardware-event; sid:5015348; rev:2;)
+#alert any any any -> any any (msg: "[SWITCH-HARDWARE] System Shutting Down - CatchAll"; content: "Shutting down system in"; content: "seconds because"; content: !"faulty system fan|28|s|29| exceeds limit"; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: hardware-event; sid:5015503; rev:3;)
 
-#alert any any any -> any any (msg: "[SWITCH-HARDWARE] Chassis Fan Failure Event - Total Failure"; pcre:"/chassis:  Fan failure: Fan: \d Failures: (\d)+/"; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 5, seconds 3600; classtype: hardware-event; sid:5015349; rev:1;)
+#alert any any any -> any any (msg: "[SWITCH-HARDWARE] Chassis Fan Failure Event - Total Failure"; pcre:"/chassis:  Fan failure: Fan: \d Failures: (\d)+/"; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 5, seconds 3600; classtype: hardware-event; sid:5015504; rev:2;)
 
-#alert any any any -> any any (msg: "[SWITCH-HARDWARE] Chassis Fan Failure Event - Partial Failure"; pcre: "/chassis:  Fan OK: Fan: \d Failures: (\d)+/"; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 5, seconds 3600; classtype: hardware-event; sid:5015350; rev:1;)
+#alert any any any -> any any (msg: "[SWITCH-HARDWARE] Chassis Fan Failure Event - Partial Failure"; pcre: "/chassis:  Fan OK: Fan: \d Failures: (\d)+/"; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 5, seconds 3600; classtype: hardware-event; sid:5015505; rev:2;)
 #==================================================================
