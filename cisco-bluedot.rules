@@ -34,7 +34,7 @@
 
 # --- Suspicious TCP events OUTBOUND -----
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OUTBOUND TCP connection to Tor"; content: "-6-302013"; content: "Built outbound"; append_program; bluedot: type ip_reputation, track all,none,Tor; normalize; parse_dst_ip: 1; parse_src_ip: 3; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005782; rev:1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OUTBOUND TCP connection to Tor"; content: "-6-302013"; content: "Built outbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Tor; normalize; parse_dst_ip: 1; parse_src_ip: 3; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005782; rev:1;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OUTBOUND TCP connection to a Malicious IP"; content: "-6-302013"; content: "Built outbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Malicious; normalize; parse_dst_ip: 1; parse_src_ip: 3; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005783; rev:1;)
 
@@ -46,7 +46,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OU
 
 # Tor is TCP traffic is TCP only
 #
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OUTBOUND UDP connection to Tor"; content: "-6-302015"; content: "Built outbound"; append_program; bluedot: type ip_reputation, track all,none,Tor; normalize; parse_dst_ip: 1; parse_src_ip: 3; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005786; rev:1;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OUTBOUND UDP connection to Tor"; content: "-6-302015"; content: "Built outbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Tor; normalize; parse_dst_ip: 1; parse_src_ip: 3; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005786; rev:1;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OUTBOUND UDP connection to a Malicious IP"; content: "-6-302015"; content: "Built outbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Malicious; normalize; parse_dst_ip: 1; parse_src_ip: 3; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005787; rev:1;)
 
@@ -57,7 +57,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OU
 # --- Suspicious ICMP events OUTBOUND -----
 
 # Tor is TCP traffic only
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OUTBOUND ICMP connection to Tor"; content: "-6-302020"; content: "Built outbound"; append_program; bluedot: type ip_reputation, track all,none,Tor; normalize; parse_dst_ip: 1; parse_src_ip: 3; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005790; rev:1;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OUTBOUND ICMP connection to Tor"; content: "-6-302020"; content: "Built outbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Tor; normalize; parse_dst_ip: 1; parse_src_ip: 3; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005790; rev:1;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OUTBOUND ICMP connection to a Malicious IP"; content: "-6-302020"; content: "Built outbound"; append_program; bluedot: type ip_reputation, track all, mdate_effective_period 3 months,Malicious; normalize; parse_dst_ip: 1; parse_src_ip: 3; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005791; rev:1;)
 
@@ -68,7 +68,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OU
 # --- Suspicious GRE events OUTBOUND -----
 
 # Tor is TCP traffic only
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OUTBOUND GRE connection to Tor"; content: "-6-302017"; content: "Built outbound"; append_program; bluedot: type ip_reputation, track all,none,Tor; normalize; parse_dst_ip: 1; parse_src_ip: 3; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005794; rev:1;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OUTBOUND GRE connection to Tor"; content: "-6-302017"; content: "Built outbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Tor; normalize; parse_dst_ip: 1; parse_src_ip: 3; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005794; rev:1;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OUTBOUND GRE connection to a Malicious IP"; content: "-6-302017"; content: "Built outbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Malicious; normalize; parse_dst_ip: 1; parse_src_ip: 3; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005795; rev:1;)
 
@@ -78,7 +78,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious OU
 
 # --- Suspicious TCP events INBOUND -----
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND TCP connection from Tor"; content: "-6-302013"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,none,Tor; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005798; rev:1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND TCP connection from Tor"; content: "-6-302013"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Tor; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005798; rev:1;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND TCP connection from a Malicious IP"; content: "-6-302013"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Malicious; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005799; rev:1;)
 
@@ -89,7 +89,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious IN
 # --- Suspicious UDP events INBOUND -----
 
 # Tor is TCP traffic only
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND UDP connection from Tor"; content: "-6-302015"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,none,Tor; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005802; rev:1;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND UDP connection from Tor"; content: "-6-302015"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Tor; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005802; rev:1;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND UDP connection from a Malicious IP"; content: "-6-302015"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Malicious; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005803; rev:1;)
 
@@ -100,7 +100,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious IN
 # --- Suspicious ICMP events INBOUND -----
 
 # Tor is TCP traffic only
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND ICMP connection from Tor"; content: "-6-302020"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,none,Tor; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005806; rev:2;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND ICMP connection from Tor"; content: "-6-302020"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Tor; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005806; rev:2;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND ICMP connection from a Malicious IP"; content: "-6-302020"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Malicious; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005807; rev:2;)
 
@@ -110,7 +110,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious IN
 
 # --- Suspicious GRE events INBOUND -----
 #
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND GRE connection from Tor"; content: "-6-302018"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,none,Tor; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005810; rev:1;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND GRE connection from Tor"; content: "-6-302018"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Tor; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005810; rev:1;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND GRE connection from a Malicious IP"; content: "-6-302018"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Malicious; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005811; rev:1;)
 
@@ -123,63 +123,63 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious IN
 # -6-722022,-6-722023
 
 
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from suspicious source"; program: %*-6-716038; bluedot: type ip_reputation, track all, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5002870; rev: 5;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from suspicious source"; program: %*-6-716038; bluedot: type ip_reputation, track all, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5002870; rev: 5;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from Tor"; meta_content:"%sagan%",-6-716038,-6-605005,-6-734001,-6-722022,-6-722023; append_program; bluedot: type ip_reputation, track all, none, Tor; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; sid:5005814; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from known Proxy"; meta_content:"%sagan%",-6-716038,-6-605005,-6-734001,-6-722022,-6-722023; append_program; bluedot: type ip_reputation, track all, none, Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; sid:5005815; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from Tor"; meta_content:"%sagan%",-6-716038,-6-605005,-6-734001,-6-722022,-6-722023; append_program; bluedot: type ip_reputation, track all, mdate_effective_period 3 months, Tor; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; sid:5005814; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from known Proxy"; meta_content:"%sagan%",-6-716038,-6-605005,-6-734001,-6-722022,-6-722023; append_program; bluedot: type ip_reputation, track all, mdate_effective_period 3 months, Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; sid:5005815; rev: 1;)
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from an IP that has attacked Honeypots"; meta_content:"%sagan%",-6-716038,-6-605005,-6-734001,-6-722022,-6-722023; append_program; bluedot: type ip_reputation, track all, mdate_effective_period 2 months, Honeypot; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; sid:5005816; rev: 2;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from a known Malicious IP"; meta_content:"%sagan%",-6-716038,-6-605005,-6-734001,-6-722022,-6-722023; append_program; bluedot: type ip_reputation, track all, none, Malicious; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; sid:5005817; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN Login from a known Malicious IP"; meta_content:"%sagan%",-6-716038,-6-605005,-6-734001,-6-722022,-6-722023; append_program; bluedot: type ip_reputation, track all, mdate_effective_period 3 months, Malicious; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; sid:5005817; rev: 1;)
 
 
 # %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: testuser] [Source: 10.10.10.10] [localport: 22] at 05:00:13 EST Sun Dec 1 2013
 
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from suspicious source"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 1; sid:5002871; rev: 4;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from suspicious source"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 1; sid:5002871; rev: 4;)
 #
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from known malicious source"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, none, Malicious; classtype: successful-user; parse_src_ip: 1; sid:5005834; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from Tor node"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, none, Tor; classtype: successful-user; parse_src_ip: 1; sid:5005835; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from known proxy"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, none, Proxy; classtype: successful-user; parse_src_ip: 1; sid:5005837; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from an IP associated with attacking a honeypot"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, none,Honeypot; classtype: successful-user; parse_src_ip: 1; sid:5005836; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from known malicious source"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious; classtype: successful-user; parse_src_ip: 1; sid:5005834; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from Tor node"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Tor; classtype: successful-user; parse_src_ip: 1; sid:5005835; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from known proxy"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Proxy; classtype: successful-user; parse_src_ip: 1; sid:5005837; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Console login from an IP associated with attacking a honeypot"; program: %SEC_LOGIN-5-LOGIN_SUCCESS; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months,Honeypot; classtype: successful-user; parse_src_ip: 1; sid:5005836; rev: 1;)
 
 # 10.1.2.1|local4|info|info|a6|2013-12-02|08:00:03|%*-6-605005| Login permitted from 10.1.1.1/54112 to inside:10.1.2.1/ssh for user "bob"
 
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Login permitted from suspicious source"; program: %*-6-605005; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype:  successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid:5002872; rev: 4;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Login permitted from suspicious source"; program: %*-6-605005; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype:  successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid:5002872; rev: 4;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Login permitted from Tor address"; content:"-6-605005"; append_program; bluedot: type ip_reputation, track by_src, none, Tor; classtype:  successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid:5005818; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Login permitted from a known malicious IP"; content:"-6-605005"; append_program;  bluedot: type ip_reputation, track by_src, none, Malicious; classtype:  successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid:5005819; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Login permitted from Proxy IP"; content:"-6-605005"; append_program; bluedot: type ip_reputation, track by_src, none, Proxy; classtype:  successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid:5005820; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Login permitted from an IP observed attacking Honeypots"; content:"-6-605005"; append_program; bluedot: type ip_reputation, track by_src, none, Honeypot; classtype:  successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid:5005821; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Login permitted from Tor address"; content:"-6-605005"; append_program; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Tor; classtype:  successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid:5005818; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Login permitted from a known malicious IP"; content:"-6-605005"; append_program;  bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious; classtype:  successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid:5005819; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Login permitted from Proxy IP"; content:"-6-605005"; append_program; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Proxy; classtype:  successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid:5005820; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] Login permitted from an IP observed attacking Honeypots"; content:"-6-605005"; append_program; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Honeypot; classtype:  successful-user; parse_src_ip: 1; parse_dst_ip: 2; sid:5005821; rev: 1;)
 
 
 # WebVPN
 # This is covered by signatures above with a meta_content.
 #
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN login from suspicious source"; program: %*-6-716001|%*-6-716038; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5002873; rev: 4;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN login from suspicious source"; program: %*-6-716001|%*-6-716038; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5002873; rev: 4;)
 
 # Group = AnyConnect, Username = bob, IP = 10.10.10.10, Session disconnected. Session Type: SSL, Duration: 12h:00m:19s, Bytes xmt: 332468520, Bytes rcv: 130276830, Reason: Max time exceeded
 
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from suspicious source"; program: %*-4-113019|%*-6-716002|%*-6-721018; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5002874; rev: 5;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from suspicious source"; program: %*-4-113019|%*-6-716002|%*-6-721018; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5002874; rev: 5;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from a known malicious source"; append_program; meta_content: "%sagan%",-6-113019,-6-716002,-6-721018; bluedot: type ip_reputation, track by_src, none, Malicious; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5005822; rev: 3;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from a Tor address"; append_program; meta_content: "%sagan%",-6-113019,-6-716002,-6-721018; bluedot: type ip_reputation, track by_src, none,Tor; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5005823; rev: 3;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from IP address that attack a honeypot"; append_program; meta_content: "%sagan%",-6-113019,-6-716002,-6-721018; bluedot: type ip_reputation, track by_src, none,Honeypot; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5005824; rev: 3;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from known proxy IP"; append_program; meta_content: "%sagan%",-6-113019,-6-716002,-6-721018; bluedot: type ip_reputation, track by_src, none,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5005825; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from a known malicious source"; append_program; meta_content: "%sagan%",-6-113019,-6-716002,-6-721018; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5005822; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from a Tor address"; append_program; meta_content: "%sagan%",-6-113019,-6-716002,-6-721018; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months,Tor; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5005823; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from IP address that attack a honeypot"; append_program; meta_content: "%sagan%",-6-113019,-6-716002,-6-721018; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months,Honeypot; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5005824; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN disconnect from known proxy IP"; append_program; meta_content: "%sagan%",-6-113019,-6-716002,-6-721018; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5005825; rev: 3;)
 
 
 # 10.8.5.10|local4|info|info|a6|2014-02-18|02:12:41|%*-6-734001| DAP: User bob, Addr 10.10.10.10, Connection AnyConnect: The following DAP records were selected for this connection: DfltAccessPolicy
 
 # This is cover by the VPN rule above via meta_content.
 
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN/AnyConnect login from suspicious source"; program: %*-6-734001; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5002875; rev: 4;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN/AnyConnect login from suspicious source"; program: %*-6-734001; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5002875; rev: 4;)
 
 # Cisco ACS (via VPN) - authentication success
 # 10.10.10.10|auth|info|info|26|2014-02-20|16:26:58|CisACS_01_PassedAuth| 12s245v32 1 0 Message-Type=Authen OK,User-Name=BOB,NAS-IP-Address=172.16.1.1,Caller-ID=199.44.66.11,NAS-Port=58642432,Group-Name=VPN Users,Filter Information=No Filters activated.,
 
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from suspicious source"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 2; sid:5002876; rev: 4;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from suspicious source"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 2; sid:5002876; rev: 4;)
 #
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from Tor IP"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, none,Tor; classtype: successful-user; parse_src_ip: 2; sid:5005830; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from Malicious IP"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, none, Malicious; classtype: successful-user; parse_src_ip: 2; sid:5005831; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from a known proxy IP"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, none, Proxy; classtype: successful-user; parse_src_ip: 2; sid:5005832; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from an IP address associated with attack a honeypot"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 2; sid:5005833; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from Tor IP"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months,Tor; classtype: successful-user; parse_src_ip: 2; sid:5005830; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from Malicious IP"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious; classtype: successful-user; parse_src_ip: 2; sid:5005831; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from a known proxy IP"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Proxy; classtype: successful-user; parse_src_ip: 2; sid:5005832; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login success from an IP address associated with attack a honeypot"; program: CisACS_01_PassedAuth; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 2; sid:5005833; rev: 1;)
 
 
 
@@ -187,14 +187,14 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] ACS Login su
 
 # This is cover about by meta_content
 #
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN login from suspicious source [2]"; program: %*-6-722022|%*-6-722023; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 1; sid:5002877; rev: 4;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] VPN login from suspicious source [2]"; program: %*-6-722022|%*-6-722023; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: successful-user; parse_src_ip: 1; sid:5002877; rev: 4;)
 
 # 2014-05-07 16:41:47|192.168.1.1|7050594|local0|info|info|%*-6-303002| FTP connection from inside:10.20.11.20/2351 to dmz:192.168.1.1/21, user bob Stored file somefile
 
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to  suspicious source"; program: %*-6-303002; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid: 5002878; rev: 5;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to  suspicious source"; program: %*-6-303002; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid: 5002878; rev: 5;)
 #
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to malicious source"; program: %*-6-303002; bluedot: type ip_reputation, track by_src, none, Malicious; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid:5005826; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to known proxy"; program: %*-6-303002; bluedot: type ip_reputation, track by_src, none,Proxy; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid:5005827; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to an IP associated with attacking a honeypot"; program: %*-6-303002; bluedot: type ip_reputation, track by_src, none,Honeypot; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid:5005828; rev: 1;)
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to Tor IP"; program: %*-6-303002; bluedot: type ip_reputation, track by_src, none, Tor; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid:5005829; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to malicious source"; program: %*-6-303002; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid:5005826; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to known proxy"; program: %*-6-303002; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months,Proxy; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid:5005827; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to an IP associated with attacking a honeypot"; program: %*-6-303002; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months,Honeypot; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid:5005828; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-BLUEDOT] FTP file transfer from or to Tor IP"; program: %*-6-303002; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Tor; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid:5005829; rev: 1;)
 
