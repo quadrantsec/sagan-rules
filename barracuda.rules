@@ -64,7 +64,7 @@
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Directory Traversal Exploit"; content: "DIRECTORY_TRAVERSAL_BEYOND_ROOT"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; reference: url,portswigger.net/web-security/file-path-traversal; classtype: exploit-attempt; sid: 5007725; rev:6; metadata: mitre_technique_id T1059 T1110;)
 
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Connection from Bluedot listed IP"; bluedot: type ip_reputation, track_by_src, mdate_effective_period 6 months; content: "GEO_IP"; content: !"DENY"; program: web; parse_src_ip: 2; parse_dst_ip: 3; classtype: exploit-attempt; sid: 5007726; rev: 6; metadata: mitre_technique_id T1071.001;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] Successful Connection from Bluedot listed IP"; bluedot: type ip_reputation, track_by_src, mdate_effective_period 3 months; content: "GEO_IP"; content: !"DENY"; program: web; parse_src_ip: 2; parse_dst_ip: 3; classtype: exploit-attempt; sid: 5007726; rev: 6; metadata: mitre_technique_id T1071.001;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[Barracuda] SQL Injection Attack"; content: "SQL_INJECTION_IN_HEADER"; content: !"DENY"; parse_src_ip: 3; parse_dst_ip: 2; classtype: exploit-attempt; sid: 5007727; rev: 6; metadata: mitre_technique_id T1059 T1190;)
 
