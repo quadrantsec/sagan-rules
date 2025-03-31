@@ -25,7 +25,7 @@
 #
 # Cisco Anyconnect
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-AETAS] VPN Login at suspicious time"; program: %*-6-716038; alert_time: days $SAGAN_DAYS, hours $SAGAN_HOURS; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; sid:5002034; rev: 3;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-AETAS] VPN Login at suspicious time"; program: %*-6-716038; alert_time: days $SAGAN_DAYS, hours $SAGAN_HOURS; default_proto: tcp; default_dst_port: $HTTPS_PORT; classtype: successful-user; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 21600; sid:5002034; rev:4;)
 
 # %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: testuser] [Source: 10.10.10.10] [localport: 22] at 05:00:13 EST Sun Dec 1 2013
 
