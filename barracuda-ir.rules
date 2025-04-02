@@ -1,0 +1,36 @@
+# Sagan barracuda-ir.rules
+# Copyright (c) 2009-2025. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 03/31/2025
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[Barracuda] Incident Response Continuous Remediation Enabled Detected"; program:Forensics; content:"|22|category|22 3a 22|Continuous Remediation Enabled|22|"; parse_src_ip:1; reference:url,https://campus.barracuda.com/product/forensics/doc/167841332/reviewing-insights/; classtype:suspicious-activity; sid:5015586; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[Barracuda] Incident Response Deleted Email Detected"; program:Forensics; content:"|22|category|22 3a 22|Deleted Email|22|"; parse_src_ip:1; reference:url,https://campus.barracuda.com/product/forensics/doc/167841332/reviewing-insights/; classtype:suspicious-activity; sid:5015587; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[Barracuda] Incident Response Incident Manual Detected"; program:Forensics; content:"|22|category|22 3a 22|Incident Manual|22|"; parse_src_ip:1; reference:url,https://campus.barracuda.com/product/forensics/doc/167841332/reviewing-insights/; classtype:suspicious-activity; sid:5015588; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[Barracuda] Incident Response Potential Incident: Post-Delivery Threat Detected"; program:Forensics; content:"|22|category|22 3a 22|Potential Incident: Post-Delivery Threat|22|"; parse_src_ip:1; reference:url,https://campus.barracuda.com/product/forensics/doc/167841332/reviewing-insights/; classtype:suspicious-activity; sid:5015589; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[Barracuda] Incident Response Potential Incident: Related Threats Detected"; program:Forensics; content:"|22|category|22 3a 22|Potential Incident: Related Threats|22|"; parse_src_ip:1; reference:url,https://campus.barracuda.com/product/forensics/doc/167841332/reviewing-insights/; classtype:suspicious-activity; sid:5015590; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[Barracuda] Incident Response User-Reported Email Detected"; program:Forensics; content:"|22|category|22 3a 22|User-Reported Email|22|"; parse_src_ip:1; reference:url,https://campus.barracuda.com/product/forensics/doc/167841332/reviewing-insights/; classtype:suspicious-activity; sid:5015591; rev:1;)

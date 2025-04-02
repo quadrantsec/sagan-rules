@@ -1,0 +1,43 @@
+# Sagan barracuda-impersonation.rules
+# Copyright (c) 2009-2025. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 03/31/2025
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Spam"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "spam"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5015579; rev:2; metadata: mitre_technique_id T1566.001 T1566.002;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Phishing"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "phishing"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5015580; rev:2; metadata: mitre_technique_id T1566.001 T1566.002;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Business Email Compromise/Spoofing"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "becSpoofing"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5015581; rev:2; metadata: mitre_technique_id T1566.002 T1566.003;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Spear Phishing - Email Found to be Blackmail"; program:Sentinel; json_content: ".payload.category", "Spear Phishing Threat"; json_content: ".payload.type", "blackmail"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5015582; rev:2; metadata: mitre_technique_id T1566.001 T1588;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Account Takeover - Threat Found via Sign Ins"; program:Sentinel; json_content: ".payload.category", "Account Takeover Alert"; json_content: ".payload.type", "Sign Ins"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5015583; rev:2; metadata: mitre_technique_id T1078 T1110;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Account Takeover - Threat Found via Inbox Rules"; program:Sentinel; json_content: ".payload.category", "Account Takeover Alert"; json_content: ".payload.type", "Inbox Rules"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5015584; rev:2; metadata: mitre_technique_id T1078 T1560.001;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[Barracuda] IMPERSONATION Account Takeover - Threat Found via Email"; program:Sentinel; json_content: ".payload.category", "Account Takeover Alert"; json_content: ".payload.type", "Email"; reference:url,https://campus.barracuda.com/product/sentinel/doc/93192797/how-to-connect-to-a-syslog/; sid:5015585; rev:2; metadata: mitre_technique_id T1078 T1110;)
