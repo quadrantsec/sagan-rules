@@ -179,6 +179,10 @@ rule=: error (unexpected RCODE %-:word% resolving '%-:char-to:\x27%': %src-ip:ip
 # Fortinet/Fortigate
 #*****************************************************************************
 
+#Fortinet VPN
+#date=2025-03-24 time=23:42:24 devname="Validus-80F-HQ" devid="FGT80FTK21001925" eventtime=1742881344950883870 tz="-0600" logid="0101039426" type="event" subtype="vpn" level="alert" vd="root" logdesc="SSL VPN login fail" action="ssl-login-fail" tunneltype="ssl-web" tunnelid=0 remip=198.44.136.74 user="canon" group="N/A" dst_host="N/A" reason="sslvpn_login_permission_denied" msg="SSL user failed to logged in"
+rule=: date=%-:word% time=%-:word% devname=%-:word% devid=%-:word% eventtime=%-:number% tz=%-:word% logid=%-:word% type=%-:word% subtype=%-:word% level=%-:word% vd=%-:word% logdesc="%-:char-to:\x22%" action=%-:word% tunneltype=%-:word% tunnelid=%-:number% remip=%src-ip:ipv4% user="%username:char-to:\x22%" %-:rest%
+
 rule=: time=%-:word% devname=%-:word% devid=%-:word% logid=%-:word% type=%-:word% subtype=%-:word% level=%-:word% vd=%-:word% srcip=%src-ip:ipv4% srcport=%src-port:number% srcintf=%-:word% dstip=%dst-ip:ipv4% dstport=%dst-port:number% dstintf=%-:word% %-:rest%
 
 #*****************************************************************************
