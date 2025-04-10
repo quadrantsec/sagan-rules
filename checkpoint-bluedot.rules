@@ -26,17 +26,17 @@
 #*************************************************************
 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Log In from a Bluedot listed address"; content: "[action|3a 22|Log In|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005726; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Log In from a Bluedot listed address"; content: "[action|3a 22|Log In|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005726; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Log Out from a Bluedot listed address"; content: "[action|3a 22|Log Out|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005727; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Log Out from a Bluedot listed address"; content: "[action|3a 22|Log Out|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005727; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Key Install from a Bluedot listed address"; content: "[action|3a 22|Key Install|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005728; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Key Install from a Bluedot listed address"; content: "[action|3a 22|Key Install|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005728; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Encrypt from a Bluedot listed address"; content: "[action|3a 22|Encrypt|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005729; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Encrypt from a Bluedot listed address"; content: "[action|3a 22|Encrypt|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005729; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Decrypt from a Bluedot listed address"; content: "[action|3a 22|Decrypt|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005730; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Decrypt from a Bluedot listed address"; content: "[action|3a 22|Decrypt|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005730; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Authorize from a Bluedot listed address"; content: "[action|3a 22|Authorize|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005731; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Authorize from a Bluedot listed address"; content: "[action|3a 22|Authorize|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005731; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Deauthorize from a Bluedot listed address"; content: "[action|3a 22|Deauthorize|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005732; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CHECKPOINT-BLUEDOT] Deauthorize from a Bluedot listed address"; content: "[action|3a 22|Deauthorize|22 3b|"; parse_dst_ip: 1; parse_src_ip: 3; parse_proto; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: suspicious-traffic; sid:5005732; rev:1;)
 
