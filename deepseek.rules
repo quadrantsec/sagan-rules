@@ -1,0 +1,1 @@
+alert tls any any -> any any (msg:"Deepseek Domain Detected via SNI"; tls.sni; pcre:"/\.?deepseek\.com$/"; nocase; sid:5015920; rev:1;)
