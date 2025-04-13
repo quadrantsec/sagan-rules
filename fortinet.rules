@@ -255,9 +255,9 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Attack Detected b
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Admin Login Disabled"; content: "logid=|22|0100032021|22|"; content: "type="; content: "subtype="; classtype: system-event; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006105; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Login Failed via VPN - Brute Force [10/5]"; content: "logid=|22|0101039426|22|"; content: "type="; content: "subtype="; parse_src_ip: 1; after: track by_src, count 10, seconds 300; xbits: set, brute_force,track ip_src, expire 21600; threshold: type suppress, track by_src, count 1, seconds 21600; classtype: brute-force; sid: 5006611; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Login Failed via VPN - Brute Force [10/5]"; content: "logid=|22|0101039426|22|"; content: "type="; content: "subtype="; parse_src_ip: 1; normalize; after: track by_src&track by_username, count 10, seconds 300; flexbits: set, brute_force, 21600; threshold: type suppress, track by_src&by_username, count 1, seconds 21600; classtype: brute-force; sid: 5006611; rev:4;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] VPN Login After Brute Force "; content: "logid=|22|0101039424|22|"; content: "type="; content: "subtype="; parse_src_ip: 1; xbits: isset, brute_force,track ip_src; threshold: type suppress, track by_src, count 5, seconds 3600; classtype: correlated-attack; sid: 5006612; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] VPN Login After Brute Force "; content: "logid=|22|0101039424|22|"; content: "type="; content: "subtype="; normalize; parse_src_ip: 1; flexbits: isset, by_src, brute_force; flexbits: isset, username, brute_force; threshold: type suppress, track by_src&by_username, count 1, seconds 3600; classtype: correlated-attack; sid: 5006612; rev:2;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[FORTINET] Possible CVE-2022-40684 Indicators Detected v1"; content:"type=|22|event|22|"; content:"user=|22|Local_Process_Access|22|"; content:"ui=|22|Node.js|22|"; reference:url,www.horizon3.ai/fortinet-iocs-cve-2022-40684/; classtype:attempted-admin; sid:5008401; rev:1;)
 
