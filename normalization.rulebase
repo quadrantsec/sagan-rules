@@ -601,7 +601,7 @@ rule=:%timestamp:time-24hr% GMT %-:word% %-:number%-PPE-%-:number% : default SSL
 # Netwrix
 #*****************************************************************************
 
-# 25407: DataSource : Logon Activity Action : Failed Logon Message: Failed Logon Logon Where : dom42wbr.gibbonslaw.local ObjectType : Logon Who : GIBBONSLAW\leclerc.adm What : N/A When : 2022-11-01T23:03:12Z Workstation : cms31wbr.gibbonslaw.local Details : Cause: Pre-authentication information was invalid: usually means bad password., This entry represents 2 matching events occurring within 600 seconds.
+# 25407: DataSource : Logon Activity Action : Failed Logon Message: Failed Logon Logon Where : XXXX ObjectType : Logon Who : XXuserXX What : N/A When : 2022-11-01T23:03:12Z Workstation : XXworkstationXX Details : Cause: Pre-authentication information was invalid: usually means bad password., This entry represents 2 matching events occurring within 600 seconds.
 rule=:%-:number%: DataSource : Logon Activity Action : Failed Logon Message: Failed Logon Logon Where : %server:word% ObjectType : Logon Who : %-:char-to:\%\%username:word% What : N/A When : %-:date-iso%T%-:time-24hr%Z Workstation : %hostname:word% Details%-:rest%
 
 #*****************************************************************************
@@ -618,13 +618,15 @@ rule=:TRACK-CLIENT-NOLOGS - Logs have not been received from IP address %src-ip:
 # CrowdStrike
 #*****************************************************************************
 
-#127.0.0.1|user|notice|notice|baptist-lae|2023-05-02T10:15:36Z|2023-05-02T10:15:36+00:00|CEF|
-# 0|CrowdStrike|FalconHost|1.0|Incidents|1|cat=Incidents cs1Label=incidentType cs1=UNUSUAL_ACTIVITY severityNameLabel=severityName severityName=INFO msg=User access patterns detected as anomalous. Such activities may indicate potential threats such as endpoint infection, compromised account or other risks. Falcon monitors the activity and will escalate severity or incident type when necessary. deviceCustomDate1Label=startTime deviceCustomDate1=May 02 2023 10:15:35 deviceCustomDate2Label=endTime deviceCustomDate2=1683022536087 cs2Label=identityProtectionIncidentId cs2=INC-17533 duser=BH.LOCAL\\BHLEARN153 cs3Label=endpointIp cn1Label=numberOfCompromisedEntities cn1=1 cn2Label=numbersOfAlerts cn2=1 cs4Label=falconHostLink cs4=https://falcon.us-2.crowdstrike.com/identity-protection/incidents/INC-17533 stateLabel=state state=NEW
+#127.0.0.1|user|notice|notice|host|2023-05-02T10:15:36Z|2023-05-02T10:15:36+00:00|CEF|
+# 0|CrowdStrike|FalconHost|1.0|Incidents|1|cat=Incidents cs1Label=incidentType cs1=UNUSUAL_ACTIVITY severityNameLabel=severityName severityName=INFO msg=User access patterns detected as anomalous. Such activities may indicate potential threats such as endpoint infection, compromised account or other risks. Falcon monitors the activity and will escalate severity or incident type when necessary. deviceCustomDate1Label=startTime deviceCustomDate1=May 02 2023 10:15:35 deviceCustomDate2Label=endTime deviceCustomDate2=1683022536087 cs2Label=identityProtectionIncidentId cs2=INC-17533 duser=XXXX cs3Label=endpointIp cn1Label=numberOfCompromisedEntities cn1=1 cn2Label=numbersOfAlerts cn2=1 cs4Label=falconHostLink cs4=https://falcon.us-2.crowdstrike.com/XXXX stateLabel=state state=NEW
 
 rule=:0|%-:char-to:\x7c%|FalconHost|1.0|Incidents|1|cat=Incidents cs1Label=%-:word% cs1=%-:word% severityNameLabel=%-:word% severityName=%-:word% msg=%-:string-to:cs2=%cs2=%username:char-to:\x20%%-:rest%
 
-#SonicWall IPS Prevention Log Normalization
-sn=2CB8EDB5BBC0 time="2023-07-25 10:29:08" fw=64.239.248.4 pri=1 c=32 gcat=3 m=609 src=44.204.56.80:50630:X6 dst=172.20.1.235:443:X0 msg="IPS Prevention Alert: WEB-TLS Suspicious HTTPS Request 2, SID: 4757, Priority: Medium" msg="IPS Prevention Alert: WEB-TLS Suspicious HTTPS Request 2" sid=4757 ipscat="WEB-TLS Suspicious HTTPS Request 2" ipspri=2 n=8 fw_action="drop"
+#Pulls message and username in Crowdstrike Falcon message
+rule=:0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:string-to:duser%duser=%username:word%%-:rest%
 
-rule=:sn=%-:word% time=%-:quoted-string% fw=%-:word% pri=%-:number% c=%-:number% gcat=%-:number% m=%-:number% src=%src-ip:ipv4%:%src-port:number%:%-:word% dst=%dst-ip:ipv4%:%dst-port:number%:%-:word% msg=%-:rest%
+#SonicWall IPS Prevention Log Normalization
+#Pulls Message, SRC IP and DSTIP
+rule=:sn=%-:string-to:msg%msg=%message:quoted-string%%-:string-to:src%src=%src_ip:ipv4%:%-:string-to:dst%dst=%dest_ip:ipv4%:%-:rest%
 

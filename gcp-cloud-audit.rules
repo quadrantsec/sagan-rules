@@ -37,7 +37,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Login Failure - Brute 
 
 #alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] OAuth2 Activity"; content: "cloudaudit.googleapis.com"; content: "oauth2.googleapis.com"; flexbits:set,GCP_Event,10; classtype: system-event; sid: 5005997; rev:2;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] IAM Policy Change"; content: "cloudaudit.googleapis.com"; content: "SetIamPolicy"; flexbits:set,GCP_Event,10; classtype: system-event; sid: 5005998; rev:2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] IAM Policy Change"; content: "cloudaudit.googleapis.com"; content: "SetIamPolicy"; json_map: "src_ip", ".protoPayload.requestMetadata.callerIp"; classtype: system-event; sid: 5005998; rev:3;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Suspicious Login"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.suspiciousLogin"; flexbits:set,GCP_Event,10; classtype: system-event; parse_src_ip: 1; sid: 5005999; rev:3;)
 
