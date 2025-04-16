@@ -549,6 +549,8 @@ rule=:5145: A network share object was checked to see whether client can be gran
 
 rule=:%-:string-to:Account Name:%Account Name: %username:word% %-:string-to:Called Station Identifier:%Called Station Identifier: %nasMAC:char-to  :\ x3a%:%-:string-to:Calling Station Identifier:%Calling Station Identifier: %userMAC:char-to  :\ x20% %-:string-to:NAS IPv4 Address:%NAS IPv4 Address: %nasIP:ipv4% %-:string-to:NAS Identifier:%NAS Identifier: %nasHost:word% %-:string-to:Reason Code:%Reason Code: %reasonCode:word% %-:rest%
 
+rule=:6273: Network Policy Server denied access to a user. Contact the Network Policy Server administrator for more information. User: Security ID: %securityid:word% Account Name: %username:word% Account Domain: %rest%
+
 #6272: Network Policy Server granted access to a user
 
 rule=:%-:string-to:Account Name:%Account Name: %username:word% %-:string-to:Called Station Identifier:%Called Station Identifier: %nasMAC:char-to  :\ x3a%:%-:string-to:Calling Station Identifier:%Calling Station Identifier: %userMAC:char-to  :\ x20% %-:string-to:NAS IPv4 Address:%NAS IPv4 Address: %nasIP:ipv4% %-:string-to:NAS Identifier:%NAS Identifier: %nasHost:word% %-:string-to:Result:%Result: %reasonCode:word% %-:rest%
