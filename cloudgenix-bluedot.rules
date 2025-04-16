@@ -27,7 +27,7 @@
 
 # Cloudgenix signatures by Justin Kling / jkling _AT_ quadrantsec.com / 20210422
 
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CLOUDGENIX] Inbound traffic to suspicious source"; content: "cgxFlowLog"; parse_src_ip: 1; parse_dest_ip: 2; bluedot: type ip_reputation, track by_src, none, Malicious,Tor,Honeypot,Proxy; classtype: bad-unknown; sid:5005780; rev: 1;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CLOUDGENIX] Inbound traffic to suspicious source"; content: "cgxFlowLog"; parse_src_ip: 1; parse_dest_ip: 2; bluedot: type ip_reputation, track by_src, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: bad-unknown; sid:5005780; rev: 1;)
 
-#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CLOUDGENIX] Outbound traffic to suspicious source"; content: "cgxFlowLog"; parse_src_ip: 1; parse_dest_ip: 2; bluedot: type ip_reputation, track by_dest, none, Malicious,Tor,Honeypot,Proxy; classtype: bad-unknown; sid:5005781; rev: 1;)
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CLOUDGENIX] Outbound traffic to suspicious source"; content: "cgxFlowLog"; parse_src_ip: 1; parse_dest_ip: 2; bluedot: type ip_reputation, track by_dest, mdate_effective_period 3 months, Malicious,Tor,Honeypot,Proxy; classtype: bad-unknown; sid:5005781; rev: 1;)
 
