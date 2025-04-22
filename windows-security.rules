@@ -481,7 +481,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Copied rundll3
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Possible UAC Bypass - Rundll32.exe using DLLRegister"; program:*Sysmon|*Security; content:"CommandLine: C:\\Windows\\system32\\rundll32.exe"; nocase; content:",DllRegisterServer"; reference:url,redcanary.com/threat-detection-report/techniques/rundll32/; classtype:suspicious-command; sid:5008351; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Exfil software rclone detected"; program:*Security|*Sysmon; meta_content:"%sagan%",rclone,rclone|2e|exe; meta_nocase; meta_content: "%sagan%",copy,ls,sync,config; meta_nocase; classtype:trojan-activity; sid:5008354; rev:3;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] Exfil software rclone detected"; program:*Security|*Sysmon; meta_content:"%sagan%",rclone,rclone|2e|exe; meta_nocase; meta_content: "%sagan%",copy,ls,sync,config; meta_nocase; classtype:exfiltration; sid:5008354; rev:3;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SECURITY] A service was installed in the system (powershell)"; program:System; event_id:7045; content:"Service File Name"; content:"%COMSPEC%"; distance:0; content:"powershell"; distance:0; classtype:suspicious-command; sid:5008357; rev:1;)
 
