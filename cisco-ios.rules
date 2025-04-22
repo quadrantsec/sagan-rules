@@ -100,26 +100,26 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Illegal User SSH
 # %USER-3-SYSTEM_MSG: FATAL: bad tty - login (no program)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] FATAL - bad tty - login (no program)"; content: "%USER-3-SYSTEM_MSG|3a|"; content: "FATAL: bad tty"; content: "no program";  classtype: system-event; sid: 5001671; rev:5;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Auth to privilege 15 failed"; content: "%SYS-5-PRIV_AUTH_FAIL"; parse_src_ip: 1; classtype: unsuccessful-admin; sid: 5001672; rev:3;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Multicast storm detected"; content: "%STORM_CONTROL-3-FILTERED";  classtype: network-event; sid: 5001673; rev:2;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Multicast storm detected"; content: "%STORM_CONTROL-3-FILTERED";  classtype: network-event; sid: 5001673; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Invalid ARP"; content: "%SW_DAI-4-INVALID_ARP";  classtype: network-event; sid: 5001674; rev:2;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Low FAN RPM - Service recommended"; content: "%ENVMON-4-FAN_LOW_RPM"; classtype: hardware-event; threshold: type suppress, track by_src, count 1, seconds 3600; sid: 5001688; rev:4;)
 
 # Submitted by Robert Nunley (rnunley@quadrantsec.com) - 08/14/2013
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] EIGRP Adjacency Change - Neighbor Up"; content: "%DUAL-5-NBRCHANGE"; content: "EIGRP"; content: "is up"; classtype: system-event; parse_src_ip: 1; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001707; rev:6;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] EIGRP Adjacency Change - Neighbor Down"; content: "%DUAL-5-NBRCHANGE"; content: "EIGRP"; content: "is down"; classtype: system-event; parse_src_ip: 1; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001708; rev:6;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] EIGRP Adjacency Change - Neighbor Up"; content: "%DUAL-5-NBRCHANGE"; content: "EIGRP"; content: "is up"; classtype: system-event; parse_src_ip: 1; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001707; rev:6;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] EIGRP Adjacency Change - Neighbor Down"; content: "%DUAL-5-NBRCHANGE"; content: "EIGRP"; content: "is down"; classtype: system-event; parse_src_ip: 1; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001708; rev:6;)
 
 # Submittied by Robert Nunley (rnunley@quadrantsec.com) - 11/18/2013
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] BGP Adjacency Change - Neighbor Up"; content: "%BGP-5-ADJCHANGE"; content: "neighbor"; content: "Up"; classtype: system-event; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001718; rev:2;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] BGP Adjacency Change - Neighbor Down"; content: "%BGP-5-ADJCHANGE"; content: "neighbor"; content: "Down"; classtype: system-event; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001719; rev:2;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] BGP Neighbor Removed From Topology"; content: "%BGP_SESSION-5-ADJCHANGE"; content: "neighbor"; content: "topology"; classtype: system-event; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001720; rev:2;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] BGP Adjacency Change - Neighbor Up"; content: "%BGP-5-ADJCHANGE"; content: "neighbor"; content: "Up"; classtype: system-event; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001718; rev:2;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] BGP Adjacency Change - Neighbor Down"; content: "%BGP-5-ADJCHANGE"; content: "neighbor"; content: "Down"; classtype: system-event; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001719; rev:2;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] BGP Neighbor Removed From Topology"; content: "%BGP_SESSION-5-ADJCHANGE"; content: "neighbor"; content: "topology"; classtype: system-event; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001720; rev:2;)
 
 # Submitted by Adam Hall (ahall@quadrantsec.com) - 11/18.2013
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] HSRP Requesting Active State"; content: "Grp"; content: "Coup"; classtype: system-event; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001721; rev:2;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] HSRP State Change"; content: "%STANDBY-6-STATECHANGE"; content: "state"; classtype: system-event; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001722; rev:2;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] HSRP State Change"; content: "%HSRP-5-STATECHANGE"; content: "state"; classtype: system-event; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001723; rev:2;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] HSRP Requesting Active State"; content: "Grp"; content: "Coup"; classtype: system-event; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001721; rev:2;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] HSRP State Change"; content: "%STANDBY-6-STATECHANGE"; content: "state"; classtype: system-event; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001722; rev:2;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] HSRP State Change"; content: "%HSRP-5-STATECHANGE"; content: "state"; classtype: system-event; threshold: type suppress, track by_src, count 5, seconds 300; sid: 5001723; rev:2;)
 
 # %PARSER-5-CFGLOG_LOGGEDCMD: User:bob  logged command:!exec: enable
 

@@ -42,8 +42,8 @@
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Citrix message"; classtype: system-event; program: Citrix; sid: 5000317; rev:3;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Trusted Platform Module [TPM] Error.  User name not found"; content: " 17150|3a| "; classtype: unsuccessful-user; program: DAC; sid: 5000318; rev:4;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Eventlog service was corrupted"; content: "was corrupted"; classtype: program-error; program: Eventlog; sid: 5000319; rev:2;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Eventlog service was stopped"; content: "Service Stopped"; classtype: system-event; program: Eventlog; sid: 5000320; rev:3;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Eventlog service returned error"; content: "returned error"; classtype: program-error; program: Eventlog; sid: 5000322; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Eventlog service was stopped"; content: "Service Stopped"; classtype: system-event; program: Eventlog; sid: 5000320; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Eventlog service returned error"; content: "returned error"; classtype: program-error; program: Eventlog; sid: 5000322; rev:3;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Eventlog service reporting uptime [in seconds]"; content: "The system uptime"; classtype: not-suspicious; program: Eventlog; sid: 5000323; rev:2;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] IPSec message"; classtype: not-suspicious; program: IPSec; sid: 5000324; rev:3;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] LSASRV - Could not establish a secure connection"; content: " 40961|3a| "; classtype: network-event; program: LSASRV; sid: 5000381; rev:4;)
@@ -75,7 +75,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] WinVNC4 Conne
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] WinVNC4 Connection Authentication failure"; content: "Authentication failure"; default_proto: tcp; default_dst_port: 5900; classtype: unsuccessful-user; program: WinVNC4; parse_src_ip: 1; parse_port; sid: 5000350; rev:6;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] WinVNC4 Connection close - reset by peer"; content: "Connection reset by peer"; content: "closed"; parse_src_ip: 1; parse_port; default_proto: tcp; default_dst_port: 5900; classtype: not-suspicious; program: WinVNC4; sid: 5000351; rev:6;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] WinVNC4 Connection close - reset by peer [Non-shared]"; content: "Non-shared connection requested"; content: "closed"; parse_src_ip: 1; parse_port; default_proto: tcp; default_dst_port: 5900; classtype: suspicious-traffic; program: WinVNC4; sid: 5000352; rev:5;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] WinVNC4 Connection close - reading version failed"; content: "reading version failed"; content: "closed"; parse_src_ip: 1; parse_port; default_proto: tcp; default_dst_port: 5900; classtype: suspicious-traffic; program: WinVNC4; sid: 5000353; rev:6;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] WinVNC4 Connection close - reading version failed"; content: "reading version failed"; content: "closed"; parse_src_ip: 1; parse_port; default_proto: tcp; default_dst_port: 5900; classtype: suspicious-traffic; program: WinVNC4; sid: 5000353; rev:6;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] WinVNC4 Connection closed"; content: "Clean disconnection"; content: "closed"; parse_src_ip: 1; parse_port; default_proto: tcp; default_dst_port: 5900; classtype: not-suspicious; program: WinVNC4; sid: 5000354; rev:5;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] WinVNC4 HTTPServer event"; content: "HTTPServer"; default_proto: tcp; default_dst_port: 5900; classtype: network-event; program: WinVNC4; parse_src_ip: 1; parse_port; sid: 5000355; rev:4;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Crypt32 Failed to extract third-party root list"; content: " 4107|3a| "; classtype: program-error; program: crypt32; sid: 5000356; rev:4;)
@@ -85,7 +85,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] MSSQLServer I
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Application install"; content: " 11707|3a| "; classtype: program-error; program: MsiInstaller; sid: 5001183; rev:3;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Windows is shutting down"; event_id: 4609,513; classtype: program-error; program: *Security*; sid: 5001184; rev:8;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] File system full"; content: " 13570|3a| "; classtype: system-error; program: NtFrs|Ntfs; sid: 5001191; rev:4;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] System time has changed"; event_id: 4616,520; content:!"|3a|\Program Files\VMware\VMware Tools\vmtoolsd.exe"; classtype: system-event; program: *Security*; sid: 5001194; rev:11;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] System time has changed"; event_id: 4616,520; content:!"|3a|\Program Files\VMware\VMware Tools\vmtoolsd.exe"; classtype: system-event; program: *Security*; sid: 5001194; rev:11;)
 
 # DHCP-Server| 1063: There are no IP addresses available for lease in the scope or superscope "VLAN_311_Example".
 # DHCP-Server| 1020: Scope, 10.100.1.0, is 97 percent full with only 2 IP addresses remaining.
