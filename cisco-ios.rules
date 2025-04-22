@@ -100,7 +100,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Illegal User SSH
 # %USER-3-SYSTEM_MSG: FATAL: bad tty - login (no program)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] FATAL - bad tty - login (no program)"; content: "%USER-3-SYSTEM_MSG|3a|"; content: "FATAL: bad tty"; content: "no program";  classtype: system-event; sid: 5001671; rev:5;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Auth to privilege 15 failed"; content: "%SYS-5-PRIV_AUTH_FAIL"; parse_src_ip: 1; classtype: unsuccessful-admin; sid: 5001672; rev:3;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Multicast storm detected"; content: "%STORM_CONTROL-3-FILTERED";  classtype: network-event; sid: 5001673; rev:2;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Multicast storm detected"; content: "%STORM_CONTROL-3-FILTERED";  classtype: network-event; sid: 5001673; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Invalid ARP"; content: "%SW_DAI-4-INVALID_ARP";  classtype: network-event; sid: 5001674; rev:2;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Low FAN RPM - Service recommended"; content: "%ENVMON-4-FAN_LOW_RPM"; classtype: hardware-event; threshold: type suppress, track by_src, count 1, seconds 3600; sid: 5001688; rev:4;)
 
