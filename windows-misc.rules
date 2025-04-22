@@ -85,7 +85,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] MSSQLServer I
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Application install"; content: " 11707|3a| "; classtype: program-error; program: MsiInstaller; sid: 5001183; rev:3;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Windows is shutting down"; event_id: 4609,513; classtype: program-error; program: *Security*; sid: 5001184; rev:8;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] File system full"; content: " 13570|3a| "; classtype: system-error; program: NtFrs|Ntfs; sid: 5001191; rev:4;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] System time has changed"; event_id: 4616,520; content:!"|3a|\Program Files\VMware\VMware Tools\vmtoolsd.exe"; classtype: system-event; program: *Security*; sid: 5001194; rev:11;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] System time has changed"; event_id: 4616,520; content:!"|3a|\Program Files\VMware\VMware Tools\vmtoolsd.exe"; classtype: system-event; program: *Security*; sid: 5001194; rev:11;)
 
 # DHCP-Server| 1063: There are no IP addresses available for lease in the scope or superscope "VLAN_311_Example".
 # DHCP-Server| 1020: Scope, 10.100.1.0, is 97 percent full with only 2 IP addresses remaining.
