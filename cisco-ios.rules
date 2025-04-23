@@ -124,8 +124,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Invalid ARP"; co
 # %PARSER-5-CFGLOG_LOGGEDCMD: User:bob  logged command:!exec: enable
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Command logged"; content: "%PARSER-5-CFGLOG_LOGGEDCMD"; classtype: misc-activity; sid: 5001871; rev:2;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Enable command executed"; content: "%PARSER-5-CFGLOG_LOGGEDCMD"; content: "exec"; nocase; content: "enable"; nocase; classtype: successful-admin; sid: 5001872; rev:2;)
-
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Enable command executed"; content: "%PARSER-5-CFGLOG_LOGGEDCMD"; content: "exec"; nocase; content: "enable"; nocase; classtype: not-suspicious; sid: 5001872; rev:2;)
 # Jan 22 16:03:51: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: bob] [Source: 10.10.0.1] [localport: 22] at 16:03:51 UTC Wed Jan 22 2014
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-IOS] Login Success"; content: "%PARSER-5-CFGLOG_LOGGEDCMD"; default_proto: tcp; classtype: successful-admin; parse_src_ip: 1; parse_port; sid: 5001952; rev:2;)
