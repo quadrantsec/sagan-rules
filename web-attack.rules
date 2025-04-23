@@ -111,7 +111,6 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] Attempt to Acc
 
 # CVE-2021-44228 / By Champ Clark [2021/12/12]
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] Log4j exploit attempt - CVE-2021-44228"; content:"jndi|3a|"; content: "{"; content: " 200 "; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference:url,lunasec.io/docs/blog/log4j-zero-day/; reference:cve,2021-44228; sid:5005958; rev:2;)
-
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] Log4j exploit attempt - CVE-2021-44228"; content:"jndi|3a|"; content: "{"; content: " 200 "; content:!"Rule"; nocase; content:!"drop"; content:!"tmm"; nocase; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference:url,lunasec.io/docs/blog/log4j-zero-day/; reference:cve,2021-44228; sid:5005958; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WEB-ATTACKS] Log4j exploit attempt via hex encoding - CVE-2021-44228"; content:"jndi"; content: "%3A"; nocase; content: "%7B"; nocase; content: " 200 "; default_proto:tcp; default_dst_port: $HTTP_PORT; classtype: web-application-attack; parse_src_ip: 1; reference:url,lunasec.io/docs/blog/log4j-zero-day/; reference:cve,2021-44228; sid:5005959; rev:2;)
 
