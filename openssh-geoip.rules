@@ -35,7 +35,7 @@
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[OPENSSH-GEOIP] Authentication success via password from outside HOME_COUNTRY"; content: "Accepted password"; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: successful-user; normalize; program: sshd; country_code: track by_src, isnot $HOME_COUNTRY; sid: 5001874; rev:3;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[OPENSSH-GEOIP] Authentication success via publickey from outside HOME_COUNTRY"; content: "Accepted publickey"; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: successful-user; normalize; program: sshd; country_code: track by_src, isnot $HOME_COUNTRY; sid: 5001875; rev:3;)
-#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[OPENSSH-GEOIP] Authentication success via keyboard from outside HOME_COUNTRY"; content: "Accepted keyboard-interactive"; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: successful-user; normalize; program: sshd; country_code: track by_src, isnot $HOME_COUNTRY; sid: 5001876; rev:3;)
+#alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[OPENSSH-GEOIP] Authentication success via keyboard from outside HOME_COUNTRY"; content: "Accepted keyboard-interactive"; content: !"1.1.5.1"; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: successful-user; normalize; program: sshd; country_code: track by_src, isnot $HOME_COUNTRY; sid: 5001876; rev:3;)
 
 # New "catch all" ssh login success.  Watches for "Accepted" with a depth.
 
