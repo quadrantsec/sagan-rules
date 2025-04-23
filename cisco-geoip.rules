@@ -58,11 +58,10 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] VPN login from
 # 2014-05-07 16:41:47|192.168.1.1|7050594|local0|info|info|%*-6-303002| FTP connection from inside:10.20.11.20/2351 to dmz:192.168.1.1/21, user bob Stored file somefile
 
 # Track by source
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] FTP file transfer from outside HOME_COUNTRY"; program: %*-6-303002; country_code: track by_src, isnot $HOME_COUNTRY; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid: 5002059; rev: 6;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] FTP file transfer from outside HOME_COUNTRY"; program: %*-6-303002; content:!"Retrieved file"; country_code: track by_src, isnot $HOME_COUNTRY; default_proto: tcp; default_dst_port: $FTP_PORT; classtype: successful-user; normalize; sid: 5002059; rev: 6;)
 
 # Track by dest
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] FTP file transfer to outside HOME_COUNTRY"; program: %*-6-303002; country_code: track by_dst, isnot $HOME_COUNTRY; default_proto: tcp; default_src_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; parse_dst_ip: 2; sid: 5002060; rev: 6;)
-
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] FTP file transfer to outside HOME_COUNTRY"; program: %*-6-303002; content:!"Retrieved file"; country_code: track by_dst, isnot $HOME_COUNTRY; default_proto: tcp; default_src_port: $HTTPS_PORT; classtype: successful-user; normalize; parse_src_ip: 1; parse_dst_ip: 2; sid: 5002060; rev: 6;)
 # 2014-05-07 09:32:45|10.8.0.5|129815|local4|info|info|%*-6-722022| Group <GroupPolicy1> User <Bob> IP <10.10.102.102> TCP SVC connection terminated without compression
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-GEOIP] VPN connection termination from outside HOME_COUNTRY"; content:"connection terminated"; program: %*-6-722022|%*-6-722023; country_code: track by_src, isnot $HOME_COUNTRY; classtype: successful-user; parse_src_ip: 1; sid: 5006541; rev: 3;)
