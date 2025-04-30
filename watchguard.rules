@@ -248,5 +248,8 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WATCHGUARD] IPS detected an
 
 alert any $HOME_NET any -> $HOME_NET any (msg: "[WATCHGUARD] Management User Log in"; content: "msg_id=|22|3E00-0002|22|"; parse_src_ip: 1; classtype: program-error; reference:url,www.watchguard.com/help/docs/wsm/XTM_11/en-US/log_catalog/index.html; sid:5003967; rev:2;) 
 
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WATCHGUARD] Management User Log In From Outside HOME_COUNTRY"; content: "msg_id=|22|3E00-0002|22|"; parse_src_ip: 1; country_code: track by_src, isnot $HOME_COUNTRY; classtype: suspicious-traffic; reference:url,www.watchguard.com/help/docs/wsm/XTM_11/en-US/log_catalog/index.html; sid:5015933; rev:1; metadata: createdOn 2025_04_29)
+
+
 alert any $HOME_NET any -> $HOME_NET any (msg: "[WATCHGUARD] Management User Log Out"; content: "msg_id=|22|3E00-0004|22|"; parse_src_ip: 1; classtype: program-error; reference:url,www.watchguard.com/help/docs/wsm/XTM_11/en-US/log_catalog/index.html; sid:5003968; rev:2;) 
 

@@ -160,3 +160,4 @@
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[MSDNS] Delete Forwarding Policy"; program:msdns; json_content:".EventID","582"; json_content:".SourceName","Microsoft-Windows-DNSServer/Audit"; classtype:system-event; sid:5006732; rev:1;)
 
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MSDNS] Suspicious DNS Query for deepseek[.]com"; program:msdns; json_content:".QueryResponseIndicator", "Query"; json_content: ".QuestionName", "deepseek.com"; json_contains; json_map: "src_ip", ".RemoteIP"; threshold:type suppress, track by_src, count 1, seconds 21600; classtype:suspicious-traffic; sid:5015934; rev:1; metadata: createdOn 2025_04_29, suspiciousToolUse Chinese;)
