@@ -1,0 +1,38 @@
+#Experimental Ruleset
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] AWS ConsoleLogin"; program:signin.amazonaws.com; json_content:".eventName","ConsoleLogin"; json_content:".responseElements.ConsoleLogin","Success"; parse_src_ip:1; normalize; classtype:system-event; sid:9910002; rev:1;)
+
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 GetObject GeoIP Outside of HOME_COUNTRY"; program:s3.amazonaws.com; json_map:"src_ip",".sourceIPAddress"; country_code:track by_src, isnot $HOME_COUNTRY; json_content:".eventName","GetObject"; parse_src_ip:1; normalize; classtype:system-event; sid:9910005; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 GetObject Bluedot Suspicious IP Detected"; program:s3.amazonaws.com; json_map:"src_ip",".sourceIPAddress"; bluedot:type ip_reputation, track src, none, Malicious,Tor,Proxy; json_content:".eventName","GetObject"; parse_src_ip:1; normalize; classtype:system-event; sid:9910006; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 File Transfer (GetObject)"; program:s3.amazonaws.com; json_content:".eventName","GetObject"; parse_src_ip:1; normalize; classtype:system-event; sid:9910001; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 File Transfer (PutObject)"; program:s3.amazonaws.com; json_content:".eventName","PutObject"; parse_src_ip:1; normalize; classtype:system-event; sid:9910004; rev:1;)
+
+#Volumes
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Describe Volumes"; program:ec2.amazonaws.com; json_content:".eventName","DescribeVolumes"; parse_src_ip:1; normalize; classtype:system-event; sid:9910012; rev:1;)
+
+
+#Snapshots
+#list-snapshots is a paginated operation. Multiple API calls may be issued in order to retrieve the entire data set of results. You can disable pagination by providing the --no-paginate argument.
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 List Snapshots"; program:ec2.amazonaws.com; json_content:".eventName","ListSnapshots"; parse_src_ip:1; normalize; classtype:system-event; sid:9910005; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Describe Snapshots"; program:ec2.amazonaws.com; json_content:".eventName","DescribeSnapshots"; parse_src_ip:1; normalize; classtype:system-event; sid:9910010; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Get Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","GetSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:9910009; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Copy Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","CopySnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:9910006; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Create Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","CreateSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:9910007; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Create Snapshots"; program:ec2.amazonaws.com; json_content:".eventName","CreateSnapshots"; parse_src_ip:1; normalize; classtype:system-event; sid:9910008; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Delete Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","DeleteSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:9910011; rev:1;)
+
+#Attributes
+#This can be used to detected sharing of snapshots
+#https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ShareSnapshot.html
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Modify Snapshot Attribute"; program:ec2.amazonaws.com; json_content:".eventName","ModifySnapshotAttribute"; parse_src_ip:1; normalize; classtype:system-event; sid:9910011; rev:1;)
+
+
