@@ -366,7 +366,7 @@
 5000405 || [SYSLOG] rmclomv - Power Supply FAULT! || url,wiki.quadrantsec.com/bin/view/Main/5000405
 5000409 || [SU] su as 'root' suceeded || url,wiki.quadrantsec.com/bin/view/Main/5000409
 5000410 || [SYSLOG] Nagios npre - Host not allowed || url,wiki.quadrantsec.com/bin/view/Main/5000410
-5000411 || [OPENSSH] User logged into a disabled account || url,wiki.quadrantsec.com/bin/view/Main/5000411
+5000411 || [OPENSSH] Suspicious login to a nologin account || url,wiki.quadrantsec.com/bin/view/Main/5000411
 5000412 || [FTPD] User logged into an disabled account || url,wiki.quadrantsec.com/bin/view/Main/5000412
 5000413 || [PROFTPD] User logged into an disabled account || url,wiki.quadrantsec.com/bin/view/Main/5000413
 5000414 || [PUREFTPD] User logged into an disabled account || url,wiki.quadrantsec.com/bin/view/Main/5000414
