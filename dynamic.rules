@@ -227,3 +227,4 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] ScreenConnect logs 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] barracuda Email GW logs detected"; content:"hdr_from"; content:"reason_extra"; dynamic_load: $RULE_PATH/barracuda-email-gw-defense.rules; classtype:dynamic-rules; sid:5015834; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] barracuda IR logs detected"; program:Forensics; dynamic_load: $RULE_PATH/barracuda-ir.rules; classtype:dynamic-rules; sid:5015835; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] barracuda Impersonation logs detected"; program:Sentinel; dynamic_load: $RULE_PATH/barracuda-waf.rules; classtype:dynamic-rules; sid:5015836; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Key9 logs detected"; program:k9; dynamic_load: $RULE_PATH/key9.rules; classtype:dynamic-rules; sid:5015958; rev:1;)
