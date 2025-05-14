@@ -30,9 +30,9 @@
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Subscribed and joined a group"; content:"SentinelOne"; content:"activityType=17"; classtype:system-event; sid:5006614; rev:2;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New active threat"; content:"SentinelOne"; content:"activityType=19"; pcre:"/activityType=[\d]{2}\b/"; normalize; classtype:trojan-activity; sid:5006615; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New active threat"; content:"SentinelOne"; content:"activityType=19"; pcre:"/activityType=[\d]{2}\b/"; normalize; classtype:suspicious-traffic; sid:5006615; rev:3;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New blocked threat"; content:"SentinelOne"; content:"activityType=20"; pcre:"/activityType=[\d]{2}\b/"; classtype:trojan-activity; sid:5006616; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New blocked threat"; content:"SentinelOne"; content:"activityType=20"; pcre:"/activityType=[\d]{2}\b/"; classtype:suspicious-traffic; sid:5006616; rev:3;)
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Administrative information - User Modified"; content:"SentinelOne"; content:"activityType=24"; pcre:"/activityType=[\d]{2}\b/"; classtype:system-event; sid:5006617; rev:2;)
 
@@ -84,11 +84,11 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Kill performed succ
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Remediate performed successfully"; content:"SentinelOne"; content:"activityType=2002"; classtype:trojan-activity; sid:5006641; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Quarantine performed successfully"; content:"SentinelOne"; content:"activityType=2004"; classtype:trojan-activity; sid:5006642; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Quarantine performed successfully"; content:"SentinelOne"; content:"activityType=2004"; classtype:system-event; sid:5006642; rev:2;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Kill failed"; content:"SentinelOne"; content:"activityType=2006"; classtype:trojan-activity; sid:5006643; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Kill failed"; content:"SentinelOne"; content:"activityType=2006"; classtype:system-error; priority:1; sid:5006643; rev:3;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Quarantine failed"; content:"SentinelOne"; content:"activityType=2009"; classtype:trojan-activity; sid:5006644; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Quarantine failed"; content:"SentinelOne"; content:"activityType=2009"; classtype:system-error; priority:1; sid:5006644; rev:2;)
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Unquarantine performed successfully"; content:"SentinelOne"; content:"activityType=2026"; classtype:system-event; sid:5006645; rev:1;)
 
@@ -116,7 +116,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Exclusion was added
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] 2FA recovery email added"; content:"SentinelOne"; content:"activityType=3626"; classtype:system-event; sid:5006657; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New Suspicious threat detected"; content:"SentinelOne"; content:"activityType=4003"; normalize; classtype:trojan-activity; sid:5006658; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] New Suspicious threat detected"; content:"SentinelOne"; content:"activityType=4003"; normalize; classtype:suspicious-traffic; sid:5006658; rev:3;)
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SentinelOne] Threat status changed"; content:"SentinelOne"; content:"activityType=4008"; classtype:system-event; sid:5006659; rev:1;)
 
