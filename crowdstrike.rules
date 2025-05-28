@@ -122,7 +122,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] DNS Request In A De
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Network Access In A Detection Summary Event"; program:CrowdStrike; content:"Network Access In A Detection Summary Event"; classtype:malware; sid:5007200; rev:2; metadata: mitre_technique_id T1071.001;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Document Access In A Detection Summary Event"; program:CrowdStrike; content:"Document Access In A Detection Summary Event"; classtype:malware; sid:5007201; rev:2; metadata: mitre_technique_id T1041;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Document Access In A Detection Summary Event"; program:CrowdStrike; content:"Document Access In A Detection Summary Event"; content:"cs2Label=AccessedDocFileName cs2=thumbcache_"; classtype:malware; sid:5007201; rev:2; metadata: mitre_technique_id T1041;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[CROWDSTRIKE] Executable Written In A Detection Summary Event"; program:CrowdStrike; content:"Executable Written In A Detection Summary Event"; content:!"Prevention, operation blocked"; classtype:malware; sid:5007202; rev:3; metadata: mitre_technique_id T1036;)
 
