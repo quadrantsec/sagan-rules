@@ -33,5 +33,3 @@
 #
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-SHAREPOINT] Data loss prevention rule match."; json_content: ".Workload","SharePoint"; json_content: ".Operation", "DlpRuleMatch"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; classtype: suspicious-traffic; sid:5005158; rev: 2;)
-
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[MSAPI-SHAREPOINT] SiteCollectionAdminAdded from Bluedot listed IP address"; content:"ClientIP"; json_content: ".Workload","SharePoint"; json_content: ".Operation", "SiteCollectionAdminAdded"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload";classtype: suspicious-traffic; sid:5015964; rev:1; metadata:updated_at 2025_05_27;)
