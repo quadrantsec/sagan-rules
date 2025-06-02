@@ -643,3 +643,73 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] MSHTA File Downl
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Suspicious File Download Using MSHTA"; program:*Security*|*Sysmon*; event_id:1,4688; meta_content:"%sagan% http",mshta,mshta.exe; meta_nocase; reference:url,https://thedfirreport.com/2025/03/31/fake-zoom-ends-in-blacksuit-ransomware/; reference:url,https://lolbas-project.github.io/lolbas/Binaries/Mshta/; classtype:execution; sid:5015943; rev:1; metadata:created_at 2025_03_15, updated_at 2025_03_15, mitre_tactic_id TA0011, mitre_technique_id T1105;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] File Created - SentinelOne Installer (1/5)"; program:*Sysmon*; event_id:11; content:"SentinelOneInstaller_windows_64bit"; nocase; pcre:"/SentinelOneInstaller_windows[_0-9a-z]+.exe CreationUtcTime/"; content:!"N-able Technologies"; parse_src_ip:1; normalize; reference:url,https://www.aon.com/en/insights/cyber-labs/bring-your-own-installer-bypassing-sentinelone; classtype:execution; sid:5015959; rev:1; metadata:created_at 2025_05_07, updated_at 2025_05_07, mitre_tactic_id TA0002, mitre_technique_id T1203;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] File Executed - SentinelOne Installer (2/5)"; program:*Sysmon*; event_id:1; content:"SentinelOneInstaller_windows_"; nocase; pcre:"/SentinelOneInstaller_windows[_0-9a-z]+.exe FileVersion/"; content:!"N-able Technologies"; parse_src_ip:1; normalize; reference:url,https://www.aon.com/en/insights/cyber-labs/bring-your-own-installer-bypassing-sentinelone; classtype:execution; sid:5015960; rev:1; metadata:created_at 2025_05_07, updated_at 2025_05_07, mitre_tactic_id TA0002, mitre_technique_id T1203;)
+
+#*************************************************************
+# BACKSTAB DETECTION RULES
+#*************************************************************
+
+# Backstab - ETW Provider Killer Detection
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Backstab ETW Provider Manipulation Detected"; program:*Sysmon*|*Security*; event_id:1,4688; content:"Backstab"; nocase; content:!"help"; content:!"--help"; classtype:suspicious-command; reference:url,github.com/Yaxser/Backstab; sid:5015965; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0005, mitre_technique_id T1562.006;)
+
+# Backstab - Registry manipulation for ETW providers
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Backstab Registry ETW Provider Modification"; program:*Sysmon*; event_id:12,13; content:"EventType: setValue"; content:"TargetObject"; content:"SYSTEM\\CurrentControlSet\\Control\\WMI\\Autologger"; nocase; content:"Microsoft-Windows-Kernel-EventTracing"; nocase; distance:0; within:200; classtype:suspicious-command; reference:url,github.com/Yaxser/Backstab; sid:5015966; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0005, mitre_technique_id T1562.006;)
+
+# Backstab - Command line patterns
+
+#*************************************************************
+# PROCESS HACKER DETECTION RULES
+#*************************************************************
+
+# Process Hacker - Executable name detection
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Process Hacker Execution Detected"; program:*Sysmon*|*Security*; event_id:1,4688; pcre:"/Image:.*\\\\(ProcessHacker|ProcessHacker\\.exe|kprocesshacker|KProcessHacker\\.sys)/i"; classtype:suspicious-command; reference:url,processhacker.sourceforge.io; sid:5015967; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0007, mitre_technique_id T1057;)
+
+# Process Hacker - Driver loading (KProcessHacker.sys)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Process Hacker Kernel Driver Load"; program:*Sysmon*; event_id:6; content:"ImageLoaded"; content:"KProcessHacker.sys"; nocase; distance:0; within:100; classtype:suspicious-command; reference:url,processhacker.sourceforge.io; sid:5015968; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0004, mitre_technique_id T1014;)
+
+# Process Hacker - Memory access patterns for LSASS
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Process Hacker LSASS Memory Access"; program:*Sysmon*; event_id:10; content:"TargetImage"; content:"lsass.exe"; nocase; distance:0; within:50; content:"SourceImage"; content:"ProcessHacker"; nocase; distance:0; within:100; classtype:suspicious-command; reference:url,processhacker.sourceforge.io; sid:5015969; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0006, mitre_technique_id T1003.001;)
+
+# Process Hacker - File creation in temp directories
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Process Hacker Temp File Creation"; program:*Sysmon*; event_id:11; pcre:"/TargetFilename:.*\\\\(Temp|tmp)\\\\.*ProcessHacker/i"; classtype:suspicious-command; reference:url,processhacker.sourceforge.io; sid:5015970; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0005, mitre_technique_id T1070.004;)
+
+# Backstab - Command line patterns
+
+#*************************************************************
+# PROCESS HACKER DETECTION RULES
+#*************************************************************
+
+# Process Hacker - Executable name detection
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Process Hacker Execution Detected"; program:*Sysmon*|*Security*; event_id:1,4688; pcre:"/Image:.*\\\\(ProcessHacker|ProcessHacker\\.exe|kprocesshacker|KProcessHacker\\.sys)/i"; classtype:suspicious-command; reference:url,processhacker.sourceforge.io; sid:5015971; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0007, mitre_technique_id T1057;)
+
+# Process Hacker - Driver loading (KProcessHacker.sys)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Process Hacker Kernel Driver Load"; program:*Sysmon*; event_id:6; content:"ImageLoaded"; content:"KProcessHacker.sys"; nocase; distance:0; within:100; classtype:suspicious-command; reference:url,processhacker.sourceforge.io; sid:5015972; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0004, mitre_technique_id T1014;)
+
+# Process Hacker - Memory access patterns for LSASS
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Process Hacker LSASS Memory Access"; program:*Sysmon*; event_id:10; content:"TargetImage"; content:"lsass.exe"; nocase; distance:0; within:50; content:"SourceImage"; content:"ProcessHacker"; nocase; distance:0; within:100; classtype:suspicious-command; reference:url,processhacker.sourceforge.io; sid:5015973; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0006, mitre_technique_id T1003.001;)
+
+# Process Hacker - File creation in temp directories
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Process Hacker Temp File Creation"; program:*Sysmon*; event_id:11; pcre:"/TargetFilename:.*\\\\(Temp|tmp)\\\\.*ProcessHacker/i"; classtype:suspicious-command; reference:url,processhacker.sourceforge.io; sid:5015974; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0005, mitre_technique_id T1070.004;)
+
+
+#*************************************************************
+# EVILGINX2 DETECTION RULES
+#*************************************************************
+
+# Evilginx2 - Executable execution
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Evilginx2 Phishing Framework Execution"; program:*Sysmon*|*Security*; event_id:1,4688; pcre:"/Image:.*\\\\evilginx/i"; content:"CommandLine"; content:!"-help"; content:!"-version"; classtype:suspicious-command; reference:url,github.com/kgretzky/evilginx2; sid:5015975; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0001, mitre_technique_id T1566.002;)
+
+# Evilginx2 - Configuration file access
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Evilginx2 Configuration File Access"; program:*Sysmon*; event_id:11,2; pcre:"/TargetFilename:.*\\\\(phishlets|config\\.yaml|evilginx)/i"; content:"Image"; content:"evilginx"; nocase; distance:0; within:200; classtype:suspicious-command; reference:url,github.com/kgretzky/evilginx2; sid:5015976; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0001, mitre_technique_id T1566.002;)
+
+# Evilginx2 - DNS server binding
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Evilginx2 DNS Server Start"; program:*Sysmon*; event_id:3; content:"Image"; content:"evilginx"; nocase; distance:0; within:100; content:"tcp"; default_proto:tcp; content:"53"; default_dst_port:53; classtype:suspicious-traffic; reference:url,github.com/kgretzky/evilginx2; sid:5015977; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0001, mitre_technique_id T1566.002;)
+
+# Evilginx2 - HTTP/HTTPS proxy server
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Evilginx2 HTTP Proxy Server"; program:*Sysmon*; event_id:3; content:"Image"; content:"evilginx"; nocase; distance:0; within:100; content:"tcp"; default_proto:tcp; meta_content:"DestinationPort|3a| %sagan%",80,443,8080,8443; classtype:suspicious-traffic; reference:url,github.com/kgretzky/evilginx2; sid:5015978; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0001, mitre_technique_id T1566.002;)
+
+# Evilginx2 - Command line patterns
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Evilginx2 Command Line Usage"; program:*Sysmon*|*Security*; event_id:1,4688; pcre:"/CommandLine:.*(phishlets|lures|sessions|config domain|config ip)/i"; content:"evilginx"; nocase; distance:0; within:300; classtype:suspicious-command; reference:url,github.com/kgretzky/evilginx2; sid:5015979; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0001, mitre_technique_id T1566.002;)
+
+# Evilginx2 - Certificate generation/manipulation
+alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] Evilginx2 Certificate Operations"; program:*Sysmon*; event_id:1; content:"CommandLine"; pcre:"/CommandLine:.*(certbot|acme|letsencrypt).*(evilginx|phish)/i"; classtype:suspicious-command; reference:url,github.com/kgretzky/evilginx2; sid:5015980; rev:1; metadata:created_at 2025_05_23, mitre_tactic_id TA0001, mitre_technique_id T1566.002;)
+
