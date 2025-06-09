@@ -1,0 +1,67 @@
+# Sagan ubiquiti.rules
+# Copyright (c) 2009-2024. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 06/09/2025
+
+#Admin Activity
+alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] Admin Activity - Admin Accessed UniFi Network"; content:"Admin Accessed UniFi Network"; parse_src_ip:1; normalize; classtype:system-event; sid:5016043; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] Admin Activity - Admin Accessed UniFi Network From Outside HOME_NETWORK"; content:"Admin Accessed UniFi Network"; content:"opened UniFi Network"; country_code:track by_src, isnot $HOME_COUNTRY; parse_src_ip:1; normalize; classtype:suspicious-activity; sid:5016044; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] Admin Activity - Admin Accessed UniFi Network From Malicious IP"; content:"Admin Accessed UniFi Network"; content:"opened UniFi Network"; bluedot:type ip_reputation, track by_src,mdate_effective_period 3 months,Malicious; parse_src_ip:1; normalize; classtype:suspicious-activity; sid:5016045; rev:1;)
+
+#admins
+alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] Admins - User Accessed UniFi OS From Outside HOME_NETWORK"; content:"accessed the UniFi OS"; country_code:track by_src, isnot $HOME_COUNTRY; parse_src_ip:1; normalize; classtype:suspicious-activity; sid:5016046; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] Admins - User Accessed UniFi OS From Malicious IP"; content:"Admin Accessed UniFi Network"; content:"accessed the UniFi OS"; bluedot:type ip_reputation, track by_src,mdate_effective_period 3 months,Malicious; parse_src_ip:1; normalize; classtype:suspicious-activity; sid:5016047; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] Admins - An invitation email to join UniFi Identity has been sent"; content:"An invitation email to join UniFi Identity has been sent"; parse_src_ip:1; normalize; classtype:system-event; sid:5016048; rev:1;)
+
+#Internet Health
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] Internet Health - Internet Down"; content:"Internet Health"; content:"Internet Down"; parse_src_ip:1; normalize; classtype:system-event; sid:5016049; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] Internet Health - Internet Restored"; content:"Internet Health"; content:"Internet Restored"; parse_src_ip:1; normalize; classtype:system-event; sid:5016050; rev:1;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] Internet Health - Multiple Internet Disconnections"; content:"Internet Health"; content:"Multiple Internet Disconnections"; parse_src_ip:1; normalize; classtype:system-event; sid:5016051; rev:1;)
+
+#updates
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] Updates - Device has been updated"; content:"Updates"; content:"Device Updated"; parse_src_ip:1; normalize; classtype:system-event; sid:5016052; rev:1;)
+
+#users
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] Users - User loaded a UniFi Identity credential in to their device"; content:"users"; content:"loaded a UniFi Identity credential"; parse_src_ip:1; normalize; classtype:system-event; sid:5016053; rev:1;)
+
+#LAN_WAN
+alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] LAN to WAN Allowed Traffic To Malicious IP"; content:"LAN_WAN]Allow All Traffic"; parse_dst_ip:2; bluedot:type ip_reputation, track by_dst,mdate_effective_period 3 months,Malicious; normalize; classtype:suspicious-activity; sid:5016054; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] LOCAL to WAN Allowed Traffic To Malicious IP"; content:"LOCAL_WAN]Allow All Traffic"; parse_dst_ip:2; bluedot:type ip_reputation, track by_dst,mdate_effective_period 3 months,Malicious; normalize; classtype:suspicious-activity; sid:5016055; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] VPN to WAN Allowed Traffic To Malicious IP"; content:"VPN_WAN]Allow All Traffic"; parse_dst_ip:2; bluedot:type ip_reputation, track by_dst,mdate_effective_period 3 months,Malicious; normalize; classtype:suspicious-activity; sid:5016056; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] WAN to LOCAL Allowed Traffic To Malicious IP"; content:"WAN_LOCAL]Allow All Traffic"; parse_src_ip:1; bluedot:type ip_reputation, track by_src,mdate_effective_period 3 months,Malicious; normalize; classtype:suspicious-activity; sid:5016057; rev:1;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[UBIQUITI] WAN to LAN Allowed Traffic To Malicious IP"; content:"WAN_LAN]Allow All Traffic"; parse_src_ip:1; bluedot:type ip_reputation, track by_src,mdate_effective_period 3 months,Malicious; normalize; classtype:suspicious-activity; sid:5016058; rev:1;)
