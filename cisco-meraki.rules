@@ -102,7 +102,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[CISCO-MERAKI] SSID Spoofing
 
 # Security_event
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] IDS Alert Detected"; program:meraki_dashboard_api_data; content:"eventType|22 3a 20 22|IDS Alert"; content:!"|22|blocked|22 3a 20|true"; parse_src_ip: 1; parse_dst_ip: 2; classtype: suspicious-traffic; reference: url,documentation.meraki.com/MX-Z/Content_Filtering_and_Threat_Protection/; sid:5015129; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] IDS Alert Detected"; program:meraki_dashboard_api_data; content:"eventType|22 3a 20 22|IDS Alert"; content:!"|22|blocked|22 3a 20|true"; parse_src_ip: 1; parse_dst_ip: 2; threshold: type suppress, track by_src, count 5, seconds 3600; classtype: suspicious-traffic; reference: url,documentation.meraki.com/MX-Z/Content_Filtering_and_Threat_Protection/; sid:5015129; rev:2;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] VPN Auth Failed Brute Force [25/1]"; program:meraki_dashboard_api_data; content:"type|22 3a 20 22|anyconnect_vpn_auth_failure"; parse_src_ip: 1; after:track by_src, count 25, seconds 120; threshold: type suppress, track by_string, count 1, seconds 86400; normalize; classtype: suspicious-traffic; reference: url,documentation.meraki.com/MX-Z/Content_Filtering_and_Threat_Protection/; sid:5015130; rev:1;)
 
