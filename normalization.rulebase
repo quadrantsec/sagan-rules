@@ -635,4 +635,8 @@ rule=: sn=%-:string-to:msg%msg=%message:quoted-string%%-:string-to:src%src=%src-
 #For parsing Username in Windows event 4662 (An operation was performed on an object)
 rule=: 4662: An operation was performed on an object. Subject : Security ID: %securityid:word% Account Name: %username:word% Account Domain: %-:rest%
 
+#Sonicwall IP parsing Catchall rules
 
+rule= sn=%-:string-to:src=%src=%src-ip:ipv4%:%-:string-to:dst=%dst=%dst-ip:ipv4%:%-:rest%
+
+rule=: %-:string-to:Firewall Settings%Firewall Settings%-:string-to:src%src: %src-ip:ipv4%%-:string-to:dst%dst: %dst-ip:ipv4%%-:rest%

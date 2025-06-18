@@ -144,3 +144,15 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] Firewall Polic
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] Routing Configuration Change Detected"; program:meraki_dashboard_api_data; content:"label|22 3a 20 22|routing"; nocase; classtype:system-event; sid:5016040; rev:1;)
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] DHCP Configuration Change Detected"; program:meraki_dashboard_api_data; content:"label|22 3a 20 22|dhcp"; nocase; classtype:system-event; sid:5016041; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] VPN Configuration Change Detected"; program:meraki_dashboard_api_data; content:"label|22 3a 20 22|vpn"; nocase; classtype:system-event; sid:5016042; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] IDS Ruleset - Option Updated"; program:meraki_dashboard_api_data; content:"label|22 3a 20 22|IDS ruleset"; nocase; classtype:system-event; sid:5016059; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] Blocked Threat Categories Were Updated"; program:meraki_dashboard_api_data; content:"label|22 3a 20 22|Blocked Threat Categories"; nocase; classtype:system-event; sid:5016060; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] IDS Mode - Option Updated"; program:meraki_dashboard_api_data; content:"label|22 3a 20 22|IDS mode select"; nocase; classtype:system-event; sid:5016061; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] Malware Blocked - Opion Updated"; program:meraki_dashboard_api_data; content:"label|22 3a 20 22|Malware is blocked"; nocase; classtype:system-event; sid:5016062; rev:1;)
+
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] Malware Scanning - Option Updated"; program:meraki_dashboard_api_data; content:"label|22 3a 20 22|Malware scanning"; nocase; classtype:system-event; sid:5016063; rev:1;)
+
+
