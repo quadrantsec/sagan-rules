@@ -640,3 +640,9 @@ rule=: 4662: An operation was performed on an object. Subject : Security ID: %se
 rule= sn=%-:string-to:src=%src=%src-ip:ipv4%:%-:string-to:dst=%dst=%dst-ip:ipv4%:%-:rest%
 
 rule=: %-:string-to:Firewall Settings%Firewall Settings%-:string-to:src%src: %src-ip:ipv4%%-:string-to:dst%dst: %dst-ip:ipv4%%-:rest%
+
+rule=: %-:string-to:sourceaddress%sourceaddress%-:char-to:\x20% %-:char-to:\x22%"%src-ip:ipv4%%-:rest%
+
+rule=: %-:string-to:sourceaddress%sourceaddress%-:char-to:\x20% %-:char-to:\x22%"%src-ip:ipv4%%-:string-to:destinationaddress%destinationaddress%-:char-to:\x3a%:%-:char-to:\x22%"%dst-ip:ipv4%%-:rest%
+
+rule=: %-:string-to:sourceaddress%sourceaddress%-:char-to:\x20% %-:char-to:\x22%"%src-ip:ipv4%%-:string-to:destinationaddress%destinationaddress%-:char-to:\x20% %-:char-to:\x22%"%dst-ip:ipv4%%-:rest%
