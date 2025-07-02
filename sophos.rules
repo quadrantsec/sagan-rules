@@ -164,7 +164,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Computer has been isolat
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Computer has been removed from isolation"; program:sophos; content:"Event::Endpoint::Isolation::UnIsolated::ADMIN_UNKNOWN"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007284; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access has been blocked by web filtering"; program:sophos; content:"Event::Endpoint::WebFilteringBlocked"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007285; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Access has been blocked by web filtering"; program:sophos; content:"Event::Endpoint::WebFilteringBlocked"; classtype:system-event; parse_src_ip: 1; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007285; rev:2;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[SOPHOS] Website blocked; program:sophos; content:"Event::Endpoint::WebControlViolation::BLOCKED"; classtype:system-event; reference:url,support.sophos.com/support/s/article/KB-000038309?language=en_US; sid:5007286; rev:1;)
 
