@@ -155,4 +155,4 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] Malware Blocke
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] Malware Scanning - Option Updated"; program:meraki_dashboard_api_data; content:"label|22 3a 20 22|Malware scanning"; nocase; classtype:system-event; sid:5016063; rev:1;)
 
-
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] [CRITICAL] Suspicious Activity Detected and Allowed"; program:meraki_dashboard_api_data; content:"decision|3d|allowed action|3d|allow message"; nocase; classtype:system-event; sid:5016584; rev:1;)
