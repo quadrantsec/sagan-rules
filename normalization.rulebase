@@ -648,4 +648,4 @@ rule=: %-:string-to:sourceaddress%sourceaddress%-:char-to:\x20% %-:char-to:\x22%
 rule=: %-:string-to:sourceaddress%sourceaddress%-:char-to:\x20% %-:char-to:\x22%"%src-ip:ipv4%%-:string-to:destinationaddress%destinationaddress%-:char-to:\x20% %-:char-to:\x22%\"%dst-ip:ipv4%%-:rest%
 
 #Bomgar/Beyond Trust normalization rules:
-rule=: %-:string-to:who%who=%-:word% \(%username:word%%-:rest%
+#rule=: %-:string-to:who%who=%-:word% \(%username:word%%-:rest% - rule in testing
