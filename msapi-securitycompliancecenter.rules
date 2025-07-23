@@ -51,7 +51,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-SECURITYCOMPLIANCECEN
 
 #Above rule has been replaced by the below:
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-EXCHANGE] Creation of Forwarding/Redirect Rule"; program:Exchange; json_content: ".Operation", "New-InboxRule"; meta_content: "%sagan%", ForwardTo,RedirectTo; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; flexbits: set,AlertEntityGenerated,10; classtype: suspicious-traffic; sid:5012111; rev:1; metadata: created_on 2024_10_23, mitre_technique T1586.002;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-EXCHANGE] Creation of Forwarding/Redirect Rule"; program:Exchange; json_content: ".Operation", "New-InboxRule"; meta_content: "%sagan%", ForwardTo,RedirectTo; json_map: "username", ".UserID"; json_map: "program",".Workload"; flexbits: set,AlertEntityGenerated,10; classtype: suspicious-traffic; sid:5012111; rev:2; metadata: created_on 2024_10_23, mitre_technique T1586.002;)
 #===========================================================================
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-SECURITYCOMPLIANCECENTER] Alert Entity Generated for Elevation of Exchange admin privilege"; program:SecurityComplianceCenter; json_content: ".Operation", "AlertEntityGenerated"; json_content:".Name","Elevation of Exchange admin privilege"; json_map: "src_ip", ".ClientIP"; json_map: "dest_ip", ".ClientIP"; json_map: "username", ".UserID"; json_map: "program",".Workload"; flexbits: set,AlertEntityGenerated,10; classtype: suspicious-traffic; sid:5012112; rev:1;)
