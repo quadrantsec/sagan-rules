@@ -118,7 +118,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[CISCO-MERAKI] File issued r
 
 # 802.1x failed authentication attempt
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] 802.1x EAP(RADIUS) failed authentication attempt [10/1]"; content:"type|22 3a 20 22|8021x_eap_failure"; after:track by_src, count 10, seconds 300; threshold: type suppress, track by_string, count 1, seconds 86400; parse_src_ip:1; normalize; classtype: attempted-user; sid:5015134; metadata: updated_on 2023_08_02; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[CISCO-MERAKI] 802.1x EAP(RADIUS) failed authentication attempt [10/5]"; content:"type|22 3a 20 22|8021x_eap_failure"; after:track by_src, count 10, seconds 300; threshold: type suppress, track by_string, count 1, seconds 86400; parse_src_ip:1; normalize; classtype: attempted-user; sid:5015134; metadata: updated_on 2023_08_02; rev:1;)
 
 # Wireless packet flood detected
 
