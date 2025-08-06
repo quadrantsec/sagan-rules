@@ -44,23 +44,23 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Export Snapshot"; progr
 #Attributes
 #This can be used to detected sharing of snapshots
 #https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ShareSnapshot.html
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Modify Snapshot Attribute"; program:ec2.amazonaws.com; json_content:".eventName","ModifySnapshotAttribute"; parse_src_ip:1; normalize; classtype:system-event; sid:5017071; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Modify Snapshot Attribute"; program:ec2.amazonaws.com; json_content:".eventName","ModifySnapshotAttribute"; parse_src_ip:1; normalize; classtype:system-event; sid:5017151; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
 
 #EC2 Volume
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Shared Snapshot Volume Created"; program:ec2.amazonaws.com; json_content:".eventName","SharedSnapshotVolumeCreated"; parse_src_ip:1; normalize; classtype:system-event; sid:5017072; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Shared Snapshot Volume Created"; program:ec2.amazonaws.com; json_content:".eventName","SharedSnapshotVolumeCreated"; parse_src_ip:1; normalize; classtype:system-event; sid:5017152; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
 
 #RDS
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Describe DB Snapshots"; program:rds.amazonaws.com; json_content:".eventName","DescribeDBSnapshots"; parse_src_ip:1; normalize; classtype:system-event; sid:5017073; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Describe DB Snapshots"; program:rds.amazonaws.com; json_content:".eventName","DescribeDBSnapshots"; parse_src_ip:1; normalize; classtype:system-event; sid:5017153; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Delete DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","DeleteDBSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991023; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Copy DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","CopyDBSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:5017074; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Copy DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","CopyDBSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:5017154; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Get Relational DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","GetRelationalDatabaseSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:5017075; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Get Relational DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","GetRelationalDatabaseSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:5017155; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Get Relational DB Snapshots"; program:rds.amazonaws.com; json_content:".eventName","GetRelationalDatabaseSnapshots"; parse_src_ip:1; normalize; classtype:system-event; sid:5017076; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Get Relational DB Snapshots"; program:rds.amazonaws.com; json_content:".eventName","GetRelationalDatabaseSnapshots"; parse_src_ip:1; normalize; classtype:system-event; sid:5017156; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Delete Relational DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","DeleteRelationalDatabaseSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:5017077; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Delete Relational DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","DeleteRelationalDatabaseSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:5017157; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
