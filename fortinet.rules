@@ -229,7 +229,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Successful VPN Lo
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Admin Monitor login Successful"; content: "logid=|22|0100032053|22|"; content: "type="; content: "subtype="; classtype: system-event; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006092; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Infected File Detected and Blocked"; content: "logid=|22|0211008192|22|"; content: "type="; content: "subtype="; classtype: system-event; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006093; rev:2; metadata: updated_on 2024_06_20;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Infected File Detected and Blocked"; content: "logid=|22|0211008192|22|"; content: "type="; content: "subtype="; content:!"subject=Malware provided by "; classtype: system-event; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006093; rev:3; metadata: updated_on 2025_08_06;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Virus Command Blocked"; content: "logid=|22|0206008452|22|"; content: "type="; content: "subtype="; classtype: system-event; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006094; rev:1;)
 
