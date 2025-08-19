@@ -107,7 +107,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] File system f
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS] A directory service object was moved"; content: " 5139|3a| "; classtype: configuration-change; program: *Security*; sid:5002275; rev:3;)
 
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[WINDOWS-MISC] System shutdown [XBIT SET]"; event_id: 1074,6006,41,6008,1076; program: *Security*|*System*|*USER32*; content:!"Serial Port COM"; flexbits: set,reboot.windows,3600; flexbits: set,reboot_windows,3600; flexbits:noeve; classtype: system-event; sid: 5002014; rev:33;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[WINDOWS-MISC] System shutdown [XBIT SET]"; event_id: 1074,6006,41,6008,1076; program: *Security*|*System*|*USER32*; content:!"Serial Port COM"; xbits: set,reboot.windows,track ip_src, expire 3600; xbits:set,reboot_windows,track ip_src,expire 3600; xbits:noeve; classtype: system-event; sid: 5002014; rev:34;)
 # Added by Brian Echeverry (09/22/2015)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] Microsoft Antimalware has encountered an error trying to update signatures"; program: *Microsoft_Antimalware*; event_id: 2001; threshold: type suppress, track by_src, count 1, seconds 86400; classtype: program-error; sid:5002392; rev:5;)
@@ -210,7 +210,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-MISC] Potential Metasplo
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSTEM] User Certificate Is Valid But Cannot Be Mapped To A User"; program:Kerberos-Key-Distribution-Center; content:"user certificate that was valid but could not be mapped to a user"; classtype:credential-access; sid:5015514; rev:1; metadata:created_at 2025_03_06, updated_at 2025_03_06, mitre_tactic_id TA0006, mitre_technique_id T1649;)
 
-alert any any any -> any any (msg: "[WINDOWS-MISC] NXLog has Stopped On Host"; program: nxlog; content: "nxlog received a termination request signal, exiting"; flexbits: isnotset, by_src, reboot_windows; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 2, seconds 3600; classtype: suspicious-traffic; sid: 5015930; rev:4; metadata: created_on 2025_04_15, updatedOn 2025_07_31;)
+alert any any any -> any any (msg: "[WINDOWS-MISC] NXLog has Stopped On Host"; program: nxlog; content: "nxlog received a termination request signal, exiting"; xbits: isnotset,reboot_windows,track ip_src; json_map: "src_ip", ".xff"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: suspicious-traffic; sid: 5015930; rev:5; metadata: created_on 2025_04_15, updatedOn 2025_08_18;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-APPLICATION] MsiInstaller Installer Exited for SentinelInstaller (3/5)"; program:*Application*; event_id:1042; content:"MsiInstaller"; nocase; content:"SentinelOneInstaller"; nocase; parse_src_ip:1; normalize; reference:url,https://www.aon.com/en/insights/cyber-labs/bring-your-own-installer-bypassing-sentinelone; classtype:execution; sid:5015961; rev:1; metadata:created_at 2025_05_07, updated_at 2025_05_07, mitre_tactic_id TA0002, mitre_technique_id T1203;)
 
