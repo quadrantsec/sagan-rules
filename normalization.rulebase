@@ -156,8 +156,9 @@ rule=: Teardown %proto:word% connection %-:number% for outside:%src-ip:ipv4%/%sr
 rule=: %-:word% %-:number% %-:number% %-:word% %-:word% %-:word% %-:word% %-:word% NOTICE Failed-Attempt: Authentication failed, ACSVersion=%-:word% ConfigVersionId=%-:word% Device IP Address=%src-ip:char-to:\x2c%, Device Port=%src-port:char-to:\x2c%, UserName=%username:char-to:\x2c%, Protocol=%-:word% RequestLatency=%-:word% NetworkDeviceName=%-:word% Type=Authentication, Action=Login, Privilege-Level=%-:word% Authen-Type=%-:word% Service=Login, User=%-:word% Port=%-:word% Remote-Address=%dst-ip:char-to:\x2c%, %-:rest%
 
 #Cisco meraki normalization
-#1690812638.429532373 STE215_Breakroom events type=8021x_eap_failure radio='1' vap='0' client_mac='B8:8A:60:79:FD:65' identity='host/WS-4497.sbmgroup.local' aid='1020865390'
-rule=: %-:number%.%-:number% %-:word% events type=%-:word% radio='%-:number%' vap='%-:number%' client_mac='%string:mac48%' %-:rest%
+#1690812638.429532373 STE215_Breakroom events type=8021x_eap_failure radio='1' vap='0' client_mac='B8:8A:60:79:FD:65' identity='XXXX' aid='1020865390'
+#Updated to capture username by CGoggins on 08/14/2025
+rule=: %-:number%.%-:number% %-:word% events type=%-:word% radio='%-:number%' vap='%-:number%' client_mac='%-:mac48%' identity='%username:word%%-:rest%
 
 #1609348633.422414486 AP_1_05 events type=disassociation radio='0' vap='1' client_mac='B8:31:B5:89:9A:6A'
 rule=: %-:number%.%-:number% %-:alpha%_%-:number%_%-:number% events type=%-:word% radio='%-:number%' vap='%-:number%' client_mac='%srcmac:mac48%' %-:rest%
@@ -647,5 +648,5 @@ rule=: %-:string-to:sourceaddress%sourceaddress%-:char-to:\x20% %-:char-to:\x22%
 
 rule=: %-:string-to:sourceaddress%sourceaddress%-:char-to:\x20% %-:char-to:\x22%"%src-ip:ipv4%%-:string-to:destinationaddress%destinationaddress%-:char-to:\x20% %-:char-to:\x22%\"%dst-ip:ipv4%%-:rest%
 
-#Bomgar/Beyond Trust normalization rules:
-#rule=: %-:string-to:who%who=%-:word% \(%username:word%%-:rest% - rule in testing
+#AWS GuardDuty Log Normalization
+rule=: %-:string-to:\"description\":%\"description\":%Description:quoted-string%%-:rest%
