@@ -239,7 +239,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] Virus Command Blo
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] SSL Certificate Anomaly - Blocked"; content: "logid=|22|1700062303|22|"; content: "type="; content: "subtype="; classtype: suspicious-traffic; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006097; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] SSL Certificate Anomaly - Blacklisted"; content: "logid=|22|1700062300|22|"; content: "type="; content: "subtype="; classtype: suspicious-traffic; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006098; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] SSL Certificate Anomaly - Disallow list"; content: "logid=|22|1700062300|22|"; content: "type="; content: "subtype="; classtype: suspicious-traffic; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006098; rev:1;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[FORTINET] SSL Certificate Anomaly - SNI Mismatched"; content: "logid=|22|1700062304|22|"; content: "type="; content: "subtype="; classtype: suspicious-traffic; parse_src_ip: 1; parse_dst_ip: 2; sid: 5006099; rev:1;)
 
