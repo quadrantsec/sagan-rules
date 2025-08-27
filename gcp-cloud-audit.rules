@@ -77,11 +77,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Instance Reset"; conte
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Login activity - User Failed MFA"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.loginVerification"; content: "login_challenge_status"; content: "|22|value|22|:|22|failed|22|"; flexbits:set,GCP_Event,10; classtype: system-event; parse_src_ip: 1; sid: 5006017; rev:2;)
 
-<<<<<<< Updated upstream
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] *Critical and Call* Email Forwarding Outside Domain"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.emailForwardingOutOfDomain"; flexbits:set,GCP_Event,10; classtype: system-event; parse_src_ip: 1; sid: 5006018; rev:2;)
-=======
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Email Forwarding Outside Domain"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.emailForwardingOutOfDomain"; flexbits:set,GCP_Event,10; classtype: system-event; priority:1; parse_src_ip: 1; sid: 5006018; rev:2;)
->>>>>>> Stashed changes
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[GCP] Account Recovery Email Change"; content: "cloudaudit.googleapis.com"; content: "google.login.LoginService.recoveryEmailEdit"; flexbits:set,GCP_Event,10; classtype: system-event; parse_src_ip: 1; sid: 5006019; rev:2;)
 
