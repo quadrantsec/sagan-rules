@@ -1,66 +1,66 @@
 #Experimental Ruleset
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] AWS ConsoleLogin"; program:signin.amazonaws.com; json_content:".eventName","ConsoleLogin"; json_content:".responseElements.ConsoleLogin","Success"; parse_src_ip:1; normalize; classtype:system-event; sid:991001; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] AWS ConsoleLogin"; program:signin.amazonaws.com; json_content:".eventName","ConsoleLogin"; json_content:".responseElements.ConsoleLogin","Success"; parse_src_ip:1; normalize; classtype:system-event; sid:991001; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 Enumeration (Multiple ListObects Events)"; program:s3.amazonaws.com; json_content:".eventName","ListObjects"; after:track by_username,count 10, seconds 60; json_map:"src_ip",".sourceIPAddress"; json_map:"username",".userIdentity.sessionContext.sessionIssuer.userName"; classtype:user-activity; sid:991002; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 Enumeration (Multiple ListObects Events)"; program:s3.amazonaws.com; json_content:".eventName","ListObjects"; after:track by_username,count 10, seconds 60; json_map:"src_ip",".sourceIPAddress"; json_map:"username",".userIdentity.sessionContext.sessionIssuer.userName"; classtype:user-activity; sid:5017058; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 Enumeration (Multiple ListObectsv2 Events)"; program:s3.amazonaws.com; json_content:".eventName","ListObjectsV2"; after:track by_username,count 10, seconds 60; json_map:"src_ip",".sourceIPAddress"; json_map:"username",".userIdentity.sessionContext.sessionIssuer.userName"; classtype:user-activity; sid:991003; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 Enumeration (Multiple ListObectsv2 Events)"; program:s3.amazonaws.com; json_content:".eventName","ListObjectsV2"; after:track by_username,count 10, seconds 60; json_map:"src_ip",".sourceIPAddress"; json_map:"username",".userIdentity.sessionContext.sessionIssuer.userName"; classtype:user-activity; sid:5017059; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 Enumeration (Multiple ListBuckets Events)"; program:s3.amazonaws.com; json_content:".eventName","ListBuckets"; after:track by_username,count 10, seconds 60; json_map:"src_ip",".sourceIPAddress"; json_map:"username",".userIdentity.sessionContext.sessionIssuer.userName"; classtype:user-activity; sid:991004; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 Enumeration (Multiple ListBuckets Events)"; program:s3.amazonaws.com; json_content:".eventName","ListBuckets"; after:track by_username,count 10, seconds 60; json_map:"src_ip",".sourceIPAddress"; json_map:"username",".userIdentity.sessionContext.sessionIssuer.userName"; classtype:user-activity; sid:sid:5017060; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
 
 #S3 Get/Put Objects
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 GetObject GeoIP Outside of HOME_COUNTRY"; program:s3.amazonaws.com; json_map:"src_ip",".sourceIPAddress"; country_code:track by_src, isnot $HOME_COUNTRY; json_content:".eventName","GetObject"; parse_src_ip:1; normalize; classtype:system-event; sid:991005; rev:1;)
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 GetObject Bluedot Suspicious IP Detected"; program:s3.amazonaws.com; json_map:"src_ip",".sourceIPAddress"; bluedot:type ip_reputation, track by_src, none, Malicious,Tor,Proxy; json_content:".eventName","GetObject"; parse_src_ip:1; normalize; classtype:system-event; sid:991006; rev:1;)
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 GetObject Bluedot Suspicious IP Detected"; program:s3.amazonaws.com; json_map:"src_ip",".sourceIPAddress"; bluedot:type ip_reputation, track by_src, none, Malicious,Tor,Proxy; json_content:".eventName","GetObject"; parse_src_ip:1; normalize; classtype:system-event; sid:991007; rev:1;)
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 File Transfer (GetObject)"; program:s3.amazonaws.com; json_content:".eventName","GetObject"; parse_src_ip:1; normalize; classtype:system-event; sid:991008; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 GetObject GeoIP Outside of HOME_COUNTRY"; program:s3.amazonaws.com; json_map:"src_ip",".sourceIPAddress"; country_code:track by_src, isnot $HOME_COUNTRY; json_content:".eventName","GetObject"; parse_src_ip:1; normalize; classtype:system-event; sid:5017061; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 GetObject Bluedot Suspicious IP Detected"; program:s3.amazonaws.com; json_map:"src_ip",".sourceIPAddress"; bluedot:type ip_reputation, track by_src, none, Malicious,Tor,Proxy; json_content:".eventName","GetObject"; parse_src_ip:1; normalize; classtype:system-event; sid:991006; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 GetObject Bluedot Suspicious IP Detected"; program:s3.amazonaws.com; json_map:"src_ip",".sourceIPAddress"; bluedot:type ip_reputation, track by_src, none, Malicious,Tor,Proxy; json_content:".eventName","GetObject"; parse_src_ip:1; normalize; classtype:system-event; sid:5017062; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 File Transfer (GetObject)"; program:s3.amazonaws.com; json_content:".eventName","GetObject"; parse_src_ip:1; normalize; classtype:system-event; sid:5017063; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 File Transfer (PutObject)"; program:s3.amazonaws.com; json_content:".eventName","PutObject"; parse_src_ip:1; normalize; classtype:system-event; sid:991009; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 File Transfer (PutObject)"; program:s3.amazonaws.com; json_content:".eventName","PutObject"; parse_src_ip:1; normalize; classtype:system-event; sid:991009; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
 
 #Volumes
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Describe Volumes"; program:ec2.amazonaws.com; json_content:".eventName","DescribeVolumes"; parse_src_ip:1; normalize; classtype:system-event; sid:991010; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Describe Volumes"; program:ec2.amazonaws.com; json_content:".eventName","DescribeVolumes"; parse_src_ip:1; normalize; classtype:system-event; sid:991010; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
 
 #Snapshots
 #list-snapshots is a paginated operation. Multiple API calls may be issued in order to retrieve the entire data set of results. You can disable pagination by providing the --no-paginate argument.
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 List Snapshots"; program:ec2.amazonaws.com; json_content:".eventName","ListSnapshots"; after:track by_username,count 10, seconds 60; json_map:"src_ip",".sourceIPAddress"; json_map:"username",".userIdentity.sessionContext.sessionIssuer.userName"; classtype:system-event; sid:991011; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 List Snapshots"; program:ec2.amazonaws.com; json_content:".eventName","ListSnapshots"; after:track by_username,count 10, seconds 60; json_map:"src_ip",".sourceIPAddress"; json_map:"username",".userIdentity.sessionContext.sessionIssuer.userName"; classtype:system-event; sid:5017064; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Describe Snapshots"; program:ec2.amazonaws.com; json_content:".eventName","DescribeSnapshots"; after:track by_username,count 10, seconds 60; json_map:"src_ip",".sourceIPAddress"; json_map:"username",".userIdentity.sessionContext.sessionIssuer.userName"; classtype:system-event; sid:991012; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Describe Snapshots"; program:ec2.amazonaws.com; json_content:".eventName","DescribeSnapshots"; after:track by_username,count 10, seconds 60; json_map:"src_ip",".sourceIPAddress"; json_map:"username",".userIdentity.sessionContext.sessionIssuer.userName"; classtype:system-event; sid:5017065; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Get Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","GetSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991013; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Get Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","GetSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:5017066; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Copy Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","CopySnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991014; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Copy Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","CopySnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991014; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Create Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","CreateSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991015; rev:1;)
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Create Snapshots"; program:ec2.amazonaws.com; json_content:".eventName","CreateSnapshots"; parse_src_ip:1; normalize; classtype:system-event; sid:991016; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Create Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","CreateSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991015; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Create Snapshots"; program:ec2.amazonaws.com; json_content:".eventName","CreateSnapshots"; parse_src_ip:1; normalize; classtype:system-event; sid:5017067; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Delete Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","DeleteSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991017; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Delete Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","DeleteSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991017; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Delete Disk Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","DeleteDiskSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991018; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Delete Disk Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","DeleteDiskSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:5017068; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Export Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","ExportSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991019; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Export Snapshot"; program:ec2.amazonaws.com; json_content:".eventName","ExportSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:5017069; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
 #Attributes
 #This can be used to detected sharing of snapshots
 #https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ShareSnapshot.html
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Modify Snapshot Attribute"; program:ec2.amazonaws.com; json_content:".eventName","ModifySnapshotAttribute"; parse_src_ip:1; normalize; classtype:system-event; sid:991020; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Modify Snapshot Attribute"; program:ec2.amazonaws.com; json_content:".eventName","ModifySnapshotAttribute"; parse_src_ip:1; normalize; classtype:system-event; sid:5017151; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
 
 #EC2 Volume
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Shared Snapshot Volume Created"; program:ec2.amazonaws.com; json_content:".eventName","SharedSnapshotVolumeCreated"; parse_src_ip:1; normalize; classtype:system-event; sid:991021; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] EC2 Shared Snapshot Volume Created"; program:ec2.amazonaws.com; json_content:".eventName","SharedSnapshotVolumeCreated"; parse_src_ip:1; normalize; classtype:system-event; sid:5017152; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
 
 #RDS
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Describe DB Snapshots"; program:rds.amazonaws.com; json_content:".eventName","DescribeDBSnapshots"; parse_src_ip:1; normalize; classtype:system-event; sid:991022; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Describe DB Snapshots"; program:rds.amazonaws.com; json_content:".eventName","DescribeDBSnapshots"; parse_src_ip:1; normalize; classtype:system-event; sid:5017153; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Delete DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","DeleteDBSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991023; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Delete DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","DeleteDBSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991023; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Copy DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","CopyDBSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991024; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Copy DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","CopyDBSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:5017154; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Get Relational DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","GetRelationalDatabaseSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991025; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Get Relational DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","GetRelationalDatabaseSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:5017155; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Get Relational DB Snapshots"; program:rds.amazonaws.com; json_content:".eventName","GetRelationalDatabaseSnapshots"; parse_src_ip:1; normalize; classtype:system-event; sid:991026; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Get Relational DB Snapshots"; program:rds.amazonaws.com; json_content:".eventName","GetRelationalDatabaseSnapshots"; parse_src_ip:1; normalize; classtype:system-event; sid:5017156; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Delete Relational DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","DeleteRelationalDatabaseSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:991027; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] RDS Delete Relational DB Snapshot"; program:rds.amazonaws.com; json_content:".eventName","DeleteRelationalDatabaseSnapshot"; parse_src_ip:1; normalize; classtype:system-event; sid:5017157; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
