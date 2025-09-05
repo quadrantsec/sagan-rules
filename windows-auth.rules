@@ -219,7 +219,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] Account locked
 
 # Records _all_ RDP sessions
 
-alert any [$HOME_NET,!100.64.0.0/10,!192.0.0.0/24] any -> $EXTERNAL_NET any (msg:"[WINDOWS-AUTH] RDP / Logon type 10"; event_id: 4624,528; content: "Logon Type|3a| 10 "; content:!"Source Network Address: 169.254"; content:!"Source Network Address: 0.0.0.0"; content:!"Source Network Address: 127.0.0.1"; pcre:"/Source Network Address\: (?!10\.)(?!172\.(1[6-9]|2[0-9]|3[0-1])\.)(?!192\.168\.)\d{1,3}(\.\d{1,3}){3}/"; program: *Security*; parse_src_ip: 1; default_proto: tcp; classtype: successful-user; sid: 5002015; rev:10;)
+alert any [$HOME_NET, !100.64.0.0/10, !192.0.0.0/24] any -> $EXTERNAL_NET any (msg:"[WINDOWS-AUTH] RDP / Logon type 10"; event_id: 4624,528; content: "Logon Type|3a| 10 "; content:!"Source Network Address: 169.254"; content:!"Source Network Address: 0.0.0.0"; content:!"Source Network Address: 127.0.0.1"; pcre:"/Source Network Address\: (?!10\.)(?!172\.(1[6-9]|2[0-9]|3[0-1])\.)(?!192\.168\.)\d{1,3}(\.\d{1,3}){3}/"; program: *Security*; parse_src_ip: 1; default_proto: tcp; classtype: successful-user; sid: 5002015; rev:10;)
 #alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[WINDOWS-AUTH] Logon attempt using explicit credentials"; event_id: 4648,552; content:!"Network Address|3a| - "; content:!"Port|3a| - "; content:!"Target Server Name|3a| localhost"; program: *Security*; parse_src_ip: 1; default_proto: tcp; classtype: successful-user; sid: 5002018; rev:7;)
 
 # Rule added by Brian Echeverry ( becheverry@quadrantsec.com) - 10/08/2014

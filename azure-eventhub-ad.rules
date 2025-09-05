@@ -25,7 +25,7 @@
 #
 #*************************************************************
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[AZURE-EVENTHUB-AD] Risk Event Detected - unlikelyTravel"; program: azureEventHub; json_content:".properties.riskEventTypes","unlikelyTravel"; json_contains; json_map: "src_ip", ".callerIpAddress"; json_map: "dest_ip", ".callerIpAddress"; json_map: "username", ".properties.userPrincipalName"; classtype: suspicious-traffic; reference:url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema; sid:5004760; rev: 4;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[AZURE-EVENTHUB-AD] Risk Event Detected - unlikelyTravel"; program: azureEventHub; json_content:".properties.riskEventTypes","unlikelyTravel"; json_contains; content:!"adminConfirmedSigninSafe"; json_map: "src_ip", ".callerIpAddress"; json_map: "dest_ip", ".callerIpAddress"; json_map: "username", ".properties.userPrincipalName"; classtype: suspicious-traffic; reference:url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema; sid:5004760; rev: 5;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[AZURE-EVENTHUB-AD] Risk Event Detected - anonymizedIPAddress"; program: azureEventHub; json_content:".properties.riskEventTypes","anonymizedIPAddress"; json_contains; json_map: "src_ip", ".callerIpAddress"; json_map: "dest_ip", ".callerIpAddress"; json_map: "username", ".properties.userPrincipalName"; classtype: suspicious-traffic; reference:url,docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema; sid:5004761; rev: 4;)
 
