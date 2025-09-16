@@ -115,8 +115,8 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] DC - Possible
 
 # Local group
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] Local Administrator account added to a local group"; event_id: 4732,636; pcre: "/S-1-5-21-\d{5,15}\-\d{5,15}\-\d{5,15}-500 /"; program: *Security*; classtype: successful-user; sid: 5001692; rev:9;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User added to Network Config Operator group"; event_id: 4732,636; pcre: "/S-1-5-21-\d{5,15}\-\d{5,15}\-\d{5,15}-556 /"; program: *Security*; classtype: successful-user; sid: 5001693; rev:9;)
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User added to DNS Admins group";  event_id: 4732,636; pcre: "/S-1-5-21-\d{5,15}\-\d{5,15}\-\d{5,15}-1101 /"; program: *Security*; classtype: successful-admin; sid: 5001694; rev:8;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User added to Network Config Operator group"; event_id: 4732,636; content: "S-1-5-32-556 "; program: *Security*; classtype: admin-activity; sid: 5001693; rev:11;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User added to DNS Admins group";  event_id: 4732,636; content: "S-1-5-32-1101 "; program: *Security*; classtype: admin-activity; sid: 5001694; rev:10;)
 # Domain/global group
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] CRITICAL - User added to Domain Administrators group"; event_id:4728,632; content:"Group Name|3a| Domain Admins"; program:*Security*; classtype: successful-admin; sid: 5001695; rev:12;)
 # Enterprise/universal group

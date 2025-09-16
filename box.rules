@@ -88,6 +88,6 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Copying items blocked due t
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Transferring items blocked due to information barrier restrictions"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","SHIELD_INFORMATION_BARRIER_ITEM_OWNER_TRANSFER_BLOCKED"; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015235; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Suspicious File Uploaded"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","UPLOAD"; json_meta_content:".source.item_name",|2e|exe,|2e|dll; json_meta_contains; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015236; rev:1; metadata:created_at 2025_01_14, updated_at 2025_01_14;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[BOX] Suspicious File Uploaded"; program:box-api_data; json_map:"src_ip",".ip_address"; json_content:".event_type","UPLOAD"; json_meta_content:".source.item_name",|2e|exe|22|,|2e|dll|22|; json_meta_contains; reference:url,https://developer.box.com/guides/events/enterprise-events/for-enterprise/; classtype:suspicious-activity; sid:5015236; rev:1; metadata:created_at 2025_01_14, updated_at 2025_09_08;)
 
 
