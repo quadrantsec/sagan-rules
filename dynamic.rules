@@ -231,3 +231,4 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Key9 logs detected"
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Exabeam Logs detected, possible ExtraHop"; program:exabeam-api_data; dynamic_load: $RULE_PATH/extraHop.rules; classtype:dynamic-rules; sid:5016064; rev:2;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Oracle OCI Logs detected"; program:oci-kafka-consumer_data; dynamic_load: $RULE_PATH/oracle_oci.rules; classtype:dynamic-rules; sid:5016657; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Palo Alto Prisma Logs detected"; program:prisma; dynamic_load: $RULE_PATH/palo-alto_prisma.rules; classtype:dynamic-rules; sid:5017149; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Halcyon Logs detected"; program:halcyon_webapi_data; dynamic_load: $RULE_PATH/halcyon.rules; classtype:dynamic-rules; sid:5017199; rev:1;)
