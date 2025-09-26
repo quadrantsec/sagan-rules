@@ -29,7 +29,7 @@
 # 03/22/2023
 
 #alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS-STS] Security Token Service event detected (AssumeRole) "; program:sts.amazonaws.com; content:"eventName|22 3a 20 22|AssumeRole"; classtype:system-event; reference:url,docs.aws.amazon.com/STS/latest/APIReference/welcome.html; sid:5011429; rev:1;)
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS-STS] Security Token Service event detected (AssumeRoleWithSAML) "; program:sts.amazonaws.com; content:"eventName|22 3a 20 22|AssumeRoleWithSAML"; content: ! "AWSReservedSSO_AWSAdministratorAccess"; content: ! "AWSServiceRole"; classtype:system-event; reference:url,docs.aws.amazon.com/STS/latest/APIReference/welcome.html; sid:5011430; rev:2;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS-STS] Security Token Service event detected (AssumeRoleWithSAML) "; program:sts.amazonaws.com; content:"eventName|22 3a 20 22|AssumeRoleWithSAML"; content: ! "AWSReservedSSO_"; content: ! "AWSServiceRole"; classtype:system-event; reference:url,docs.aws.amazon.com/STS/latest/APIReference/welcome.html; sid:5011430; rev:2;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS-STS] Security Token Service event detected (AssumeRoleWithWebIdentity) "; program:sts.amazonaws.com; content:"eventName|22 3a 20 22|AssumeRoleWithWebIdentity"; content: ! "AWSReservedSSO_AWSAdministratorAccess"; content: ! "AWSServiceRole"; classtype:system-event; reference:url,docs.aws.amazon.com/STS/latest/APIReference/welcome.html; sid:5011431; rev:2;)
 
