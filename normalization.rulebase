@@ -653,3 +653,7 @@ rule=: %-:string-to:sourceaddress%sourceaddress%-:char-to:\x20% %-:char-to:\x22%
 
 #AWS GuardDuty Log Normalization
 rule=: %-:string-to:\"description\":%\"description\":%Description:quoted-string%%-:rest%
+
+#CISCO ISE 5400
+rule=: %-:string-to:NOTICE%NOTICE Failed-Attempt: Authentication failed, %-:string-to:UserName%UserName=%username:char-to:,%, %-:string-to:Calling-Station-ID%Calling-Station-ID=%src-ip:ipv4%, %-:rest%
+
