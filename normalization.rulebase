@@ -158,7 +158,7 @@ rule=: %-:word% %-:number% %-:number% %-:word% %-:word% %-:word% %-:word% %-:wor
 #Cisco meraki normalization
 #1690812638.429532373 STE215_Breakroom events type=8021x_eap_failure radio='1' vap='0' client_mac='B8:8A:60:79:FD:65' identity='XXXX' aid='1020865390'
 #Updated to capture username by CGoggins on 08/14/2025
-rule=: %-:number%.%-:number% %-:word% events type=%-:word% radio='%-:number%' vap='%-:number%' client_mac='%-:mac48%' identity='%username:word%%-:rest%
+rule=: %-:number%.%-:number% %-:word% events type=%-:word% radio='%-:number%' vap='%-:number%' client_mac='%clientmac:mac48%' identity='%username:char-to:\x27%%-:rest%
 
 #1609348633.422414486 AP_1_05 events type=disassociation radio='0' vap='1' client_mac='B8:31:B5:89:9A:6A'
 rule=: %-:number%.%-:number% %-:alpha%_%-:number%_%-:number% events type=%-:word% radio='%-:number%' vap='%-:number%' client_mac='%srcmac:mac48%' %-:rest%
@@ -242,13 +242,13 @@ rule=: Failed %-:word% for invalid user %username:word% from %src-ip:ipv4% port 
 rule=: Accepted %-:word% for %username:word% from %src-ip:ipv4% port %src-port:number% ssh2
 rule=: Accepted keyboard-interactive/pam for %username:word% from %src-ip:ipv4% port %src-port:number% ssh2
 rule=: Accepted password for %username:word% from %src-ip:ipv4% port %src-port:number% ssh2
-rule=: error: PAM: Authentication failure for %username:word% from %src-ip:ipv4%
-rule=: error: PAM: Authentication failure for %username:word% from %src-host:word%
-rule=: pam_unix(sshd:auth): authentication failure; logname= uid=%uid:number% euid=%-:number% tty=ssh ruser= rhost=%src-ip:ipv4%  user=%username:word%
-rule=: pam_unix(sshd:auth): authentication failure; logname= uid=%uid:number% euid=%-:number% tty=ssh ruser= rhost=%src-ip:ipv4%
+rule=: error\: PAM\: Authentication failure for %username:word% from %src-ip:ipv4%
+rule=: error\: PAM\: Authentication failure for %username:word% from %src-host:word%
+rule=: pam_unix(sshd\:auth): authentication failure; logname= uid=%uid:number% euid=%-:number% tty=ssh ruser= rhost=%src-ip:ipv4%  user=%username:word%
+rule=: pam_unix(sshd:auth)\: authentication failure; logname= uid=%uid:number% euid=%-:number% tty=ssh ruser= rhost=%src-ip:ipv4%
 rule=: PAM %number:number% more authentication failure; logname= uid=%uid:number% euid=%-:number% tty=ssh ruser= rhost=%src-ip:ipv4%
 rule=: Accepted publickey for %username:word% from %src-ip:ipv4% port %src-port:number% ssh2
-rule=: error: PAM: Authentication failure for illegal user %username:word% from %src-ip:ipv4%
+rule=: %-:string-to:error%error\: PAM\: Authentication failure for illegal user %username:word% from %src-ip:ipv4%
 rule=: Failed password for %username:word% from %src-ip:ipv4% port %src-port:number% ssh2
 rule=: Accepted gssapi-with-mic for %username:word% from %src-ip:ipv4% port %src-port:number% ssh2
 rule=: Postponed keyboard-interactive for invalid user %username:word% from %src-ip:ipv4% port %src-port:number% ssh2 [preauth]
@@ -628,6 +628,9 @@ rule=: 0|%-:char-to:\x7c%|FalconHost|1.0|Incidents|1|cat=Incidents cs1Label=%-:w
 
 #Pulls message and username in Crowdstrike Falcon message
 rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:string-to:duser%duser=%username:word%%-:rest%
+
+#Pulls message and endpointIP in Crowdstrike Falcon message
+rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:string-to:cs3Label=endpointIp cs3=%cs3Label=endpointIp cs3=%src-ip:ipv4%%-:rest%
 
 #SonicWall IPS Prevention Log Normalization
 #Pulls Message, SRC IP and DSTIP
