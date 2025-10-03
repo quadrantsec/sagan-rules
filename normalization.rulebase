@@ -632,6 +632,10 @@ rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:st
 #Pulls message and endpointIP in Crowdstrike Falcon message
 rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:string-to:cs3Label=endpointIp cs3=%cs3Label=endpointIp cs3=%src-ip:ipv4%%-:rest%
 
+#Pulls only message in Crowdstrike Falcon message
+rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:rest%
+
+
 #SonicWall IPS Prevention Log Normalization
 #Pulls Message, SRC IP and DSTIP
 rule=: sn=%-:string-to:msg%msg=%message:quoted-string%%-:string-to:src%src=%src-ip:ipv4%:%-:string-to:dst%dst=%dst-ip:ipv4%:%-:rest%
