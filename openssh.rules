@@ -62,7 +62,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[OPENSSH] Not executable shel
 
 # General "illegal user" 
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[OPENSSH] Invalid or illegal user [Brute Force] [10/1]"; meta_content:"for %sagan% user",illegal,invalid; content:!"input_userauth_request"; xbits: set,brute_force,track ip_src, expire 21600; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: brute-force; program: sshd; normalize; parse_src_ip: 1; parse_port; after: track by_src, count 10, seconds 300; threshold: type suppress, track by_src, count 1, seconds 300; sid: 5000022; rev:23;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[OPENSSH] Invalid or illegal user [Brute Force] [10/5]"; meta_content:"for %sagan% user",illegal,invalid; content:!"input_userauth_request"; xbits: set,brute_force,track ip_src, expire 21600; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: brute-force; program: sshd; normalize; parse_src_ip: 1; parse_port; after: track by_src, count 10, seconds 300; threshold: type suppress, track by_src, count 1, seconds 300; sid: 5000022; rev:24;)
 
 # Champ Clark (Quadrant Information Security) - Jan 27th 2010 - Out of band challenge - for more info see: http://sourceforge.net/projects/pamobc/
 
@@ -81,7 +81,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[OPENSSH] Suspicious login t
 
 # Failed password for root from 10.10.0.1 port 17298 ssh2
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[OPENSSH] Failed password - Brute force [10/1]"; content: "Failed password"; program: sshd; normalize; parse_port; parse_src_ip: 1; xbits: set,brute_force,track ip_src, expire 21600; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: brute-force; sid: 5001646; after: track by_src, count 10, seconds 300; threshold: type suppress, track by_src, count 1, seconds 300; rev:14;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[OPENSSH] Failed password - Brute force [10/5]"; content: "Failed password"; program: sshd; normalize; parse_port; parse_src_ip: 1; xbits: set,brute_force,track ip_src, expire 21600; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: brute-force; sid: 5001646; after: track by_src, count 10, seconds 300; threshold: type suppress, track by_src, count 1, seconds 300; rev:15;)
 
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[OPENSSH] Failed password"; content: "Failed password"; program: sshd; normalize; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: unsuccessful-user; sid: 5001647; rev:4;)
 
@@ -89,7 +89,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[OPENSSH] Failed password - 
 # syslog  ssh: failed login attempt for UNKNOWN_USER from 10.1.1.4
 
 
-drop any $EXTERNAL_NET any -> $HOME_NET any (msg:"[OPENSSH] SYSLOG Authentication failure - Brute force [5/1]"; content: "ssh|3a| failed login attempt"; xbits: set,brute_force,track ip_src, expire 21600; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: brute-force; program: syslog; after: track by_src, count 5, seconds 300; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 300; sid: 5001954; rev:16;)
+drop any $EXTERNAL_NET any -> $HOME_NET any (msg:"[OPENSSH] SYSLOG Authentication failure - Brute force [5/5]"; content: "ssh|3a| failed login attempt"; xbits: set,brute_force,track ip_src, expire 21600; default_proto: tcp; default_dst_port: $SSH_PORT; classtype: brute-force; program: syslog; after: track by_src, count 5, seconds 300; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 300; sid: 5001954; rev:17;)
 
 # Added by Robert Nunley - 02/20/2014 (rnunley@quadrantsec.com)
 
