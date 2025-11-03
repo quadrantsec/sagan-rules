@@ -495,6 +495,9 @@ rule=: 4662: An operation was performed on an object. Subject : Security ID: %-:
 
 rule=: 4724: An attempt was made to reset an account's password. Subject: Security ID: %subject-sid:word% Account Name: %subject-account:string-to: Account Domain% Account Domain: %-:word% Logon ID: %-:word% Target Account: Security ID: %target-sid:word% Account Name: %username:string-to: Account Domain% Account Domain: %-:rest%
 
+# 4625 Account Login Failure - Parsing username
+rule=: 4625: An account failed to log on. Subject: Security ID: %-:word% Account Name: %-:string-to:Which Logon Failed%Which Logon Failed: Security ID: %-:word% Account Name: %username:word%%-:rest%
+
 # Windows Account Lockout: There are 2 rules for the first log. The idea is if there is a caller computer both rules will fire off and the 2nd rule will just not have a caller computer name. If there is not a caller computer, only rule 2 will fire and rule 1 will not work... in theory
 
 #4740: A user account was locked out. Subject: Security ID: S-1-5-18 Account Name: XXXXX$ Account Domain: XXXXXX Logon ID: 0x3E7 Account That Was Locked Out: Security ID: S-1-5-21-2455855555-3858555555-3953555555-55555 Account Name: XXXXX Additional Information: Caller Computer Name: XXXXXX
@@ -627,13 +630,13 @@ rule=: TRACK-CLIENT-NOLOGS - Logs have not been received from IP address %src-ip
 rule=: 0|%-:char-to:\x7c%|FalconHost|1.0|Incidents|1|cat=Incidents cs1Label=%-:word% cs1=%-:word% severityNameLabel=%-:word% severityName=%-:word% msg=%-:string-to:cs2=%cs2=%username:char-to:\x20%%-:rest%
 
 #Pulls message and username in Crowdstrike Falcon message
-rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:string-to:duser%duser=%username:word%%-:rest%
+#rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:string-to:duser%duser=%username:word%%-:rest%
 
 #Pulls message and endpointIP in Crowdstrike Falcon message
 rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:string-to:cs3Label=endpointIp cs3=%cs3Label=endpointIp cs3=%src-ip:ipv4%%-:rest%
 
-#Pulls only message in Crowdstrike Falcon message
-rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:rest%
+#Pulls targetendpointhostname and sourceaccountupn for this event
+rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=An authentication protocol was used in an unusual manner %-:string-to:targetEndpointHostName=%targetEndpointHostName=%targetEndpointHostname:word% %-:string-to:sourceAccountUpn=%sourceAccountUpn=%sourceAccountUPN:word%%-:rest%
 
 
 #SonicWall IPS Prevention Log Normalization
@@ -660,4 +663,8 @@ rule=: %-:string-to:\"description\":%\"description\":%Description:quoted-string%
 
 #CISCO ISE 5400
 rule=: %-:string-to:NOTICE%NOTICE Failed-Attempt: Authentication failed, %-:string-to:UserName%UserName=%username:char-to:,%, %-:string-to:Calling-Station-ID%Calling-Station-ID=%src-ip:ipv4%, %-:rest%
+
+#Bomgar
+#BeyondTrust Login Failure
+rule=: %-:string-to:event=login%event=login;reason=failed;site=%-:string-to:beyondtrust%beyondtrust%-:string-to:who=%who=%-:char-to:\x28%(%username:word%%-:rest%
 
