@@ -198,6 +198,7 @@ rules-files:
   - $RULE_PATH/bitdefenderGZ.rules
   - $RULE_PATH/bomgar.rules
   - $RULE_PATH/bonding.rules
+  - $RULE_PATH/box.rules
   - $RULE_PATH/cacti-thold.rules
   - $RULE_PATH/carbonblack-app-control.rules
   - $RULE_PATH/carbonblack-cloud.rules
