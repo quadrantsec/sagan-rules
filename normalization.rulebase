@@ -668,3 +668,5 @@ rule=: %-:string-to:NOTICE%NOTICE Failed-Attempt: Authentication failed, %-:stri
 #BeyondTrust Login Failure
 rule=: %-:string-to:event=login%event=login;reason=failed;site=%-:string-to:beyondtrust%beyondtrust%-:string-to:who=%who=%-:char-to:\x28%(%username:word%%-:rest%
 
+#Pulling GUID for Windows event 5136 and setting it in username variable for tracking purposes
+rule=: 5136: A directory service object was modified%-:string-to:GUID%GUID: %username:word%%-:rest%
