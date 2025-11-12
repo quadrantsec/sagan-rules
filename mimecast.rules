@@ -29,7 +29,7 @@
 
 # Anti-Virus Logs  "Virus="
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] Potential Virus was recieved"; program: MIMECAST; content: "Virus="; nocase; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005768; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] Potential Virus was recieved"; program: MIMECAST; content: "Virus="; content:!"Act=Rej"; parse_src_ip:1; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005768; rev: 2;)
 
 # Target Threat Protection - Internal Email Protect logs   "urlCategory="
 
