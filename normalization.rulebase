@@ -67,8 +67,9 @@ rule=: Access denied URL %url:word% SRC %src-ip:ipv4% DEST %dst-ip:ipv4% %-:rest
 # Caused by WebVPN or IPSec
 # AAA user authentication Successful : server =  10.10.10.10 : user = domain\bob
 
-rule=: AAA user authentication Successful : server =  %ip-src:ipv4% : user = %username:word%
-rule=: AAA user authentication Rejected : reason = AAA failure : server = %src-ip:ipv4% : user = %username:word%
+rule=: %-:string-to:AAA%AAA user authentication Successful : %-:string-to:user%user = %username:word% : user IP = %src-ip:ipv4%%-:rest%
+
+rule=: %-:string-to:AAA%AAA user authentication Rejected : %-:string-to:user%user = %username:word% : user IP = %src-ip:ipv4%%-:rest%
 
 # User authentication failed: Uname: timothy
 
@@ -640,13 +641,16 @@ rule=: TRACK-CLIENT-NOLOGS - Logs have not been received from IP address %src-ip
 rule=: 0|%-:char-to:\x7c%|FalconHost|1.0|Incidents|1|cat=Incidents cs1Label=%-:word% cs1=%-:word% severityNameLabel=%-:word% severityName=%-:word% msg=%-:string-to:cs2=%cs2=%username:char-to:\x20%%-:rest%
 
 #Pulls message and username in Crowdstrike Falcon message
-#rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:string-to:duser%duser=%username:word%%-:rest%
+rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:string-to:duser%duser=%username:word%%-:rest%
 
-#Pulls message and endpointIP in Crowdstrike Falcon message
+#Pulls message and endpointIP in CrowdStrike Falcon message
 rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:string-to:cs3Label=endpointIp cs3=%cs3Label=endpointIp cs3=%src-ip:ipv4%%-:rest%
 
 #Pulls targetendpointhostname and sourceaccountupn for this event
 rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=An authentication protocol was used in an unusual manner %-:string-to:targetEndpointHostName=%targetEndpointHostName=%targetEndpointHostname:word% %-:string-to:sourceAccountUpn=%sourceAccountUpn=%sourceAccountUPN:word%%-:rest%
+
+#Pulls sourceaccountname and ssoapplicationidentifier
+rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=A web-based activity was detected as anomalous by ML model %-:string-to:ssoApplicationIdentifier=%ssoApplicationIdentifier=%ssoApplicationIdentifier:word% %-:string-to:sourceAccountName=%sourceAccountName=%sourceAccountName:word%%-:rest%
 
 
 #SonicWall IPS Prevention Log Normalization
