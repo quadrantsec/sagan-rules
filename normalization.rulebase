@@ -1,4 +1,5 @@
-# version=2
+version=2
+#include=/usr/local/etc/sagan-rules/custom.rulebase
 # Sagan normalize.rulebase
 # Copyright (c) 2009-2023, Quadrant Information Security <www.quadrantsec.com>
 # All rights reserved.
@@ -145,7 +146,7 @@ rule=: FTP connection from %-:char-to:\x3a%:%src-ip:ipv4%/%src-port:number% to %
 
 # TCP access denied by ACL from 10.10.10.10/28490 to inside:192.168.1.1/80
 
-rule =: TCP access denied by ACL from %src-ip:ipv4%/%src-port:number% to %-:char-to:\x3a%:%dst-ip:ipv4%/%dst-port:number%
+rule=: TCP access denied by ACL from %src-ip:ipv4%/%src-port:number% to %-:char-to:\x3a%:%dst-ip:ipv4%/%dst-port:number%
 
 # Teardown TCP connection 361112504 for outside:10.10.1.100/61160(LOCAL\Bob) to inside:12.159.2.124/443 duration 0:00:13 bytes 3216 TCP FINs (Bob)
 
@@ -540,7 +541,16 @@ rule=: %-:string-to:Account Name:%Account Name: %username:char-to:\x40%%-:string
 
 # 5136: A directory service object was modified
 
-rule=: 5136: A directory service object was modified. Subject: Security ID: %subject-sid:word% Account Name: %subject-account:word% Account Domain: %subject-domain:word% Logon ID: %-:word% Directory Service: Name: %-:word% Type: Active Directory Domain Services Object: DN: %username:string-to: GUID% GUID: %-:word% Class: %-:word% Attribute: LDAP Display Name: %attribute:string-to: Syntax% Syntax (OID): %-:word% Value: %value:string-to: Operation% Operation: %-:rest%
+#Pulling GUID for Windows event 5136 in relation to GPO activity and setting it in username variable for tracking purposes
+rule=: 5136: A directory service object was modified%-:string-to:GUID%GUID: %username:word% Class: groupPolicyContainer%-:rest%
+
+#Pulling GUID for Windows event 5136 in relation to gPLink activity and setting it in username variable for tracking purposes
+rule=: 5136: A directory service object was modified%-:string-to:GUID%GUID: %username:word% Class: organizationalUnit Attribute: LDAP Display Name: gPLink %-:rest%
+
+#Pulling username for Windows event 5136 and setting it in username variable for tracking purposes
+rule=: 5136: A directory service object was modified. Subject: Security ID: %subject-sid:word% Account Name: %username:word% Account Domain: %-:string-to:Class%Class: group Attribute:%-:rest%
+
+#rule=: 5136: A directory service object was modified. Subject: Security ID: %subject-sid:word% Account Name: %username:word% Account Domain: %subject-domain:word% Logon ID: %-:word% Directory Service: Name: %-:word% Type: Active Directory Domain Services Object: DN: %-:string-to:GUID%GUID: %objectguid:word% Class: %-:word% Attribute: LDAP Display Name: %attribute:string-to: Syntax% Syntax (OID): %-:word% Value: %value:string-to: Operation% Operation: %-:rest%
 
 # 5145: A network share object was checked...
 rule=: 5145: A network share object was checked to see whether client can be granted desired access. Subject: Security ID: %securityID:word% Account Name: %username:word% Account Domain: %-:word% Logon ID: %-:word% Network Information: Object Type: File Source Address: %src-ip:ipv4% Source Port: %string:number%%-:rest%
@@ -668,5 +678,6 @@ rule=: %-:string-to:NOTICE%NOTICE Failed-Attempt: Authentication failed, %-:stri
 #BeyondTrust Login Failure
 rule=: %-:string-to:event=login%event=login;reason=failed;site=%-:string-to:beyondtrust%beyondtrust%-:string-to:who=%who=%-:char-to:\x28%(%username:word%%-:rest%
 
-#Pulling GUID for Windows event 5136 and setting it in username variable for tracking purposes
-rule=: 5136: A directory service object was modified%-:string-to:GUID%GUID: %username:word%%-:rest%
+# Windows event 4737 - pull username and groupname
+rule=: 4737: A security-enabled global group was changed. Subject: Security ID: %subject-sid:word% Account Name: %username:word% Account Domain: %-:string-to:Group Name%Group Name: %groupname:word%%-:rest%
+
