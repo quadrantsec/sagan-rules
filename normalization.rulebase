@@ -654,6 +654,9 @@ rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=An authentication protocol 
 #Pulls sourceaccountname and ssoapplicationidentifier
 rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=A web-based activity was detected as anomalous by ML model %-:string-to:ssoApplicationIdentifier=%ssoApplicationIdentifier=%ssoApplicationIdentifier:word% %-:string-to:sourceAccountName=%sourceAccountName=%sourceAccountName:word%%-:rest%
 
+#Sets dhost as username for tracking purposes in lowest-confidence Machine Learning rule
+rule=: 4625: An account failed to log on. Subject: Security ID: %-:word% Account Name: %-:string-to:Which Logon Failed%Which Logon Failed: Security ID: %-:word% Account Name: %username:word%%-:rest%
+
 
 #SonicWall IPS Prevention Log Normalization
 #Pulls Message, SRC IP and DSTIP
