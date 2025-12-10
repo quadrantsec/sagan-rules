@@ -268,7 +268,7 @@ alert any any any -> any any (msg:"[DYNAMIC] Azure Eventhub Microsoft Intune Log
 alert any any any -> any any (msg:"[DYNAMIC] NetSkope Logs Detected"; program:netskope-api_data; dynamic_load: $RULE_PATH/netskope.rules; classtype:dynamic-rules; sid:5017347; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] Netwrix API Logs Detected"; program:netwrix_auditor_api_data; dynamic_load: $RULE_PATH/netskope.rules; classtype:dynamic-rules; sid:5017348; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] Okta Logs Detected"; program:iokta-system-log*; dynamic_load: $RULE_PATH/okta.rules; classtype:dynamic-rules; sid:5017349; rev:1;)
-alert any any any -> any any (msg:"[DYNAMIC] Palo Alto Logs Detected"; meta_content:",THREAT,%sagan%",file,vulnerability,url; dynamic_load: $RULE_PATH/palo-alto.rules; classtype:dynamic-rules; sid:5017350; rev:1;)
+alert any any any -> any any (msg:"[DYNAMIC] Palo Alto Logs Detected"; meta_content:"|2c|THREAT|2c|%sagan%",file,vulnerability,url; dynamic_load: $RULE_PATH/palo-alto.rules; classtype:dynamic-rules; sid:5017350; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] PasswordState Logs Detected"; content:"Passwordstate"; dynamic_load: $RULE_PATH/passwordstate.rules; classtype:dynamic-rules; sid:5017351; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] PHP Logs Detected"; program:apache; dynamic_load: $RULE_PATH/php.rules; classtype:dynamic-rules; sid:5017352; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] PPTP Logs Detected"; program:pptpd; dynamic_load: $RULE_PATH/pptp.rules; classtype:dynamic-rules; sid:5017353; rev:1;)
