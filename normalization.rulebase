@@ -69,7 +69,7 @@ rule=: Access denied URL %url:word% SRC %src-ip:ipv4% DEST %dst-ip:ipv4% %-:rest
 
 rule=: %-:string-to:AAA%AAA user authentication Successful : %-:string-to:user%user = %username:word% : user IP = %src-ip:ipv4%%-:rest%
 
-rule=: %-:string-to:AAA%AAA user authentication Rejected : %-:string-to:user%user = %username:word% : user IP = %src-ip:ipv4%%-:rest%
+rule=: AAA user authentication Rejected : %-:string-to:user%user = %username:word% : user IP = %src-ip:ipv4%%-:rest%
 
 # User authentication failed: Uname: timothy
 
