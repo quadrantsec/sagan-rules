@@ -37,7 +37,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Repeated Failed Login
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Activity from an Anonymous Proxy"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_RISKY_IP_ANONYMOUS"; classtype: suspicious-traffic; sid: 5007206; rev: 2; metadata: mitre_technique_id T1078, mitre_technique_id T1563, mitre_technique_id T1564;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Impossible Travel Activity"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_VELOCITY"; classtype: suspicious-traffic; sid: 5007207; rev: 2; metadata: mitre_technique_id T1078;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Impossible Travel Activity"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_VELOCITY"; content:!"|22|ResultStatus|22 3a 20 22|Resolved|22|"; classtype: suspicious-traffic; sid: 5007207; rev: 3; metadata: mitre_technique_id T1078;)
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[MCAS] Suspicious Inbox Manipulation Rule"; program: MCAS; json_content: ".Operation", "MCAS_ALERT_ANUBIS_DETECTION_INBOX_HIDING"; classtype: configuration-change; sid: 5007208; rev: 2; metadata: mitre_technique_id T1078, mitre_technique_id T1564;)
 
