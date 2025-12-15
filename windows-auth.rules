@@ -326,7 +326,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] Vulnerable Ne
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User removed from Domain Administrators group"; event_id: 4729,633; pcre: "/S-1-5-21-\d{5,15}\-\d{5,15}\-\d{5,15}-512 /"; program: *Security*; classtype: successful-admin; sid: 5013680; rev:1; metadata: created_at 2023_07_28;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User removed from Enterprise Administrators group"; event_id: 4757; pcre: "/S-1-5-21-\d{5,15}\-\d{5,15}\-\d{5,15}-519 /"; program: *Security*; classtype: admin-activity; sid:5017214; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User removed from Enterprise Administrators group"; event_id: 4757; pcre: "/S-1-5-21-\d{5,15}\-\d{5,15}\-\d{5,15}-519 /"; program: *Security*; classtype: admin-activity; sid:5017361; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User added to DHCP Administrators group"; event_id: 4732; content: "S-1-5-32-1002 "; program: *Security*; classtype: admin-activity; sid:5017315; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User removed from DHCP Administrators group"; event_id: 4733; content: "S-1-5-32-1002 "; program: *Security*; classtype: admin-activity; sid:5017316; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User removed from DNS Admins group"; event_id: 4733; content: "S-1-5-32-1101 "; program: *Security*; classtype: admin-activity; sid:5017317; rev:1;)
