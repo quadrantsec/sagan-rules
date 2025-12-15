@@ -259,7 +259,7 @@ alert any any any -> any any (msg:"[DYNAMIC] Azure Eventhub Windows Powershell L
 alert any any any -> any any (msg:"[DYNAMIC] Azure Eventhub Windows Security Logs Detected"; program:*Security*; content:"RenderedDescription"; dynamic_load: $RULE_PATH/azureEventHub_windows-security.rules; classtype:dynamic-rules; sid:5017338; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] ESET Logs Detected"; program:eset; dynamic_load: $RULE_PATH/eset.rules; classtype:dynamic-rules; sid:5017339; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] Forescout Logs Detected"; program:Forescout; dynamic_load: $RULE_PATH/forescout.rules; classtype:dynamic-rules; sid:5017340; rev:1;)
-alert any any any -> any any (msg:"[DYNAMIC] Fortinet Logs Detected"; content:"type="; content:"subtype="; dynamic_load: $RULE_PATH/fortinet.rules; classtype:dynamic-rules; sid:5017341; rev:1;)
+alert any any any -> any any (msg:"[DYNAMIC] Fortinet Logs Detected"; content:"devname="; content:"devid="; content:"type="; content:"subtype="; dynamic_load: $RULE_PATH/fortinet.rules; classtype:dynamic-rules; sid:5017341; rev:2;)
 alert any any any -> any any (msg:"[DYNAMIC] Fortinet JSON Logs Detected"; content:"|22|type|22|"; content:"|22|subtype|22|"; dynamic_load: $RULE_PATH/fortinet-json.rules; classtype:dynamic-rules; sid:5017342; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] GCP Cloud Audit Logs Detected"; content:"cloudaudit.googleapis.com"; dynamic_load: $RULE_PATH/gcp-cloud-audit.rules; classtype:dynamic-rules; sid:5017343; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] Huawei Logs Detected"; content:"/ATCKDF"; dynamic_load: $RULE_PATH/huawei.rules; classtype:dynamic-rules; sid:5017344; rev:1;)

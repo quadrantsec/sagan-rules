@@ -387,6 +387,7 @@ rule=: id=%firewall:word% sn=%serial:word% time="%date:date-iso% %time:time-24hr
 
 rule=: Successful su for %-:word% by %username:word%
 rule=: pam_unix(sudo:auth): authentication failure; logname= uid=%uid:number% euid=%-:number% %-:word% ruser= rhost=  user=%username:word%
+rule=: pam_sss(sudo:auth): authentication failure; %-:string-to: user% user=%username:word%%-:rest%
 rule=: %username:char-to:\x3a%: TTY=%-:rest%
 rule=: %username:char-to:\x3a%: command not allowed %-:rest%
 rule=: %username:char-to:\x3a%: user NOT in sudoers %-:rest%
@@ -490,10 +491,6 @@ rule=: %-:string-to:Account Name:%Account Name: %-:string-to:Account Name:%Accou
 # This is for Microsoft Windows event 4624:
 
 rule=: %-:string-to:Account Name:%Account Name: %-:string-to:Account Name:%Account Name: %username:word% %-:string-to:Network Address:%Network Address: %src-ip:ipv4% %-:rest%
-
-#4662: An operation was performed on an object. Subject : Security ID: S-1-5-21-1848214942-2750813456-1026469966-108143 Account Name: WHarding Account Domain: GATE Logon ID: 0xB7F85337 Object: Object Server: DS Object Type: %{bf967aba-0de6-11d0-a285-00aa003049e2} Object Name: %{2a873ae7-98ad-441f-9cad-4f7dd7a1a9c8} Handle ID: 0x0 Operation: Operation Type: Object Access Accesses: READ_CONTROL Access Mask: 0x20000 Properties: READ_CONTROL {bf967aba-0de6-11d0-a285-00aa003049e2} Additional Information: Parameter 1: - Parameter 2:
-rule=: 4662: An operation was performed on an object. Subject : Security ID: %-:word% Account Name: %username:word% %-:rest%
-rule=: 4662: An operation was performed on an object. Subject : Security ID: %-:word% Account Name: %username:word% %-:rest%
 
 # 4724: An attempt was made to reset an account's password
 
@@ -653,6 +650,9 @@ rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=An authentication protocol 
 
 #Pulls sourceaccountname and ssoapplicationidentifier
 rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=A web-based activity was detected as anomalous by ML model %-:string-to:ssoApplicationIdentifier=%ssoApplicationIdentifier=%ssoApplicationIdentifier:word% %-:string-to:sourceAccountName=%sourceAccountName=%sourceAccountName:word%%-:rest%
+
+#Pulls SourceAccountUPN and SourceEndpointHostName for self-request TGS event
+rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=A user executed a self-request for a Ticket Granting Service (TGS), following a Kerberos certificate-based authentication, which might indicate a malicious activity %-:string-to:sourceEndpointHostName=%sourceEndpointHostName=%sourceEndpointHostname:word% %-:string-to:sourceAccountUpn=%sourceAccountUpn=%sourceAccountUPN:word%%-:rest%
 
 #Sets dhost as username for tracking purposes in lowest-confidence Machine Learning rule
 rule=: 4625: An account failed to log on. Subject: Security ID: %-:word% Account Name: %-:string-to:Which Logon Failed%Which Logon Failed: Security ID: %-:word% Account Name: %username:word%%-:rest%
