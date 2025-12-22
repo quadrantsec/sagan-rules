@@ -32,7 +32,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[PURE_STORAGE] Multiple Login Fai
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[PURE_STORAGE] Login After Brute Force"; program:purity.audit; content:"(login"; content:"Result|3a| Success"; xbits:isset, brute-force, track ip_src; parse_src_ip:1; normalize; classtype:suspicious-activity; sid:5017216; rev:1;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[PURE_STORAGE] Multiple Pending File Deletions From A Single Source"; program:fileaudit; json_content:".op_data","delete_pending"; json_content:".result","success"; after:track by_src, count 20, seconds 600; json_map:"src_ip",".client_ip"; normalize; classtype:suspicious-activity; sid:5017217; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[PURE_STORAGE] Multiple Pending File Deletions From A Single Source"; program:fileaudit; json_content:".op_data","delete_pending"; json_content:".result","success"; after:track by_src, count 20, seconds 600; json_map:"src_ip",".client_ip"; normalize; threshold: type suppress, track by_src, count 1, seconds 21600; classtype:suspicious-activity; sid:5017217; rev:2;)
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[PURE_STORAGE] Multiple File Deletions From A Single Source"; program:fileaudit; json_content:".op_data","remove"; json_content:".result","success"; after:track by_src, count 20, seconds 600; json_map:"src_ip",".client_ip"; normalize; classtype:suspicious-activity; sid:5017218; rev:1;)
 
