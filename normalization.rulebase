@@ -654,8 +654,8 @@ rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=An authentication protocol 
 #Pulls sourceaccountname and ssoapplicationidentifier
 rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=A web-based activity was detected as anomalous by ML model %-:string-to:ssoApplicationIdentifier=%ssoApplicationIdentifier=%ssoApplicationIdentifier:word% %-:string-to:sourceAccountName=%sourceAccountName=%sourceAccountName:word%%-:rest%
 
-#Pulls SourceAccountUPN and SourceEndpointHostName for self-request TGS event
-rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=A user executed a self-request for a Ticket Granting Service (TGS), following a Kerberos certificate-based authentication, which might indicate a malicious activity %-:string-to:sourceEndpointHostName=%sourceEndpointHostName=%sourceEndpointHostname:word% %-:string-to:sourceAccountUpn=%sourceAccountUpn=%sourceAccountUPN:word%%-:rest%
+#Pulls TargetServiceAccessIdentifier, SourceAccountUPN and SourceEndpointHostName for self-request TGS event
+rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=A user executed a self-request for a Ticket Granting Service (TGS), following a Kerberos certificate-based authentication, which might indicate a malicious activity %-:string-to:targetServiceAccessIdentifier=%targetServiceAccessIdentifier=%targetServiceAccessIdentifier:word% %-:string-to:sourceEndpointHostName=%sourceEndpointHostName=%sourceEndpointHostname:word% %-:string-to:sourceAccountUpn=%sourceAccountUpn=%sourceAccountUPN:word%%-:rest%
 
 #Pulls SourceEndpointHostName
 rule=: 0|CrowdStrike|FalconHost|%-:string-to:sourceEndpointHostName=%sourceEndpointHostName=%sourceEndpointHostname:word%%-:rest%
