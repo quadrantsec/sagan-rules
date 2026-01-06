@@ -642,6 +642,9 @@ rule=: 0|%-:char-to:\x7c%|FalconHost|1.0|Incidents|1|cat=Incidents cs1Label=%-:w
 #Pulls message and username in Crowdstrike Falcon message
 rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:string-to:duser%duser=%username:word%%-:rest%
 
+#Pulls message and username in Crowdstrike Falcon message
+rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:string-to:dhost%dhost=%dhost:word%%-:rest%
+
 #Pulls message and endpointIP in CrowdStrike Falcon message
 rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=%message:char-to:\x2e%%-:string-to:cs3Label=endpointIp cs3=%cs3Label=endpointIp cs3=%src-ip:ipv4%%-:rest%
 
@@ -651,8 +654,11 @@ rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=An authentication protocol 
 #Pulls sourceaccountname and ssoapplicationidentifier
 rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=A web-based activity was detected as anomalous by ML model %-:string-to:ssoApplicationIdentifier=%ssoApplicationIdentifier=%ssoApplicationIdentifier:word% %-:string-to:sourceAccountName=%sourceAccountName=%sourceAccountName:word%%-:rest%
 
-#Pulls SourceAccountUPN and SourceEndpointHostName for self-request TGS event
-rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=A user executed a self-request for a Ticket Granting Service (TGS), following a Kerberos certificate-based authentication, which might indicate a malicious activity %-:string-to:sourceEndpointHostName=%sourceEndpointHostName=%sourceEndpointHostname:word% %-:string-to:sourceAccountUpn=%sourceAccountUpn=%sourceAccountUPN:word%%-:rest%
+#Pulls TargetServiceAccessIdentifier, SourceAccountUPN and SourceEndpointHostName for self-request TGS event
+rule=: 0|CrowdStrike|FalconHost|%-:string-to:msg%msg=A user executed a self-request for a Ticket Granting Service (TGS), following a Kerberos certificate-based authentication, which might indicate a malicious activity %-:string-to:targetServiceAccessIdentifier=%targetServiceAccessIdentifier=%targetServiceAccessIdentifier:word% %-:string-to:sourceEndpointHostName=%sourceEndpointHostName=%sourceEndpointHostname:word% %-:string-to:sourceAccountUpn=%sourceAccountUpn=%sourceAccountUPN:word%%-:rest%
+
+#Pulls SourceEndpointHostName
+rule=: 0|CrowdStrike|FalconHost|%-:string-to:sourceEndpointHostName=%sourceEndpointHostName=%sourceEndpointHostname:word%%-:rest%
 
 #Sets dhost as username for tracking purposes in lowest-confidence Machine Learning rule
 rule=: 4625: An account failed to log on. Subject: Security ID: %-:word% Account Name: %-:string-to:Which Logon Failed%Which Logon Failed: Security ID: %-:word% Account Name: %username:word%%-:rest%
