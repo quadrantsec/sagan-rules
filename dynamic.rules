@@ -278,3 +278,4 @@ alert any any any -> any any (msg:"[DYNAMIC] SentinelOne Logs Detected"; program
 alert any any any -> any any (msg:"[DYNAMIC] Sonicwall Logs Detected"; program:sonicwall; dynamic_load: $RULE_PATH/sonicwall.rules; classtype:dynamic-rules; sid:5017357; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] Windows OWA Logs Detected"; content:"IISWebLog"; content:"/owa/"; dynamic_load: $RULE_PATH/windows-owa.rules; classtype:dynamic-rules; sid:5017358; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] Zeek Logs Detected"; program:bro|zeek; dynamic_load: $RULE_PATH/zeeks.rules; classtype:dynamic-rules; sid:5017359; rev:1;)
+alert any any any -> any any (msg:"[DYNAMIC] Mimecast V2 Logs Detected"; program:mimecast; dynamic_load: $RULE_PATH/mimecast_v2.rules; classtype:dynamic-rules; sid:5017382; rev:1;)

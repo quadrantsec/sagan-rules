@@ -1,0 +1,70 @@
+# Sagan mimecast_v2.rules
+# Copyright (c) 2009-2024. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# rules by "Bryant Smith" <bsmith@quadrantsec.com>
+# 01/23/2026
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Inbound Connection From Suspicious IP"; program:mimecast; json_content:".eventType","receipt"; json_meta_content:".direction",inbound,external; json_content:".action","Acc"; parse_src_ip:1; json_map:"src_ip",".senderIp"; bluedot:type ip_reputation, track by_src,none,Malicious; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017362; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Internal/Outbound Virus Found and Rejected"; program:mimecast; json_content:".eventType","receipt"; json_meta_content:".direction",outbound,internal; json_content:".action","Rej"; parse_src_ip:1; json_map:"src_ip",".senderIp"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017363; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Internal/Outbound Virus Found and Accepted"; program:mimecast; json_content:".eventType","receipt"; json_meta_content:".direction",outbound,internal; json_content:".action","Acc"; content:!"virusFound:null"; content:!"Policy level Anti-Spoofing applied"; parse_src_ip:1; json_map:"src_ip",".senderIp"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017364; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Policy level Anti-Spoofing applied to Internal/Outbound Email"; program:mimecast; json_content:".eventType","receipt"; json_meta_content:".direction",outbound,internal; json_content:".action","Acc"; content:!"virusFound:null"; content:"Policy level Anti-Spoofing applied"; parse_src_ip:1; json_map:"src_ip",".senderIp"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017365; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Outbound Connection To Suspicious IP"; program:mimecast; json_content:".eventType","delivery"; json_meta_content:".direction",outbound,external; json_content:".action","Acc"; parse_src_ip:1; json_map:"dest_ip",".destinationIp"; bluedot:type ip_reputation, track by_dst,none,Malicious; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017366; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] AV Module Detected a Malicious Inbound/Internal File"; program:mimecast; json_content:".eventType","av"; json_meta_content:".route",inbound,internal; json_map:"src_ip",".senderIp"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017367; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] AV Module Detected a Malicious Outbound/External File"; program:mimecast; json_content:".eventType","av"; json_meta_content:".route",outbound,external; json_map:"src_ip",".senderIp"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017368; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+#alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Outbound/External Spam Email Detected"; program:mimecast; json_content:".eventType","spam"; json_meta_content:".route",outbound,external; json_map:"src_ip",".senderIp"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017369; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Internal Email Protect Log Detected"; program:mimecast; json_content:".eventType","internal email protect"; json_content:!".urlCategory","Blocked"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017370; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Impersonation Protection Tagged Malicious By Threat Dictionary"; program:mimecast; json_content:".eventType","impersonation protection"; json_content:".action","Acc"; json_content:".mimecastThreatDictionary","true"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017371; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Impersonation Protection Tagged Malicious By Custom Threat Dictionary"; program:mimecast; json_content:".eventType","impersonation protection"; json_content:".action","Acc"; json_content:".customThreatDictionary","true"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017372; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Impersonation Protection Tagged Malicious By Similar External Domain"; program:mimecast; json_content:".eventType","impersonation protection"; json_content:".action","Acc"; json_content:".similarMimecastExternalDomain","true"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017373; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Impersonation Protection Tagged Malicious By Similar Custom External Domain"; program:mimecast; json_content:".eventType","impersonation protection"; json_content:".action","Acc"; json_content:".similarCustomExternalDomain","true"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017374; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Impersonation Protection Tagged Malicious By Similar Internal Domain"; program:mimecast; json_content:".eventType","impersonation protection"; json_content:".action","Acc"; json_content:".similarInternalDomain","true"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017375; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Impersonation Protection Tagged Malicious By Custom Name Match"; program:mimecast; json_content:".eventType","impersonation protection"; json_content:".action","Acc"; json_content:".similarInternalDomain","true"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017376; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] URL Protect Blocked Outbound/External Email"; program:mimecast; json_content:".eventType","url protect"; json_meta_content:".route",outbound,external; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017377; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Suspicious Attachment Detected via Bluedot"; program:mimecast; json_content:".eventType","attachment protection"; bluedot:type file_hash,Malicious; json_map:"sha1",".sha1"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017378; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Malicious Attachment Detected via Bluedot"; program:mimecast; json_content:".eventType","attachment protection"; bluedot:type file_hash,Malicious; json_map:"sha1",".sha1"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017379; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Attachment Sent From Malicious IP"; program:mimecast; json_content:".eventType","attachment protection"; bluedot:type ip_reputation, track by_src,none,Malicious; json_map:"src_ip",".senderIp"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017380; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
+alert any $HOME_NET any -> $HOME_NET any (msg:"[MIMECAST] Malicious File Detected"; program:mimecast; json_content:".eventType","attachment protection"; json_map:"src_ip",".senderIp"; reference:url,https://developer.services.mimecast.com/siem-tutorial-cg; classtype:suspicious-activity; sid:5017381; rev:1; metadata:created_at 2026_01_16, updated_at 2026_01_16;)
+
