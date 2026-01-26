@@ -33,7 +33,7 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] An email containi
 
 # Target Threat Protection - Internal Email Protect logs   "urlCategory="
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] A suspicious email was delivered"; program: MIMECAST; meta_content: "urlCategory=%sagan%", Dangerous|20|file|20|extension,Malware,Phishing|20|&|20|Fraud,Unknown,Compromised; content:!"action=Block"; parse_src_ip: 1; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005769; rev: 2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] A suspicious email was delivered"; program: MIMECAST; meta_content: "urlCategory=%sagan%", Dangerous|20|file|20|extension,Malware,Phishing|20|&|20|Fraud,Unknown,Compromised; content:!"action=Block"; content:!"Route=Internal"; parse_src_ip: 1; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005769; rev: 2;)
 
 # Targeted Threat Protection - Impersonation Protect logs "An internal user name has been impersonated"
 

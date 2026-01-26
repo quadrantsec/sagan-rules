@@ -676,7 +676,7 @@ alert any any any -> any any (msg:"[WINDOWS-SECURITY] Windows Registry - Restric
 
 alert any any any -> any any (msg:"[WINDOWS-SECURITY] Windows Registry - Restricted Admin Outbound Credentials Enabled (Windows Security Audit) - Critical"; program:*Security*; event_id:4657; pcre:"/ObjectName.*HKLM\\System\\CurrentControlSet\\Control\\Lsa\\DisableRestrictedAdminOutboundCreds/i"; pcre:"/NewValue.*0x0/i"; classtype:privilege-escalation; sid:5017391; rev:1;)
 
-alert any any any -> any any (msg:"[WINDOWS-SECURITY] Suspicious svchost.exe Binary Running from Non-Standard Directory - Critical"; program:*Security*; event_id:4688; pcre:"/NewProcessName.*\\svchost\.exe/i"; pcre:"/NewProcessName.*(?!.*\\Windows\\System32\\|.*\\Windows\\SysWOW64\\)/i"; classtype:suspicious-traffic; priority:1; sid:5017394; rev:1;)
+alert any any any -> any any (msg:"[WINDOWS-SECURITY] Suspicious svchost.exe Binary Running from Non-Standard Directory - Critical"; program:*Security*; event_id:4688; pcre:"/NewProcessName.*\\svchost\.exe/i"; pcre:"/NewProcessName:(?!.*\\Windows\\System32\\|.*\\Windows\\SysWOW64\\).+ Token Elevation Type.+/i"; classtype:suspicious-traffic; priority:1; sid:5017394; rev:1;)
 
 alert any any any -> any any (msg:"[WINDOWS-SECURITY] Fake svchost.exe Process Detected (svch0st) - Critical"; program:*Security*; event_id:4688; pcre:"/NewProcessName.*\\svch0st\.exe/i"; classtype:suspicious-traffic; priority:1; sid:5017395; rev:1;)
 
@@ -684,7 +684,5 @@ alert any any any -> any any (msg:"[WINDOWS-SECURITY] Hidden Scheduled Task Crea
 
 alert any any any -> any any (msg:"[WINDOWS-SECURITY] Use Of LOLBIN Detected - wlrmdr.exe"; program:*Security*|*Sysmon*; event_id:4688,1; content:"wlrmdr.exe -c -s 0 -f 0 -t Empty -m Empty -a 0 -u Empty"; classtype:evasion; metadata: mitre_tactic_name DefenseEvasion, mitre_tactic_id TA0005, mitre_technique_name SystemBinaryProxyExecution, mitre_technique_id T1218; sid:5017397; rev:1;)
 
-alert any any any -> any any (msg:"[WINDOWS-SECURITY] Firewall Allow Rule Created For Illegitimate SVCHOST.EXE Binary"; program:*Sysmon*|*Security*; event_id:4688,1; content:"netsh"; nocase; content:"firewall add allowedprogram"; nocase; pcre:"/(?!.+\\Windows\\System32\\|.|\\Windows\\SysWOW64\\).|svch[o0]st\.exe/i"; content:"ENABLE"; nocase; classtype:evasion; sid:5017398; rev:1;)
-
-alert any any any -> any any (msg:"[WINDOWS-SECURITY] Firewall Allow Rule Created For Illegitimate SVCHOST.EXE Binary"; program:*Security*; event_id:4688; pcre:"/CommandLine.+netsh\s+firewall\s+add\s+allowedprogram/i"; pcre:"/CommandLine.+(?!.*\\Windows\\System32\\|.*\\Windows\\SysWOW64\\).+svch[o0]st\.exe/i"; pcre:"/CommandLine.+ENABLE/i"; classtype:evasion; sid:5017399; rev:1;)
+alert any any any -> any any (msg:"[WINDOWS-SECURITY] Firewall Allow Rule Created For Illegitimate SVCHOST.EXE Binary"; program:*Sysmon*|*Security*; event_id:4688,1; content:"netsh"; nocase; pcre:"/firewall add allowed program (?!.*\\Windows\\System32\\|.*\\Windows\\SysWOW64\\).*svch[o0]st\.exe/i"; content:"ENABLE"; nocase; classtype:evasion; sid:5017398; rev:1;)
 #################################

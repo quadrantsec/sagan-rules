@@ -723,7 +723,7 @@ alert any any any -> any any (msg:"[WINDOWS-SYSMON] Windows Registry - Restricte
 
 alert any any any -> any any (msg:"[WINDOWS-SYSMON] Windows Registry - Restricted Admin Outbound Credentials Enabled (Sysmon RegistryEvent) - Critical"; program:*Sysmon*; event_id:13; pcre:"/TargetObject.*HKLM\\System\\CurrentControlSet\\Control\\Lsa\\DisableRestrictedAdminOutboundCreds/i"; pcre:"/Details.*(0x00000000|DWORD.*0)/i"; classtype:privilege-escalation; sid:5017388; rev:1;)
 
-alert any any any -> any any (msg:"[WINDOWS-SYSMON] Suspicious svchost.exe Binary Running from Non-Standard Directory - Critical"; program:*Sysmon*; event_id:1; pcre:"/Image.*\\svchost\.exe/i"; pcre:"/Image.*(?!.*\\Windows\\System32\\|.*\\Windows\\SysWOW64\\)/i"; classtype:suspicious-traffic; priority:1; sid:5017392; rev:1;)
+alert any any any -> any any (msg:"[WINDOWS-SYSMON] Suspicious svchost.exe Binary Running from Non-Standard Directory - Critical"; program:*Sysmon*; event_id:1; pcre:"/Image.*\\svchost\.exe/i"; pcre:"/ Image: (?!.*\\Windows\\System32\\|.*\\Windows\\SysWOW64\\).+ FileVersion.+/i"; classtype:suspicious-traffic; priority:1; sid:5017392; rev:1;)
 
 alert any any any -> any any (msg:"[WINDOWS-SYSMON] Fake SVCHOST Process Detected (svch0st.exe) - Critical"; program:*Sysmon*; event_id:1; pcre:"/Image.*\\svch0st\.exe/i"; classtype:suspicious-traffic; priority:1; sid:5017393; rev:1;)
 #########
