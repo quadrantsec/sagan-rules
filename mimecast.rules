@@ -29,19 +29,19 @@
 
 # Anti-Virus Logs  "Virus="
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] Potential Virus was received"; program: MIMECAST; content: "Virus="; content:!"Act=Rej"; parse_src_ip:1; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005768; rev: 2;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] An email containing a virus was detected and blocked"; program: MIMECAST; content:"RejType=Virus Signature Detection"; parse_src_ip:1; reference:url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype:bad-unknown; sid:5005768; rev:3;)
 
 # Target Threat Protection - Internal Email Protect logs   "urlCategory="
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] Internal email protection"; program: MIMECAST; content: "urlCategory="; nocase; parse_src_ip: 1; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005769; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] A suspicious email was delivered"; program: MIMECAST; meta_content: "urlCategory=%sagan%", Dangerous|20|file|20|extension,Malware,Phishing|20|&|20|Fraud,Unknown,Compromised; content:!"action=Block"; content:!"Route=Internal"; parse_src_ip: 1; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005769; rev: 2;)
 
-# Targeted Threat Protection - Impersonation Protect logs "An internal user name has been impersonated"  
+# Targeted Threat Protection - Impersonation Protect logs "An internal user name has been impersonated"
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] An internal user name has been impersonated"; program: MIMECAST; content: "Definition=Default Impersonation Definition"; nocase; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005770; rev: 1;)
 
 # Targeted Threat Protection - URL Protect logs "A user has clicked on link that is potentially malicious"
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] A user has clicked on link that is potentially malicious"; program: MIMECAST; content: "reason=malicious"; content: "url="; parse_src_ip: 1; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005771; rev: 1;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MIMECAST] A user has clicked on link that is potentially malicious"; program: MIMECAST; content: "reason=malicious"; content: "url="; parse_src_ip: 1; reference: url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/; classtype: bad-unknown; sid:5005771; rev:1;)
 
 # Targeted Threat Protection - Attachment Protect logs "The Mimecast sandbox has detected a potentially malicious file:"
 
