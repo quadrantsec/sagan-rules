@@ -1,4 +1,4 @@
-sid:5003120# Sagan bluedot.rules
+# Sagan bluedot.rules
 # Copyright (c) 2009-2023. Quadrant Information Security <www.quadrantsec.com>
 # All rights reserved.
 #
@@ -32,6 +32,6 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[BLUEDOT] Malicious MD5 hash
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[BLUEDOT] Malicious SHA1 hash detected via Bluedot"; bluedot: type file_hash,Malicious; parse_hash: sha1; classtype: suspicious-traffic; parse_src_ip: 1; normalize; sid:5003119; rev:1;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[BLUEDOT] Malicious SHA256 hash detected via Bluedot"; bluedot: type file_hash,Malicious; parse_hash: sha256; content:!"grep"; classtype: suspicious-traffic; parse_src_ip: 1; normalize; sid:5003120; rev:1;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[BLUEDOT] Malicious SHA256 hash detected via Bluedot"; bluedot: type file_hash,Malicious; parse_hash: sha256; classtype: suspicious-traffic; parse_src_ip: 1; normalize; sid:5003120; rev:1;)
 
 
