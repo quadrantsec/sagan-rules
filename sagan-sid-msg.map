@@ -4781,7 +4781,6 @@
 5004963 || [MSAPI-ONEDRIVE-BLUEDOT] AnonymousLinkUsed from Bluedot listed IP address || url,wiki.quadrantsec.com/bin/view/Main/5004963
 5004964 || [MSAPI-ONEDRIVE-BLUEDOT] CompanyLinkCreated from Bluedot listed IP address || url,wiki.quadrantsec.com/bin/view/Main/5004964
 5004965 || [MSAPI-ONEDRIVE-BLUEDOT] CompanyLinkUsed from Bluedot listed IP address || url,wiki.quadrantsec.com/bin/view/Main/5004965
-5004966 || [MSAPI-ONEDRIVE-BLUEDOT] FileAccessed from Bluedot listed IP address || url,wiki.quadrantsec.com/bin/view/Main/5004966
 5004967 || [MSAPI-ONEDRIVE-BLUEDOT] FileAccessed from Bluedot listed IP address || url,wiki.quadrantsec.com/bin/view/Main/5004967
 5004968 || [MSAPI-ONEDRIVE-BLUEDOT] FileAccessedExtended from Bluedot listed IP address || url,wiki.quadrantsec.com/bin/view/Main/5004968
 5004969 || [MSAPI-ONEDRIVE-BLUEDOT] FileCopied from Bluedot listed IP address || url,wiki.quadrantsec.com/bin/view/Main/5004969
@@ -5569,7 +5568,7 @@
 5005765 || [WINDOWS-POWERSHELL] Suspicious Download using IEX || url,wiki.quadrantsec.com/bin/view/Main/5005765 || url,fireeye.com/blog/threat-research/2018/07/malicious-powershell-detection-via-machine-learning.html
 5005766 || [DYNAMIC] PowerShell logs detect via program || url,wiki.quadrantsec.com/bin/view/Main/5005766
 5005767 || [DYNAMIC] Mimecast logs detected via message || url,wiki.quadrantsec.com/bin/view/Main/5005767
-5005768 || [MIMECAST] Potential Virus was recieved || url,wiki.quadrantsec.com/bin/view/Main/5005768 || url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/
+5005768 || [MIMECAST] An email containing a virus was detected and blocked" || url,wiki.quadrantsec.com/bin/view/Main/5005768 || url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/
 5005769 || [MIMECAST] Internal email protection || url,wiki.quadrantsec.com/bin/view/Main/5005769 || url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/
 5005770 || [MIMECAST] An internal user name has been impersonated || url,wiki.quadrantsec.com/bin/view/Main/5005770 || url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/
 5005771 || [MIMECAST] A user has clicked on link that is potentially malicious || url,wiki.quadrantsec.com/bin/view/Main/5005771 || url,www.mimecast.com/tech-connect/documentation/tutorials/understanding-siem-logs/
