@@ -107,7 +107,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-MISC] File system f
 #alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS] A directory service object was moved"; content: " 5139|3a| "; classtype: configuration-change; program: *Security*; sid:5002275; rev:3;)
 
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[WINDOWS-MISC] System shutdown [XBIT SET]"; event_id: 1074,6006,41,6008,1076; program: *Security*|*System*|*USER32*; content:!"Serial Port COM"; xbits: set,reboot_windows,track ip_src, expire 600; xbits: noeve; classtype: system-event; sid: 5002014; rev:35;)
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[WINDOWS-MISC] System shutdown [XBIT SET]"; event_id: 1074,6006,41,6008,1076; program: *Security*|*System*|*USER32*; content:!"Serial Port COM"; xbits: set,reboot_windows,track ip_src, expire 1800; xbits: noeve; classtype: system-event; sid: 5002014; rev:36;)
 
 # Added by Brian Echeverry (09/22/2015)
 
