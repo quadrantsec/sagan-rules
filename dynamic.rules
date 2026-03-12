@@ -232,7 +232,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Exabeam Logs detect
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Oracle OCI Logs detected"; program:oci-kafka-consumer_data; dynamic_load: $RULE_PATH/oracle_oci.rules; classtype:dynamic-rules; sid:5016657; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Palo Alto Prisma Logs detected"; program:prisma; dynamic_load: $RULE_PATH/palo-alto_prisma.rules; classtype:dynamic-rules; sid:5017149; rev:1;)
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[DYNAMIC] Halcyon Logs detected"; program:halcyon_webapi_data; dynamic_load: $RULE_PATH/halcyon.rules; classtype:dynamic-rules; sid:5017199; rev:1;)
-alert any any any -> any any (msg:"[DYNAMIC] Barracuda Sentinel Logs Detected"; program:Sentinel; dynamic_load: $RULE_PATH/barracuda-impersonation.rules; classtype:dynamic-rules; sid:5017200; rev:1;)
+alert any any any -> any any (msg:"[DYNAMIC] Barracuda Sentinel Logs Detected"; program:Sentinel; content:!"BillingAzureSubscriptionId"; dynamic_load: $RULE_PATH/barracuda-impersonation.rules; classtype:dynamic-rules; sid:5017200; rev:2;)
 alert any any any -> any any (msg:"[DYNAMIC] Box API Logs Detected"; program:box-api_data; dynamic_load: $RULE_PATH/box.rules; classtype:dynamic-rules; sid:5017201; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] CheckPoint Logs Detected"; content:"service_id"; content:"ProductName|3a| "; content:"ProductFamily|3a| Network"; dynamic_load: $RULE_PATH/checkpoint.rules; classtype:dynamic-rules; sid:5017202; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] Cisco-IOS Logs Detected"; content:"SYS-5-"; dynamic_load: $RULE_PATH/cisco-ios.rules; classtype:dynamic-rules; sid:5017203; rev:1;)
