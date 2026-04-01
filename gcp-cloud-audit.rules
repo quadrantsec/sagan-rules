@@ -171,6 +171,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Google Identity Oauth2 Deny
 alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Google Mailer Daemon Blocked"; program:gcp; json_content:".protoPayload.methodName","google.login.LoginService.blockedSender"; content:"mailer-daemon@googlemail.com"; classtype:system-event; sid:5017815; rev:1;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] WebFlow Sender Blocked"; program:gcp; json_content:".protoPayload.methodName","google.login.LoginService.blockedSender"; content:"webflow.com"; classtype:system-event; sid:5017816; rev:1;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Google Login Challenge Detected"; program:gcp; json_content:".protoPayload.methodName","google.login.LoginService.loginChallenge"; classtype:system-event; sid:5017817; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Google Passkey Enrollment Detected"; program:gcp; json_content:".protoPayload.methodName","google.login.LoginService.passkeyEnrolled"; classtype:system-event; sid:5017818; rev:1;)
 
 #=============================================================================================
 #               Catchall rule!  Put all normal rules above this one!!!
