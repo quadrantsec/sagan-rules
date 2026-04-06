@@ -173,6 +173,15 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] WebFlow Sender Blocked"; pr
 alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Google Login Challenge Detected"; program:gcp; json_content:".protoPayload.methodName","google.login.LoginService.loginChallenge"; classtype:system-event; sid:5017817; rev:1;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Google Passkey Enrollment Detected"; program:gcp; json_content:".protoPayload.methodName","google.login.LoginService.passkeyEnrolled"; classtype:system-event; sid:5017818; rev:1;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Multiple SecretManager Secrets Deleted"; program:gcp; content:"secretmanager.googleapis.com"; meta_content:"%sagan%",DestroySecretVersion,DeleteSecret; meta_nocase; json_map:"src_ip",".protoPayload.requestMetadata.callerIp"; parse_src_ip:1; after:track by_src, count 10, seconds 3600; threshold:type suppress,track by_src, count 1, seconds 3600; classtype:system-event; reference:url,attack.mitre.org/techniques/T1485; sid:5017819; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Google Suspicious Login Detected"; program:gcp; json_content:".protoPayload.methodName","google.login.LoginService.loginSuccess"; content:"|22|boolValue|22 3a|true,|22|label|22 3a 22|LABEL_OPTIONAL|22|,|22|name|22 3a 22|is_suspicious|22|"; classtype:system-event; sid:5017820; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Google Login From Bluedot Flagged IP"; program:gcp; json_content:".protoPayload.methodName","google.login.LoginService.loginSuccess"; bluedot:type ip_reputation, track by_src,none,Malicious,Tor,Proxy; classtype:system-event; sid:5017821; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Google Login Challenge Failed"; program:gcp; content:"login_challenge_status"; content:"failed"; classtype:system-event; sid:5017822; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Google Download User List"; program:gcp; json_content:".protoPayload.methodName","google.admin.AdminService.downloadUserlistCsv"; classtype:system-event; sid:5017823; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] User Unenrolled from Strong Auth"; program:gcp; json_content:".protoPayload.methodName","google.admin.AdminService.unenrollUserFromStrongAuth"; classtype:system-event; sid:5017824; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Customer Takeout Created"; program:gcp; json_content:".protoPayload.methodName","google.admin.AdminService.customerTakeoutCreated"; classtype:system-event; sid:5017825; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Security Investigation Query Initiated"; program:gcp; json_content:".protoPayload.methodName","google.admin.AdminService.securityInvestigationQuery"; classtype:system-event; sid:5017826; rev:1;)
+
+
 
 #=============================================================================================
 #               Catchall rule!  Put all normal rules above this one!!!
