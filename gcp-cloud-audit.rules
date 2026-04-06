@@ -180,6 +180,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Google Download User List";
 alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] User Unenrolled from Strong Auth"; program:gcp; json_content:".protoPayload.methodName","google.admin.AdminService.unenrollUserFromStrongAuth"; classtype:system-event; sid:5017824; rev:1;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Customer Takeout Created"; program:gcp; json_content:".protoPayload.methodName","google.admin.AdminService.customerTakeoutCreated"; classtype:system-event; sid:5017825; rev:1;)
 alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Security Investigation Query Initiated"; program:gcp; json_content:".protoPayload.methodName","google.admin.AdminService.securityInvestigationQuery"; classtype:system-event; sid:5017826; rev:1;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[GCP] Service Acount Key Created"; program:gcp; content:"google.iam.admin.v1.CreateServiceAccountKey"; classtype:system-event; sid:5017827; rev:1;)
 
 
 
