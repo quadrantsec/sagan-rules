@@ -6,7 +6,7 @@ alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 Enumeration (Multiple Li
 
 alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 Enumeration (Multiple ListObectsv2 Events)"; program:s3.amazonaws.com; json_content:".eventName","ListObjectsV2"; after:track by_username,count 10, seconds 60; json_map:"src_ip",".sourceIPAddress"; json_map:"username",".userIdentity.sessionContext.sessionIssuer.userName"; classtype:user-activity; sid:5017059; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
 
-alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 Enumeration (Multiple ListBuckets Events)"; program:s3.amazonaws.com; json_content:".eventName","ListBuckets"; after:track by_username,count 10, seconds 60; json_map:"src_ip",".sourceIPAddress"; json_map:"username",".userIdentity.sessionContext.sessionIssuer.userName"; classtype:user-activity; sid:sid:5017060; rev:1; metadata: createdOn 2025_05_09, updatedOn 2025_07_30;)
+alert any $HOME_NET any -> $HOME_NET any (msg:"[AWS] S3 Enumeration (Multiple ListBuckets Events)"; program:s3.amazonaws.com; json_content:".eventName","ListBuckets"; after:track by_username,count 10, seconds 60; json_map:"src_ip",".sourceIPAddress"; json_map:"username",".userIdentity.sessionContext.sessionIssuer.userName"; classtype:user-activity; sid:5017060; rev:2; metadata: createdOn 2025_05_09, updatedOn 2026_04_20;)
 
 
 #S3 Get/Put Objects
