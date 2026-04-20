@@ -470,11 +470,11 @@ alert any any any -> any any (msg:"[CROWDSTRIKE] Process behavior indicative of 
 
 alert any any any -> any any (msg:"[CROWDSTRIKE] Process behavior indicative of potentially unwanted program - Detected"; program:CrowdStrike; content:"A process launched whose behavior is likely related to a potentially unwanted program (PUP)"; content:"standard detection"; nocase; content:"tactic=Malware"; normalize; classtype:suspicious-traffic; sid:5017644; rev:1;)
 
-alert any any any -> any any (msg:"[CROWDSTRIKE] DNS request observed in EPP detection summary - Blocked"; program:CrowdStrike; content:"DNS Request In An Epp Detection Summary Event"; content:!"msg="; content:"blocked"; nocase; content:"tactic=Malware"; normalize; classtype:suspicious-traffic; sid:5017645; rev:1;)
+#alert any any any -> any any (msg:"[CROWDSTRIKE] DNS request observed in EPP detection summary - Blocked"; program:CrowdStrike; content:"DNS Request In An Epp Detection Summary Event"; content:!"msg="; content:"blocked"; nocase; content:"tactic=Malware"; normalize; classtype:suspicious-traffic; sid:5017645; rev:1;)
 
-alert any any any -> any any (msg:"[CROWDSTRIKE] DNS request observed in EPP detection summary - Killed"; program:CrowdStrike; content:"DNS Request In An Epp Detection Summary Event"; content:!"msg="; content:"killed"; nocase; content:"tactic=Malware"; normalize; classtype:suspicious-traffic; sid:5017646; rev:1;)
+#alert any any any -> any any (msg:"[CROWDSTRIKE] DNS request observed in EPP detection summary - Killed"; program:CrowdStrike; content:"DNS Request In An Epp Detection Summary Event"; content:!"msg="; content:"killed"; nocase; content:"tactic=Malware"; normalize; classtype:suspicious-traffic; sid:5017646; rev:1;)
 
-alert any any any -> any any (msg:"[CROWDSTRIKE] DNS request observed in EPP detection summary - Detected"; program:CrowdStrike; content:"DNS Request In An Epp Detection Summary Event"; content:!"msg="; content:"standard detection"; nocase; content:"tactic=Malware"; normalize; classtype:suspicious-traffic; sid:5017647; rev:1;)
+#alert any any any -> any any (msg:"[CROWDSTRIKE] DNS request observed in EPP detection summary - Detected"; program:CrowdStrike; content:"DNS Request In An Epp Detection Summary Event"; content:!"msg="; content:"standard detection"; nocase; content:"tactic=Malware"; normalize; classtype:suspicious-traffic; sid:5017647; rev:1;)
 
 alert any any any -> any any (msg:"[CROWDSTRIKE] Document access observed in detection summary event - Blocked"; program:CrowdStrike; content:"Document Access In A Detection Summary Event"; content:!"msg="; content:"blocked"; nocase; content:"tactic=Malware"; normalize; classtype:suspicious-traffic; sid:5017648; rev:1;)
 
