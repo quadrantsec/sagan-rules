@@ -498,7 +498,7 @@ alert any any any -> any any (msg:"[CROWDSTRIKE] Quarantined files observed in E
 
 alert any any any -> any any (msg:"[CROWDSTRIKE] Quarantined files observed in EPP detection summary - Killed"; program:CrowdStrike; content:"Quarantined Files In An Epp Detection Summary Event"; content:!"msg="; content:"killed"; nocase; content:"tactic=Malware"; normalize; classtype:suspicious-traffic; sid:5017658; rev:1;)
 
-alert any any any -> any any (msg:"[CROWDSTRIKE] Quarantined files observed in EPP detection summary - Detected"; program:CrowdStrike; content:"Quarantined Files In An Epp Detection Summary Event"; content:!"msg="; content:"standard detection"; nocase; content:"tactic=Malware"; normalize; classtype:suspicious-traffic; sid:5017659; rev:1;)
+#alert any any any -> any any (msg:"[CROWDSTRIKE] Quarantined files observed in EPP detection summary - Detected"; program:CrowdStrike; content:"Quarantined Files In An Epp Detection Summary Event"; content:!"msg="; content:"standard detection"; nocase; content:"tactic=Malware"; normalize; classtype:suspicious-traffic; sid:5017659; rev:1;)
 
 alert any any any -> any any (msg:"[CROWDSTRIKE] Process Launched With Filename Path And/Or Arguments Associated With Known Adware - Blocked"; program:CrowdStrike; content:"A process launched with a filename, path, and/or arguments associated with known adware"; content:"blocked"; nocase; content:"tactic=Malware"; normalize; classtype:suspicious-traffic; sid:5017660; rev:1;)
 
