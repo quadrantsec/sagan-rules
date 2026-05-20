@@ -78,6 +78,12 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[MSAPI-SECURITYCOMPLIANCECENT
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[MSAPI-SECURITYCOMPLIANCECENTER] Tenant Allow/Block List About To Expire"; program:SecurityComplianceCenter; json_content: ".Operation", "AlertEntityGenerated"; json_content: ".Name", "Tenant Allow/Block List entry is about to expire"; json_map: "program",".Workload"; classtype: system-event; sid:5015332; rev:1;)
 
+alert any any any -> any any (msg:"[MSAPI-SECURITYCOMPLIANCECENTER] A User Clicked Through To A Potential Malicious URL"; program:SecurityComplianceCenter; json_content: ".Operation", "AlertEntityGenerated"; json_content:".Name","A user clicked through to a potentially malicious URL"; json_content:".Status","Active"; json_map: "program",".Workload"; classtype:suspicious-activity; priority:1; sid:5017925; rev:1; metadata: createdOn 2026_05_20, updatedOn 2026_05_20;)
+
+alert any any any -> any any (msg:"[MSAPI-SECURITYCOMPLIANCECENTER] User Restricted From Sending Email"; program:SecurityComplianceCenter; json_content: ".Operation", "AlertEntityGenerated"; json_content:".Name","User restricted from sending email"; json_content:".Status","Active"; json_map: "program",".Workload"; classtype:suspicious-activity; priority:1; sid:5017926; rev:1; metadata: createdOn 2026_05_20, updatedOn 2026_05_20;)
+
+alert any any any -> any any (msg:"[MSAPI-SECURITYCOMPLIANCECENTER] User Reported Teams Message As A Security Risk"; program:SecurityComplianceCenter; json_content: ".Operation", "AlertEntityGenerated"; json_content:".Name","Teams message reported by user as security risk"; json_content:".Status","Active"; json_map: "program",".Workload"; classtype:system-event; sid:5017927; rev:1; metadata: createdOn 2026_05_20, updatedOn 2026_05_20;)
+
 
 #=============================================================================================
 #		Catchall rule!  Put all normal rules above this one!!!
