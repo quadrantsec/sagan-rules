@@ -1,0 +1,45 @@
+name: Validate Sagan Legacy Rules
+
+on:
+  push:
+    branches: [develop, 'feature/**']
+    paths:
+      - '**.rules'
+      - '**.rule'
+  pull_request:
+    branches: [develop, 'feature/**']
+    paths:
+      - '**.rules'
+      - '**.rule'
+
+jobs:
+  validate:
+    name: Sagan Rule Syntax Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Run Sagan rule validator
+        run: |
+          FILES=$(find . -type f \( -name "*.rules" -o -name "*.rule" \) | sort)
+          python3 .github/scripts/validate_sagan_rules.py $FILES
+
+      - name: Upload warnings log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sagan-validation-warnings
+          path: .github/validation/warnings_*.txt
+          retention-days: 90
+          if-no-files-found: ignore
+
+      - name: Upload errors log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sagan-validation-errors
+          path: .github/validation/errors_*.txt
+          retention-days: 90
+          if-no-files-found: ignore
