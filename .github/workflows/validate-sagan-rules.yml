@@ -2,12 +2,12 @@ name: Validate Sagan Legacy Rules
 
 on:
   push:
-    branches: [develop, 'feature/**']
+    branches: [main, develop, 'feature/**']
     paths:
       - '**.rules'
       - '**.rule'
   pull_request:
-    branches: [develop, 'feature/**']
+    branches: [main, develop, 'feature/**']
     paths:
       - '**.rules'
       - '**.rule'
@@ -32,7 +32,7 @@ jobs:
         with:
           name: sagan-validation-warnings
           path: .github/validation/warnings_*.txt
-          retention-days: 90
+          retention-days: 7
           if-no-files-found: ignore
 
       - name: Upload errors log
@@ -41,5 +41,5 @@ jobs:
         with:
           name: sagan-validation-errors
           path: .github/validation/errors_*.txt
-          retention-days: 90
+          retention-days: 7
           if-no-files-found: ignore
