@@ -124,6 +124,46 @@ def between_quotes(s: str) -> str | None:
 
 # ── Per-rule validation ───────────────────────────────────────────────────────
 
+def validate_hex_content(val: str) -> tuple[list[str], list[str]]:
+    """
+    Validate hex sequences in content/meta_content values.
+    Mirrors Content_Pipe() and Validate_HEX() in util.c.
+    Returns (errors, warnings) tuple.
+    - errors: space immediately after '|', invalid hex chars — these abort Sagan
+    - warnings: unbalanced pipes — Sagan loads but the rule won't trigger correctly
+    """
+    errors = []
+    warnings = []
+    i = 0
+    while i < len(val):
+        if val[i] == "|":
+            if i + 1 >= len(val):
+                warnings.append("content hex encoding has unbalanced '|' pipes")
+                break
+            c1 = val[i + 1] if i + 1 < len(val) else ""
+            c2 = val[i + 2] if i + 2 < len(val) else ""
+
+            if c1 == ' ' or c2 == ' ':
+                errors.append(f"content hex sequence starting at '|{val[i+1:i+4]}...' has a space immediately after the opening '|' — Sagan requires |HH| format with no leading spaces")
+            elif c1 == '|':
+                warnings.append("content hex sequence '||' is empty")
+            else:
+                hex_pair = c1 + c2
+                if not all(c in '0123456789abcdefABCDEF' for c in hex_pair if c):
+                    if c2 and c2 != '|' and c2 != ' ':
+                        errors.append(f"content hex value '{hex_pair}' contains invalid hex characters")
+
+            close = val.find("|", i + 1)
+            if close == -1:
+                warnings.append("content hex encoding has unbalanced '|' pipes")
+                break
+            i = close + 1
+        else:
+            i += 1
+    return errors, warnings
+
+
+
 def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], list[str]]:
     errors = []
     warnings = []
@@ -212,6 +252,12 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
                 val = between_quotes(rest)
                 if val is None or val == "":
                     warn("'content' value is empty or not quoted")
+                elif "|" in val:
+                    hex_errs, hex_warns = validate_hex_content(val)
+                    for hex_err in hex_errs:
+                        err(f"'content': {hex_err}")
+                    for hex_warn in hex_warns:
+                        warn(f"'content': {hex_warn}")
 
         # nocase / offset / depth / distance / within
         elif kw in ("nocase", "offset", "depth", "distance", "within"):
@@ -221,10 +267,37 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
         # meta_content
         elif kw == "meta_content":
             meta_content_count += 1
+
+            if meta_content_count > 5:
+                warn("'meta_content' exceeds maximum of 5 per rule (MAX_META_CONTENT) — rule may not load correctly")
+
             if not rest:
                 err("'meta_content' appears to be incomplete")
-            elif "%sagan%" not in rest:
-                err("'meta_content' is missing the required '%sagan%' helper")
+            else:
+                # Quote balance check — Between_Quotes with q_check=true aborts if > 3 quotes
+                quote_count = rest.count('"')
+                if quote_count > 3:
+                    err(f"'meta_content' has improper quote balance ({quote_count} quotes found) — Sagan requires 3 or fewer")
+
+                if "%sagan%" not in rest:
+                    err("'meta_content' is missing the required '%sagan%' helper")
+
+                # Check that search values exist after the helper (comma-separated)
+                parts = rest.split(",", 1)
+                if len(parts) < 2 or not parts[1].strip():
+                    err("'meta_content' is missing search values after the helper")
+                else:
+                    values = [v.strip() for v in parts[1].split(",") if v.strip()]
+                    if len(values) > 512:
+                        err(f"'meta_content' has too many search values ({len(values)}); max is 512")
+                    # Validate hex encoding in the helper portion
+                    helper = parts[0]
+                    if "|" in helper:
+                        hex_errs, hex_warns = validate_hex_content(between_quotes(helper) or helper)
+                        for hex_err in hex_errs:
+                            err(f"'meta_content' helper: {hex_err}")
+                        for hex_warn in hex_warns:
+                            warn(f"'meta_content' helper: {hex_warn}")
 
         # meta_nocase / meta_offset / meta_depth / meta_distance / meta_within
         elif kw in ("meta_nocase", "meta_offset", "meta_depth", "meta_distance", "meta_within"):
