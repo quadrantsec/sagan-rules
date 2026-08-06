@@ -282,6 +282,24 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
                 if "%sagan%" not in rest:
                     err("'meta_content' is missing the required '%sagan%' helper")
 
+                # Literal comma inside the %sagan% helper string — Sagan's tokenizer
+                # splits the helper from its search values on the first ',', so an
+                # un-hex-encoded comma inside the quoted string is misread as that
+                # delimiter and aborts the rule load (rules.c). Isolate just the
+                # first quoted segment (the helper itself) rather than using
+                # between_quotes(), which would concatenate later quoted segments
+                # too and could mask or misreport the offending comma.
+                helper_match = re.match(r'^\s*"(.*?)"', rest)
+                if helper_match:
+                    helper_str = helper_match.group(1)
+                    if "%sagan%" in helper_str and "," in helper_str:
+                        err(
+                            "'meta_content' helper string contains a literal ',' "
+                            f"(\"{helper_str}\") — Sagan splits the quoted string from its "
+                            "search values on comma, so a comma inside the quotes breaks "
+                            "parsing. Hex-encode it as '|2c|' instead."
+                        )
+
                 # Check that search values exist after the helper (comma-separated)
                 parts = rest.split(",", 1)
                 if len(parts) < 2 or not parts[1].strip():
