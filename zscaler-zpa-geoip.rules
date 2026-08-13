@@ -1,0 +1,51 @@
+# Sagan zscaler-zpa-geoip.rules
+# Copyright (c) 2009-2026. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# Outside-Home-Country (OHM) rule for the ZPA LSS connection-log feed (see zscaler-zpa.rules for
+# feed format / prerequisites). ZPA is the right home for OHM in this ruleset -- it's an
+# authenticated, per-user, per-session access event (unlike ZIA's raw web-proxy telemetry, which
+# has no login concept and would just fire on every traveling employee's browsing). Same idiom
+# as the existing msapi-azuread-geoip.rules: GeoIP lookup via the country_code keyword against
+# the mapped src_ip, `isnot $HOME_COUNTRY`.
+#
+# Scoped to ConnectionStatus "open" only (the initial connection-establishment event) so a
+# single session doesn't generate one hit per log line (ZPA logs "open", "active", and "close"
+# rows for the same connection).
+#
+# CRITICAL FP GUARD: excludes "ZPA LSS Client" -- Zscaler's own Log Streaming Service account,
+# which legitimately ships these very logs from wherever the LSS publisher/broker sits and can
+# routinely appear "outside home country" for entirely benign infrastructure reasons (observed
+# doing exactly this in real customer data). Without this exclusion the rule free-fires on every
+# batch of shipped logs.
+#
+# Suppressed to one alert per user per source IP per day (matches the existing
+# msapi-azuread-geoip.rules convention) so a legitimate remote/traveling user generates one
+# alert per day of activity, not one per connection.
+#
+# DRAFT SID: local/unallocated 9000040-9000049 block. Renumber before merging into production.
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZPA-GEOIP][EXPERIMENTAL] Private application access from outside HOME_COUNTRY"; program: Zscaler; json_content:".ConnectionStatus","open"; content:!"ZPA LSS Client"; json_map: "src_ip", ".ClientPublicIP"; json_map: "dest_ip", ".ServerIP"; json_map: "username", ".Username"; country_code: track by_src, isnot $HOME_COUNTRY; threshold: type suppress, track by_src&by_username, count 1, seconds 86400; classtype: successful-user; sid:9000040; rev:1; metadata: mitre_tactic_id TA0001, mitre_technique_id T1078.004, created_at 2026_08_11, updated_at 2026_08_11;)

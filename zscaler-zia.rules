@@ -1,0 +1,145 @@
+# Sagan zscaler-zia.rules
+# Copyright (c) 2009-2026. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# Rules for Zscaler Internet Access (ZIA) NSS Web feed delivered as a JSON blob inside the
+# syslog "message" field (sourcetype "zscalernss-web"), e.g.:
+#
+#   <srcip>|<facility>|<priority>|<level>||<time>|<date>|Zscaler| {"sourcetype":"zscalernss-web","event.vendor":"Zscaler",...}
+#
+# This is a DIFFERENT feed/format than the older CEF-based zscaler.rules / zscaler-bluedot.rules
+# in this ruleset (those expect `program: CEF` and `act=Allowed` style content). These rules
+# require `parse-json-message: enabled` in sagan.yaml (see the Sagan JSON documentation) --
+# no changes to json-input.map / json-message.map are needed since every field is accessed
+# inline via json_content: / json_map:.
+#
+# DRAFT SIDs: this file uses the local/unallocated 9000001-9000019 block. Renumber against your
+# real SID registry before merging into a production ruleset.
+#
+# IMPORTANT -- two different "client IP" fields exist in this feed and are NOT interchangeable:
+#   event.clientpublicIP  = the org's NAT'd/shared egress IP (a handful of values org-wide)
+#   event.ClientIP        = the actual per-endpoint internal IP (one per workstation)
+# All src_ip mapping below intentionally uses event.ClientIP. Using clientpublicIP for
+# threshold/suppression tracking would merge every user behind the same egress IP into one
+# bucket and silently break per-user dedup.
+#
+# NOTE on outside-home-country (OHM): intentionally NOT included in this file. ZIA is raw web
+# proxy telemetry with no login/session concept and no reliable per-request identity-to-geo
+# binding -- an OHM rule here would fire on every remote/traveling employee's ordinary browsing.
+# OHM is implemented on the ZPA feed instead (zscaler-zpa-geoip.rules), where access is
+# authenticated and per-session. Bluedot IP-reputation checks for this feed live in
+# zscaler-zia-bluedot.rules.
+#
+# NOTE on field grounding: this file was originally built against one week of real ZIA traffic
+# that contained zero live threat/DLP hits (threatname, threatclass, dlpengine and
+# unscannabletype were "None" on every row). The enum values used below were subsequently
+# verified against Zscaler's own published NSS Web Logs field reference
+# (help.zscaler.com/zia/nss-feed-output-format-web-logs) and URL category reference
+# (help.zscaler.com/zia/about-url-categories) rather than guessed -- see the per-rule comments.
+# Two rules from the first draft of this file (unscannabletype and known-bad-category) used
+# incorrect enum values that don't actually exist in Zscaler's taxonomy; both are corrected here
+# (rev bumped to 2). Still worth a final sanity check against your own tenant before enabling,
+# since no positive example of any of these fired in the sample data.
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZIA][EXPERIMENTAL] Malware download blocked by Advanced Threat Protection"; program: Zscaler; json_content:".sourcetype","zscalernss-web"; json_content:".event.action","Blocked"; json_content:!".event.threatname","None"; json_map: "src_ip", ".event.ClientIP"; json_map: "dest_ip", ".event.serverip"; json_map: "username", ".event.user"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: malware; sid:9000001; rev:1; metadata: mitre_tactic_id TA0011, mitre_technique_id T1105, created_at 2026_08_11, updated_at 2026_08_11;)
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZIA][EXPERIMENTAL] DLP policy violation detected on outbound transfer"; program: Zscaler; json_content:".sourcetype","zscalernss-web"; json_content:!".event.dlpengine","None"; json_map: "src_ip", ".event.ClientIP"; json_map: "dest_ip", ".event.serverip"; json_map: "username", ".event.user"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: exfiltration; sid:9000002; rev:1; metadata: mitre_tactic_id TA0010, mitre_technique_id T1567, created_at 2026_08_11, updated_at 2026_08_11;)
+
+# CORRECTED (rev 2): Zscaler's NSS Web Logs reference documents exactly 3 unscannabletype
+# values -- "Encrypted File", "Undetectable File", "Unscannable File" (password-protected /
+# corrupt / oversized content are described as examples *within* those 3 buckets, not separate
+# enum values as the first draft of this rule assumed). Matching "not None" is now equivalent to
+# matching all 3 and needs no guesswork. Content that bypassed AV/sandbox inspection is a classic
+# malware-staging evasion technique regardless of which of the 3 buckets it falls in.
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZIA][EXPERIMENTAL] Unscannable content transferred (possible AV/sandbox evasion)"; program: Zscaler; json_content:".sourcetype","zscalernss-web"; json_content:".event.action","Allowed"; json_content:!".event.unscannabletype","None"; json_map: "src_ip", ".event.ClientIP"; json_map: "dest_ip", ".event.serverip"; json_map: "username", ".event.user"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: evasion; sid:9000003; rev:2; metadata: mitre_tactic_id TA0005, mitre_technique_id T1027, created_at 2026_08_11, updated_at 2026_08_11;)
+
+# CORRECTED (rev 2): the first draft of this rule matched "Phishing"/"Botnet"/"Malicious
+# Content"/etc as urlcategory values -- those are NOT in Zscaler's base URL-category taxonomy.
+# The documented "Security" supercategory only has 4 subcategories (End-to-End Encrypted
+# Content, Malicious TLDs, Other Security, Spyware/Adware); malicious-verdict categories like
+# Phishing/Botnet live in a separate Advanced Threat Protection policy dimension, which this
+# feed surfaces via threatname/threatclass (see the ATP-verdict rules below), not urlcategory.
+# Rebuilt on the two genuinely-documented narrow URL categories that ARE meaningful to flag when
+# ALLOWED: newly-registered domains (<30 days old, still uncategorized -- common early
+# phishing/C2 infrastructure) and malicious TLDs. Category display strings can vary slightly by
+# tenant/category-DB version (our own sample shows Zscaler sometimes surfaces raw
+# code-style names verbatim, e.g. "United_Whitelist_URL_Category" was seen as a literal
+# urlcategory value) -- this pattern matches both the human-readable and raw code-style forms;
+# verify against your tenant before enabling.
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZIA][EXPERIMENTAL] Newly-registered domain or malicious TLD allowed"; program: Zscaler; json_content:".sourcetype","zscalernss-web"; json_content:".event.action","Allowed"; json_pcre:".event.urlcategory","/newly.?reg(istered)?.?domains?|malicious.?tlds?/i"; json_map: "src_ip", ".event.ClientIP"; json_map: "dest_ip", ".event.serverip"; json_map: "username", ".event.user"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: policy-violation; sid:9000004; rev:2; metadata: mitre_tactic_id TA0011, mitre_technique_id T1071.001, created_at 2026_08_11, updated_at 2026_08_11;)
+
+# "Blocked" alone is not a security signal in this feed -- 51/55 Blocked rows in the sample were
+# "Dropped due to failed client SSL handshake" (routine TLS noise). Only the explicit firewall
+# policy reason below is a real enforcement event, so the reason string is required, not just action.
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZIA][EXPERIMENTAL] Application blocked by firewall policy"; program: Zscaler; json_content:".sourcetype","zscalernss-web"; json_content:".event.action","Blocked"; json_content:".event.reason","Web application is blocked by Firewall rule"; json_map: "src_ip", ".event.ClientIP"; json_map: "username", ".event.user"; threshold: type suppress, track by_src&by_username, count 1, seconds 3600; classtype: policy-violation; sid:9000005; rev:1; metadata: mitre_tactic_id TA0011, mitre_technique_id T1071, created_at 2026_08_11, updated_at 2026_08_11;)
+
+# NEW: Zscaler's sandbox/behavioral-detonation engine verdict (documented threatclass value,
+# distinct from signature-based malware detection covered by SID 9000001) -- co-firing with
+# 9000001 on the same event is expected/intentional here (this rule adds the more specific
+# "this was a behavioral/sandbox verdict, not a signature match" triage tag, it isn't meant to
+# replace the generic rule).
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZIA][EXPERIMENTAL] Sandbox behavioral-analysis threat blocked"; program: Zscaler; json_content:".sourcetype","zscalernss-web"; json_content:".event.action","Blocked"; json_content:".event.threatclass","Behavior Analysis"; json_map: "src_ip", ".event.ClientIP"; json_map: "dest_ip", ".event.serverip"; json_map: "username", ".event.user"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: malware; sid:9000006; rev:1; metadata: mitre_tactic_id TA0002, mitre_technique_id T1204.002, created_at 2026_08_11, updated_at 2026_08_11;)
+
+# NEW: threatname sub-classification for prioritization -- cryptomining malware specifically
+# (distinct triage/impact profile from generic malware).
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZIA][EXPERIMENTAL] Cryptomining malware blocked"; program: Zscaler; json_content:".sourcetype","zscalernss-web"; json_content:".event.action","Blocked"; json_pcre:".event.threatname","/miner/i"; json_map: "src_ip", ".event.ClientIP"; json_map: "dest_ip", ".event.serverip"; json_map: "username", ".event.user"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: coin-mining; sid:9000007; rev:1; metadata: mitre_tactic_id TA0040, mitre_technique_id T1496, created_at 2026_08_11, updated_at 2026_08_11;)
+
+# NEW: threatname sub-classification -- phishing content blocked by the ATP engine itself
+# (distinct from SID 9000004, which is a category-based allow-through gap; this is an active
+# engine-confirmed phishing verdict).
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZIA][EXPERIMENTAL] Phishing threat blocked"; program: Zscaler; json_content:".sourcetype","zscalernss-web"; json_content:".event.action","Blocked"; json_pcre:".event.threatname","/^HTML\.Phish/i"; json_map: "src_ip", ".event.ClientIP"; json_map: "dest_ip", ".event.serverip"; json_map: "username", ".event.user"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: phish; sid:9000008; rev:1; metadata: mitre_tactic_id TA0001, mitre_technique_id T1566.002, created_at 2026_08_11, updated_at 2026_08_11;)
+
+# NEW: threatname sub-classification -- scam destination blocked.
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZIA][EXPERIMENTAL] Scam destination blocked"; program: Zscaler; json_content:".sourcetype","zscalernss-web"; json_content:".event.action","Blocked"; json_pcre:".event.threatname","/scam/i"; json_map: "src_ip", ".event.ClientIP"; json_map: "dest_ip", ".event.serverip"; json_map: "username", ".event.user"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: social-engineering; sid:9000009; rev:1; metadata: mitre_tactic_id TA0001, mitre_technique_id T1566, created_at 2026_08_11, updated_at 2026_08_11;)
+
+# NEW: risky script/executable extension downloaded regardless of the threat engine's verdict
+# (based on Splunk ESCU's "Potentially Abused File Download" analytic, deliberately narrowed).
+# ESCU's public version also flags .dll and .bat -- both dropped here since they're extremely
+# common in legitimate software installs/update packages and admin scripts in most enterprise
+# environments; including them would make this noisy rather than high-fidelity. Kept only the
+# extensions that are rare in ordinary business web traffic and disproportionately used in
+# initial-access payloads (screensaver droppers, HTA/VBS/JScript/WSF downloaders, malicious
+# shortcut files, CHM help-file smuggling). No action= filter by design -- the value here is
+# catching risky files the threat engine hasn't (yet) flagged, so it intentionally also matches
+# "Allowed" events.
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZIA][EXPERIMENTAL] Risky script/executable file extension downloaded"; program: Zscaler; json_content:".sourcetype","zscalernss-web"; json_pcre:".event.url","/\.(scr|lnk|hta|vbs|jse|wsf|chm)([\?&]|$)/i"; json_map: "src_ip", ".event.ClientIP"; json_map: "dest_ip", ".event.serverip"; json_map: "username", ".event.user"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype: suspicious-filename-detect; sid:9000010; rev:1; metadata: mitre_tactic_id TA0011, mitre_technique_id T1105, created_at 2026_08_11, updated_at 2026_08_11;)
+
+# NOT IMPLEMENTED -- recommended feed/telemetry expansion, not a rule gap:
+# This customer's current NSS Web export does not include Zscaler's domain-fronting
+# (df_hostname/df_hosthead SNI-vs-Host-header mismatch), SSL-inspection-exemption
+# (externalspr), PAC-vs-Client-Connector forwarding method (trafficredirectmethod), or explicit
+# Client-Connector-bypass (bypassed_traffic) fields -- all documented, all narrow/high-fidelity
+# signals (domain fronting and proxy-bypass in particular have near-zero legitimate-traffic
+# overlap), but none of them exist in the current field export for this feed, so no rule can be
+# written against them today. Recommend asking the customer to add these fields to their NSS
+# Web feed output template if domain-fronting/proxy-bypass detection is wanted.
+#
+# Separately, ZIA also publishes distinct Cloud Firewall (non-HTTP, port/protocol-level) and DNS
+# NSS feeds (help.zscaler.com/zia/nss-feed-output-format-firewall-logs and
+# .../nss-feed-output-format-dns-logs) with port-scan/beaconing and DNS-tunneling/DGA detection
+# potential -- this customer is only sending the Web feed (sourcetype zscalernss-web). No rules
+# are written against those feeds since we have never seen a single line of that data; this is a
+# collection-gap recommendation, not something these rules can compensate for.

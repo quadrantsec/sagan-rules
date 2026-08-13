@@ -1,0 +1,42 @@
+# Sagan zscaler-zia-bluedot.rules
+# Copyright (c) 2009-2026. Quadrant Information Security <www.quadrantsec.com>
+# All rights reserved.
+#
+# Please submit any custom rules or ideas to sagan-submit@quadrantsec.com or the sagan-sigs mailing list
+#
+#*************************************************************
+#  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+#  following conditions are met:
+#
+#  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+#    disclaimer.
+#  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#    following disclaimer in the documentation and/or other materials provided with the distribution.
+#  * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+#  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#*************************************************************
+
+# Bluedot IP-reputation checks for the ZIA NSS Web JSON feed (see zscaler-zia.rules for feed
+# format / prerequisites). Checks the DESTINATION server IP (event.serverip) the client's egress
+# request actually reached -- one SID per reputation category, matching the existing
+# cisco-bluedot.rules / openssh-bluedot.rules house pattern, so each category can be tuned and
+# triaged independently. Each is suppressed to one alert per destination IP per 2 hours (same
+# window as the existing zscaler-bluedot.rules / cisco-bluedot.rules), so a sustained session to
+# the same bad IP doesn't reproduce.
+#
+# DRAFT SIDs: local/unallocated 9000020-9000029 block. Renumber before merging into production.
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZIA-BLUEDOT][EXPERIMENTAL] Outbound connection to Malicious IP"; program: Zscaler; json_content:".sourcetype","zscalernss-web"; json_map: "dest_ip", ".event.serverip"; json_map: "src_ip", ".event.ClientIP"; json_map: "username", ".event.user"; bluedot: type ip_reputation, track by_dst, mdate_effective_period 1 months, Malicious; threshold: type suppress, track by_dst, count 1, seconds 7200; classtype: trojan-activity; sid:9000020; rev:1; metadata: mitre_tactic_id TA0011, mitre_technique_id T1071, created_at 2026_08_11, updated_at 2026_08_11;)
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZIA-BLUEDOT][EXPERIMENTAL] Outbound connection to Tor exit node"; program: Zscaler; json_content:".sourcetype","zscalernss-web"; json_map: "dest_ip", ".event.serverip"; json_map: "src_ip", ".event.ClientIP"; json_map: "username", ".event.user"; bluedot: type ip_reputation, track by_dst, mdate_effective_period 1 months, Tor; threshold: type suppress, track by_dst, count 1, seconds 7200; classtype: suspicious-traffic; sid:9000021; rev:1; metadata: mitre_tactic_id TA0011, mitre_technique_id T1090.003, created_at 2026_08_11, updated_at 2026_08_11;)
+
+alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[ZSCALER-ZIA-BLUEDOT][EXPERIMENTAL] Outbound connection to open Proxy IP"; program: Zscaler; json_content:".sourcetype","zscalernss-web"; json_map: "dest_ip", ".event.serverip"; json_map: "src_ip", ".event.ClientIP"; json_map: "username", ".event.user"; bluedot: type ip_reputation, track by_dst, mdate_effective_period 1 months, Proxy; threshold: type suppress, track by_dst, count 1, seconds 7200; classtype: suspicious-traffic; sid:9000022; rev:1; metadata: mitre_tactic_id TA0011, mitre_technique_id T1090, created_at 2026_08_11, updated_at 2026_08_11;)
