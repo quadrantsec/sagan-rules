@@ -680,7 +680,7 @@ alert any any any -> any any (msg:"[WINDOWS-SECURITY] Suspicious svchost.exe Bin
 
 alert any any any -> any any (msg:"[WINDOWS-SECURITY] Fake svchost.exe Process Detected (svch0st) - Critical"; program:*Security*; event_id:4688; pcre:"/NewProcessName.*\\svch0st\.exe/i"; classtype:suspicious-traffic; priority:1; sid:5017395; rev:1;)
 
-alert any any any -> any any (msg:"[WINDOWS-SECURITY] Hidden Scheduled Task Created - Critical"; program:*Security*; event_id:4698; content:"<Hidden>true</Hidden>"; classtype:evasion; metadata: mitre_tactic_name1 Persistance, mitre_tactic_name2 DefenseEvasion, mitre_tactic_id1:TA0003, mitre_tactic_id2 TA0005, mitre_technique_name ScheduledTaskJob, mitre_technique_id T1053; sid:5017396; rev:2;)
+alert any any any -> any any (msg:"[WINDOWS-SECURITY] Hidden Scheduled Task Created - Critical"; program:*Security*; event_id:4698; content:"<Hidden>true</Hidden>"; json_map:"src_ip",".xff"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype:evasion; metadata: mitre_tactic_name1 Persistance, mitre_tactic_name2 DefenseEvasion, mitre_tactic_id1:TA0003, mitre_tactic_id2 TA0005, mitre_technique_name ScheduledTaskJob, mitre_technique_id T1053; sid:5017396; rev:3;)
 
 alert any any any -> any any (msg:"[WINDOWS-SECURITY] Use Of LOLBIN Detected - wlrmdr.exe"; program:*Security*|*Sysmon*; event_id:4688,1; content:"wlrmdr.exe -c -s 0 -f 0 -t Empty -m Empty -a 0 -u Empty"; classtype:evasion; metadata: mitre_tactic_name DefenseEvasion, mitre_tactic_id TA0005, mitre_technique_name SystemBinaryProxyExecution, mitre_technique_id T1218; sid:5017397; rev:1;)
 
