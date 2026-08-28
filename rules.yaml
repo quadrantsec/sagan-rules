@@ -269,6 +269,7 @@ rules-files:
   - $RULE_PATH/msapi-defender.rules
   - $RULE_PATH/msapi-exchange.rules
   - $RULE_PATH/msapi-mcas.rules
+  - $RULE_PATH/msapi-microsoftteams.rules
   - $RULE_PATH/msapi-onedrive.rules
   - $RULE_PATH/msapi-securitycompliancecenter.rules
   - $RULE_PATH/msapi-sharepoint.rules
