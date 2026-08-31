@@ -282,3 +282,4 @@ alert any any any -> any any (msg:"[DYNAMIC] Mimecast V2 Logs Detected"; program
 alert any any any -> any any (msg:"[DYNAMIC] Sophos Firewall Logs Detected"; program:sophos; dynamic_load: $RULE_PATH/sophos_firewall.rules; classtype:dynamic-rules; sid:5017456; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] Zscaler ZIA Logs Detected"; program:Zscaler; dynamic_load: $RULE_PATH/zscaler-zia.rules; classtype:dynamic-rules; sid:5017934; rev:1;)
 alert any any any -> any any (msg:"[DYNAMIC] Zscaler ZPA Logs Detected"; program:Zscaler; dynamic_load: $RULE_PATH/zscaler-zpa.rules; classtype:dynamic-rules; sid:5017935; rev:1;)
+alert any any any -> any any (msg:"[DYNAMIC] MSAPI-MicrosoftTeams logs detected via program"; program:MicrosoftTeams; dynamic_load: $RULE_PATH/msapi-microsoftteams.rules; classtype:dynamic-rules; sid:5017961; rev:1;)
