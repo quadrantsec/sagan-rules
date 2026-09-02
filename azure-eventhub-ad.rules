@@ -87,6 +87,16 @@ alert any any any -> any any (msg:"[EXPERIMENTAL][AZURE-EVENTHUB-AD] Non-Interac
 
 alert any any any -> any any (msg:"[EXPERIMENTAL][AZURE-EVENTHUB-AD] Suspicious Device Registration - Add Registered User/Owner with Anomalous Hostname"; program:azureEventHub; json_content:".operationName","Register device"; json_content:".properties.result","success"; content:"displayName"; pcre:"/DESKTOP-[A-Z0-9]{6}|DESKTOP-[A-Z0-9]{8}/"; within:25; parse_src_ip: 1; parse_dst_ip: 1; threshold: type suppress, track by_src, count 1, seconds 3600; classtype:suspicious-activity; priority:1; reference:url,attack.mitre.org/techniques/T1098/005/; reference:url,research.eye.security/device-code-phishing-forensics/; sid:9870102; rev:2; metadata: updatedOn 2026_07_02;)
 
+# New, independent of 9870102 -- does not require .properties.result=="success" and does not
+# depend on the DESKTOP-* hostname convention or any User-Agent string, both of which failed to
+# generalize across two real device-code incidents (bg_compromise: aarias01 2026-08-05 used
+# python-requests on the join attempt and hostname DESKTOP-DXV2C0PN; ssmith02 2026-08-26 used a
+# standard Dsreg client UA and hostname AB-386-PRT, and the join attempt was blocked/failed both
+# times). Gated entirely on SID 5017986's flexbit (azureEventHub_entra.rules): this source
+# already redeemed a stolen device-code refresh token in the last hour. See sc-engine
+# bg_compromise device-code reports.
+alert any any any -> any any (msg:"[EXPERIMENTAL][AZURE-EVENTHUB-AD] Device Registration Attempt Following Device-Code Refresh Token Theft [FLEXBIT CORRELATED]"; program:azureEventHub; json_content:".operationName","Register device"; json_map:"src_ip",".callerIpAddress"; flexbits: isset,by_src,device_code_theft; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 3600; classtype:suspicious-activity; priority:1; reference:url,attack.mitre.org/techniques/T1098/005/; reference:url,research.eye.security/device-code-phishing-forensics/; sid:9870107; rev:1; metadata: createdOn 2026_09_02;)
+
 alert any any any -> any any (msg:"[EXPERIMENTAL][AZURE-EVENTHUB-AD] Suspicious Device Registration - Add Registered User with Anomalous Hostname"; program:azureEventHub; json_content:".operationName","Add registered users to device"; content:"newValue"; pcre:"/DESKTOP-[A-Z0-9]{6}|DESKTOP-[A-Z0-9]{8}/"; within:25; json_map:"src_ip",".xff"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype:suspicious-activity; priority:1; reference:url,attack.mitre.org/techniques/T1098/005/; sid:9870103; rev:2; metadata: updatedOn 2026_07_02;)
 
 alert any any any -> any any (msg:"[EXPERIMENTAL][AZURE-EVENTHUB-AD] Suspicious Device Registration - Add Registered Owner with Anomalous Hostname"; program:azureEventHub; json_content:".operationName","Add registered owner to device"; content:"newValue"; pcre:"/DESKTOP-[A-Z0-9]{6}|DESKTOP-[A-Z0-9]{8}/"; within:25; json_map:"src_ip",".xff"; threshold: type suppress, track by_src, count 1, seconds 3600; classtype:suspicious-activity; priority:1; reference:url,attack.mitre.org/techniques/T1098/005/; sid:9870104; rev:2; metadata: updatedOn 2026_07_02;)
