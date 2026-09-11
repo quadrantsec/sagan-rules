@@ -29,7 +29,7 @@
 
 # Created by Champ Clark 04/08/2016. You'll need PSEXEC_MD5 defined in your sagan.conf!
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] PSExec execution detected"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 1; meta_content: "MD5=%sagan%,",$PSEXEC_MD5; classtype: suspicious-command; program: *Sysmon*; sid:5009779; metadata: created_on 2022_11_22, old_sid 5002799; rev:5;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-SYSMON] PSExec execution detected"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 1; meta_content: "MD5=%sagan%|2c|",$PSEXEC_MD5; classtype: suspicious-command; program: *Sysmon*; sid:5009779; metadata: created_on 2022_11_22, old_sid 5002799; rev: 6;)
 
 
 # Locky Ransomware
