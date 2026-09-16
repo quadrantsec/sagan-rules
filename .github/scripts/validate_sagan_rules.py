@@ -37,7 +37,11 @@ VALID_RULE_OPTIONS = {
 VALID_RULE_TYPES   = {"alert", "drop", "pass"}
 VALID_PROTOCOLS    = {"any", "tcp", "udp", "icmp", "syslog"}
 VALID_PARSE_HASH   = {"md5", "sha1", "sha256"}
-VALID_XBIT_ACTIONS = {"set", "unset", "isset", "isnotset", "toggle", "noalert", "noeve"}
+# "toggle" is deliberately absent. Sagan's error message lists it and
+# src/rules.h still carries xbit_toggle_count, but the branch that would
+# honour it is commented out in src/rules.c, so xbit_type stays 0 and
+# Load_Rules() aborts. Accepting it here passes a rule the engine refuses.
+VALID_XBIT_ACTIONS = {"set", "unset", "isset", "isnotset", "noalert", "noeve"}
 VALID_XBIT_TRACK   = {"ip_src", "ip_dst", "ip_pair"}
 VALID_FLEXBIT_ACTIONS = {
     "noalert", "set", "unset", "isset", "isnotset",
@@ -420,7 +424,7 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
                 action = rest.split(",")[0].strip()
                 if action not in VALID_XBIT_ACTIONS:
                     err(f"'xbits' action must be one of {sorted(VALID_XBIT_ACTIONS)}; got '{action}'")
-                elif action in ("set", "unset", "isset", "isnotset", "toggle"):
+                elif action in ("set", "unset", "isset", "isnotset"):
                     parts_xbit = [p.strip() for p in rest.split(",")]
                     if len(parts_xbit) < 3:
                         err(f"'xbits {action}' is incomplete — requires action,name,track by ...")
