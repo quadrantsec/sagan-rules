@@ -48,7 +48,19 @@ VALID_FLEXBIT_ACTIONS = {
     "set_srcport", "set_dstport", "set_ports", "count", "noeve",
 }
 VALID_THRESHOLD_TYPES  = {"limit", "suppress"}
+# Both parsers in src/rules.c recognise exactly these five keys and accept
+# several of them joined by '&'. An unrecognised key is not tolerated: the
+# parsers count how many parts they understood and Load_Rules() aborts when the
+# count is zero, so Sagan will not start with the file enabled.
 VALID_THRESHOLD_TRACKS = {"by_src", "by_dst", "by_username", "by_string", "by_srcport", "by_dstport"}
+VALID_AFTER_TRACKS     = VALID_THRESHOLD_TRACKS
+
+# JSON_MAX_KEY_SIZE in src/sagan-defs.h is 32, so the engine stores 31
+# characters of a key path and compares that with strcmp. A longer path in a
+# rule never matches what the engine stored. The corpus works around this by
+# writing the clipped name in the rule, with the full path in a comment above
+# it, as in sagan-rules@6211ab5.
+MAX_JSON_KEY_LEN = 31
 
 REQUIRED_KEYWORDS = {"sid", "rev", "msg"}
 
@@ -168,6 +180,38 @@ def validate_hex_content(val: str) -> tuple[list[str], list[str]]:
 
 
 
+def invalid_track_keys(rest: str, valid: set[str]) -> list[str]:
+    """
+    Return the tracking keys of an 'after' or 'threshold' option that neither
+    parser recognises. Both take 'track <key>' and accept several keys joined
+    by '&' (src/rules.c), and both abort the load when nothing is recognised.
+    """
+    m = re.search(r'\btrack\s+([^,;]+)', rest)
+    if not m:
+        return []
+    return [key for key in re.split(r'[&\s]+', m.group(1).strip())
+            if key and key not in valid]
+
+
+def json_key_problems(kw: str, key: str) -> list[str]:
+    """Problems with a JSON key path that make the option match nothing."""
+    problems = []
+    if "[]" in key:
+        problems.append(
+            f"'{kw}' key '{key}' carries an empty array marker '[]'. The engine flattens "
+            "arrays into indexed keys, so the stored key is '[0]', '[1]' and so on, and "
+            "'[]' matches none of them"
+        )
+    if len(key) > MAX_JSON_KEY_LEN:
+        problems.append(
+            f"'{kw}' key '{key}' is {len(key)} characters; the engine stores "
+            f"{MAX_JSON_KEY_LEN} (JSON_MAX_KEY_SIZE) and compares with strcmp, so this key "
+            f"never matches. Write it clipped to '{key[:MAX_JSON_KEY_LEN]}' and record the "
+            "full path in a comment above the rule"
+        )
+    return problems
+
+
 def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], list[str]]:
     errors = []
     warnings = []
@@ -199,10 +243,12 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
 
     # ── 4. Protocol field ────────────────────────────────────────────────────
     parts = rule.split()
+    header_proto = ""
     if len(parts) < 2:
         err("Rule is too short to contain a protocol")
     else:
         proto = parts[1].lower()
+        header_proto = proto
         if proto not in VALID_PROTOCOLS:
             err(f"Protocol must be one of {sorted(VALID_PROTOCOLS)}; got '{proto}'")
 
@@ -221,8 +267,40 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
     json_meta_content_count = 0
     json_pcre_count      = 0
 
+    # State the cross-option checks at the end of this function need.
+    contents: list[tuple[bool, str]] = []     # (negated, value) for each content
+    json_meta_lists      = 0
+    last_json_option     = None               # "content" or "meta_content"
+    username_supplied    = False
+    has_json_meta_contains = False
+
     for kw, rest in tokens:
         seen_keywords.add(kw)
+
+        # A value that swallowed the next option: Sagan reads up to the ';', so
+        # a missing one leaves 'reference:url,...' inside the content string and
+        # the option itself is lost. Look for an option name and its colon after
+        # the value's closing quote.
+        if kw in ("content", "pcre") and rest and '"' in rest:
+            tail = rest[rest.rfind('"') + 1 :]
+            m = re.search(r'\b([a-z_0-9]+)\s*:', tail)
+            if m and m.group(1) in VALID_RULE_OPTIONS:
+                err(f"'{kw}' value is followed by '{m.group(1)}:' with no ';' between them "
+                    f"— the option is read as part of the searched string and is lost")
+
+        # A modifier that takes no argument, given one. The parser reads the
+        # keyword and throws the rest away, so the rule does not do what it
+        # reads as doing.
+        if kw in ("json_contains", "json_meta_contains", "json_nocase",
+                  "json_meta_nocase", "nocase", "meta_nocase") and rest:
+            err(f"'{kw}' takes no argument; '{rest}' is silently discarded")
+
+        if kw == "json_map" and rest and "username" in between_quotes(rest.split(",")[0] or ""):
+            username_supplied = True
+        if kw == "normalize":
+            username_supplied = True
+        if kw == "json_meta_contains":
+            has_json_meta_contains = True
 
         # ── 5a. Valid rule options (VALID_RULE_OPTIONS check) ─────────────
         if kw and kw not in VALID_RULE_OPTIONS:
@@ -233,8 +311,12 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
 
         # sid
         if kw == "sid":
+            # A placeholder sid loads, and every alert the rule raises is
+            # logged as sid 0, so the alert cannot be attributed to the rule
+            # that raised it. Sids are allocated from .last_used_sid.
             if not rest or not rest.strip().isdigit():
-                warn("'sid' value is missing or non-numeric")
+                err("'sid' value is missing or non-numeric — alerts from this rule are logged "
+                    "as sid 0; allocate the next value from .last_used_sid")
 
         # rev
         elif kw == "rev":
@@ -261,7 +343,19 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
                     for hex_err in hex_errs:
                         err(f"'content': {hex_err}")
                     for hex_warn in hex_warns:
-                        warn(f"'content': {hex_warn}")
+                        # An unterminated '|' does not stop the rule loading:
+                        # the bytes after it are converted anyway, a control
+                        # character ends up in the searched string, and the
+                        # rule matches nothing. That is a defect rather than an
+                        # advisory. An empty '||' stays a warning: it is odd
+                        # but it costs nothing.
+                        if "unbalanced" in hex_warn:
+                            err(f"'content': {hex_warn} — the bytes after it are still converted, "
+                                "so a control character ends up in the searched string")
+                        else:
+                            warn(f"'content': {hex_warn}")
+                if val:
+                    contents.append((rest.lstrip().startswith("!"), val))
 
         # nocase / offset / depth / distance / within
         elif kw in ("nocase", "offset", "depth", "distance", "within"):
@@ -278,6 +372,28 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
             if not rest:
                 err("'meta_content' appears to be incomplete")
             else:
+                # A colon anywhere in the argument truncates it. rules.c takes
+                # the value with strtok on ':', so the keyword is split from its
+                # argument on the first colon and the argument stops at the
+                # next one: a Windows path like "c:\\program files\\" is
+                # searched for as "c". content is not affected, taking its value
+                # differently, which is why the same path works there.
+                if ":" in rest:
+                    err("'meta_content' value contains a ':' — everything from the colon on is "
+                        "discarded by the parser; hex-encode it as '|3a|'")
+
+                # The template is everything up to the first comma, so a closing
+                # quote does not end it. Text between that quote and the comma
+                # is appended to every value the list searches for.
+                template = rest.split(",", 1)[0]
+                quotes_in_template = template.count('"')
+                if quotes_in_template >= 2 and quotes_in_template % 2 == 0:
+                    trailing = template[template.rfind('"') + 1 :].strip()
+                    if trailing:
+                        err(f"'meta_content' template has text after its closing quote "
+                            f"('{trailing[:40]}') — it is part of the template, so every value "
+                            f"in the list is searched for with that text appended")
+
                 # Quote balance check — Between_Quotes with q_check=true aborts if > 3 quotes
                 quote_count = rest.count('"')
                 if quote_count > 3:
@@ -320,7 +436,12 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
                         for hex_err in hex_errs:
                             err(f"'meta_content' helper: {hex_err}")
                         for hex_warn in hex_warns:
-                            warn(f"'meta_content' helper: {hex_warn}")
+                            if "unbalanced" in hex_warn:
+                                err(f"'meta_content' helper: {hex_warn} — the bytes after it are "
+                                    "still converted, so a control character ends up in the "
+                                    "searched string")
+                            else:
+                                warn(f"'meta_content' helper: {hex_warn}")
 
         # meta_nocase / meta_offset / meta_depth / meta_distance / meta_within
         elif kw in ("meta_nocase", "meta_offset", "meta_depth", "meta_distance", "meta_within"):
@@ -331,6 +452,22 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
             if not rest:
                 err("'pcre' appears to be incomplete (no value)")
             else:
+                # Between_Quotes() concatenates every quoted section, so a
+                # pattern that carries a double quote of its own loses it
+                # before PCRE ever sees it, and what compiles is not what the
+                # rule describes. A well-formed argument holds exactly the two
+                # quotes that delimit it.
+                quotes_in_pcre = rest.count('"')
+                if quotes_in_pcre != 2:
+                    err(f"'pcre' argument holds {quotes_in_pcre} double quotes where 2 delimit "
+                        "the pattern — Between_Quotes() deletes the others before the pattern "
+                        "is compiled; write a quote inside a pattern as \\x22")
+
+                # pcre:! is parsed as a positive pcre; see the engine issue.
+                if rest.lstrip().startswith("!"):
+                    warn("'pcre' is negated with '!', which the engine parser does not honour: "
+                         "the pattern is applied as a positive match")
+
                 val = between_quotes(rest)
                 if val is None or val == "":
                     err("'pcre' value is empty or not quoted")
@@ -359,11 +496,23 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
                     err("'json_content' key is not quoted")
                 elif not key.startswith("."):
                     err(f"'json_content' key must start with '.'; got '{key}'")
+                else:
+                    for problem in json_key_problems("json_content", key):
+                        err(problem)
+                last_json_option = "content"
 
         # json_nocase / json_contains
         elif kw in ("json_nocase", "json_contains"):
             if json_content_count < 1:
                 warn(f"'{kw}' has no preceding 'json_content' to apply to")
+            elif last_json_option == "meta_content":
+                # Both modifiers apply to the last json_content, never to a
+                # json_meta_content, however close the two are written. A rule
+                # that puts one straight after a json_meta_content has almost
+                # certainly aimed it at the list and hit the earlier option.
+                warn(f"'{kw}' is written after a 'json_meta_content' but applies to the last "
+                     f"'json_content' instead; the meta list keeps an exact comparison. Use "
+                     f"'json_meta_{kw.split('_', 1)[1]}' if the list was the target")
 
         # json_pcre
         elif kw == "json_pcre":
@@ -377,6 +526,9 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
                     err("'json_pcre' key is not quoted")
                 elif not key.startswith("."):
                     err(f"'json_pcre' key must start with '.'; got '{key}'")
+                else:
+                    for problem in json_key_problems("json_pcre", key):
+                        err(problem)
 
         # json_meta_content
         elif kw == "json_meta_content":
@@ -384,17 +536,41 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
             if not rest:
                 err("'json_meta_content' appears to be incomplete")
             else:
+                json_meta_lists += 1
+                last_json_option = "meta_content"
                 first_arg = rest.split(",")[0].strip()
                 key = between_quotes(first_arg)
                 if key is None:
                     err("'json_meta_content' key is not quoted")
                 elif not key.startswith("."):
                     err(f"'json_meta_content' key must start with '.'; got '{key}'")
+                else:
+                    for problem in json_key_problems("json_meta_content", key):
+                        err(problem)
+
+                # The list is comma-separated and each item is compared as it
+                # stands. Quotes are not delimiters here, unlike json_content,
+                # whose single argument is quoted by design: they are two more
+                # characters of the value being searched for.
+                for item in rest.split(",")[1:]:
+                    if '"' in item:
+                        err(f"'json_meta_content' list item {item.strip()} is quoted — the "
+                            "quotes are part of the value compared, so the item never matches. "
+                            "Write it without them")
+                        break
 
         # json_meta_nocase / json_meta_contains
         elif kw in ("json_meta_nocase", "json_meta_contains"):
             if json_meta_content_count < 1:
                 err(f"'{kw}' has no preceding 'json_meta_content' to apply to")
+
+        # program
+        elif kw == "program":
+            # The program is matched against the syslog program field, which
+            # carries no spaces. A spaced value can never match anything.
+            if rest and " " in rest.strip():
+                err(f"'program' value '{rest}' contains a space; the syslog program field does "
+                    "not, so this condition can never be satisfied")
 
         # reference
         elif kw == "reference":
@@ -466,6 +642,11 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
                     if re.search(rf'\b{bad_kw}\s*:', rest):
                         err(f"'threshold' option '{bad_kw}' must not be followed by a colon — use '{bad_kw} <value>' not '{bad_kw}: <value>'")
 
+                for bad in invalid_track_keys(rest, VALID_THRESHOLD_TRACKS):
+                    err(f"'threshold' tracking key '{bad}' is not one of "
+                        f"{sorted(VALID_THRESHOLD_TRACKS)}; Load_Rules() aborts and Sagan will "
+                        "not start with this file enabled")
+
                 has_type    = bool(re.search(r'\btype\b', rest))
                 has_track   = bool(re.search(r'\btrack\b', rest))
                 has_count   = bool(re.search(r'\bcount\b', rest))
@@ -493,6 +674,10 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
                 for bad_kw in ("track", "count", "seconds"):
                     if re.search(rf'\b{bad_kw}\s*:', rest):
                         err(f"'after' option '{bad_kw}' must not be followed by a colon — use '{bad_kw} <value>' not '{bad_kw}: <value>'")
+
+                for bad in invalid_track_keys(rest, VALID_AFTER_TRACKS):
+                    err(f"'after' tracking key '{bad}' is not one of {sorted(VALID_AFTER_TRACKS)}; "
+                        "Load_Rules() aborts and Sagan will not start with this file enabled")
 
                 has_track   = bool(re.search(r'\btrack\b', rest))
                 has_count   = bool(re.search(r'\bcount\b', rest))
@@ -562,6 +747,58 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
                             for ch in m.group(1):
                                 if ch not in "0123456":
                                     err(f"'alert_time' day '{ch}' is invalid (0=Sun … 6=Sat)")
+
+    # ── 6. Checks that need the whole rule ───────────────────────────────────
+
+    # 6a. A header protocol a syslog event never carries. Sagan sets the
+    # protocol from default_proto, or from parse_proto; with neither, the event
+    # is udp and a tcp or icmp header can never match.
+    # header_proto is captured in section 4 because 'parts' is reused inside
+    # the option loop.
+    if header_proto in ("tcp", "icmp"):
+        if not ({"default_proto", "parse_proto", "parse_proto_program"} & seen_keywords):
+            err(f"header protocol '{header_proto}' with no 'default_proto' or 'parse_proto' "
+                "— syslog events default to udp, so this rule can never match")
+
+    # 6b. A negated content that the rule's own required content contains.
+    # content:! is a plain substring test, so the two conditions cannot both
+    # hold and the rule never alerts, on any message.
+    for negated, value in contents:
+        if not negated or not value:
+            continue
+        for other_negated, other in contents:
+            if not other_negated and value in other:
+                err(f"content:!\"{value}\" excludes a string that the required "
+                    f"content:\"{other}\" contains — no message can satisfy both")
+                break
+
+    # 6c. Correlating on a username the engine has no way to resolve. 'after'
+    # groups on the username Sagan resolved for the event; with no json_map
+    # supplying one and no normalize, the key is empty for every event, they
+    # share one counter, and the rule counts globally instead of per user.
+    # 'threshold' is deliberately not checked here: the rules that track a
+    # username there use 'type suppress', where a global key is a different and
+    # possibly deliberate choice, and no measurement supports calling it a
+    # defect.
+    if not username_supplied:
+        for kw, rest in tokens:
+            if kw == "after" and rest and "by_username" in rest:
+                err("'after' tracks by_username but nothing in this rule supplies a username: "
+                    "no 'json_map' naming one and no 'normalize'. Every event shares one "
+                    "counter, so the rule counts globally rather than per user")
+
+    # 6d. Several json_meta_content lists with json_meta_contains. The value
+    # index the loader stores into is per rule rather than per list, so every
+    # list after the first carries empty leading values, and an empty value is
+    # a substring of everything: a negated list makes the rule dead and a
+    # positive one constrains nothing. Reported upstream as
+    # https://github.com/quadrantsec/sagan/issues/107 and fixed in one line
+    # there; this stays a warning until that lands.
+    if json_meta_lists > 1 and has_json_meta_contains:
+        warn(f"'json_meta_contains' with {json_meta_lists} 'json_meta_content' lists: the "
+             "engine gives every list after the first a set of empty values that match "
+             "anything, so this rule does not test what it reads as testing "
+             "(quadrantsec/sagan issue 107)")
 
     return errors, warnings
 
