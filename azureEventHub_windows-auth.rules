@@ -200,7 +200,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] Windows DC Lo
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User account created"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 4720,624; program: *Security*; classtype: successful-user; xbits: set,create_enabled,track ip_src, expire 30; sid:5008538; metadata: created_on 2022_11_22, old_sid 5001880; rev:12;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User account re-enabled"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 4722,626; content:! "$" ;program: *Security*; xbits: isset,create_enabled,track ip_src; xbits_pause: 5; classtype: successful-user; sid:5008539; metadata: created_on 2022_11_22, old_sid 5001881; rev:11;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User account re-enabled"; json_map:"event_id",".EventID"; json_map:"message",".RenderedDescription"; event_id: 4722,626; content:!"$";program: *Security*; xbits: isset,create_enabled,track ip_src; xbits_pause: 5; classtype: successful-user; sid:5008539; metadata: created_on 2022_11_22, old_sid 5001881; rev:11;)
 
 # User enabled
 

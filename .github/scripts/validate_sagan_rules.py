@@ -64,6 +64,17 @@ MAX_JSON_KEY_LEN = 31
 
 REQUIRED_KEYWORDS = {"sid", "rev", "msg"}
 
+# Options whose quoted argument is a value the engine searches for or a key it
+# looks up, as opposed to text it only reports. Between_Quotes() in src/util.c
+# re-arms its flag on the closing quote, so anything between that quote and the
+# next one is appended to what it extracted. Whitespace there lands inside the
+# value, and only for these options does that change what the rule matches: a
+# trailing space in a 'msg' costs nothing and is not worth reporting.
+SEARCHED_ARGUMENTS = {
+    "content", "meta_content", "pcre",
+    "json_content", "json_meta_content", "json_pcre", "json_map",
+}
+
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def extract_body(rule: str):
@@ -257,6 +268,25 @@ def validate_rule(rule: str, lineno: int, filename: str) -> tuple[list[str], lis
     if body is None:
         err("Cannot extract rule body between ( )")
         return errors, warnings
+
+    # Whitespace between a quoted argument and what ends it, which the engine
+    # appends to the value. A key written ".catdesc" ,x is stored as ".catdesc "
+    # and matches no document; a negated content:! "$" ; looks for a dollar
+    # followed by a space, so it stops excluding the machine accounts it was
+    # written for. Both shapes shipped in this repository.
+    #
+    # Read from the body rather than from tokenize_options(), which strips each
+    # option and would hide the trailing case.
+    for raw_option in body.split(";"):
+        if ":" not in raw_option:
+            continue
+        raw_keyword, raw_value = raw_option.split(":", 1)
+        if raw_keyword.strip() in SEARCHED_ARGUMENTS and re.search(
+            r'"[^"]*"[ \t]+(?:,|$)', raw_value
+        ):
+            err(f"'{raw_keyword.strip()}' has whitespace between a quoted argument and "
+                "what ends it; Between_Quotes() appends it to the value, so the option "
+                "no longer searches for what the rule reads as searching for")
 
     tokens = tokenize_options(body)
 
