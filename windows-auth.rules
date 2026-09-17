@@ -201,7 +201,7 @@ alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-AUTH] Windows DC Lo
 
 alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User account created"; event_id: 4720,624; program: *Security*; classtype: successful-user; xbits: set,create_enabled,track ip_src, expire 30; sid: 5001880; rev:12;)
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User account re-enabled"; event_id: 4722,626; content:! "$" ;program: *Security*; xbits: isset,create_enabled,track ip_src; xbits_pause: 5; classtype: successful-user; sid: 5001881; rev:11;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg:"[WINDOWS-AUTH] User account re-enabled"; event_id: 4722,626; content:!"$";program: *Security*; xbits: isset,create_enabled,track ip_src; xbits_pause: 5; classtype: successful-user; sid: 5001881; rev:11;)
 
 # User enabled
 
