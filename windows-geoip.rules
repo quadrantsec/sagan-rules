@@ -24,7 +24,7 @@
 #  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-GEOIP] Windows Logon outside of HOME_COUNTRY"; event_id: 4624,528,540; content:!"0.0 Source Port|3a| 0"; default_proto: tcp; metadata: endpoint_command FIREWALL_BLOCK_SRC_IP; classtype: successful-user; program: *Security*; parse_src_ip: 1; parse_port; country_code: track by_src, isnot $HOME_COUNTRY; sid: 5001873; rev:12;)
+alert any $EXTERNAL_NET any -> $HOME_NET any (msg: "[WINDOWS-GEOIP] Windows Logon outside of HOME_COUNTRY"; event_id: 4624,528,540; content:!"0.0 Source Port|3a| 0"; content:!"Source Network Address|3a 20|2001|3a|0"; default_proto: tcp; metadata: endpoint_command FIREWALL_BLOCK_SRC_IP; classtype: successful-user; program: *Security*; parse_src_ip: 1; parse_port; country_code: track by_src, isnot $HOME_COUNTRY; sid: 5001873; rev:13;)
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg: "[WINDOWS-GEOIP] RDP / Logon type 10 from outside HOME_COUNTRY "; event_id: 4624,528,540; content: "Logon Type|3a| 10 "; country_code: track by_src, isnot $HOME_COUNTRY; program: *Security*; parse_src_ip: 1; content: !"0.0 Source Port|3a| 0"; default_proto: tcp; metadata: endpoint_command FIREWALL_BLOCK_SRC_IP; classtype: successful-user; sid: 5002016; rev:8;)
 
