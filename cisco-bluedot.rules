@@ -95,7 +95,14 @@ alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious IN
 
 alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND UDP connection from a Proxy IP"; content: "-6-302015"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Proxy; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005804; rev:1;)
 
-alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND UDP connection from a know Honeypot attacker"; content: "-6-302015"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Honeypot; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005805; rev:1;)
+#Rule is pure overhead - 100% of real dispositions this week (15,431/15,431, auto_answer:true for
+#all of them) came back either "permanently autoing per Champ Clark" or dismissed as known research
+#scanner traffic (Shodan). No human review has been happening on this rule's output at all. Checked
+#whether a volume tune would help instead (mdate_effective_period/threshold) - Bluedot's last_seen
+#refreshes to the alert's own timestamp on every hit, so narrowing the recency window wouldn't filter
+#anything from actively-scanning IPs; the threshold would cut real volume but there's nothing to gain
+#by keeping a rule nobody looks at. Retired 2026-11-14.
+#alert any $HOME_NET any -> $EXTERNAL_NET any (msg:"[CISCO-BLUEDOT] Suspicious INBOUND UDP connection from a know Honeypot attacker"; content: "-6-302015"; content: "Built inbound"; append_program; bluedot: type ip_reputation, track all,mdate_effective_period 3 months,Honeypot; normalize; parse_dst_ip: 3; parse_src_ip: 1; threshold: type suppress, track by_src, count 1, seconds 7200; default_proto: tcp; classtype: suspicious-traffic; sid:5005805; rev:1;)
 
 # --- Suspicious ICMP events INBOUND -----
 
